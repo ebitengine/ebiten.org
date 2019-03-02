@@ -1,0 +1,31 @@
+<h1>Performance Tips</h1>
+<h2>Make similar draw function calls successive</h2>
+<p>The less draw commands, the better the performance is.</p>
+<p>One drawing function like <code>DrawImage</code> or <code>Fill</code> is usually treated as one (internal) draw command, but there is an exception. Successive drawing commands are treated as one draw command when all the below conditions are satisfied:</p>
+<ul>
+  <li>All the functions are <code>DrawImage</code> or <code>DrawTriangles</code></li>
+  <li>All the render targets are same (<code>A</code> in <code>A.DrawImage(B, op)</code>)</li>
+  <li>Either all ColorM element values are same or all the ColorM have only diagonal ('scale') elements
+    <ul>
+      <li>If only <code>(*ColorM).Scale</code> is applied to a ColorM, the ColorM has only diagonal elements. The other ColorM functions might modify the other elements.</li>
+    </ul>
+  </li>
+  <li>All the composite modes are same</li>
+  <li>All the filter values are same</li>
+  <li>All the address values are same (only for <code>DrawTriangles</code>)</li>
+</ul>
+<p>Even when all the above conditions are satisfied, multiple draw commands can be used in really rare cases. Ebiten images usually share an internal automatic texture atlas, but when you consume the atlas, or you create a huge image, those images cannot be on the same texture atlas. In this case, draw commands are separated. The texture atlas size is 4096x4096 so far. Another case is when you use an offscreen as a render source. An offscreen doesn't share the texture atlas with high probability.</p>
+<p>examples/sprites is a good example to draw > 10000 sprites with one (or a few) draw command(s).</p>
+<h2>Avoid changing render sources' pixels</h2>
+<p>Ebiten records almost all draw functions in order to restore when context lost happens. When a render source's pixel is changed after it is used as a render source, Ebiten tries a complicated calculation for restoring.</p>
+<pre><code>A.DrawImage(B, op) // B is a render source
+B.DrawImage(C, op) // tries to change B's pixels. Avoid this if possible.</code></pre>
+<p>As well, cyclic drawing should also be avoided.</p>
+<pre><code>A.DrawImage(B, op)
+B.DrawImage(A, op) // cyclic drawing! Avoid this if possible.</code></pre>
+<h2>Avoid using the screen as a render source</h2>
+<p>The screen is a special image because the image is cleared at every frame. As explained above, Ebiten records a drawing function calls but using the screen as a render source makes the calculation complicated.</p>
+<h2>Don't call <code>(*Image).ReplacePixels</code> too much</h2>
+<p>ReplacePixels is a relatively heavy function that calls <code>glTexSubImage2D</code> internally.</p>
+<h2>Don't call <code>(*Image).At</code> too much</h2>
+<p>At is also heavy that tries to solve all the queued draw commands.</p>

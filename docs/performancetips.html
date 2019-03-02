@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta property="og:image" itemprop="image primaryImageOfPage" content="https://ebiten.org/images/logo.png">
+    <meta name="description" content="Ebiten - A dead simple 2D game library in Go">
+    <title>Performance Tips - Ebiten</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700|Roboto+Mono:400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" type="text/css" href="/style.css">
+    <link rel="icon" href="/images/favicon.png" type="image/png">
+    <script src="/script.js"></script>
+  </head>
+  <body>
+    <nav>
+      <h1><a href="/">Ebiten<img class="logo" src="/images/logow.png" width="32"></a></h1>
+      <ul>
+        <li><a href="https://github.com/hajimehoshi/ebiten" rel="noopener" target="_blank">GitHub project...</li>
+        <li><a href="https://godoc.org/github.com/hajimehoshi/ebiten" rel="noopener" target="_blank">API reference...</a></li>
+        <li><a href="/cheatsheet.html">Cheat Sheet</a></li>
+      </ul>
+      <h2>Getting Started</h2>
+      <ul>
+        <li><a href="/install.html">Install</a></li>
+        <li><a href="/helloworld.html">Hello, World!</a></li>
+      </ul>
+      <h2>Graphics</h2>
+      <ul>
+        <li><a href="/fill.html">Fill</a></li>
+        <li><a href="#">Render an Image (TBD)</a></li>
+        <li><a href="#">Geometry Matrix (TBD)</a></li>
+        <li><a href="#">Filter (TBD)</a></li>
+        <li><a href="#">Offscreen (TBD)</a></li>
+        <li><a href="#">Color Matrix (TBD)</a></li>
+        <li><a href="#">Tiling (TBD)</a></li>
+      </ul>
+      <h2>Input</h2>
+      <ul>
+        <li><a href="#">Keyboard (TBD)</a></li>
+        <li><a href="#">Mouse (TBD)</a></li>
+        <li><a href="#">Gamepad (TBD)</a></li>
+      </ul>
+      <h2>Next Steps</h2>
+      <ul>
+        <li><a href="/cheatsheet.html">Cheat Sheet</a></li>
+        <li><a href="/performancetips.html">Performance Tips</a></li>
+      </ul>
+      <h2>Tips</h2>
+      <ul>
+        <li><a href="#">Mobile (TBD)</a></li>
+        <li><a href="#">Web Browsers (TBD)</a></li>
+      </ul>
+    </nav>
+    <main>
+      <article>
+        <h1>Performance Tips</h1>
+<h2>Make similar draw function calls successive</h2>
+<p>The less draw commands, the better the performance is.</p>
+<p>One drawing function like <code>DrawImage</code> or <code>Fill</code> is usually treated as one (internal) draw command, but there is an exception. Successive drawing commands are treated as one draw command when all the below conditions are satisfied:</p>
+<ul>
+  <li>All the functions are <code>DrawImage</code> or <code>DrawTriangles</code></li>
+  <li>All the render targets are same (<code>A</code> in <code>A.DrawImage(B, op)</code>)</li>
+  <li>Either all ColorM element values are same or all the ColorM have only diagonal ('scale') elements
+    <ul>
+      <li>If only <code>(*ColorM).Scale</code> is applied to a ColorM, the ColorM has only diagonal elements. The other ColorM functions might modify the other elements.</li>
+    </ul>
+  </li>
+  <li>All the composite modes are same</li>
+  <li>All the filter values are same</li>
+  <li>All the address values are same (only for <code>DrawTriangles</code>)</li>
+</ul>
+<p>Even when all the above conditions are satisfied, multiple draw commands can be used in really rare cases. Ebiten images usually share an internal automatic texture atlas, but when you consume the atlas, or you create a huge image, those images cannot be on the same texture atlas. In this case, draw commands are separated. The texture atlas size is 4096x4096 so far. Another case is when you use an offscreen as a render source. An offscreen doesn't share the texture atlas with high probability.</p>
+<p>examples/sprites is a good example to draw > 10000 sprites with one (or a few) draw command(s).</p>
+<h2>Avoid changing render sources' pixels</h2>
+<p>Ebiten records almost all draw functions in order to restore when context lost happens. When a render source's pixel is changed after it is used as a render source, Ebiten tries a complicated calculation for restoring.</p>
+<pre><code>A.DrawImage(B, op) // B is a render source
+B.DrawImage(C, op) // tries to change B's pixels. Avoid this if possible.</code></pre>
+<p>As well, cyclic drawing should also be avoided.</p>
+<pre><code>A.DrawImage(B, op)
+B.DrawImage(A, op) // cyclic drawing! Avoid this if possible.</code></pre>
+<h2>Avoid using the screen as a render source</h2>
+<p>The screen is a special image because the image is cleared at every frame. As explained above, Ebiten records a drawing function calls but using the screen as a render source makes the calculation complicated.</p>
+<h2>Don't call <code>(*Image).ReplacePixels</code> too much</h2>
+<p>ReplacePixels is a relatively heavy function that calls <code>glTexSubImage2D</code> internally.</p>
+<h2>Don't call <code>(*Image).At</code> too much</h2>
+<p>At is also heavy that tries to solve all the queued draw commands.</p>
+
+      </article>
+    </main>
+  </body>
+</html>

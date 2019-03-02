@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta property="og:image" itemprop="image primaryImageOfPage" content="https://ebiten.org/images/logo.png">
+    <meta name="description" content="Ebiten - A dead simple 2D game library in Go">
+    <title>Install - Ebiten</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700|Roboto+Mono:400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" type="text/css" href="/style.css">
+    <link rel="icon" href="/images/favicon.png" type="image/png">
+    <script src="/script.js"></script>
+  </head>
+  <body>
+    <nav>
+      <h1><a href="/">Ebiten<img class="logo" src="/images/logow.png" width="32"></a></h1>
+      <ul>
+        <li><a href="https://github.com/hajimehoshi/ebiten" rel="noopener" target="_blank">GitHub project...</li>
+        <li><a href="https://godoc.org/github.com/hajimehoshi/ebiten" rel="noopener" target="_blank">API reference...</a></li>
+        <li><a href="/cheatsheet.html">Cheat Sheet</a></li>
+      </ul>
+      <h2>Getting Started</h2>
+      <ul>
+        <li><a href="/install.html">Install</a></li>
+        <li><a href="/helloworld.html">Hello, World!</a></li>
+      </ul>
+      <h2>Graphics</h2>
+      <ul>
+        <li><a href="/fill.html">Fill</a></li>
+        <li><a href="#">Render an Image (TBD)</a></li>
+        <li><a href="#">Geometry Matrix (TBD)</a></li>
+        <li><a href="#">Filter (TBD)</a></li>
+        <li><a href="#">Offscreen (TBD)</a></li>
+        <li><a href="#">Color Matrix (TBD)</a></li>
+        <li><a href="#">Tiling (TBD)</a></li>
+      </ul>
+      <h2>Input</h2>
+      <ul>
+        <li><a href="#">Keyboard (TBD)</a></li>
+        <li><a href="#">Mouse (TBD)</a></li>
+        <li><a href="#">Gamepad (TBD)</a></li>
+      </ul>
+      <h2>Next Steps</h2>
+      <ul>
+        <li><a href="/cheatsheet.html">Cheat Sheet</a></li>
+        <li><a href="/performancetips.html">Performance Tips</a></li>
+      </ul>
+      <h2>Tips</h2>
+      <ul>
+        <li><a href="#">Mobile (TBD)</a></li>
+        <li><a href="#">Web Browsers (TBD)</a></li>
+      </ul>
+    </nav>
+    <main>
+      <article>
+        <h1>Install</h1>
+<nav class="tags">
+  <!-- TODO: Use tab style -->
+  <ul>
+    <li><span data-tags="!windows"><a href="javascript:void(0)" onclick="switchOS('windows')">Windows</a></span><span data-tags="windows">Windows</span></li><li><span data-tags="!darwin"><a href="javascript:void(0)" onclick="switchOS('darwin')">macOS</a></span><span data-tags="darwin">macOS</span></li><li><span data-tags="!linux"><a href="javascript:void(0)" onclick="switchOS('linux')">Linux</a></span><span data-tags="linux">Linux</span></li><li><span data-tags="!freebsd"><a href="javascript:void(0)" onclick="switchOS('freebsd')">FreeBSD</a></span><span data-tags="freebsd">FreeBSD</span></li>
+  </ul>
+</nav>
+<p>Let's get the Ebiten source code and compile it.</p>
+
+<h2>Go</h2>
+<p>Install <a href="https://golang.org/">Go</a> on your machine. Ebiten requires Go 1.11 or later.</p>
+
+<h2>Git</h2>
+<p>Git is required to get most of Go packages including Ebiten.</p>
+<div data-tags="windows">
+  <h3>Option 1: The official Git installer</h3>
+  <p><a href="http://git-scm.com/downloads">The official Git website</a> is recommended. After installation, add the below values to <code>PATH</code> environment variable:</p>
+  <ul>
+    <li>For 32bit, <code>C:\Program Files\Git\bin</code></li>
+    <li>For 64bit, <code>C:\Program Files (x86)\Git\bin</code></li>
+  </ul>
+  <h3>Option 2: Scoop</h3>
+  <p>You also can get Git via <a href="https://scoop.sh/">Scoop</a>.</p>
+  <pre><code>scoop install git</code></pre>
+</div>
+<div data-tags="darwin">
+  <h3>Option 1: Homebrew</h3>
+  <p><a href="https://brew.sh/">Homebrew</a> is recommended.</p>
+  <pre><code>brew install git</code></pre>
+  <h3>Option 2: The official Git installer</h3>
+  <p><a href="http://git-scm.com/downloads">The official Git installer</a> is also fine.</p>
+</div>
+<div data-tags="linux">
+  <p>Use your distribution's package manager. <a href="https://git-scm.com/download/linux">The official website also says so</a>. For example, on Ubuntu you can use <code>apt</code>:</p>
+  <pre><code>apt install git</code></pre>
+</div>
+<div data-tags="freebsd">
+  <p>Use <code>pkg</code>.</p>
+  <pre><code>pkg install git</code></pre>
+</div>
+
+<div data-tags="!windows">
+  <h2>C compiler</h2>
+  <p>A C compiler is required as Ebiten uses not only Go but also C.</p>
+  <div data-tags="darwin">
+    <p>On the latest macOS, just type <code>clang</code> on your terminal and a dialog would appear if you don't have clang compiler. Follow the instruction to install it.</p>
+    <p>You might find an error when executing clang:</p>
+    <pre><code>xcrun: error: invalid active developer path (/Library/Developer/CommandLineTools), missing xcrun at: /Library/Developer/CommandLineTools/usr/bin/xcrun</code></pre>
+    <p>In this case, run <code>xcode-select --install</code> and select commandline tools.</p>
+  </div>
+  <div data-tags="linux">
+    <p>Use your distribution's package manager. For example, Ubuntu can use <code>apt</code>:</p>
+    <pre><code>apt install gcc</code></pre>
+  </div>
+  <div data-tags="freebsd">
+    <p>Use <code>pkg</code>.</p>
+    <pre><code>pkg install clang</code></pre>
+    <p>You need to set some environment variables:</p>
+    <pre><code>export C_INCLUDE_PATH=/usr/local/include:${C_INCLUDE_PATH}
+export CPLUS_INCLUDE_PATH=/usr/local/include:${CPLUS_INCLUDE_PATH}
+export LIBRARY_PATH=/usr/local/lib:${LIBRARY_PATH}</code></pre>
+  </div>
+</div>
+
+<div data-tags="!windows,!darwin">
+  <h2>Dependencies</h2>
+  <div data-tags="linux">
+    <h3>Debian / Ubuntu</h3>
+    <pre><code>sudo apt install libc6-dev libglu1-mesa-dev libgles2-mesa-dev libxrandr-dev libxcursor-dev libxinerama-dev libxi-dev libasound2-dev</code></pre>
+    <h3>Fedora</h3>
+    <pre><code>sudo dnf install mesa-libGLU-devel mesa-libGLES-devel libXrandr-devel libXcursor-devel libXinerama-devel libXi-devel alsa-lib-devel</code></pre>
+    <h3>Solus</h3>
+    <pre><code>sudo eopkg install libglu-devel libx11-devel libxrandr-devel libxinerama-devel libxcursor-devel libxi-devel alsa-lib-devel</code></pre>
+    <h3>Arch</h3>
+    <pre><code>sudo pacman -S mesa libxrandr libxcursor libxinerama libxi</code></pre>
+  </div>
+  <div data-tags="freebsd">
+    <p>OpenAL is required for Ebiten's audio package. Note that the <code>openal</code> package is pretty old and doesn't work. Install openal-soft instead.</p>
+    <pre><code>pkg install openal-soft</code></pre>
+  </div>
+</div>
+
+<h2>Ebiten</h2>
+<p>Ebiten can be downloaded as a usual Go library. Ebiten is available both with and without Go moduels.</p>
+<h3>Option 1: With Go modules</h3>
+<p>Go modules are available as of Go 1.11.</p>
+<pre><code>mkdir test
+cd test
+go mod init example.com/m</code></pre>
+<p>Ebiten package is automatically downloaded when executing your program that imports <code>github.com/hajimehoshi/ebiten</code>. <code>example.com/m</code> is an arbitrary URL for local testing. Use your project's URL (e.g. <code>github.com/yourname/yourproject</code>) when you make this public.</p>
+<p>For more details about Go modules, see <a href="https://github.com/golang/go/wiki/Modules">the Wiki article</a>.</p>
+<h3>Option 2: Without Go modules</h3>
+<p>Run <code>go get</code>.</p>
+<pre><code>go get github.com/hajimehoshi/ebiten/...</code></pre>
+<p><code>...</code> means to install not only Ebiten but also its sub-packages (and their dependencies).</p>
+<script>
+  function switchOS(os) {
+      switchOSImpl(os);
+  }
+
+  function switchOSImpl(os) {
+      let newOS = os;
+
+      const oses = new Set(['darwin', 'freebsd', 'linux', 'windows']);
+      if (!oses.has(os)) {
+          newOS = 'linux';
+      }
+
+      const es = document.querySelectorAll(`span[data-tags], div[data-tags]`);
+      for (const e of es) {
+          const tags = e.dataset['tags'];
+          if (matchesTags(tags, `${newOS}`)) {
+              if (e.tagName === 'SPAN') {
+                  e.style.display = 'inline';
+              }
+              if (e.tagName === 'DIV') {
+                  e.style.display = 'block';
+              }
+              continue;
+          }
+          e.style.display = 'none';
+      }
+
+      updateTOC();
+  }
+  
+  window.addEventListener('DOMContentLoaded', () => {
+      switchOSImpl(goos());
+  });
+</script>
+
+      </article>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta property="og:image" itemprop="image primaryImageOfPage" content="https://ebiten.org/images/logo.png">
+    <meta name="description" content="Ebiten - A dead simple 2D game library in Go">
+    <title>Cheat Sheet - Ebiten</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700|Roboto+Mono:400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" type="text/css" href="/style.css">
+    <link rel="icon" href="/images/favicon.png" type="image/png">
+    <script src="/script.js"></script>
+  </head>
+  <body>
+    <nav>
+      <h1><a href="/">Ebiten<img class="logo" src="/images/logow.png" width="32"></a></h1>
+      <ul>
+        <li><a href="https://github.com/hajimehoshi/ebiten" rel="noopener" target="_blank">GitHub project...</li>
+        <li><a href="https://godoc.org/github.com/hajimehoshi/ebiten" rel="noopener" target="_blank">API reference...</a></li>
+        <li><a href="/cheatsheet.html">Cheat Sheet</a></li>
+      </ul>
+      <h2>Getting Started</h2>
+      <ul>
+        <li><a href="/install.html">Install</a></li>
+        <li><a href="/helloworld.html">Hello, World!</a></li>
+      </ul>
+      <h2>Graphics</h2>
+      <ul>
+        <li><a href="/fill.html">Fill</a></li>
+        <li><a href="#">Render an Image (TBD)</a></li>
+        <li><a href="#">Geometry Matrix (TBD)</a></li>
+        <li><a href="#">Filter (TBD)</a></li>
+        <li><a href="#">Offscreen (TBD)</a></li>
+        <li><a href="#">Color Matrix (TBD)</a></li>
+        <li><a href="#">Tiling (TBD)</a></li>
+      </ul>
+      <h2>Input</h2>
+      <ul>
+        <li><a href="#">Keyboard (TBD)</a></li>
+        <li><a href="#">Mouse (TBD)</a></li>
+        <li><a href="#">Gamepad (TBD)</a></li>
+      </ul>
+      <h2>Next Steps</h2>
+      <ul>
+        <li><a href="/cheatsheet.html">Cheat Sheet</a></li>
+        <li><a href="/performancetips.html">Performance Tips</a></li>
+      </ul>
+      <h2>Tips</h2>
+      <ul>
+        <li><a href="#">Mobile (TBD)</a></li>
+        <li><a href="#">Web Browsers (TBD)</a></li>
+      </ul>
+    </nav>
+    <main>
+      <article>
+        <h1>Cheat Sheet</h1>
+<p>This cheat sheet describes the essential APIs that are commonly used. For the complete list of the API, see the <a href="https://godoc.org/github.com/hajimehoshi/ebiten">GoDoc</a>.</p>
+<h2>General</h2>
+<h3><code>ebiten.Run</code></h3>
+<pre><code>func Run(f func(*Image) error, width, height int, scale float64, title string) error</code></pre>
+<p><code>Run</code> runs the game. <code>f</code> is a function which is called at every frame. The argument <code>(*Image)</code> is the render target that represents the screen. The screen size is based on the given values (<code>width</code> and <code>height</code>).</p>
+<p>Ebiten tries to call f 60 times a second. In other words, TPS (ticks per second) is 60. This is not related to framerate (display's refresh rate).</p>
+<p>f is not called when the window is in background by default. This setting is configurable with <code>SetRunnableInBackground</code>.</p>
+<p><code>Run</code> returns error when 1) OpenGL error happens, 2) audio error happens or 3) f returns error. In the case of 3), <code>Run</code> returns the same error.</p>
+<p>Don't call Run twice or more in one process.</p>
+<h3><code>ebiten.IsDrawingSkipped</code></h3>
+<pre><code>func IsDrawingSkipped() bool</code></pre>
+<p><code>IsDrawingSkipped</code> returns true if rendering result is not adopted. It is recommended to skip drawing images or screen when <code>IsDrawingSkipped</code> is true.</p>
+<p>The typical code with <code>IsDrawingSkipped</code> is this:</p>
+<pre><code>func update(screen *ebiten.Image) error {
+
+    // Update the state.
+
+    // When IsDrawingSkipped is true, the rendered result is not adopted.
+    // Skip rendering then.
+    if ebiten.IsDrawingSkipped() {
+        return nil
+    }
+
+    // Draw something to the screen.
+
+    return nil
+}</code></pre>
+<h3><code>ebitenutil.DebugPrint</code></h3>
+<pre><code>func DebugPrint(image *ebiten.Image, str string) error</code></pre>
+<p>(Defined at <a href="https://godoc.org/github.com/hajimehoshi/ebiten/ebitenutil"><code>ebitenutil</code> package</a>)</p>
+<p>DebugPrint draws the string str on the image on left top corner.</p>
+<p>DebugPrint always returns nil.</p>
+<h2>Graphics</h2>
+<h3><code>ebiten.Image</code></h3>
+<pre><code>type Image struct {
+    // contains filtered or unexported fields
+}</code></pre>
+<p><code>Image</code> represents a rectangle set of pixels. The pixel format is alpha-premultiplied RGBA. <code>Image</code> implements <a href="https://golang.org/pkg/image/#Image"><code>image.Image</code></a>.</p>
+<h4><code>ebiten.NewImage</code></h4>
+<pre><code>func NewImage(width, height int, filter Filter) (*Image, error)</code></pre>
+<p><code>NewImage</code> returns an empty image. <code>NewImage</code> always returns nil error (so you can ignore that).</p>
+<p><code>filter</code> argument is just for backward compatibility. If you are not sure, specify <code>FilterDefault</code>.</p>
+<h4><code>ebiten.NewImageFromImage</code></h4>
+<pre><code>func NewImageFromImage(source image.Image, filter Filter) (*Image, error)</code></pre>
+<p><code>NewImageFromImage</code> creates a new image with the given image (source). <code>NewImageFromImage</code> always returns nil error.</p>
+<p><code>filter</code> argument is just for backward compatibility. If you are not sure, specify <code>FilterDefault</code>.</p>
+<h4><code>(*ebiten.Image).Clear</code></h4>
+<pre><code>func (i *Image) Clear() error</code></pre>
+<p><code>Clear</code> resets the pixels of the image into 0.</p>
+<p><code>Clear</code> always returns nil.</p>
+<h4><code>(*ebiten.Image).Fill</code></h4>
+<pre><code>func (i *Image) Fill(clr color.Color) error</code></pre>
+<p><code>Fill</code> fills the image with a solid color.</p>
+<p><code>Fill</code> always returns nil.</p>
+<h4><code>(*ebiten.Image).Size</code></h4>
+<pre><code>func (i *Image) Size() (width, height int)</code></pre>
+<p><code>Size</code> returns the size of the image.</p>
+<h4><code>(*ebiten.Image).SubImage</code></h4>
+<pre><code>func (i *Image) SubImage(r image.Rectangle) image.Image</code></pre>
+<p><code>SubImage</code> returns an image representing the portion of the image p visible through r. The returned value shares pixels with the original image.</p>
+<p>The returned value is always <code>*ebiten.Image</code>.</p>
+<p>If the image is disposed, SubImage returns nil.</p>
+<p>In the current Ebiten implementation, <code>SubImage</code> is available only as a rendering source.</p>
+<h4><code>(*ebiten.Image).DrawImage</code></h4>
+<pre><code>func (i *Image) DrawImage(img *Image, options *DrawImageOptions) error</code></pre>
+<p><code>DrawImage</code> draws the given image on the image <code>i</code>.</p>
+<p><code>DrawImage</code> accepts the <code>options</code>. For details, see the document of <code>DrawImageOptions</code>.</p>
+<p><code>DrawImage</code> determines the part to draw, then <code>DrawImage</code> applies the geometry matrix and the color matrix.</p>
+<p>For drawing, the pixels of the argument image at the time of this call is adopted. Even if the argument image is mutated after this call, the drawing result is never affected.</p>
+<p>When the given image is as same as <code>i</code>, DrawImage panics.</p>
+<p><code>DrawImage</code> works more efficiently as batches when the successive calls of <code>DrawImages</code> satisfies the below conditions:</p>
+<ul>
+  <li>All render targets are same (<code>A</code> in <code>A.DrawImage(B, op)</code>)</li>
+  <li>Either all ColorM element values are same or all the ColorM have only diagonal ('scale') elements
+    <ul>
+      <li>If only <code>(*ColorM).Scale</code> is applied to a ColorM, the ColorM has only diagonal elements. The other ColorM functions might modify the other elements.</li>
+    </ul>
+  </li>
+  <li>All CompositeMode values are same</li>
+  <li>All Filter values are same</li>
+</ul>
+<p>For more performance tips, see [[Performance Tips]] (TBD).</p>
+<p><code>DrawImage</code> always returns nil.</p>
+<h3><code>ebiten.DrawImageOptions</code></h3>
+<pre><code>type DrawImageOptions struct {
+    // GeoM is a geometry matrix to draw.
+    // The default (zero) value is identify, which draws the image at (0, 0).
+    GeoM GeoM
+
+    // ColorM is a color matrix to draw.
+    // The default (zero) value is identity, which doesn't change any color.
+    ColorM ColorM
+
+    // CompositeMode is a composite mode to draw.
+    // The default (zero) value is regular alpha blending.
+    CompositeMode CompositeMode
+
+    // Filter is a type of texture filter.
+    // The default (zero) value is FilterDefault.
+    Filter Filter
+}</code></pre>
+<p><code>DrawImageOptions</code> represents options to render an image on an image.</p>
+<h3><code>ebiten.Filter</code></h3>
+<pre><code>type Filter int</code></pre>
+<p>Filter represents the type of texture filter to be used when an image is maginified or minified.</p>
+<pre><code>const (
+    // FilterDefault represents the default filter.
+    FilterDefault Filter
+
+    // FilterNearest represents nearest (crisp-edged) filter
+    FilterNearest
+
+    // FilterLinear represents linear filter
+    FilterLinear
+)</code></pre>
+<h3><code>ebiten.GeoM</code></h3>
+<pre><code>type GeoM struct {
+    // contains filtered or unexported fields
+}</code></pre>
+<p><code>GeoM</code> represents a matrix to transform geometry when rendering an image.</p>
+<p>The initial value is identity.</p>
+<h4><code>(*ebiten.GeoM).Translate</code></h4>
+<pre><code>func (g *GeoM) Translate(tx, ty float64)</code></pre>
+<p><code>Translate</code> translates the matrix by (<code>tx</code>, <code>ty</code>).</p>
+<h4><code>(*ebiten.GeoM).Scale</code></h4>
+<pre><code>func (g *GeoM) Scale(x, y float64)</code></pre>
+<p><code>Scale</code> scales the matrix by (<code>x</code>, <code>y</code>).</p>
+<h4><code>(*ebiten.GeoM).Rotate</code></h4>
+<pre><code>func (g *GeoM) Rotate(theta float64)</code></pre>
+<p><code>Rotate</code> rotates the matrix by <code>theta</code>. The unit is radian.</p>
+<h3><code>ebiten.ColorM</code></h3>
+<pre><code>type ColorM struct {
+    // contains filtered or unexported fields
+}</code></pre>
+<p><code>ColorM</code> represents a matrix to transform coloring when rendering an image.</p>
+<p><code>ColorM</code> is applied to the straight alpha color while an Image's pixels' format is alpha premultiplied. Before applying a matrix, a color is un-multiplied, and after applying the matrix, the color is multiplied again.</p>
+<p>The initial value is identity.</p>
+<h4><code>(*ebiten.ColorM).Scale</code></h4>
+<pre><code>func (c *ColorM) Scale(r, g, b, a float64)</code></pre>
+<p><code>Scale</code> scales the matrix by (<code>r</code>, <code>g</code>, <code>b</code>, <code>a</code>).</p>
+<h4><code>(*ebiten.ColorM).Translate</code></h4>
+<pre><code>func (c *ColorM) Translate(r, g, b, a float64)</code></pre>
+<p><code>Translate</code> translates the matrix by (<code>r</code>, <code>g</code>, <code>b</code>, <code>a</code>).</p>
+<h4><code>(*ebiten.ColorM).ChangeHSV</code></h4>
+<pre><code>func (c *ColorM) ChangeHSV(hueTheta float64, saturationScale float64, valueScale float64)</code></pre>
+<p><code>ChangeHSV</code> changes HSV (Hue-Saturation-Value) values. <code>hueTheta</code> is a radian value to rotate hue. <code>saturationScale</code> is a value to scale saturation. <code>valueScale</code> is a value to scale value (a.k.a. brightness).</p>
+<h2>Input</h2>
+<h3><code>ebiten.IsKeyPressed</code></h3>
+<pre><code>func IsKeyPressed(key Key) bool</code></pre>
+<p><code>IsKeyPressed</code> returns a boolean indicating whether <code>key</code> is pressed.</p>
+<h3><code>inpututil.IsKeyJustPressed</code></h3>
+<pre><code>func IsKeyJustPressed(key ebiten.Key) bool</code></pre>
+<p>(Defined at <a href="https://godoc.org/github.com/hajimehoshi/ebiten/inpututil"><code>inpututil</code> package</a>)</p>
+<p><code>IsKeyJustPressed</code> returns a boolean value indicating whether the given <code>key</code> is pressed just in the current frame.</p>
+<h3><code>ebiten.Key</code></h3>
+<pre><code>type Key int</code></pre>
+<p>Key represents a keyboard key. These keys represent pysical keys of US keyboard. For example, KeyQ represents Q key on US keyboards and ' (quote) key on Dvorak keyboards.</p>
+<pre><code>const (
+    Key0 Key
+    Key1
+    Key2
+    Key3
+    Key4
+    Key5
+    Key6
+    Key7
+    Key8
+    Key9
+    KeyA
+    KeyB
+    KeyC
+    KeyD
+    KeyE
+    KeyF
+    KeyG
+    KeyH
+    KeyI
+    KeyJ
+    KeyK
+    KeyL
+    KeyM
+    KeyN
+    KeyO
+    KeyP
+    KeyQ
+    KeyR
+    KeyS
+    KeyT
+    KeyU
+    KeyV
+    KeyW
+    KeyX
+    KeyY
+    KeyZ
+    KeyAlt
+    KeyApostrophe
+    KeyBackslash
+    KeyBackspace
+    KeyCapsLock
+    KeyComma
+    KeyControl
+    KeyDelete
+    KeyDown
+    KeyEnd
+    KeyEnter
+    KeyEqual
+    KeyEscape
+    KeyF1
+    KeyF2
+    KeyF3
+    KeyF4
+    KeyF5
+    KeyF6
+    KeyF7
+    KeyF8
+    KeyF9
+    KeyF10
+    KeyF11
+    KeyF12
+    KeyGraveAccent
+    KeyHome
+    KeyInsert
+    KeyLeft
+    KeyLeftBracket
+    KeyMenu
+    KeyMinus
+    KeyNumLock
+    KeyPageDown
+    KeyPageUp
+    KeyPause
+    KeyPeriod
+    KeyPrintScreen
+    KeyRight
+    KeyRightBracket
+    KeyScrollLock
+    KeySemicolon
+    KeyShift
+    KeySlash
+    KeySpace
+    KeyTab
+    KeyUp
+)</code></pre>
+<p>(Note: Some keys like numpad keys are omitted from the above list.)</p>
+<h3><code>ebiten.CursorPosition</code></h3>
+<pre><code>func CursorPosition() (x, y int)</code></pre>
+<p><code>CursorPosition</code> returns a position of a mouse cursor.</p>
+<h3><code>ebiten.IsMouseButtonPressed</code></h3>
+<pre><code>func IsMouseButtonPressed(mouseButton MouseButton) bool</code></pre>
+<p><code>IsMouseButtonPressed</code> returns a boolean indicating whether <code>mouseButton</code> is pressed.</p>
+<h3><code>inpututil.IsMouseButtonJustPressed</code></h3>
+<pre><code>func IsMouseButtonJustPressed(button ebiten.MouseButton) bool</code></pre>
+<p>(Defined at <a href="https://godoc.org/github.com/hajimehoshi/ebiten/inpututil"><code>inpututil</code> package</a>)</p>
+<p><code>IsMouseButtonJustPressed</code> returns a boolean value indicating whether the given mouse button is pressed just in the current frame.</p>
+<h3><code>ebiten.MouseButton</code></h3>
+<pre><code>type MouseButton int</code></pre>
+<p>MouseButton represents a mouse button.</p>
+<pre><code>const (
+    MouseButtonLeft MouseButton
+    MouseButtonRight
+    MouseButtonMiddle
+)</code></pre>
+
+      </article>
+    </main>
+  </body>
+</html>
