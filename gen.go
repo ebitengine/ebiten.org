@@ -74,14 +74,16 @@ func run() error {
 		}
 
 		level := 0
+		suf := "./"
 		if filepath.Dir(rel) != "." {
 			level = len(filepath.SplitList(filepath.Dir(rel)))
+			suf = strings.Repeat("../", level)
 		}
-		
+
 		if err := tmpl.Execute(w, map[string]interface{}{
-			"Title":   title,
-			"Content": string(c),
-			"Rel":     strings.Repeat("../", level),
+			"Title":     title,
+			"Content":   string(c),
+			"URLSuffix": suf,
 		}); err != nil {
 			return err
 		}
