@@ -139,7 +139,7 @@ pre {
     overflow-x: auto;
 }
 div.grid-container > div {
-    padding: 0 0 24px 0;
+    padding: 0;
 }
 div.toc > div {
     padding: 7px 18px 10px 18px;
@@ -148,10 +148,6 @@ div.toc > div {
 }
 div.toc > div ul {
     top: 0;
-}
-p:last-child,
-ul:last-child,
-ol:last-child {
     margin-bottom: 0;
 }
 ul ul, ul ol, ol ul, ol ol {
@@ -440,6 +436,29 @@ body > input + label {
     body > input:checked ~ nav {
         position: fixed;
         display: inline-block;
+    }
+}
+
+@media only screen and (max-width: calc(4 * 216px + 5 * 24px)) {
+    article {
+        max-width: calc(100vw - 2 * 24px);
+    }
+    div.grid-container {
+        grid-template-columns: repeat(2, calc((100% - 24px) / 2));
+    }
+    div.grid-item-3 {
+        grid-column-start: span 2;
+    }
+}
+@media only screen and (max-width: calc(2 * 216px + 3 * 24px)) {
+    div.grid-container {
+        grid-template-columns: repeat(1, 100%);
+    }
+    div.grid-item-2 {
+        grid-column-start: span 1;
+    }
+    div.grid-item-3 {
+        grid-column-start: span 1;
     }
 }
 
