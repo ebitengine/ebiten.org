@@ -24,6 +24,7 @@ import (
 	"os"
 	"path/filepath"
 	"regexp"
+	"strings"
 )
 
 var reTitle = regexp.MustCompile(`<h1>([^<]+)</h1>`)
@@ -72,9 +73,15 @@ func run() error {
 			title = fmt.Sprintf("%s - Ebiten", html.UnescapeString(m[1]))
 		}
 
+		level := 0
+		if filepath.Dir(rel) != "." {
+			level = len(filepath.SplitList(filepath.Dir(rel)))
+		}
+		
 		if err := tmpl.Execute(w, map[string]interface{}{
 			"Title":   title,
 			"Content": string(c),
+			"Rel":     strings.Repeat("../", level),
 		}); err != nil {
 			return err
 		}
