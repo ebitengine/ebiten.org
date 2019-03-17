@@ -183,9 +183,6 @@ body > nav li img {
 body > nav, main {
     padding: 24px 24px 48px 24px;
 }
-article {
-    margin: 0 auto;
-}
 
 ul, ol {
     margin-left: 48px;
@@ -303,24 +300,33 @@ div.grid-container > div pre code {
     tab-size: 4;
 }
 
-/* grid */
+/* flex */
 
 body {
-    display: grid;
-    grid-template-columns: calc(216px + 2 * 24px) 1fr;
-    grid-gap: 0;
+    display: flex;
 }
 body > nav {
+    width: 216px;
     height: calc(100vh - 24px - 48px);
     position: -webkit-sticky;
     position: sticky;
     top: 0;
     overflow-y: auto;
+    z-index: 1;
+
+    flex-grow: 0;
+}
+main {
+    display: flex;
+
+    flex-grow: 1;
+    justify-content: center;
 }
 article {
-    width: calc(100vw - 216px - 2 * 24px - 2 * 24px);
     max-width: calc(4 * 216px + 3 * 24px);
 }
+
+/* grid */
 
 div.grid-container {
     display: grid;
@@ -394,6 +400,47 @@ p.img img {
 }
 p.img.thumbnail img, p.img iframe {
     max-width: calc(100% - 2px);
+}
+
+/* Responsive */
+
+body > input {
+    display: none;
+    z-index: 2;
+
+    position: fixed;
+    top: 8px;
+    left: 8px;
+}
+body > input + label {
+    cursor: pointer;
+    dipslay: none;
+    z-index: 2;
+}
+
+@media only screen and (max-width: calc(5 * 216px + 7 * 24px)) {
+    body > input + label:before {  
+	position: fixed;
+        content: "";
+        top: 8px;
+        left: 8px;
+
+        background-image: url(images/menu.svg);
+        background-position: left center;
+        width: 32px;
+        height: 32px;
+        background-repeat: no-repeat;
+    }
+    body > input:checked + label:before {
+        background-image: url(images/menuw.svg);
+    }
+    body > nav {
+        display: none;
+    }
+    body > input:checked ~ nav {
+        position: fixed;
+        display: inline-block;
+    }
 }
 
 /* test image */
