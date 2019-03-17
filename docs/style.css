@@ -444,7 +444,25 @@ body > input + label {
         max-width: calc(100vw - 2 * 24px);
     }
     div.grid-container {
+        grid-template-columns: repeat(3, calc((100% - 2 * 24px) / 3));
+    }
+    div.grid-item-2 {
+        grid-column-start: span 3;
+    }
+
+    pre code {
+        font-size: 12px;
+        line-height: 24px;
+        -moz-tab-size: 4;
+        tab-size: 4;
+    }
+}
+@media only screen and (max-width: calc(3 * 216px + 4 * 24px)) {
+    div.grid-container {
         grid-template-columns: repeat(2, calc((100% - 24px) / 2));
+    }
+    div.grid-item-2 {
+        grid-column-start: span 2;
     }
     div.grid-item-3 {
         grid-column-start: span 2;
