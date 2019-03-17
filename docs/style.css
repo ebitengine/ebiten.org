@@ -460,6 +460,20 @@ body > input + label {
     div.grid-item-3 {
         grid-column-start: span 1;
     }
+    h1.big {
+        margin-bottom: 38px;
+    }
+    h1.big > span {
+        font-size: 18px;
+    }
+}
+@media only screen and (max-width: 320px) {
+    h1.big {
+        margin-bottom: 37px;
+    }
+    h1.big > span {
+        font-size: 16px;
+    }
 }
 
 /* test image */
