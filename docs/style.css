@@ -415,7 +415,7 @@ body > input + label {
 }
 
 @media only screen and (max-width: calc(5 * 216px + 7 * 24px)) {
-    body > input + label:before {  
+    body > input + label:before {
 	position: fixed;
         content: "";
         top: 8px;
@@ -426,16 +426,20 @@ body > input + label {
         width: 32px;
         height: 32px;
         background-repeat: no-repeat;
+
+        transition: background-image 0.2s ease;
     }
     body > input:checked + label:before {
         background-image: url(images/menuw.svg);
     }
     body > nav {
-        display: none;
+        position: fixed;
+        left: calc(-1 * (216px + 2 * 24px));
+
+        transition: left 0.2s ease;
     }
     body > input:checked ~ nav {
-        position: fixed;
-        display: inline-block;
+        left: 0;
     }
 }
 
