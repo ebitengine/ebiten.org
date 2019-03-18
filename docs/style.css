@@ -319,7 +319,8 @@ main {
     justify-content: center;
 }
 article {
-    max-width: calc(4 * 216px + 3 * 24px);
+    width: calc(4 * 216px + 3 * 24px);
+    max-width: calc(100vw - 2 * 24px);
 }
 
 /* grid */
@@ -473,9 +474,6 @@ body > input ~ label.sidemenucover {
 }
 
 @media only screen and (max-width: calc(4 * 216px + 5 * 24px)) {
-    article {
-        max-width: calc(100vw - 2 * 24px);
-    }
     div.grid-container {
         grid-template-columns: repeat(3, calc((100% - 2 * 24px) / 3));
     }
