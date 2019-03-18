@@ -409,12 +409,16 @@ body > input {
     left: 8px;
 }
 body > input + label {
-    cursor: pointer;
-    dipslay: none;
+    display: none;
     z-index: 2;
+
+    cursor: pointer;
 }
 
 @media only screen and (max-width: calc(5 * 216px + 7 * 24px)) {
+    body > input + label {
+        display: inline-block;
+    }
     body > input + label:before {
 	position: fixed;
         content: "";
