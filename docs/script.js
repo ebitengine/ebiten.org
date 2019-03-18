@@ -101,18 +101,32 @@ function updateImage(img) {
     img.parentNode.style.height = `${height}px`;
 }
 
+let tocLevel = 4;
+
+function disableTOC() {
+    tocLevel = -1;
+}
+
+function setTOCLevel(n) {
+    tocLevel = n;
+}
+
 function updateTOC() {
     let toc = document.querySelector('.toc');
     if (toc !== null) {
         toc.parentNode.removeChild(toc);
     }
 
-    let headers = document.querySelectorAll('article h2, article h3, article h4');
-    for (const header of headers) {
-        if (header.classList.contains('notoc')) {
-            return;
-        }
+    let query = [];
+    for (let l = 2; l <= tocLevel; l++) {
+        query.push(`article h${l}`);
+    }
+    if (query.length === 0) {
+        return;
+    }
 
+    let headers = document.querySelectorAll(query.join(', '));
+    for (const header of headers) {
         // https://www.w3.org/TR/html51/dom.html#the-id-attribute
         // The value must be unique amongst all the IDs in the element’s home subtree and must contain at least one
         // character. The value must not contain any space characters.
