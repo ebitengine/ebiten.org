@@ -308,7 +308,7 @@ body > nav {
     position: sticky;
     top: 0;
     overflow-y: auto;
-    z-index: 1;
+    z-index: 2;
 
     flex-grow: 0;
 }
@@ -402,24 +402,29 @@ p.img.thumbnail img, p.img iframe {
 
 body > input {
     display: none;
-    z-index: 2;
+    z-index: 3;
 
     position: fixed;
     top: 8px;
     left: 8px;
 }
-body > input + label {
+body > input ~ label {
     display: none;
-    z-index: 2;
-
+}
+body > input ~ label.sidemenubutton {
     cursor: pointer;
+    z-index: 3;
+}
+body > input ~ label.sidemenucover {
+    z-index: 2;
 }
 
 @media only screen and (max-width: calc(5 * 216px + 7 * 24px)) {
-    body > input + label {
+    body > input ~ label {
         display: inline-block;
     }
-    body > input + label:before {
+
+    body > input ~ label.sidemenubutton:before {
 	position: fixed;
         content: "";
         top: 8px;
@@ -433,9 +438,29 @@ body > input + label {
 
         transition: background-image 0.2s ease;
     }
-    body > input:checked + label:before {
+    body > input ~ label.sidemenucover {
+        visibility: hidden;
+
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+
+        background-color: #333;
+        opacity: 0;
+        transition: visibility 0s linear 0.2s, opacity 0.2s ease;
+    }
+
+    body > input:checked ~ label.sidemenubutton:before {
         background-image: url(images/menuw.svg);
     }
+    body > input:checked ~ label.sidemenucover {
+        visibility: visible;
+        opacity: 0.8;
+        transition-delay: 0s;
+    }
+
     body > nav {
         position: fixed;
         left: calc(-1 * (216px + 2 * 24px));
