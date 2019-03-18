@@ -107,7 +107,7 @@ function updateTOC() {
         toc.parentNode.removeChild(toc);
     }
 
-    let headers = document.querySelectorAll('article > h2, article > h3, article > h4');
+    let headers = document.querySelectorAll('article h2, article h3, article h4');
     for (const header of headers) {
         if (header.classList.contains('notoc')) {
             return;
