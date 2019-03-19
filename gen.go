@@ -99,6 +99,7 @@ func run() error {
 			if err := json.Unmarshal(c, &j); err != nil {
 				return err
 			}
+			j["Base"] = filepath.Base(path[:len(path)-len(filepath.Ext(path))])
 
 			b := &bytes.Buffer{}
 			if err := t.Execute(b, j); err != nil {
