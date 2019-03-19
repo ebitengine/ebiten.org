@@ -29,6 +29,24 @@ import (
 
 var reTitle = regexp.MustCompile(`<h1>([^<]+)</h1>`)
 
+func cleanup() error {
+	return filepath.Walk("docs", func(path string, info os.FileInfo, err error) error {
+		if err != nil {
+			return err
+		}
+		if info.IsDir() {
+			return nil
+		}
+		if filepath.Ext(path) != ".html" {
+			return nil
+		}
+		if err := os.Remove(path); err != nil {
+			return err
+		}
+		return nil
+	})
+}
+
 func run() error {
 	tmpl, err := template.New("template.html").Funcs(template.FuncMap{
 		"noescape": func(str string) template.HTML {
@@ -36,6 +54,29 @@ func run() error {
 		},
 	}).ParseFiles("template.html")
 	if err != nil {
+		return err
+	}
+
+	if err := cleanup(); err != nil {
+		return err
+	}
+
+	// Remove existing HTML files.
+	if err := filepath.Walk("docs", func(path string, info os.FileInfo, err error) error {
+		if err != nil {
+			return err
+		}
+		if info.IsDir() {
+			return nil
+		}
+		if filepath.Ext(path) != ".html" {
+			return nil
+		}
+		if err := os.Remove(path); err != nil {
+			return err
+		}
+		return nil
+	}); err != nil {
 		return err
 	}
 
