@@ -17,6 +17,8 @@
 package main
 
 import (
+	"bytes"
+	"encoding/json"
 	"fmt"
 	"html"
 	"html/template"
@@ -68,21 +70,54 @@ func run() error {
 		if info.IsDir() {
 			return nil
 		}
-		if filepath.Ext(path) != ".html" {
+
+		content := ""
+
+		switch filepath.Ext(path) {
+		case ".html":
+			if filepath.Base(path) == "tmpl.html" {
+				return nil
+			}
+
+			c, err := ioutil.ReadFile(path)
+			if err != nil {
+				return err
+			}
+			content = string(c)
+
+		case ".json":
+			t, err := template.ParseFiles(filepath.Join(filepath.Dir(path), "tmpl.html"))
+			if err != nil {
+				return err
+			}
+			var j map[string]interface{}
+
+			c, err := ioutil.ReadFile(path)
+			if err != nil {
+				return err
+			}
+			if err := json.Unmarshal(c, &j); err != nil {
+				return err
+			}
+
+			b := &bytes.Buffer{}
+			if err := t.Execute(b, j); err != nil {
+				return err
+			}
+			content = string(b.Bytes())
+
+		default:
 			return nil
 		}
-		c, err := ioutil.ReadFile(path)
-		if err != nil {
-			return err
-		}
 
-		rel, err := filepath.Rel("contents", path)
+		rel, err := filepath.Rel("contents", path[:len(path)-len(filepath.Ext(path))]+".html")
 		if err != nil {
 			return err
 		}
 		if err := os.MkdirAll(filepath.Join("docs", filepath.Dir(rel)), 0755); err != nil {
 			return err
 		}
+		// TODO: What if the file already exists?
 		w, err := os.Create(filepath.Join("docs", rel))
 		if err != nil {
 			return err
@@ -91,7 +126,7 @@ func run() error {
 
 		title := "Ebiten - A dead simple 2D game library in Go"
 		if path != filepath.Join("contents", "index.html") {
-			m := reTitle.FindStringSubmatch(string(c))
+			m := reTitle.FindStringSubmatch(content)
 			title = fmt.Sprintf("%s - Ebiten", html.UnescapeString(m[1]))
 		}
 
@@ -104,7 +139,7 @@ func run() error {
 
 		if err := tmpl.Execute(w, map[string]interface{}{
 			"Title":     title,
-			"Content":   string(c),
+			"Content":   content,
 			"URLSuffix": suf,
 		}); err != nil {
 			return err
