@@ -21,7 +21,7 @@ body {
 h1 {
     color: #dd664f; /* 0080-Y70R */
 }
-h1.big > span {
+h1.big > span.sub {
     color: #999999; /* 4000-N */
 }
 body > nav {
@@ -110,12 +110,6 @@ h1 {
 }
 h1.big {
     margin-bottom: 40px;
-}
-h1.big img.logo {
-    margin-left: 4px;
-}
-body > nav img.logo {
-    margin-left: 2px;
 }
 h2 {
     margin-top: 24px;
@@ -228,12 +222,7 @@ h1.big {
     font-size: 56px;
     top: 8px;
 }
-h1.big img.logo {
-    display: inline-block;
-    position: relative;
-    top: 7px;
-}
-h1.big > span {
+h1.big > span.sub {
     font-size: 24px;
     font-weight: normal;
 }
@@ -275,11 +264,6 @@ body > nav h1 {
 
     position: relative;
     top: -8px;
-}
-body > nav img.logo {
-    display: inline-block;
-    position: relative;
-    top: 4px;
 }
 body > nav h2 {
     font-size: 14px;
@@ -365,7 +349,7 @@ pre {
     display: inline-block;
     width: calc(100% - 2 * 18px);
 }
-h1.big > span {
+h1.big > span.sub {
     display: inline-block;
     width: 100%;
 }
@@ -399,6 +383,40 @@ p.img.thumbnail img, p.img iframe {
     max-width: calc(100% - 2px);
 }
 
+/* Logo */
+
+h1.big > span.main:after {
+    content: "";
+    display: inline-block;
+    width: 64px;
+    height: 64px;
+
+    background-image: url(images/logo.png);
+    background-position: left center;
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    margin-left: 4px;
+    position: relative;
+    top: 7px;
+}
+
+body > nav h1:after {
+    content: "";
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+
+    background-image: url(images/logow.png);
+    background-position: left center;
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    margin-left: 2px;
+    position: relative;
+    top: 4px;
+}
+
 /* Responsive */
 
 body > input {
@@ -425,9 +443,8 @@ body > input ~ label.sidemenucover {
         display: inline-block;
     }
 
-    body > input ~ label.sidemenubutton:before {
+    body > input ~ label.sidemenubutton {
 	position: fixed;
-        content: "";
         top: 8px;
         left: 8px;
 
@@ -453,7 +470,7 @@ body > input ~ label.sidemenucover {
         transition: visibility 0s linear 0.2s, opacity 0.2s ease;
     }
 
-    body > input:checked ~ label.sidemenubutton:before {
+    body > input:checked ~ label.sidemenubutton {
         background-image: url(images/menuw.svg);
     }
     body > input:checked ~ label.sidemenucover {
@@ -512,7 +529,7 @@ body > input ~ label.sidemenucover {
     h1.big {
         margin-bottom: 38px;
     }
-    h1.big > span {
+    h1.big > span.sub {
         font-size: 18px;
     }
 }
@@ -520,7 +537,7 @@ body > input ~ label.sidemenucover {
     h1.big {
         margin-bottom: 37px;
     }
-    h1.big > span {
+    h1.big > span.sub {
         font-size: 16px;
     }
 }
