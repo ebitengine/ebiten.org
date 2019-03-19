@@ -61,25 +61,6 @@ func run() error {
 		return err
 	}
 
-	// Remove existing HTML files.
-	if err := filepath.Walk("docs", func(path string, info os.FileInfo, err error) error {
-		if err != nil {
-			return err
-		}
-		if info.IsDir() {
-			return nil
-		}
-		if filepath.Ext(path) != ".html" {
-			return nil
-		}
-		if err := os.Remove(path); err != nil {
-			return err
-		}
-		return nil
-	}); err != nil {
-		return err
-	}
-
 	if err := filepath.Walk("contents", func(path string, info os.FileInfo, err error) error {
 		if err != nil {
 			return err
