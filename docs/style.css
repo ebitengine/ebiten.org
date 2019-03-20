@@ -466,56 +466,53 @@ input#sidemenu {
     top: 8px;
     left: 8px;
 }
-input#sidemenu ~ label {
-    display: none;
-}
 input#sidemenu ~ label.sidemenubutton {
+    display: none;
+
     cursor: pointer;
+
+    position: fixed;
+    top: 8px;
+    left: 8px;
+
+    background-image: url(images/menu.svg);
+    background-position: left center;
+    width: 32px;
+    height: 32px;
+    background-repeat: no-repeat;
+
+    transition: background-image 0.2s ease;
+
     z-index: 3;
 }
+input#sidemenu:checked ~ label.sidemenubutton {
+    background-image: url(images/menuw.svg);
+}
 input#sidemenu ~ label.sidemenucover {
+    display: inline-block;
+    visibility: hidden;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+
+    background-color: #333333;
+    opacity: 0;
+    transition: visibility 0s linear 0.2s, opacity 0.2s ease;
+
     z-index: 2;
+}
+input#sidemenu:checked ~ label.sidemenucover {
+    visibility: visible;
+    opacity: 0.5;
+    transition-delay: 0s;
 }
 
 @media only screen and (max-width: calc(5 * 216px + 7 * 24px)) {
-    input#sidemenu ~ label {
-        display: inline-block;
-    }
-
     input#sidemenu ~ label.sidemenubutton {
-	position: fixed;
-        top: 8px;
-        left: 8px;
-
-        background-image: url(images/menu.svg);
-        background-position: left center;
-        width: 32px;
-        height: 32px;
-        background-repeat: no-repeat;
-
-        transition: background-image 0.2s ease;
-    }
-    input#sidemenu ~ label.sidemenucover {
-        visibility: hidden;
-
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-
-        background-color: #333333;
-        opacity: 0;
-        transition: visibility 0s linear 0.2s, opacity 0.2s ease;
-    }
-
-    input#sidemenu:checked ~ label.sidemenubutton {
-        background-image: url(images/menuw.svg);
-    }
-    input#sidemenu:checked ~ label.sidemenucover {
-        visibility: visible;
-        opacity: 0.5;
-        transition-delay: 0s;
+        display: inline-block;
     }
 
     body > nav {
