@@ -127,6 +127,10 @@ p, ul, ol, nav.tags {
     margin-top: 0;
     margin-bottom: 24px;
 }
+nav.path {
+    margin-top: 0;
+    margin-bottom: -24px;
+}
 pre {
     padding: 7px 18px 10px 18px;
     margin: 0 0 4px  0;
@@ -181,7 +185,7 @@ ul, ol {
 ul ul, ul ol, ol ul, ol ol {
     margin-left: 24px;
 }
-body > nav ul, nav.tags > ul {
+body > nav ul, nav.tags > ul, nav.path > ul {
     margin-left: 0;
 }
 
@@ -336,7 +340,7 @@ td, th {
 
 /* display */
 
-p, ul, ol, nav.tags,
+p, ul, ol, nav.tags, nav.path,
 h1, h2, h3, h4, h5, h6 {
     /* Disable margin-collapse */
     display: inline-block;
@@ -370,6 +374,18 @@ nav.tags > ul > li:first-child {
 nav.tags > ul > li a {
     font-weight: normal;
 }
+
+nav.path > ul > li {
+    display: inline;
+    margin-left: 0;
+    margin-right: 0;
+}
+nav.path > ul > li:after {
+    content: '>';
+    margin-left: 12px;
+    margin-right: 12px;
+}
+
 p.img {
     display: flex;
     align-items: center;
