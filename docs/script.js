@@ -180,10 +180,22 @@ function updateTOC() {
     firstH2.parentNode.insertBefore(toc, firstH2);
 }
 
+function updateBody() {
+    const input = document.querySelector('input#sidemenu');
+    if (input.checked) {
+        document.body.style.overflow = 'hidden';
+    } else {
+        document.body.style.overflow = 'visible';
+    }
+}
+
 window.addEventListener('DOMContentLoaded', () => {
     updateCode();
     updateTOC();
     updateImages();
+    updateBody();
+
+    document.querySelector('input#sidemenu').addEventListener('change', updateBody);
 });
 
 window.addEventListener('resize', () => {

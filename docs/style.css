@@ -458,7 +458,7 @@ body > nav h1:after {
 
 /* responsive */
 
-body > input {
+input#sidemenu {
     display: none;
     z-index: 3;
 
@@ -466,23 +466,23 @@ body > input {
     top: 8px;
     left: 8px;
 }
-body > input ~ label {
+input#sidemenu ~ label {
     display: none;
 }
-body > input ~ label.sidemenubutton {
+input#sidemenu ~ label.sidemenubutton {
     cursor: pointer;
     z-index: 3;
 }
-body > input ~ label.sidemenucover {
+input#sidemenu ~ label.sidemenucover {
     z-index: 2;
 }
 
 @media only screen and (max-width: calc(5 * 216px + 7 * 24px)) {
-    body > input ~ label {
+    input#sidemenu ~ label {
         display: inline-block;
     }
 
-    body > input ~ label.sidemenubutton {
+    input#sidemenu ~ label.sidemenubutton {
 	position: fixed;
         top: 8px;
         left: 8px;
@@ -495,7 +495,7 @@ body > input ~ label.sidemenucover {
 
         transition: background-image 0.2s ease;
     }
-    body > input ~ label.sidemenucover {
+    input#sidemenu ~ label.sidemenucover {
         visibility: hidden;
 
         position: fixed;
@@ -509,10 +509,10 @@ body > input ~ label.sidemenucover {
         transition: visibility 0s linear 0.2s, opacity 0.2s ease;
     }
 
-    body > input:checked ~ label.sidemenubutton {
+    input#sidemenu:checked ~ label.sidemenubutton {
         background-image: url(images/menuw.svg);
     }
-    body > input:checked ~ label.sidemenucover {
+    input#sidemenu:checked ~ label.sidemenucover {
         visibility: visible;
         opacity: 0.5;
         transition-delay: 0s;
@@ -524,7 +524,7 @@ body > input ~ label.sidemenucover {
 
         transition: left 0.2s ease;
     }
-    body > input:checked ~ nav {
+    input#sidemenu:checked ~ nav {
         left: 0;
     }
 }
