@@ -182,6 +182,10 @@ function updateTOC() {
 
 function updateBody() {
     const input = document.querySelector('input#sidemenu');
+    // input is null e.g. on the 404 page.
+    if (input === null) {
+        return;
+    }
     if (input.checked) {
         document.body.style.overflow = 'hidden';
     } else {
@@ -195,7 +199,10 @@ window.addEventListener('DOMContentLoaded', () => {
     updateImages();
     updateBody();
 
-    document.querySelector('input#sidemenu').addEventListener('change', updateBody);
+    const sidemenu = document.querySelector('input#sidemenu');
+    if (sidemenu !== null) {
+        sidemenu.addEventListener('change', updateBody);
+    }
 });
 
 window.addEventListener('resize', () => {
