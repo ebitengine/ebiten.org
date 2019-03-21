@@ -50,11 +50,11 @@ func cleanup() error {
 }
 
 func run() error {
-	tmpl, err := template.New("template.html").Funcs(template.FuncMap{
+	tmpl, err := template.New("tmpl.html").Funcs(template.FuncMap{
 		"noescape": func(str string) template.HTML {
 			return template.HTML(str)
 		},
-	}).ParseFiles("template.html")
+	}).ParseFiles("tmpl.html")
 	if err != nil {
 		return err
 	}
@@ -131,17 +131,23 @@ func run() error {
 			title = fmt.Sprintf("%s - Ebiten", html.UnescapeString(m[1]))
 		}
 
-		level := 0
-		suf := "./"
-		if filepath.Dir(rel) != "." {
-			level = len(filepath.SplitList(filepath.Dir(rel)))
-			suf = strings.Repeat("../", level)
+		suf := "/"
+		nav := false
+		if path != filepath.Join("contents", "404.html") {
+			level := 0
+			suf = "./"
+			nav = true
+			if filepath.Dir(rel) != "." {
+				level = len(filepath.SplitList(filepath.Dir(rel)))
+				suf = strings.Repeat("../", level)
+			}
 		}
 
 		if err := tmpl.Execute(w, map[string]interface{}{
 			"Title":     title,
 			"Content":   content,
 			"URLSuffix": suf,
+			"Nav":       nav,
 		}); err != nil {
 			return err
 		}

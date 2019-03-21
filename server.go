@@ -20,6 +20,7 @@ import (
 	"flag"
 	"log"
 	"net/http"
+	"os"
 	"path/filepath"
 	"runtime"
 )
@@ -39,7 +40,38 @@ func init() {
 	rootPath = filepath.Join(filepath.Dir(path), "docs")
 }
 
+type handler struct{}
+
+func (handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+	path := filepath.Join(rootPath, r.URL.Path[1:])
+	f, err := os.Stat(path)
+	if err != nil {
+		if os.IsNotExist(err) {
+			w.WriteHeader(http.StatusNotFound)
+			http.ServeFile(w, r, filepath.Join(rootPath, "404.html"))
+			return
+		}
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+
+	if f.IsDir() {
+		path = filepath.Join(path, "index.html")
+		if _, err := os.Stat(path); err != nil {
+			if os.IsNotExist(err) {
+				w.WriteHeader(http.StatusNotFound)
+				http.ServeFile(w, r, filepath.Join(rootPath, "404.html"))
+				return
+			}
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+			return
+		}
+	}
+
+	http.ServeFile(w, r, path)
+}
+
 func main() {
-	http.Handle("/", http.FileServer(http.Dir(rootPath)))
+	http.Handle("/", handler{})
 	log.Fatal(http.ListenAndServe(*httpAddr, nil))
 }

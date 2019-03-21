@@ -16,6 +16,7 @@
     <script src="{{.URLSuffix}}script.js"></script>
   </head>
   <body>
+    {{- if .Nav }}
     <input type="checkbox" id="sidemenu"><label for="sidemenu" class="sidemenubutton"></label><label for="sidemenu" class="sidemenucover"></label>
     <nav>
       <h1><a href="{{.URLSuffix}}">Ebiten</a></h1>
@@ -57,6 +58,7 @@
         <li><a href="#">Web Browsers (TBD)</a></li>
       </ul>
     </nav>
+    {{ end -}}
     <main>
       <article>
         {{.Content | noescape}}
