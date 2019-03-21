@@ -142,9 +142,11 @@ func run() error {
 				suf = strings.Repeat("../", level)
 			}
 		}
+		const desc = "Ebiten is an open-source game library, with which you can develop 2D games with simple API for multi platforms in the Go programming language."
 
 		if err := tmpl.Execute(w, map[string]interface{}{
 			"Title":     title,
+			"Desc":      desc,
 			"Content":   content,
 			"URLSuffix": suf,
 			"Nav":       nav,
