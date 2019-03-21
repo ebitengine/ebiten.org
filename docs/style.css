@@ -22,18 +22,19 @@ h1 {
     color: #dd664f; /* 0080-Y70R */
 }
 h1.big > span.sub {
-    color: #999999; /* 4000-N */
+    color: #884c41; /* 4040-Y70R */
 }
 body > nav {
     background-color: #dd664f; /* 0080-Y70R */
 }
-h2, h3, h2 > code, h3 > code {
-    /*color: #e58c7b; /* 0060-Y70R */
+h2, h2 > code {
     color: #dd664f; /* 0080-Y70R */
 }
+h3, h3 > code {
+    color: #884c41; /* 4040-Y70R */
+}
 h4, h4 > code {
-    color: #e58c7b; /* 0060-Y70R */
-    /*color: #bb7f74; /* 2040-Y70R */
+    color: #884c41; /* 4040-Y70R */
 }
 body > nav h1,
 body > nav h2,
