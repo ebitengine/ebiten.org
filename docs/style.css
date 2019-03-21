@@ -93,6 +93,7 @@ p.screenshot img {
     image-rendering: pixelated;
 }
 p.thumbnail img {
+    background-color: #000;
     border-style: solid;
     border-width: 1px;
     border-color: #666666;
