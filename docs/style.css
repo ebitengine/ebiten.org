@@ -580,6 +580,21 @@ input#sidemenu:checked ~ label.sidemenucover {
     }
 }
 
+/* toplinks (for the top page) */
+ul.toplinks {
+    list-style-type: none;
+    margin-left: 0;
+    padding-left: 0;
+}
+ul.toplinks li {
+    dipslay: inline-block;
+}
+ul.toplinks li img {
+    position: relative;
+    top: 3px;
+    margin-right: 4px;
+}
+
 /* test image */
 
 /*body > nav, main {
