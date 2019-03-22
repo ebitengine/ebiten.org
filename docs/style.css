@@ -373,6 +373,9 @@ h1, h2, h3, h4, h5, h6 {
     display: inline-block;
     width: 100%;
 }
+ul ul, ul ol, ol ul, ol ol {
+    width: calc(100% - 24px);
+}
 iframe {
     display: inline-block;
 }
