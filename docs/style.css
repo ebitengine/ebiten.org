@@ -593,6 +593,7 @@ ul.toplinks li img {
     position: relative;
     top: 3px;
     margin-right: 4px;
+    opacity: 0.6;
 }
 
 /* test image */
