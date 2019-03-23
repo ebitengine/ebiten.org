@@ -15,6 +15,7 @@
     <meta name="twitter:description" content="{{.Desc}}">
     <meta name="twitter:image" content="https://ebiten.org/images/share.png">
     <title>{{.Title}}</title>
+    {{ if .Canonical }}<link rel="canonical" href="{{.Canonical}}">{{ end }}
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700%7cRoboto+Mono:400,700" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
     <link rel="stylesheet" type="text/css" href="{{.URLSuffix}}style.css">

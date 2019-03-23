@@ -29,6 +29,11 @@ import (
 	"strings"
 )
 
+const (
+	url         = "https://ebiten.org"
+	description = "Ebiten is an open-source game library, with which you can develop 2D games with simple API for multi platforms in the Go programming language."
+)
+
 var reTitle = regexp.MustCompile(`<h1>([^<]+)</h1>`)
 
 func cleanup() error {
@@ -142,12 +147,23 @@ func run() error {
 				suf = strings.Repeat("../", level)
 			}
 		}
-		const desc = "Ebiten is an open-source game library, with which you can develop 2D games with simple API for multi platforms in the Go programming language."
+
+		canonical := ""
+		switch rel {
+		case "404.html":
+			// No canonical URL
+		case "index.html":
+			canonical = url
+		default:
+			canonical = url + "/" + rel
+			canonical = strings.TrimSuffix(canonical, "index.html")
+		}
 
 		if err := tmpl.Execute(w, map[string]interface{}{
 			"Title":     title,
-			"Desc":      desc,
+			"Desc":      description,
 			"Content":   content,
+			"Canonical": canonical,
 			"URLSuffix": suf,
 			"Nav":       nav,
 		}); err != nil {
