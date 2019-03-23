@@ -28,6 +28,9 @@ body > nav {
     background-color: #faebe9; /* 0010-Y70R */
     /*background-color: #f6d8d3; /* 0020-Y70R */
 }
+footer {
+    /*background-color: #faebe9; /* 0010-Y70R */
+}
 h2, h2 > code {
     color: #dd664f; /* 0080-Y70R */
 }
@@ -131,6 +134,12 @@ body > nav a[href^="https://"]:after {
 
 /* margin */
 
+article {
+    margin-bottom: 48px;
+}
+footer {
+    margin-bottom: 24px;
+}
 h1 {
     margin-top: 24px;
     margin-bottom: 24px;
@@ -201,8 +210,8 @@ body > nav li img {
     width: 18px;
     height: 18px;
 }
-body > nav, main {
-    padding: 24px 24px 48px 24px;
+body > nav {
+    padding: 24px;
 }
 
 ul, ol {
@@ -318,7 +327,7 @@ body {
 }
 body > nav {
     width: 216px;
-    height: calc(100vh - 24px - 48px);
+    height: calc(100vh - 24px - 24px);
     position: -webkit-sticky;
     position: sticky;
     top: 0;
@@ -329,13 +338,19 @@ body > nav {
 }
 main {
     display: flex;
+    flex-direction: column;
 
     flex-grow: 1;
+    align-items: center;
     justify-content: center;
 }
-article {
+article, footer {
     width: calc(4 * 216px + 3 * 24px);
     max-width: calc(100vw - 2 * 24px);
+}
+footer {
+    text-align: right;
+    overflow-y: hidden;
 }
 
 /* grid */
@@ -607,6 +622,6 @@ ul.toplinks li img {
     background-image: url('baseline.svg');
     background-attachment: local;
 }
-div.grid-container > div, pre {
+div.grid-container > div, pre, footer {
     opacity: .5;
 }*/
