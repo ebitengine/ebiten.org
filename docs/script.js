@@ -176,8 +176,14 @@ function updateTOC() {
         last = header;
     }
 
-    const firstH2 = document.querySelector('main h2');
-    firstH2.parentNode.insertBefore(toc, firstH2);
+    const h2s = document.querySelectorAll('main h2');
+    for (const h2 of h2s) {
+        if (h2.offsetParent === null) {
+            continue
+        }
+        h2.parentNode.insertBefore(toc, h2);
+        return;
+    }
 }
 
 function updateBody() {
