@@ -134,6 +134,9 @@ body > nav a[href^="https://"]:after {
 
 /* margin */
 
+main {
+    padding-top: 24px;
+}
 article {
     margin-bottom: 48px;
 }
