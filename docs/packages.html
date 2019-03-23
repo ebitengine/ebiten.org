@@ -5,16 +5,16 @@
     <meta name="description" content="Ebiten is an open-source game library, with which you can develop 2D games with simple API for multi platforms in the Go programming language.">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#dd664f">
-    <meta property="og:title" content="Fill - Ebiten">
+    <meta property="og:title" content="Packages - Ebiten">
     <meta property="og:site_name" content="Ebiten - A dead simple 2D game library in Go">
     <meta property="og:image" content="https://ebiten.org/images/share.png">
     <meta property="og:description" content="Ebiten is an open-source game library, with which you can develop 2D games with simple API for multi platforms in the Go programming language.">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@hajimehoshi">
-    <meta name="twitter:title" content="Fill - Ebiten">
+    <meta name="twitter:title" content="Packages - Ebiten">
     <meta name="twitter:description" content="Ebiten is an open-source game library, with which you can develop 2D games with simple API for multi platforms in the Go programming language.">
     <meta name="twitter:image" content="https://ebiten.org/images/share.png">
-    <title>Fill - Ebiten</title>
+    <title>Packages - Ebiten</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700%7cRoboto+Mono:400,700" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
     <link rel="stylesheet" type="text/css" href="./style.css">
@@ -66,29 +66,34 @@
     </nav>
     <main>
       <article>
-        <h1>Fill</h1>
-<p>Let's see the most fundamental drawing command, <code>Fill</code>.</p>
-<h2>Code</h2>
-<pre data-codesrc="go/fill/main.go"></pre>
-<div class="grid-container">
-  <div class="grid-item-2">
-    <p>The result will be like this:</p>
-  </div>
-  <div class="grid-item-2">
-    <p class="img screenshot"><img src="images/go/fill.png" width="320" height="240"></p>
-  </div>
-</div>
-<h2>How the code works</h2>
-<div class="grid-container">
-  <div class="grid-item-2">
-    <pre data-codesrc="go/fill/main.go" data-codelinerange="14-14"></pre>
-  </div>
-  <div class="grid-item-2">
-    <p><code><a href="https://godoc.org/github.com/hajimehoshi/ebiten#Image.Fill">(*ebiten.Image).Fill</a></code> is a function to fill the image with the specified color. The argument <code>color</code> is a value that implements <code><a href="https://golang.org/pkg/image/color/#Color">color.Color</a></code> interface in the standard <code><a href="https://golang.org/pkg/image/color/">image/color</a></code> package. In this example, the color value is red (the red and alpha part is <code>0xff</code>.)</p>
-    <p><code>Fill</code> always returns <code>nil</code>. The sigunature says that <code>Fill</code> returns an error value, but this is due to historical reasons. You can ignore the returned error of <code>Fill</code>.</p>
-  </div>
-</div>
-
+        <h1>Packages</h1>
+<h2><code>github.com/hajimehoshi/ebiten</code></h2>
+<p><a href="https://godoc.org/github.com/hajimehoshi/ebiten">GoDoc</a></p>
+<p>The core package of Ebiten, which provides basic input and drawing functions.</p>
+<h2><code>github.com/hajimehoshi/ebiten/audio</code></h2>
+<p><a href="https://godoc.org/github.com/hajimehoshi/ebiten/audio">GoDoc</a></p>
+<p>The package to provide audio funcitons to play sound.</p>
+<h2><code>github.com/hajimehoshi/ebiten/audio/mp3</code></h2>
+<p><a href="https://godoc.org/github.com/hajimehoshi/ebiten/audio/mp3">GoDoc</a></p>
+<p>The package to provide MP3 decoder.</p>
+<h2><code>github.com/hajimehoshi/ebiten/audio/vorbis</code></h2>
+<p><a href="https://godoc.org/github.com/hajimehoshi/ebiten/audio/vorbis">GoDoc</a></p>
+<p>The package to provide Ogg/Vorbis decoder.</p>
+<h2><code>github.com/hajimehoshi/ebiten/audio/wav</code></h2>
+<p><a href="https://godoc.org/github.com/hajimehoshi/ebiten/audio/wav">GoDoc</a></p>
+<p>The package to provide Wav decoder.</p>
+<h2><code>github.com/hajimehoshi/ebiten/ebitenutil</code></h2>
+<p><a href="https://godoc.org/github.com/hajimehoshi/ebiten/ebitenutil">GoDoc</a></p>
+<p>The package to provide utility functions like debug printing.</p>
+<h2><code>github.com/hajimehoshi/ebiten/inpututil</code></h2>
+<p><a href="https://godoc.org/github.com/hajimehoshi/ebiten/inpututil">GoDoc</a></p>
+<p>The package to provide utility functions for input like <code>IsKeyJustPressed</code>.</p>
+<h2><code>github.com/hajimehoshi/ebiten/mobile</code></h2>
+<p><a href="https://godoc.org/github.com/hajimehoshi/ebiten/mobile">GoDoc</a></p>
+<p>The package to provide functions for mobile developing with gomobile-bind.</p>
+<h2><code>github.com/hajimehoshi/ebiten/text</code></h2>
+<p><a href="https://godoc.org/github.com/hajimehoshi/ebiten/text">GoDoc</a></p>
+<p>The package to provide functions to draw text glyphs.</p>
 
       </article>
     </main>
