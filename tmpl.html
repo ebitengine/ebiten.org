@@ -23,7 +23,7 @@
     <script src="{{.URLSuffix}}script.js"></script>
   </head>
   <body>
-    {{ if .Nav -}}
+    {{if .Nav -}}
     <input type="checkbox" id="sidemenu"><label for="sidemenu" class="sidemenubutton"></label><label for="sidemenu" class="sidemenucover"></label>
     <nav>
       <h1><a href="{{.URLSuffix}}">Ebiten</a></h1>
@@ -66,16 +66,16 @@
         <li><a href="#">Web Browsers (TBD)</a></li>
       </ul>
     </nav>
-    {{- end }}
+    {{- end}}
     <main>
       <article>
         {{.Content | noescape}}
       </article>
-      {{ if .Contribute -}}
+      {{if .Feedback -}}
       <footer>
-        <p><a href="{{.Contribute}}">Contribute to this page</a></p>
+        <p><a href="https://github.com/ebiten/ebiten.org/issues/new?body={{.Canonical}}%0a%0a">Please feedback about this page</a>. Thank you!</p>
       </footer>
-      {{- end }}
+      {{- end}}
     </main>
   </body>
 </html>

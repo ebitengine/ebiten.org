@@ -138,6 +138,7 @@ func run() error {
 
 		suf := "/"
 		nav := false
+		feedback := false
 		if path != filepath.Join("contents", "404.html") {
 			level := 0
 			suf = "./"
@@ -146,6 +147,8 @@ func run() error {
 				level = len(filepath.SplitList(filepath.Dir(rel)))
 				suf = strings.Repeat("../", level)
 			}
+
+			feedback = true
 		}
 
 		canonical := ""
@@ -159,22 +162,14 @@ func run() error {
 			canonical = strings.TrimSuffix(canonical, "index.html")
 		}
 
-		contribute := ""
-		switch {
-		case rel == "404.html":
-		case filepath.Ext(path) != ".html":
-		default:
-			contribute = "https://github.com/ebiten/ebiten.org/edit/master/contents/" + filepath.ToSlash(rel)
-		}
-
 		if err := tmpl.Execute(w, map[string]interface{}{
-			"Title":      title,
-			"Desc":       description,
-			"Content":    content,
-			"Canonical":  canonical,
-			"URLSuffix":  suf,
-			"Nav":        nav,
-			"Contribute": contribute,
+			"Title":     title,
+			"Desc":      description,
+			"Content":   content,
+			"Canonical": canonical,
+			"URLSuffix": suf,
+			"Nav":       nav,
+			"Feedback":  feedback,
 		}); err != nil {
 			return err
 		}
