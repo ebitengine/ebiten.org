@@ -72,16 +72,16 @@ div.toc > div {
     background-color: #faebe9; /* 0010-Y70R */
     border-radius: 4px;
 }
-pre /*, code */ {
+pre {
     background-color: #e6e6e6; /* 1000-N */
     color: #4c4c4c; /* 7000-N */
     border-radius: 4px;
     border-width: 0;
 }
 code {
-    background-color: #e6e6e6; /* 1000-N */
+    background-color: #f3f3f3; /* 0500-N */
     border-style: solid;
-    border-color: #e6e6e6; /* 1000-N */
+    border-color: #f3f3f3; /* 0500-N */
     border-width: 1px 2px;
     border-radius: 4px;
     margin: 0 -2px 0 -2px;
