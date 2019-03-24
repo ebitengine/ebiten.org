@@ -61,6 +61,8 @@ body > nav h1 a {
 }
 body > nav a[href="#"] {
     color: #999999 !important;
+    cursor: default;
+    text-decoration: none;
 }
 /*body > nav li a {
     color: #333333 !important;
