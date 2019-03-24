@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="Ebiten is an open-source game library, with which you can develop 2D games with simple API for multi platforms in the Go programming language.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#dd664f">
+    <meta property="og:title" content="Render an image - Ebiten">
+    <meta property="og:site_name" content="Ebiten - A dead simple 2D game library in Go">
+    <meta property="og:image" content="https://ebiten.org/images/share.png">
+    <meta property="og:description" content="Ebiten is an open-source game library, with which you can develop 2D games with simple API for multi platforms in the Go programming language.">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@hajimehoshi">
+    <meta name="twitter:title" content="Render an image - Ebiten">
+    <meta name="twitter:description" content="Ebiten is an open-source game library, with which you can develop 2D games with simple API for multi platforms in the Go programming language.">
+    <meta name="twitter:image" content="https://ebiten.org/images/share.png">
+    <title>Render an image - Ebiten</title>
+    <link rel="canonical" href="https://ebiten.org/renderimage.html">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700%7cRoboto+Mono:400,700" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" type="text/css" href="./style.css">
+    <link rel="icon" href="./images/favicon.png" type="image/png">
+    <script src="./script.js"></script>
+  </head>
+  <body>
+    <input type="checkbox" id="sidemenu"><label for="sidemenu" class="sidemenubutton"></label><label for="sidemenu" class="sidemenucover"></label>
+    <nav>
+      <h1><a href="./">Ebiten</a></h1>
+      <ul>
+        <li><a href="./">Home</a></li>
+        <li><a href="https://github.com/hajimehoshi/ebiten">GitHub project</a></li>
+        <li><a href="https://godoc.org/github.com/hajimehoshi/ebiten">API reference</a></li>
+        <li><a href="./examples/">Examples</a></li>
+        <li><a href="./cheatsheet.html">Cheat Sheet</a></li>
+      </ul>
+      <h2>Getting Started</h2>
+      <ul>
+        <li><a href="./install.html">Install</a></li>
+        <li><a href="./helloworld.html">Hello, World!</a></li>
+      </ul>
+      <h2>Graphics</h2>
+      <ul>
+        <li><a href="./fill.html">Fill</a></li>
+        <li><a href="./renderimage.html">Render an Image</a></li>
+        <li><a href="#">Geometry Matrix (TBD)</a></li>
+        <li><a href="#">Filter (TBD)</a></li>
+        <li><a href="#">Offscreen (TBD)</a></li>
+        <li><a href="#">Color Matrix (TBD)</a></li>
+        <li><a href="#">Tiling (TBD)</a></li>
+      </ul>
+      <h2>Input</h2>
+      <ul>
+        <li><a href="#">Keyboard (TBD)</a></li>
+        <li><a href="#">Mouse (TBD)</a></li>
+        <li><a href="#">Gamepad (TBD)</a></li>
+      </ul>
+      <h2>Documents</h2>
+      <ul>
+        <li><a href="./cheatsheet.html">Cheat Sheet</a></li>
+        <li><a href="./performancetips.html">Performance Tips</a></li>
+        <li><a href="./packages.html">Packages</a></li>
+      </ul>
+      <h2>Tips</h2>
+      <ul>
+        <li><a href="#">Mobile (TBD)</a></li>
+        <li><a href="#">Web Browsers (TBD)</a></li>
+      </ul>
+    </nav>
+    <main>
+      <article>
+        <h1>Render an image</h1>
+<h2>Code</h2>
+<pre data-codesrc="go/renderimage/main.go"></pre>
+<div class="grid-container">
+  <div class="grid-item-2">
+    <p>To execute this program, you need the image file <code>gopher.png</code> at the same directory:</p>
+  </div>
+  <div class="grid-item-2">
+    <p class="img"><img src="go/renderimage/gopher.png" width="240" height="240" alt="Gopher"></p>
+  </div>
+</div>
+<div class="grid-container">
+  <div class="grid-item-2">
+    <p>The result will be like this:</p>
+  </div>
+  <div class="grid-item-2">
+    <p class="img screenshot"><img src="images/go/renderimage.png" width="320" height="240" alt="Screenshot"></p>
+  </div>
+</div>
+<h2>How the code works</h2>
+<div class="grid-container">
+  <div class="grid-item-2">
+    <pre data-codesrc="go/renderimage/main.go" data-codelinerange="3-9"></pre>
+  </div>
+  <div class="grid-item-2">
+    <p>Imports necessary packages. The sentence <code>_ "image/png"</code> means to register PNG decoder used when an image is decoded. See <a href="https://golang.org/pkg/image/#pkg-overview">the standard <code>image</code> package explanation</a> for the detail.</p>
+  </div>
+  <div class="grid-item-2">
+    <pre data-codesrc="go/renderimage/main.go" data-codelinerange="11-19"></pre>
+  </div>
+  <div class="grid-item-2">
+    <p>Loads an image and creates an Ebiten image. <a href="https://godoc.org/github.com/hajimehoshi/ebiten/ebitenutil#NewImageFromFile"><code>ebitenutil.NewImageFromFile</code></a> is a utility function to create an Ebiten image object from an image file. As this seeks the specified file on the local file system, the image file must be at the specified place, or this function returns an error. As the given path is a relative path, the working directory, i.e. the place where the program is executed matters. The second argument, <code>ebiten.FilterDefault</code> here, is a legacy argument. If you are not sure, use <code>FilterDefault</code>.</p>
+    <p>There are vairous way to create an image. <a href="https://godoc.org/github.com/hajimehoshi/ebiten#NewImageFromImage"><code>ebiten.NewImageFromImage</code></a> is the only way to create an Ebiten image from an <a href="https://golang.org/pkg/image/#Image"><code>image.Image</code></a> object (<code>ebitenutil.NewImageFromFile</code> is just a shortcut and calls <code>NewImageFromImage</code> internally). How to get the image matters.</p>
+    <ul>
+      <li><a href="https://golang.org/pkg/os/#Open"><code>os.Open</code></a>: This is the easiest way to get an image, but it not portable. This works only on desktops. The working directory affects the result.</li>
+      <li><a href="https://godoc.org/github.com/hajimehoshi/ebiten/ebitenutil#OpenFile"><code>ebitenutil.OpenFile</code></a>: This is a little better than <code>os.Open</code>. This works even on browsers, but does not work on mobiles. <code>ebitenutil.NewImageFromFile</code> is the shortcut to call this <code>OpenFile</code> and <code>NewImageFromImage</code> internally.</li>
+      <li><a href="https://godoc.org/github.com/hajimehoshi/ebiten/ebitenutil#NewImageFromURL"><code>ebitenutil.NewImageFromURL</code></a>: This obtains an image from a specified URL. This is portable and working directory doesn't affect the result, but requires networking.</li>
+      <li>Embedding an image file into a Go file: The most portable way is embed the image in Go file with e.g. <a href="https://github.com/rakyll/statik">statik</a> or <a href="https://github.com/hajimehoshi/file2byteslice">file2byteslice</a>. This works everywhere and is deterministic.</li>
+    </ul>
+    <p>As an image can be reused unless disposing, the image is created once in init function.</p>
+  </div>
+  <div class="grid-item-2">
+    <pre data-codesrc="go/renderimage/main.go" data-codelinerange="25"></pre>
+  </div>
+  <div class="grid-item-2">
+    <p>Draws an image on an image by <a href="https://godoc.org/github.com/hajimehoshi/ebiten#Image.DrawImage"><code>(*Image).DrawImage</code></a>. This function draws a given image onto the receiver image. The second argument is an option to indicate where to put the image, how colors are changed, which filter is applied, and so on. As <code>nil</code> is given here, the image is rendered at the default position (upper-left corder), without changing any colors.</p>
+  </div>
+</div>
+
+      </article>
+      <footer>
+        <p><a href="https://github.com/ebiten/ebiten.org/issues/new?body=https%3a%2f%2febiten.org%2frenderimage.html%0a%0a">Please feedback about this page</a>. Thank you!</p>
+      </footer>
+    </main>
+  </body>
+</html>

@@ -65,7 +65,7 @@ function updateCode() {
                     const m = e.dataset['codelinerange'].match(/^(\d+)(-(\d+))?$/);
                     start = parseInt(m[1], 10) - 1;
                     end = start;
-                    if (m.length >= 4) {
+                    if (m.length >= 4 && m[3] !== undefined) {
                         end = parseInt(m[3], 10) - 1;
                     }
                     const lines = text.split("\n");

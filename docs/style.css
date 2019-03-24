@@ -78,12 +78,14 @@ pre /*, code */ {
     border-radius: 4px;
     border-width: 0;
 }
-/*code {
+code {
+    background-color: #e6e6e6; /* 1000-N */
     border-style: solid;
-    border-color: #e6e6e6; /* 1000-N *//*
+    border-color: #e6e6e6; /* 1000-N */
     border-width: 1px 2px;
+    border-radius: 4px;
     margin: 0 -2px 0 -2px;
-}*/
+}
 pre code {
     background-color: transparent;
     border-style: none;
@@ -191,6 +193,7 @@ div.toc > div {
 div.toc > div ul {
     top: 0;
     margin-bottom: 0;
+    width: 100%;
 }
 ul ul, ul ol, ol ul, ol ol {
     margin-bottom: 0px;
@@ -227,6 +230,9 @@ ul, ol {
     padding-left: 0;
 }
 ul ul, ul ol, ol ul, ol ol {
+    margin-left: 24px;
+}
+div.grid-container ul, div.grid-container ol {
     margin-left: 24px;
 }
 body > nav ul, nav.tags > ul, nav.path > ul {
@@ -394,7 +400,17 @@ p, ul, ol, nav.tags, nav.path,
 h1, h2, h3, h4, h5, h6 {
     /* Disable margin-collapse */
     display: inline-block;
+}
+p, nav.tags, nav.path,
+h1, h2, h3, h4, h5, h6,
+body > nav ul, body > nav ol {
     width: 100%;
+}
+ul, ol {
+    width: calc(100% - 48px);
+}
+div.grid-contaier ul, div.grid-contaier ol {
+    width: calc(100% - 24px);
 }
 ul ul, ul ol, ol ul, ol ol {
     width: calc(100% - 24px);
