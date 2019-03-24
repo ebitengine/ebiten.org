@@ -59,6 +59,9 @@ body > nav h1 a {
     /*color: #ffffff !important;*/
     color: #dd664f !important; /* 0080-Y70R */
 }
+body > nav a[href="#"] {
+    color: #999999 !important;
+}
 /*body > nav li a {
     color: #333333 !important;
 }*/
