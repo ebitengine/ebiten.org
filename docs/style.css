@@ -226,14 +226,19 @@ body > nav {
 }
 
 ul, ol {
-    margin-left: 48px;
     padding-left: 0;
+}
+article ul, article ol {
+    margin-left: 48px;
+    width: calc(100% - 48px);
 }
 ul ul, ul ol, ol ul, ol ol {
     margin-left: 24px;
+    width: calc(100% - 24px);
 }
-div.grid-container ul, div.grid-container ol {
+article div.grid-container ul, article div.grid-container ol {
     margin-left: 24px;
+    width: calc(100% - 24px);
 }
 body > nav ul, nav.tags > ul, nav.path > ul {
     margin-left: 0;
@@ -406,15 +411,6 @@ h1, h2, h3, h4, h5, h6,
 body > nav ul, body > nav ol {
     width: 100%;
 }
-ul, ol {
-    width: calc(100% - 48px);
-}
-div.grid-contaier ul, div.grid-contaier ol {
-    width: calc(100% - 24px);
-}
-ul ul, ul ol, ol ul, ol ol {
-    width: calc(100% - 24px);
-}
 iframe {
     display: inline-block;
 }
@@ -585,6 +581,10 @@ input#sidemenu:checked ~ label.sidemenucover {
         line-height: 24px;
         -moz-tab-size: 4;
         tab-size: 4;
+    }
+    article ul, article ol {
+        margin-left: 24px;
+        width: calc(100% - 24px);
     }
 }
 @media only screen and (max-width: calc(3 * 216px + 4 * 24px)) {
