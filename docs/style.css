@@ -9,36 +9,31 @@ h1.big, body > nav h1 {
 
 /* color */
 /*
-  theme color: 0080-Y70R #dd664f
-  back color:  0010-Y70R #faebe9
+  theme color: 0099-Y60R #db5620
+  back color:  0010-Y60R #fbeee8
 */
 
 body {
-    color: #666666; /* 6000-N */
-    /*background-color: #fef8e6; /* 0010-Y10R */
+    color: #4c4c4c; /* 7000-N */
     background-color: #ffffff;
 }
 h1 {
-    color: #dd664f; /* 0080-Y70R */
+    color: #db5620; /* 0099-Y60R */
 }
 h1.big > span.sub {
-    color: #884c41; /* 4040-Y70R */
+    color: #a1580e; /* 3070-Y40R */
 }
 body > nav {
-    background-color: #faebe9; /* 0010-Y70R */
-    /*background-color: #f6d8d3; /* 0020-Y70R */
-}
-footer {
-    /*background-color: #faebe9; /* 0010-Y70R */
+    background-color: #fbeee8; /* 0010-Y60R */
 }
 h2, h2 > code {
-    color: #dd664f; /* 0080-Y70R */
+    color: #db5620; /* 0099-Y60R */
 }
 h3, h3 > code {
-    color: #884c41; /* 4040-Y70R */
+    color: #a1580e; /* 3070-Y40R */
 }
 h4, h4 > code {
-    color: #884c41; /* 4040-Y70R */
+    color: #a1580e; /* 3070-Y40R */
 }
 /*body > nav h1,
 body > nav h2,
@@ -47,29 +42,25 @@ body > nav h4 {
     color: #ffffff;
 }*/
 a:link {
-    color: #2e4c75; /* 2080-R70B */
+    color: #4f5286; /* 0099-R60B */
 }
 a:visited {
-    color: #2e4c75; /* 2080-R70B */
+    color: #4f5286; /* 0099-R60B */
 }
 a:hover, a:active {
-    color: #dd664f; /* 0080-Y70R */
+    color: #db5620 /* 0099-Y60R */
 }
 body > nav h1 a {
-    /*color: #ffffff !important;*/
-    color: #dd664f !important; /* 0080-Y70R */
+    color: #db5620 !important; /* 0099-Y60R */
 }
 body > nav a[href="#"] {
     color: #999999 !important;
     cursor: default;
     text-decoration: none;
 }
-/*body > nav li a {
-    color: #333333 !important;
-}*/
 
 div.toc > div {
-    background-color: #faebe9; /* 0010-Y70R */
+    background-color: #fbeee8; /* 0010-Y60R */
     border-radius: 4px;
 }
 pre {
@@ -108,12 +99,12 @@ p.thumbnail img {
     background-color: #000;
     border-style: solid;
     border-width: 1px;
-    border-color: #666666;
+    border-color: #4c4c4c;
 }
 iframe {
     border-style: solid;
     border-width: 1px;
-    border-color: #666666;
+    border-color: #4c4c4c;
 }
 
 /* image */
