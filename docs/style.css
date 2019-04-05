@@ -627,7 +627,7 @@ ul.toplinks li {
 ul.toplinks li img {
     position: relative;
     top: 3px;
-    margin-right: 4px;
+    margin-right: 8px;
     opacity: 0.6;
 }
 
