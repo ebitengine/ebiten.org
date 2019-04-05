@@ -146,7 +146,8 @@ h1 {
     margin-bottom: 24px;
 }
 h1.big {
-    margin-bottom: 40px;
+    margin-top: 0;
+    margin-bottom: 48px;
 }
 h2 {
     margin-top: 24px;
@@ -269,8 +270,8 @@ h1 {
     top: -10px;
 }
 h1.big {
-    font-size: 56px;
-    top: 8px;
+    font-size: 70px;
+    top: 16px;
 }
 h1.big > span.sub {
     font-size: 24px;
@@ -460,8 +461,8 @@ p.img.thumbnail img, p.img iframe {
 h1.big > span.main:after {
     content: "";
     display: inline-block;
-    width: 64px;
-    height: 64px;
+    width: 80px;
+    height: 80px;
 
     background-image: url(images/logo.png);
     background-position: left center;
@@ -470,7 +471,7 @@ h1.big > span.main:after {
 
     margin-left: 4px;
     position: relative;
-    top: 7px;
+    top: 9px;
 }
 
 body > nav h1:after {
