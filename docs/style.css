@@ -618,8 +618,8 @@ input#sidemenu:checked ~ label.sidemenucover {
 /* toplinks (for the top page) */
 ul.toplinks {
     list-style-type: none;
-    margin-left: 0;
-    padding-left: 0;
+    margin-left: 0 !important;
+    padding-left: 0 !important;
 }
 ul.toplinks li {
     dipslay: inline-block;
@@ -627,8 +627,8 @@ ul.toplinks li {
 ul.toplinks li img {
     position: relative;
     top: 3px;
-    margin-right: 8px;
-    opacity: 0.6;
+    margin-right: 6px;
+    opacity: 0.7;
 }
 
 /* test image */
