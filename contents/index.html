@@ -60,7 +60,11 @@
 <p>Ebiten is licensed under <a href="https://github.com/hajimehoshi/ebiten/blob/master/LICENSE">the Apache License 2.0</a>.</p>
 <p>Go Gopher by Renee French is lincensed under <a href="https://creativecommons.org/licenses/by/3.0/">the Creative Commons Attribution 3.0 License</a>.</p>
 <p>The content of this page is licensed under <a href="https://creativecommons.org/licenses/by/4.0/">the Creative Commons Attribution 4.0 License</a>.</p>
-<script>disableTOC();</script>
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+      disableTOC();
+  });
+</script>
 <!--h2>Getting Started</h2>
 <p><a href="install.html">Install</a> Ebiten by <code>go get</code>.</p>
 <pre><code>go get github.com/hajimehoshi/ebiten/...</code></pre>
