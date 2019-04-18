@@ -1,0 +1,27 @@
+<h1>Geometry Matrix</h1>
+<h2>Code</h2>
+<pre data-codesrc="go/geometrymatrix/main.go"></pre>
+<div class="grid-container">
+  <div class="grid-item-2">
+    <p>To execute this program, you need the image file <code>gopher.png</code> at the same directory:</p>
+  </div>
+  <div class="grid-item-2">
+    <p class="img"><img src="go/geometrymatrix/gopher.png" width="240" height="240" alt="Gopher"></p>
+  </div>
+</div>
+<div class="grid-container">
+  <div class="grid-item-2">
+    <p>The result will be like this:</p>
+  </div>
+  <div class="grid-item-2">
+    <p class="img screenshot"><img src="images/go/geometrymatrix.png" width="320" height="240" alt="Screenshot"></p>
+  </div>
+</div>
+<div class="grid-container">
+  <div class="grid-item-2">
+    <pre data-codesrc="go/geometrymatrix/main.go" data-codelinerange="25-28"></pre>
+  </div>
+  <div class="grid-item-2">
+    <p>The program is almost same as <a href="renderimage.html">render-an-image example</a>. The difference is whether <a href="https://godoc.org/github.com/hajimehoshi/ebiten#DrawImageOptions"><code>DrawImageOptions</code></a> is specified or not at the <a href="https://godoc.org/github.com/hajimehoshi/ebiten#Image.DrawImage"><code>DrawImage</code></a> call. In this example, a <a href="https://godoc.org/github.com/hajimehoshi/ebiten#GeoM"><code>GeoM</code></a> is adjusted. <code>GeoM</code> represents <a href="https://en.wikipedia.org/wiki/Affine_transformation">an affine matrix</a> to translate, scale or rotate the image.</p>
+  </div>
+</div>
