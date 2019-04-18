@@ -91,14 +91,14 @@ function updateImages() {
             img.addEventListener('load', f);
             continue;
         }
-        updateImage(img);
+        adjustHeight(img);
     }
 }
 
-function updateImage(img) {
+function adjustHeight(e) {
     const unit = 24;
-    const height = ~~(((img.offsetHeight-1) / unit) + 1) * unit;
-    img.parentNode.style.height = `${height}px`;
+    const height = ~~(((e.offsetHeight-1) / unit) + 1) * unit;
+    e.parentNode.style.height = `${height}px`;
 }
 
 let tocLevel = 4;
@@ -209,8 +209,26 @@ window.addEventListener('DOMContentLoaded', () => {
     if (sidemenu !== null) {
         sidemenu.addEventListener('change', updateBody);
     }
+
+    if (MathJax) {
+        MathJax.Hub.Config({
+            tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+        });
+        MathJax.Hub.Register.StartupHook('End', () => {
+            for (const e of document.querySelectorAll('p.mathjax')) {
+                (e => {
+                    const span = e.querySelector('.mjx-chtml');
+                    if (span === null) {
+                        return;
+                    }
+                    adjustHeight(span);
+                })(e);
+            }
+        });
+    }
 });
 
 window.addEventListener('resize', () => {
     updateImages();
 });
+
