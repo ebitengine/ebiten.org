@@ -85,7 +85,7 @@ function updateImages() {
         const img = e.querySelector('img, iframe');
         if (!img.complete) {
             const f = () => {
-                updateImage(img);
+                adjustHeight(img);
                 img.removeEventListener('load', f);
             };
             img.addEventListener('load', f);
@@ -210,7 +210,7 @@ window.addEventListener('DOMContentLoaded', () => {
         sidemenu.addEventListener('change', updateBody);
     }
 
-    if (MathJax) {
+    if (typeof MathJax !== 'undefined') {
         MathJax.Hub.Config({
             tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
         });
