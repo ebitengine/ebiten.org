@@ -522,7 +522,7 @@ input#sidemenu:checked ~ label.sidemenubutton {
     background-image: url(images/menu.svg);
 }
 input#sidemenu ~ label.sidemenucover {
-    display: inline-block;
+    display: none;
     visibility: hidden;
 
     position: fixed;
@@ -545,6 +545,9 @@ input#sidemenu:checked ~ label.sidemenucover {
 
 @media only screen and (max-width: calc(5 * 216px + 7 * 24px)) {
     input#sidemenu ~ label.sidemenubutton {
+        display: inline-block;
+    }
+    input#sidemenu ~ label.sidemenucover {
         display: inline-block;
     }
 
