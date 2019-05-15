@@ -538,6 +538,8 @@ input#sidemenu ~ label.sidemenucover {
     z-index: 2;
 }
 input#sidemenu:checked ~ label.sidemenucover {
+    display: inline-block;
+
     visibility: visible;
     opacity: 0.5;
     transition-delay: 0s;
