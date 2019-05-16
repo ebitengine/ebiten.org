@@ -216,13 +216,11 @@ window.addEventListener('DOMContentLoaded', () => {
         });
         MathJax.Hub.Register.StartupHook('End', () => {
             for (const e of document.querySelectorAll('p.mathjax')) {
-                (e => {
-                    const span = e.querySelector('.mjx-chtml');
-                    if (span === null) {
-                        return;
-                    }
-                    adjustHeight(span);
-                })(e);
+                const span = e.querySelector('.mjx-chtml');
+                if (span === null) {
+                    continue;
+                }
+                adjustHeight(span);
             }
         });
     }
