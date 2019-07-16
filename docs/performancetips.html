@@ -86,6 +86,30 @@
 </ul>
 <p>Even when all the above conditions are satisfied, multiple draw commands can be used in really rare cases. Ebiten images usually share an internal automatic texture atlas, but when you consume the atlas, or you create a huge image, those images cannot be on the same texture atlas. In this case, draw commands are separated. The texture atlas size is 4096x4096 so far. Another case is when you use an offscreen as a render source. An offscreen doesn't share the texture atlas with high probability.</p>
 <p>examples/sprites is a good example to draw > 10000 sprites with one (or a few) draw command(s).</p>
+<h2>Know the actual drawing commands with <code>ebitendebug</code> build tag</h2>
+<p>To see actual drawing commands, you can use <code>ebitendebug</code> build tag. For example, if you execute <code>blocks</code> example, you will see the below logs:</p>
+<pre><code>go run -tags="example ebitendebug" github.com/hajimehoshi/ebiten/examples/blocks</code></pre>
+<pre><code>--
+draw-triangles: dst: 0xc0003a6640 <- src: 0xc0000b80c0, colorm: &lt;nil&gt;, mode 1, filter: 1, address: 0
+draw-triangles: dst: 0xc0003a6640 <- src: 0xc0003a6940, colorm: &lt;nil&gt;, mode 0, filter: 1, address: 0
+draw-triangles: dst: 0xc0003a66c0 <- src: 0xc0000b80c0, colorm: &lt;nil&gt;, mode 1, filter: 1, address: 0
+draw-triangles: dst: 0xc0003a66c0 <- src: 0xc0003a6640, colorm: &lt;nil&gt;, mode 2, filter: 3, address: 0
+--
+draw-triangles: dst: 0xc0003a6640 <- src: 0xc0000b80c0, colorm: &lt;nil&gt;, mode 1, filter: 1, address: 0
+draw-triangles: dst: 0xc0003a6640 <- src: 0xc0003a6940, colorm: &lt;nil&gt;, mode 0, filter: 1, address: 0
+draw-triangles: dst: 0xc0003a66c0 <- src: 0xc0000b80c0, colorm: &lt;nil&gt;, mode 1, filter: 1, address: 0
+draw-triangles: dst: 0xc0003a66c0 <- src: 0xc0003a6640, colorm: &lt;nil&gt;, mode 2, filter: 3, address: 0
+--
+draw-triangles: dst: 0xc0003a6640 <- src: 0xc0000b80c0, colorm: &lt;nil&gt;, mode 1, filter: 1, address: 0
+draw-triangles: dst: 0xc0003a6640 <- src: 0xc0003a6940, colorm: &lt;nil&gt;, mode 0, filter: 1, address: 0
+draw-triangles: dst: 0xc0003a66c0 <- src: 0xc0000b80c0, colorm: &lt;nil&gt;, mode 1, filter: 1, address: 0
+draw-triangles: dst: 0xc0003a66c0 <- src: 0xc0003a6640, colorm: &lt;nil&gt;, mode 2, filter: 3, address: 0
+--
+draw-triangles: dst: 0xc0003a6640 <- src: 0xc0000b80c0, colorm: &lt;nil&gt;, mode 1, filter: 1, address: 0
+draw-triangles: dst: 0xc0003a6640 <- src: 0xc0003a6940, colorm: &lt;nil&gt;, mode 0, filter: 1, address: 0
+draw-triangles: dst: 0xc0003a66c0 <- src: 0xc0000b80c0, colorm: &lt;nil&gt;, mode 1, filter: 1, address: 0
+draw-triangles: dst: 0xc0003a66c0 <- src: 0xc0003a6640, colorm: &lt;nil&gt;, mode 2, filter: 3, address: 0
+...</code></pre>
 <h2>Avoid changing render sources' pixels</h2>
 <p>Ebiten records almost all draw functions in order to restore when context lost happens. When a render source's pixel is changed after it is used as a render source, Ebiten tries a complicated calculation for restoring.</p>
 <pre><code>A.DrawImage(B, op) // B is a render source
