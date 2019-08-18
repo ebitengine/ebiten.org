@@ -124,7 +124,7 @@ func Dummy() {}
 import android.view.ViewGroup;
 
 public class EbitenView extends ViewGroup {
-    // This method is called when an error happens when updating a game.
+    // This method is called on the main thread when an error happens when updating a game.
     // You can define your own error handler, e.g., using Crashlytics, by overwriting this method.
     protected void onErrorOnGameUpdate(Exception e) {
         // Default error handling implementation.
@@ -140,7 +140,7 @@ public class EbitenView extends ViewGroup {
 
 @interface YourgamemobileEbitenViewController : UIViewController
 
-// This method is called when an error happens when updating a game.
+// This method is called on the main thread when an error happens when updating a game.
 // You can define your own error handler, e.g., using Crashlytics, by overwriting this method.
 - (void)onErrorOnGameUpdate:(NSError*)err;
 
