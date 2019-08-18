@@ -122,7 +122,10 @@ func Dummy() {}
 <h3>iOS</h3>
 <p>Run <code>ebitenmobile bind</code> command for your package:</p>
 <pre><code>env GO111MODULE=off ebitenmobile bind -target ios -o [path/to/yourgame.framework] [github.com/yourname/yourgame/yourgamemobile]</code></pre>
-<p>Then your can get a <code>.framework</code> file. This <code>.frame</code> file defines a view controller class named <code>(PackageName)EbitenViewController</code>. You can put it on your screen by connecting with any <code>UIView</code>. That's it!</p>
+<p>Then your can get a <code>.framework</code> file. This <code>.framework</code> defines a view controller class named <code>(PackageName)EbitenViewController</code>. You can put it on your screen by connecting with any <code>UIView</code>. That's it!</p>
+
+<h3>Example</h3>
+<p><a href="https://github.com/hajimehoshi/go-inovation">go-inovation</a> is a complete example to use <code>ebitenmobile bind</code>.</p>
 
 <h2>Create a shared library with <code>gomobile bind</code> (Deprecated)</h2>
 <p>This way is deprecated so use <code>ebitenmobile bind</code> if possible. This feature is kept for backward compatibility.</p>
