@@ -64,11 +64,11 @@ public class EbitenView extends ViewGroup {
 <h3>iOS</h3>
 <p>Run <code>ebitenmobile bind</code> command for your package:</p>
 <pre><code>env GO111MODULE=off ebitenmobile bind -target ios -o [path/to/yourgame.framework] [github.com/yourname/yourgame/yourgamemobile]</code></pre>
-<p>Then your can get a <code>.framework</code> file. This <code>.framework</code> defines a view controller class named <code>(PackageName)EbitenViewController</code>. You can put it on your screen by connecting with any <code>UIView</code>. That's it!</p>
+<p>Then your can get a <code>.framework</code> file. This <code>.framework</code> defines a view controller class named <code>(Package Name)EbitenViewController</code>. You can put it on your screen by connecting with any <code>UIView</code>. That's it!</p>
 <p>The view controller class is defined like this:</p>
 <pre><code>#import &lt;UIKit/UIKit.h&gt;
 
-@interface MobileEbitenViewController : UIViewController
+@interface YourgamemobileEbitenViewController : UIViewController
 
 // This method is called when an error happens when updating a game.
 // You can define your own error handler, e.g., using Crashlytics, by overwriting this method.
