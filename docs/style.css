@@ -88,9 +88,7 @@ h1 code,
 h2 code,
 h3 code,
 h4 code {
-    background-color: transparent;
-    border-style: none;
-    margin: 0;
+    background-color: #e6e6e6; /* 1000-N */
 }
 p.screenshot img {
     background-color: #000;

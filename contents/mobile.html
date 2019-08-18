@@ -1,0 +1,137 @@
+<h1>Mobile</h1>
+
+<h2>tl;dr</h2>
+<p>Use <code>ebitenmobile</code> command to create a shared library. The generated library includes a complete and easy-to-use view (or view controller) class.</p>
+
+<h2>Create a shared library with <code>ebitenmobile bind</code> (Recommended)</h2>
+<p>Install <code>ebitenmobile</code> command first:</p>
+<pre><code>go install github.com/hajimehoshi/ebiten/cmd/ebitenmobile</code></pre>
+<p>Create a package for mobiles to use <a href="https://godoc.org/github.com/hajimehoshi/ebiten/mobile"><code>github.com/hajimehoshi/ebiten/mobile</code></a>:</p>
+<pre><code>package yourgamemobile
+
+import (
+    "github.com/hajimehoshi/ebiten"
+    "github.com/hajimehoshi/ebiten/mobile"
+
+    "github.com/yourname/yourgame"
+)
+
+// game implements mobile.Game interface.
+type game struct{
+}
+
+// Update is called every frame. This is same as an update function passed to ebiten.Run.
+func (g *game) Update(screen *ebiten.Image) error {
+    return yourgame.Update(screen)
+}
+
+// Layout is called when the game is initialized or the view size is changed.
+// You can return a fixed screen size, or you can calculate a screen size based on the given view size.
+// The scaling is automatically adjusted.
+func (g *game) Layout(viewWidth, viewHeight int) (screenWidth, screenHeight int) {
+    return 320, 240
+}
+
+func init() {
+    mobile.SetGame(&game{})
+}
+
+// Dummy is a dummy exported function.
+//
+// gomobile doesn't compile a package that doesn't include any exported function.
+// Dummy forces gomobile to compile this package.
+func Dummy() {}
+</code></pre>
+<p>The key function is <a href="https://godoc.org/github.com/hajimehoshi/ebiten/mobile#SetGame"><code>SetGame</code></a>, and you can ignore the other functions in the <a href="https://godoc.org/github.com/hajimehoshi/ebiten/mobile"><code>mobile</code></a> package.</p>
+
+<h3>Android</h3>
+<p>Run <code>ebitenmobile bind</code> command for your package:</p>
+<pre><code>env GO111MODULE=off ebitenmobile bind -target android -javapkg [your.domain] -o [path/to/yourgame.aar] [github.com/yourname/yourgame/yourgamemobile]</code></pre>
+<p>Then your can get a <code>.aar</code> file. This <code>.aar</code> file defines a view class named <code>EbitenView</code> under the specified Java package (<code>-javapkg</code> option + your package name). You can put it on your screen. That's it!</p>
+
+<h3>iOS</h3>
+<p>Run <code>ebitenmobile bind</code> command for your package:</p>
+<pre><code>env GO111MODULE=off ebitenmobile bind -target ios -o [path/to/yourgame.framework] [github.com/yourname/yourgame/yourgamemobile]</code></pre>
+<p>Then your can get a <code>.framework</code> file. This <code>.frame</code> file defines a view controller class named <code>(PackageName)EbitenViewController</code>. You can put it on your screen by connecting with any <code>UIView</code>. That's it!</p>
+
+<h2>Create a shared library with <code>gomobile bind</code> (Deprecated)</h2>
+<p>This way is deprecated so use <code>ebitenmobile bind</code> if possible. This feature is kept for backward compatibility.</p>
+<p>Install <code>gomobile</code> command first.</p>
+<pre><code>go install golang.org/x/mobile/cmd/...</code></pre>
+<p>Create a package for mobiles to use <a href="https://godoc.org/github.com/hajimehoshi/ebiten/mobile"><code>github.com/hajimehoshi/ebiten/mobile</code></a>:</p>
+<pre><code>package mobile
+
+import (
+    "github.com/hajimehoshi/ebiten/mobile"
+    "github.com/yourname/yourgame"
+)
+
+var (
+    running bool
+)
+
+const (
+    ScreenWidth  = 320
+    ScreenHeight = 240
+)
+
+// IsRunning returns a boolean value indicating whether the game is running.
+func IsRunning() bool {
+    return running
+}
+
+// Start starts the game.
+func Start(scale float64) error {
+    running = true
+    game, err := yourgame.NewGame()
+    if err != nil {
+        return err
+    }
+    // mobile.Start starts the game.
+    // In this function, scale is passed from Java/Objecitve-C side
+    // and pass it to mobile.Start. You can also receive the screen
+    // size from Java/Objetive-C side by adding arguments to this
+    // function if you want to make Java/Objective-C side decide the
+    // screen size.
+    // Note that the screen size unit is dp (device-independent pixel)
+    // on Android.
+    if err := mobile.Start(game.Update, ScreenWidth, ScreenHeight, scale, "Your Game's Title"); err != nil {
+        return err
+    }
+    return nil
+}
+
+// Update proceeds the game.
+func Update() error {
+    return mobile.Update()
+}
+
+// UpdateTouchesOnAndroid dispatches touch events on Android.
+func UpdateTouchesOnAndroid(action int, id int, x, y int) {
+    mobile.UpdateTouchesOnAndroid(action, id, x, y)
+}
+
+// UpdateTouchesOnIOS dispatches touch events on iOS.
+func UpdateTouchesOnIOS(phase int, ptr int64, x, y int) {
+    // Prepare this function if you also want to make your game run on iOS.
+    mobile.UpdateTouchesOnIOS(phase, ptr, x, y)
+}</code></pre>
+<h3>Android</h3>
+<p>(TBD)</p>
+<h3>iOS</h3>
+<p>(TBD)</p>
+
+<h2>Create an application with <code>gomobile build</code> (For testing only)</h2>
+<code>Ebiten application also works with <code>gomobile build</code>. This is useful for testing, but not suitable for actual applications in the stores.</code>
+<p>Install <code>gomobile</code> command first.</p>
+<pre><code>go install golang.org/x/mobile/cmd/...</code></pre>
+<p>Then, run <code>gomobile build</code></p>
+<pre><code>env GO111MODULE=off gomobile build [github.com/yourname/yourpackage]</code></pre>
+<p>That's it!</p>
+<p>You can install an Ebiten's example directly with <code>gomobile install</code> on your Android device:</p>
+<pre><code>env GO111MODULE=off gomobile install -tags=example github.com/hajimehoshi/ebiten/examples/paint</code></pre>
+<p>For more details, see <a href="https://github.com/golang/go/wiki/Mobile">the official Wiki page about gomobile</a></p>
+
+<!--h2><code>gomobile build</code> vs <code>gomobile bind</code></h2>
+<p>Ebiten game can be built for Android and iOS by using both <a href="https://golang.org/x/mobile/cmd/gomobile"><code>gomobile bind</code> and <code>gomobile build</code></a>. <code>gomobile bind</code> generates a shared library file (<code>.aar</code> for Android or <code>.framework</code> for iOS), while <code>gomobile build</code> generates a complete application (<code>.apk</code> for Android or <code>.app</code> for iOS).</p>
+<p>Although Ebiten accepts both, it is recommended to use <code>gomobile bind</code> for actual use. <code>gomobile build</code> is difficult to build an actual application in Play store or Apple store. <code>gomobile build</code> is very easy to use to generate an application written only in Go, but the application includes only one OpenGL surface. Even if you want to an advertisement or use inputting via a software keyboard, it is almost impossible. On the other hand, <code>gomobile bind</code> generates a shared library and you'd need some glue Java/Objective-C code to use this, but that offers flexibility where you can do everything.</p-->
