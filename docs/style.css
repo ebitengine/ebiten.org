@@ -66,10 +66,12 @@ div.toc > div {
     border-radius: 4px;
 }
 pre {
-    background-color: #e6e6e6; /* 1000-N */
+    background-color: #f3f3f3; /* 0500-N */
     color: #4c4c4c; /* 7000-N */
+    border-color: #cccccc; /* 2000-N */
     border-radius: 4px;
-    border-width: 0;
+    border-width: 1px;
+    border-style: solid;
 }
 code {
     background-color: #f3f3f3; /* 0500-N */
@@ -88,7 +90,7 @@ h1 code,
 h2 code,
 h3 code,
 h4 code {
-    background-color: #e6e6e6; /* 1000-N */
+    background-color: #f3f3f3; /* 0500-N */
 }
 p.screenshot img {
     background-color: #000;
@@ -171,7 +173,7 @@ nav.path {
 }
 pre {
     padding: 7px 18px 10px 18px;
-    margin: 0 0 4px  0;
+    margin: -1px -1px 3px -1px; /* due to the borders */
     overflow-x: auto;
 }
 div.grid-container > div {
