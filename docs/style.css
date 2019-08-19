@@ -31,11 +31,17 @@ body > nav {
 h2, h2 > code {
     color: #db5620; /* 0099-Y60R */
 }
-h3, h3 > code {
+h3 {
     color: #b65c11; /* 2080-Y45R */
 }
-h4, h4 > code {
+h3 > code {
+    color: #9f510f; /* 3070-Y45R */
+}
+h4 {
     color: #b65c11; /* 2080-Y45R */
+}
+h4 > code {
+    color: #9f510f; /* 3070-Y45R */
 }
 /*body > nav h1,
 body > nav h2,
@@ -83,6 +89,9 @@ pre code {
     background-color: transparent;
     border-style: none;
     margin: 0;
+}
+code span.comment {
+    color: #8e5809; /* 4060-Y30R */
 }
 h1 code,
 h2 code,

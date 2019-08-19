@@ -56,7 +56,13 @@ function matchesTags(tags, given) {
 }
 
 function updateCode() {
-    for (const e of document.querySelectorAll('pre[data-codesrc]')) {
+    for (const e of document.querySelectorAll('pre')) {
+        if (!e.dataset['codesrc']) {
+            for (const code of e.querySelectorAll('code')) {
+                addCommentStyle(code);
+            }
+            continue;
+        }
         (e => {
             fetch(e.dataset['codesrc']).then(r => {
                 return r.text();
@@ -72,11 +78,33 @@ function updateCode() {
                     text = lines.slice(start, end + 1).join("\n");
                 }
 
-                var code = document.createElement('code');
+                const code = document.createElement('code');
                 code.textContent = text;
+                addCommentStyle(code);
                 e.appendChild(code);
             });
         })(e);
+    }
+}
+
+function addCommentStyle(code) {
+    if (code.childNodes.length !== 1) {
+        return;
+    }
+    const text = code.childNodes[0];
+    if (text.nodeType !== Node.TEXT_NODE) {
+        return;
+    }
+    code.textContent = '';
+    for (const line of text.wholeText.split('\n')) {
+        if (!/^\s*\/\//.test(line)) {
+            code.appendChild(document.createTextNode(line + '\n'))
+            continue;
+        }
+        const span = document.createElement('span');
+        span.classList.add('comment');
+        span.textContent = line + '\n'
+        code.appendChild(span);
     }
 }
 
