@@ -347,8 +347,7 @@ body {
 }
 body > nav {
     width: 216px;
-    /* 100% is more accurate than 100vh on mobile Chrome with the address bar. */
-    height: calc(100% - 24px - 24px);
+    height: calc(var(--vh, 1vh) * 100 - 24px - 24px);
     position: -webkit-sticky;
     position: sticky;
     top: 0;

@@ -227,11 +227,19 @@ function updateBody() {
     }
 }
 
+function updateCSS() {
+    // Trick to override vh unit for mobile platforms.
+    // See https://css-tricks.com/the-trick-to-viewport-units-on-mobile/
+    const vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+}
+
 window.addEventListener('DOMContentLoaded', () => {
     updateCode();
     updateTOC();
     updateImages();
     updateBody();
+    updateCSS();
 
     const sidemenu = document.querySelector('input#sidemenu');
     if (sidemenu !== null) {
@@ -256,5 +264,6 @@ window.addEventListener('DOMContentLoaded', () => {
 
 window.addEventListener('resize', () => {
     updateImages();
+    updateCSS();
 });
 
