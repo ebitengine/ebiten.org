@@ -85,6 +85,11 @@ code {
     border-radius: 4px;
     margin: 0 -2px 0 -2px;
 }
+h1 code, h2 code, h3 code, h4 code {
+    border-width: 0 2px;
+    position: relative;
+    z-index: -1;
+}
 pre code {
     background-color: transparent;
     border-style: none;
@@ -92,12 +97,6 @@ pre code {
 }
 code span.comment {
     color: #8e5809; /* 4060-Y30R */
-}
-h1 code,
-h2 code,
-h3 code,
-h4 code {
-    background-color: #f3f3f3; /* 0500-N */
 }
 p.screenshot img {
     background-color: #000;
