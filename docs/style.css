@@ -254,19 +254,6 @@ p, ul, ol {
     position: relative;
     top: 7px;
 }
-/*pre {
-    position: relative;
-    top: -5px;
-}*/
-/*div.grid-container > div p,
-div.grid-container > div pre,
-div.grid-container > div ul,
-div.grid-container > div ol {
-    top: 0;
-}*/
-/*div.toc > div ul {
-    top: -5px;
-}*/
 
 h1, h1 > code {
     font-size: 28px;
@@ -386,6 +373,9 @@ div.grid-item-2 {
 }
 div.grid-item-3 {
     grid-column-start: span 3;
+}
+div.grid-item-4 {
+    grid-column-start: span 4;
 }
 
 /* table */
@@ -579,6 +569,9 @@ input#sidemenu:checked ~ label.sidemenucover {
     div.grid-item-2 {
         grid-column-start: span 3;
     }
+    div.grid-item-4 {
+        grid-column-start: span 3;
+    }
 
     pre code {
         font-size: 12px;
@@ -601,6 +594,9 @@ input#sidemenu:checked ~ label.sidemenucover {
     div.grid-item-3 {
         grid-column-start: span 2;
     }
+    div.grid-item-4 {
+        grid-column-start: span 2;
+    }
 }
 @media only screen and (max-width: calc(2 * 216px + 3 * 24px)) {
     div.grid-container {
@@ -610,6 +606,9 @@ input#sidemenu:checked ~ label.sidemenucover {
         grid-column-start: span 1;
     }
     div.grid-item-3 {
+        grid-column-start: span 1;
+    }
+    div.grid-item-4 {
         grid-column-start: span 1;
     }
     h1.big {

@@ -173,7 +173,7 @@ function updateTOC() {
     toc.classList.add('grid-container');
     const gridItem = document.createElement('div');
 
-    gridItem.classList.add('grid-item-2');
+    gridItem.classList.add('grid-item-4');
     toc.appendChild(gridItem);
 
     const ul = document.createElement('ul');
