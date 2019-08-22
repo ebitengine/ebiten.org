@@ -1,0 +1,21 @@
+<h1>FAQ</h1>
+<h2>General</h2>
+<h3>Why do the examples use the build tag <code>example</code>?</h3>
+<p>With the build tag, <code>go get -u github.com/hajimehoshi/ebiten/...</code> doesn't install the example binaries in your <code>$GOPATH/bin</code>.</p>
+<p>Such build tags are an idiom you can find e.g. in <code>golang.org/x/exp/shiny/example</code>.</p>
+<h3>How can I run the examples on browsers?</h3>
+<p>Run <code>gopherjs serve --tags=example</code> and see e.g., <code>https://127.0.0.1:8080/github.com/hajimehoshi/ebiten/examples/blocks</code>.</p>
+<h3>My app built with Ebiten creates an unknown process "Console Window Host". What is this?</h3>
+<p>This is because your app is still a console app, not a GUI app. Ebiten tries to close the console when necessary, but the app itself is still not recognized as a GUI app. You can suppress this by specifying ldflags when go-building like this:</p>
+<pre><code>go build -ldflags -H=windowsgui path/to/your/game</code></pre>
+<h3>Why did you name the lib "Ebiten"?</h3>
+<p>It's because Ebiten is delicious.</p>
+<h2>Graphics</h2>
+<h3>How to draw lines?</h3>
+<p>Use <a href="http://godoc.org/github.com/hajimehoshi/ebiten/ebitenutil#DrawLine"><code>ebitenutil.DrawLine</code></a>. Note that this function is only for debugging and prototyping only.</p>
+<p>See <a href="https://github.com/hajimehoshi/ebiten/issues/137">the discussion #137</a> on other primitive drawings.</p>
+<h3>How to take a screenshot?</h3>
+<p>Specify the key to environment variable <code>EBITEN_SCREENSHOT_KEY</code> and you can take a screenshot by pressing the specified key.</p>
+<pre><code>EBITEN_SCREENSHOT_KEY=escape go run examples/flappy.go</code></pre>
+<h3>Ebiten's screen is scaled (and blurred) on high-DPI screen. Can I disable this scaling? In other words, can I have a hi-DPI mode?</h3>
+<p>You can pass <code>1 / ebiten.DeviceScaleFactor()</code> to <code>Run</code>'s scale argument so that you can get the screen without scaling by the device scale. For an actual example, see <a href="https://github.com/hajimehoshi/ebiten/blob/master/examples/highdpi/main.go"><code>examples/highdpi</code></a>.</p>
