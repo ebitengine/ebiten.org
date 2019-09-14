@@ -59,6 +59,20 @@ public class EbitenView extends ViewGroup {
     protected void onErrorOnGameUpdate(Exception e) {
         // Default error handling implementation.
     }
+
+    // suspendGame suspends the game.
+    // It is recommended to call this when the application is being suspended e.g.,
+    // Activity's onPause is called.
+    public void suspendGame() {
+        // ...
+    }
+
+    // resumeGame resumes the game.
+    // It is recommended to call this when the application is being resumed e.g.,
+    // Activity's onResume is called.
+    public void resumeGame() {
+        // ...
+    }
 }</code></pre>
 
 <h3>iOS</h3>
