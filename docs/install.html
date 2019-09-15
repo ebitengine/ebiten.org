@@ -204,7 +204,11 @@ go run -tags=example ./examples/rotate</code></pre>
 </div>
 <script>
   function switchOS(os) {
-      switchOSImpl(os);
+      const newOS = switchOSImpl(os);
+
+      const params = new URLSearchParams(new URL(window.location).search);
+      params.set('os', newOS);
+      window.history.pushState({}, '', `?${params}`);
   }
 
   function switchOSImpl(os) {
@@ -231,10 +235,20 @@ go run -tags=example ./examples/rotate</code></pre>
       }
 
       updateTOC();
+
+      return newOS;
   }
   
   window.addEventListener('DOMContentLoaded', () => {
-      switchOSImpl(goos());
+      let os = goos();
+
+      const params = new URLSearchParams(new URL(window.location).search);
+      const givenOS = params.get('os');
+      if (givenOS) {
+          os = givenOS;
+      }
+
+      switchOSImpl(os);
   });
 </script>
 
