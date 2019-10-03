@@ -5,8 +5,6 @@
 </nav>
 <h1>{{.Title}}</h1>
 <p class="img"><iframe src="https://jsgo.io/github.com/hajimehoshi/ebiten/examples/{{.Base}}" width="{{.Width}}" height="{{.Height}}" allow="autoplay"></iframe></p>
-<h2>Run on the Playground</h2>
-<p><a href="https://play.jsgo.io/github.com/hajimehoshi/ebiten/examples/{{.Base}}">Jsgo Playground page</a></p>
 <h2>Run locally</h2>
 <pre><coce>go run -tags=example github.com/hajimehoshi/ebiten/examples/{{.Base}}</code></pre>
 {{if .Code}}
