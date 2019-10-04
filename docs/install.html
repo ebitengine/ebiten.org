@@ -238,17 +238,22 @@ go run -tags=example ./examples/rotate</code></pre>
 
       return newOS;
   }
-  
-  window.addEventListener('DOMContentLoaded', () => {
-      let os = goos();
 
+  function getOSToShow() {
       const params = new URLSearchParams(new URL(window.location).search);
       const givenOS = params.get('os');
       if (givenOS) {
-          os = givenOS;
+          return givenOS;
       }
+      return goos();
+  }
+  
+  window.addEventListener('DOMContentLoaded', () => {
+      switchOSImpl(getOSToShow());
+  });
 
-      switchOSImpl(os);
+  window.addEventListener('popstate', () => {
+      switchOSImpl(getOSToShow());
   });
 </script>
 
