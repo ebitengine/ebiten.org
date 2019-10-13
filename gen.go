@@ -136,18 +136,10 @@ func run() error {
 			title = fmt.Sprintf("%s - Ebiten", html.UnescapeString(m[1]))
 		}
 
-		suf := "/"
 		nav := false
 		feedback := false
 		if path != filepath.Join("contents", "404.html") {
-			level := 0
-			suf = "./"
 			nav = true
-			if filepath.Dir(rel) != "." {
-				level = len(filepath.SplitList(filepath.Dir(rel)))
-				suf = strings.Repeat("../", level)
-			}
-
 			feedback = true
 		}
 
@@ -167,7 +159,6 @@ func run() error {
 			"Desc":      description,
 			"Content":   content,
 			"Canonical": canonical,
-			"URLSuffix": suf,
 			"Nav":       nav,
 			"Feedback":  feedback,
 		}); err != nil {
