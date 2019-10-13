@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+  </head>
+  <body>
+    <script src="/scripts/wasm_exec.js"></script>
+    <script>
+      (async () => {
+          // polyfill
+          if (!WebAssembly.instantiateStreaming) { 
+	      WebAssembly.instantiateStreaming = async (resp, importObject) => {
+	          const source = await (await resp).arrayBuffer();
+	          return await WebAssembly.instantiate(source, importObject);
+	      };
+          }
+
+          const go = new Go();
+          const name = window.location.search.substring(1);
+          const url = `https://storage.googleapis.com/ebiten-dot-org-wasm/${name}.wasm`;
+          const result = await WebAssembly.instantiateStreaming(fetch(url), go.importObject).catch((err) => {
+	      console.error(err);
+          });
+          document.getElementById('loading').remove();
+          go.run(result.instance);
+      })();
+    </script>
+    <p id="loading">Loading...</p>
+  </body>
+</html>

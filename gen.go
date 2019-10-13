@@ -47,6 +47,9 @@ func cleanup() error {
 		if filepath.Ext(path) != ".html" {
 			return nil
 		}
+		if strings.HasPrefix(filepath.Base(path), "_") {
+			return nil
+		}
 		if err := os.Remove(path); err != nil {
 			return err
 		}
