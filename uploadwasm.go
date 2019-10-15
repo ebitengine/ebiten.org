@@ -139,47 +139,67 @@ func run() error {
 		return err
 	}
 
-	semaphore := make(chan struct{}, 4)
+	ch := make(chan string, 4)
 
 	var g errgroup.Group
-	for _, e := range es {
-		e := e
-		semaphore <- struct{}{}
-		g.Go(func() error {
-			defer func() {
-				<-semaphore
-			}()
+	g.Go(func() error {
+		defer close(ch)
 
-			name := e + ".wasm"
-			args := []string{
-				"build",
-				"-o", filepath.Join(tmpout, name),
-				"-tags", "example",
-				"./examples/" + e,
-			}
-			fmt.Println("go", strings.Join(args, " "))
-			cmd := exec.Command("go", args...)
-			cmd.Env = append(os.Environ(), "GOOS=js", "GOARCH=wasm")
-			cmd.Dir = *flagEbitenPath
-			cmd.Stderr = os.Stderr
+		var g errgroup.Group
+		for _, e := range es {
+			e := e
+			g.Go(func() error {
+				name := e + ".wasm"
+				args := []string{
+					"build",
+					"-o", filepath.Join(tmpout, name),
+					"-tags", "example",
+					"./examples/" + e,
+				}
+				fmt.Println("go", strings.Join(args, " "))
+				cmd := exec.Command("go", args...)
+				cmd.Env = append(os.Environ(), "GOOS=js", "GOARCH=wasm")
+				cmd.Dir = *flagEbitenPath
+				cmd.Stderr = os.Stderr
 
-			if err := cmd.Run(); err != nil {
-				return err
-			}
+				if err := cmd.Run(); err != nil {
+					return err
+				}
 
-			f, err := os.Open(filepath.Join(tmpout, name))
-			if err != nil {
-				return err
-			}
-			defer f.Close()
+				ch <- e + ".wasm"
 
-			if err := uploadFile(ctx, name, f); err != nil {
-				return err
-			}
+				return nil
+			})
+		}
+		return g.Wait()
+	})
+	g.Go(func() error {
+		semaphore := make(chan struct{}, 4)
 
-			return nil
-		})
-	}
+		var g errgroup.Group
+		for name := range ch {
+			name := name
+			semaphore <- struct{}{}
+			g.Go(func() error {
+				defer func() {
+					<-semaphore
+				}()
+
+				f, err := os.Open(filepath.Join(tmpout, name))
+				if err != nil {
+					return err
+				}
+				defer f.Close()
+
+				if err := uploadFile(ctx, name, f); err != nil {
+					return err
+				}
+
+				return nil
+			})
+		}
+		return g.Wait()
+	})
 
 	if err := g.Wait(); err != nil {
 		return err
