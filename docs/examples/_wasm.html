@@ -17,7 +17,13 @@
 
           const go = new Go();
           const name = window.location.search.substring(1);
-          const url = `https://storage.googleapis.com/ebiten-dot-org-wasm/${name}.wasm`;
+          let url = `https://storage.googleapis.com/ebiten-dot-org-wasm/${name}.wasm`;
+          if (location.hostname === 'localhost') {
+              const params = new URLSearchParams(window.parent.location.search);
+              if (params.has('wasmurl')) {
+                  url = params.get('wasmurl');
+              }
+          }
           const result = await WebAssembly.instantiateStreaming(fetch(url), go.importObject).catch((err) => {
 	      console.error(err);
           });
