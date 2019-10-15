@@ -124,6 +124,17 @@ function updateImages() {
 }
 
 function adjustHeight(e) {
+    // For small diplays, shrink the iframe with keeping its aspect ratio.
+    if (e.tagName === 'IFRAME') {
+        const border = 1;
+        if (e.offsetWidth - border*2 < e.width) {
+            const width = e.offsetWidth - border*2;
+            const ratio = e.height / e.width;
+            const height = Math.ceil(width * ratio);
+            e.style.height = `${height}px`;
+        }
+    }
+
     const unit = 24;
     const height = ~~(((e.offsetHeight-1) / unit) + 1) * unit;
     e.parentNode.style.height = `${height}px`;
