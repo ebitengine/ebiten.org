@@ -1,6 +1,6 @@
 /* font */
 
-body, code {
+body, code, pre {
     font-family: 'Roboto Mono', YuGothic, 'Yu Gothic', 游ゴシック体, 游ゴシック, monospace;
     font-display: auto;
 }

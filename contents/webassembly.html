@@ -1,0 +1,34 @@
+<h1>WebAssembly</h1>
+<h2>Option 1. WasmServe</h2>
+<p>If you want to see your game working on browsers, <a href="github.com/hajimehoshi/wasmserve">wasmserve</a> is the easiest way.</p>
+<pre><code>go get github.com/hajimehoshi/wasmserve
+wasmserve ./path/to/yourgame</code></pre>
+<p>Then access <code>http://localhost:8080/</code>.</p>
+<h2>Option 2. Compiling by yourself</h2>
+<p>If you want to publish your game, you'd need to compile your game by yourself.</p>
+<h3>Compiling your game</h3>
+<pre><code>GOOS=js GOARCH=wasm go build -o yourgame.wasm github.com/yourname/yourgame</code></pre>
+<h3>Copying <code>wasm_exec.js</code> to execute the Wasm binary</pre></h3>
+<pre><code>cp $(go env GOROT)/misc/wasm/wasm_exec.js .</code></pre>
+<h3>Creating an HTML</h3>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;script src="wasm_exec.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+// Polyfill
+if (!WebAssembly.instantiateStreaming) {
+  WebAssembly.instantiateStreaming = async (resp, importObject) => {
+    const source = await (await resp).arrayBuffer();
+    return await WebAssembly.instantiate(source, importObject);
+  };
+}
+
+const go = new Go();
+WebAssembly.instantiateStreaming(fetch("yourgame.wasm"), go.importObject).then(result => {
+  go.run(result.instance);
+});
+&lt;/script&gt;</code></pre>
+<p>Then open the HTML. you might need local HTTP server.</p>
+<p>If you want to embed your game into your web page, using iframe is strongly recommended.</p>
+<p>You might find this message with Chrome:</p>
+<pre>The AudioContext was not allowed to start. It must be resume (or created) after a user gesture on the page. https://goo.gl/7K7WLu</pre>
+<p>In this case, you can solve this by putting <code>allow="autoplay"</code> on the iframe.</p>
