@@ -1,0 +1,27 @@
+<h1>GopherJS</h1>
+<p><a href="https://github.com/gopherjs/gopherjs">GopherJS</a> is a software to convert Go to JavaScript. You can run your Ebiten game on browsers. As GopherJS is not actively maintained now, it is recomended to use <a href="webassembly.html">WebAssembly</a> if possible.</p>
+<h2>Installing Go 1.12</h2>
+<p>GopherJS requires Go 1.12 or older. Get Go 1.12 via your current Go:</p>
+<pre><code>go get golang.org/dl/go1.12.13
+go1.12.13 download</code></pre>
+<h2>Installing GopherJS</h2>
+<p>Install gopherjs command. You might need to set <code>GO111MODULE</code> <code>off</code>.</p>
+<pre><code>go1.12.13 get github.com/gopherjs/gopherjs</code></pre>
+<p>Compile your game with GopherJS:</p>
+<pre><code>gopherjs build -o yourgame.js path/to/yourgame</code></pre>
+<p>Then, open the below HTML on your HTTP server:</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;script src="yourgame.js"&gt;&lt;/script&gt;&lt;/code&gt;</code></pre>
+<p>NOTE: <code>file://</code> URL may not work with Ebiten. Execute your game on a HTTP server.</p>
+<p>If you want to embed your game into your web page, using iframe is strongly recommended.</p>
+<p>You might find this message with Chrome:</p>
+<pre>The AudioContext was not allowed to start. It must be resume (or created) after a user gesture on the page. https://goo.gl/7K7WLu</pre>
+<p>In this case, you can solve this by putting <code>allow="autoplay"</code> on the iframe.</p>
+<h2>Emulating context-lost</h2>
+<pre><code>document.getElementsByTagName("canvas")[0].getContext("webgl").getExtension('WEBGL_lose_context').loseContext();</code></pre>
+<p>Note that Ebiten automatically restores images on desktop browsers when the context is lost. This restoring doesn't work on mobile browsers for a performance reason.</p>
+<h2>Running examples on browsers</h2>
+<pre><code>gopherjs serve --tags=example</code></pre>
+<p>And access to <code>http://127.0.0.1:8080/github.com/hajimehoshi/ebiten/examples/blocks</code>.</p>
+<p>On Windows, you might need to set GOOS environment variable:</p>
+<pre><code>set GOOS=linux</code></pre>
