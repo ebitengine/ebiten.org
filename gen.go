@@ -153,7 +153,9 @@ func run() error {
 		case "index.html":
 			canonical = url
 		default:
-			canonical = url + "/" + rel
+			// When generated on a Windows machine, rel will have \ characters.
+			// Use ToSlash to ensure that all path separators are /.
+			canonical = url + "/" + filepath.ToSlash(rel)
 			canonical = strings.TrimSuffix(canonical, "index.html")
 		}
 
