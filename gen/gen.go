@@ -79,6 +79,9 @@ func Run(url, description string) error {
 			if filepath.Base(path) == "tmpl.html" {
 				return nil
 			}
+			if filepath.Base(path) == "nav.html" {
+				return nil
+			}
 
 			c, err := ioutil.ReadFile(path)
 			if err != nil {
@@ -152,12 +155,20 @@ func Run(url, description string) error {
 			canonical = strings.TrimSuffix(canonical, "index.html")
 		}
 
+		f := filepath.Join(filepath.Dir(path), "nav.html")
+		c, err := ioutil.ReadFile(f)
+		if err != nil && !os.IsNotExist(err) {
+			return err
+		}
+		subnav := string(c)
+
 		if err := tmpl.Execute(w, map[string]interface{}{
 			"Title":     title,
 			"Desc":      description,
 			"Content":   content,
 			"Canonical": canonical,
-			"Nav":       nav,
+			"NavExists": nav,
+			"SubNav":    subnav,
 			"Feedback":  feedback,
 		}); err != nil {
 			return err

@@ -14,7 +14,7 @@
     <meta name="twitter:title" content="{{.Title}}">
     <meta name="twitter:description" content="{{.Desc}}">
     <meta name="twitter:image" content="https://ebiten.org/images/share.png">
-    <title>{{.Title}}</title>
+    <title>{{ .Title }}</title>
     {{ if .Canonical }}<link rel="canonical" href="{{.Canonical}}">{{ end }}
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700%7cRoboto+Mono:400,700&amp;display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
@@ -23,7 +23,7 @@
     <script src="/scripts/script.js" defer></script>
   </head>
   <body>
-    {{if .Nav -}}
+    {{if .NavExists -}}
     <input type="checkbox" id="sidemenu"><label for="sidemenu" class="sidemenubutton"></label><label for="sidemenu" class="sidemenucover"></label>
     <nav>
       <h1><a href="/">Ebiten</a></h1>
@@ -34,17 +34,18 @@
         <li><a href="/documents/">Documents</a></li>
         <li><a href="/examples/">Examples</a></li>
       </ul>
+      {{ if .SubNav }}{{ .SubNav | noescape }}{{ end }}
     </nav>
     {{- end}}
     <main>
       <article>
-        {{.Content | noescape}}
+        {{ .Content | noescape }}
       </article>
-      {{if .Feedback -}}
+      {{ if .Feedback -}}
       <footer>
         <p>Feedback about this page? <a href="https://github.com/ebiten/ebiten.org/issues/new?body={{.Canonical}}%0a%0a">Please reach out on GitHub</a>. Thank you!</p>
       </footer>
-      {{- end}}
+      {{- end }}
     </main>
   </body>
 </html>
