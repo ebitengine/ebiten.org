@@ -43,6 +43,16 @@ h4 {
 h4 > code {
     color: #9f510f; /* 3070-Y45R */
 }
+body > nav h1 {
+    color: #d54125; /* 0099-Y70R */
+}
+body > nav h2 {
+    color: #d54125; /* 0099-Y70R */
+    /*color: #b14c16; /* 2080-Y55R */
+}
+body > nav h3 {
+    color: #b14c16; /* 2080-Y55R */
+}
 /*body > nav h1,
 body > nav h2,
 body > nav h3,
@@ -59,7 +69,7 @@ a:hover, a:active {
     color: #c54c1b /* 1090-Y60R */
 }
 body > nav h1 a {
-    color: #c54c1b !important; /* 1090-Y60R */
+    color: #d54125 !important; /* 0099-Y70R */
 }
 a[href="#"] {
     color: #999999 !important;
@@ -212,6 +222,10 @@ body > nav h1 {
 }
 body > nav h2 {
     margin-top: 0;
+    margin-bottom: 24px;
+}
+body > nav h3 {
+    margin-top: 0;
     margin-bottom: 0;
 }
 
@@ -312,6 +326,14 @@ body > nav h1 {
     top: -8px;
 }
 body > nav h2 {
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 24px;
+
+    position: relative;
+    top: 5px;
+}
+body > nav h3 {
     font-size: 14px;
     font-weight: bold;
     line-height: 24px;
