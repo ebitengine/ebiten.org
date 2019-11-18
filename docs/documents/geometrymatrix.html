@@ -15,7 +15,7 @@
     <meta name="twitter:description" content="Ebiten is an open-source game library, with which you can develop 2D games with simple API for multi platforms in the Go programming language.">
     <meta name="twitter:image" content="https://ebiten.org/images/share.png">
     <title>Geometry Matrix - Ebiten</title>
-    <link rel="canonical" href="https://ebiten.org/geometrymatrix.html">
+    <link rel="canonical" href="https://ebiten.org/documents/geometrymatrix.html">
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700%7cRoboto+Mono:400,700&amp;display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
     <link rel="stylesheet" type="text/css" href="/style.css">
@@ -30,43 +30,8 @@
         <li><a href="/">Home</a></li>
         <li><a href="https://github.com/hajimehoshi/ebiten">GitHub project</a></li>
         <li><a href="https://godoc.org/github.com/hajimehoshi/ebiten">API reference</a></li>
+        <li><a href="/documents/">Documents</a></li>
         <li><a href="/examples/">Examples</a></li>
-        <li><a href="/cheatsheet.html">Cheat Sheet</a></li>
-      </ul>
-      <h2>Getting Started</h2>
-      <ul>
-        <li><a href="/install.html">Install</a></li>
-        <li><a href="/helloworld.html">Hello, World!</a></li>
-      </ul>
-      <h2>Graphics</h2>
-      <ul>
-        <li><a href="/fill.html">Fill</a></li>
-        <li><a href="/renderimage.html">Render an Image</a></li>
-        <li><a href="/geometrymatrix.html">Geometry Matrix</a></a></li>
-        <li><a href="#">Filter (TBD)</a></li>
-        <li><a href="#">Offscreen (TBD)</a></li>
-        <li><a href="#">Color Matrix (TBD)</a></li>
-        <li><a href="#">Tiling (TBD)</a></li>
-      </ul>
-      <h2>Input</h2>
-      <ul>
-        <li><a href="#">Keyboard (TBD)</a></li>
-        <li><a href="#">Mouse (TBD)</a></li>
-        <li><a href="#">Gamepad (TBD)</a></li>
-      </ul>
-      <h2>Building</h2>
-      <ul>
-        <li><a href="/mobile.html">Mobile</a></li>
-        <li><a href="/webassembly.html">WebAssembly</a></li>
-        <li><a href="/gopherjs.html">GopherJS</a></li>
-      </ul>
-      <h2>Documents</h2>
-      <ul>
-        <li><a href="/cheatsheet.html">Cheat Sheet</a></li>
-        <li><a href="/faq.html">FAQ</a></li>
-        <li><a href="/performancetips.html">Performance Tips</a></li>
-        <li><a href="/packages.html">Packages</a></li>
-        <li><a href="/implementation.html">Implementation</a></li>
       </ul>
     </nav>
     <main>
@@ -74,13 +39,13 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
 <h1>Geometry Matrix</h1>
 <h2>Code</h2>
-<pre data-codesrc="go/geometrymatrix/main.go"></pre>
+<pre data-codesrc="/go/geometrymatrix/main.go"></pre>
 <div class="grid-container">
   <div class="grid-item-2">
     <p>To execute this program, you need the image file <code>gopher.png</code> at the same directory:</p>
   </div>
   <div class="grid-item-2">
-    <p class="img"><img src="go/geometrymatrix/gopher.png" width="240" height="240" alt="Gopher"></p>
+    <p class="img"><img src="/go/geometrymatrix/gopher.png" width="240" height="240" alt="Gopher"></p>
   </div>
 </div>
 <div class="grid-container">
@@ -88,13 +53,13 @@
     <p>The result will be like this:</p>
   </div>
   <div class="grid-item-2">
-    <p class="img screenshot"><img src="images/go/geometrymatrix.png" width="320" height="240" alt="Screenshot"></p>
+    <p class="img screenshot"><img src="/images/go/geometrymatrix.png" width="320" height="240" alt="Screenshot"></p>
   </div>
 </div>
 <h2>How the code works</h2>
 <div class="grid-container">
   <div class="grid-item-2">
-    <pre data-codesrc="go/geometrymatrix/main.go" data-codelinerange="25-28"></pre>
+    <pre data-codesrc="/go/geometrymatrix/main.go" data-codelinerange="25-28"></pre>
   </div>
   <div class="grid-item-2">
     <p>The program is almost same as <a href="renderimage.html">render-an-image example</a>. The difference is whether <a href="https://godoc.org/github.com/hajimehoshi/ebiten#DrawImageOptions"><code>DrawImageOptions</code></a> is specified or not at the <a href="https://godoc.org/github.com/hajimehoshi/ebiten#Image.DrawImage"><code>DrawImage</code></a> call. In this example, a <a href="https://godoc.org/github.com/hajimehoshi/ebiten#GeoM"><code>GeoM</code></a> is adjusted. <code>GeoM</code> represents <a href="https://en.wikipedia.org/wiki/Affine_transformation">an affine matrix</a> to translate, scale or rotate the image.</p>
@@ -184,7 +149,7 @@ g
 
       </article>
       <footer>
-        <p>Feedback about this page? <a href="https://github.com/ebiten/ebiten.org/issues/new?body=https%3a%2f%2febiten.org%2fgeometrymatrix.html%0a%0a">Please reach out on GitHub</a>. Thank you!</p>
+        <p>Feedback about this page? <a href="https://github.com/ebiten/ebiten.org/issues/new?body=https%3a%2f%2febiten.org%2fdocuments%2fgeometrymatrix.html%0a%0a">Please reach out on GitHub</a>. Thank you!</p>
       </footer>
     </main>
   </body>

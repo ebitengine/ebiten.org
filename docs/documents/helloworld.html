@@ -15,7 +15,7 @@
     <meta name="twitter:description" content="Ebiten is an open-source game library, with which you can develop 2D games with simple API for multi platforms in the Go programming language.">
     <meta name="twitter:image" content="https://ebiten.org/images/share.png">
     <title>Hello, World! - Ebiten</title>
-    <link rel="canonical" href="https://ebiten.org/helloworld.html">
+    <link rel="canonical" href="https://ebiten.org/documents/helloworld.html">
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700%7cRoboto+Mono:400,700&amp;display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
     <link rel="stylesheet" type="text/css" href="/style.css">
@@ -30,43 +30,8 @@
         <li><a href="/">Home</a></li>
         <li><a href="https://github.com/hajimehoshi/ebiten">GitHub project</a></li>
         <li><a href="https://godoc.org/github.com/hajimehoshi/ebiten">API reference</a></li>
+        <li><a href="/documents/">Documents</a></li>
         <li><a href="/examples/">Examples</a></li>
-        <li><a href="/cheatsheet.html">Cheat Sheet</a></li>
-      </ul>
-      <h2>Getting Started</h2>
-      <ul>
-        <li><a href="/install.html">Install</a></li>
-        <li><a href="/helloworld.html">Hello, World!</a></li>
-      </ul>
-      <h2>Graphics</h2>
-      <ul>
-        <li><a href="/fill.html">Fill</a></li>
-        <li><a href="/renderimage.html">Render an Image</a></li>
-        <li><a href="/geometrymatrix.html">Geometry Matrix</a></a></li>
-        <li><a href="#">Filter (TBD)</a></li>
-        <li><a href="#">Offscreen (TBD)</a></li>
-        <li><a href="#">Color Matrix (TBD)</a></li>
-        <li><a href="#">Tiling (TBD)</a></li>
-      </ul>
-      <h2>Input</h2>
-      <ul>
-        <li><a href="#">Keyboard (TBD)</a></li>
-        <li><a href="#">Mouse (TBD)</a></li>
-        <li><a href="#">Gamepad (TBD)</a></li>
-      </ul>
-      <h2>Building</h2>
-      <ul>
-        <li><a href="/mobile.html">Mobile</a></li>
-        <li><a href="/webassembly.html">WebAssembly</a></li>
-        <li><a href="/gopherjs.html">GopherJS</a></li>
-      </ul>
-      <h2>Documents</h2>
-      <ul>
-        <li><a href="/cheatsheet.html">Cheat Sheet</a></li>
-        <li><a href="/faq.html">FAQ</a></li>
-        <li><a href="/performancetips.html">Performance Tips</a></li>
-        <li><a href="/packages.html">Packages</a></li>
-        <li><a href="/implementation.html">Implementation</a></li>
       </ul>
     </nav>
     <main>
@@ -75,7 +40,7 @@
 <p>As the first Ebiten game, let's show the message 'Hello, World!'.</p>
 <h2>Code</h2>
 <p>Create a file <code>main.go</code> like this:</p>
-<pre data-codesrc="go/helloworld/main.go"></pre>
+<pre data-codesrc="/go/helloworld/main.go"></pre>
 <p>Then, execute this Go program by <code>go run</code>:</p>
 <pre><code>go run main.go</code></pre>
 <div class="grid-container">
@@ -83,13 +48,13 @@
     <p>If you see the screen with the text 'Hello, World!', congratulations, your program succeeded to work!:</p>
   </div>
   <div class="grid-item-2">
-    <p class="img screenshot"><img src="images/go/helloworld.png" width="320" height="240"></p>
+    <p class="img screenshot"><img src="/images/go/helloworld.png" width="320" height="240"></p>
   </div>
 </div>
 <h2>How the code works</h2>
 <div class="grid-container">
   <div class="grid-item-2">
-    <pre data-codesrc="go/helloworld/main.go" data-codelinerange="1-8"></pre>
+    <pre data-codesrc="/go/helloworld/main.go" data-codelinerange="1-8"></pre>
   </div>
   <div class="grid-item-2">
     <p>Imports Ebiten packages. That program imports two packages: <code><a href="https://godoc.org/github.com/hajimehoshi/ebiten">github.com/hajimehoshi/ebiten</a></code> and <code><a href="https://godoc.org/github.com/hajimehoshi/ebiten/ebitenutil">github.com/hajimehoshi/ebiten/ebitenutil</a></code>.</p>
@@ -98,33 +63,33 @@
     <p>There are other several packages in Ebiten. See <a href="packages.html">the packages page</a> for more details.</p>
   </div>
   <div class="grid-item-2">
-    <pre data-codesrc="go/helloworld/main.go" data-codelinerange="10-10"></pre>
+    <pre data-codesrc="/go/helloworld/main.go" data-codelinerange="10-10"></pre>
   </div>
   <div class="grid-item-2">
     <p>Defines <code>update</code> function, that is called every frame. This is called 60 times per second (i.e. an Ebiten game work in 60 ticks-per-second by default). This function is passed to <code>ebiten.Run</code> function later. <code>update</code> takes an argument <code>screen</code>, which is a pointer to an <code>ebiten.Image</code>. In Ebiten, all images like images created from image files, offscreen images (temporary render target), and the screen are represented as <code>ebiten.Image</code> objects. <code>screen</code> argument is the final destination of rendering. The window shows the final state of <code>screen</code> every frame.</p>
   </div>
   <div class="grid-item-2">
-    <pre data-codesrc="go/helloworld/main.go" data-codelinerange="11-13"></pre>
+    <pre data-codesrc="/go/helloworld/main.go" data-codelinerange="11-13"></pre>
   </div>
   <div class="grid-item-2">
     <p><code><a href="https://godoc.org/github.com/hajimehoshi/ebiten#IsDrawingSkipped">ebiten.IsDrawingSkipped</a></code> reports whether the drawing is skipped i.e. the final state of <code>screen</code> is not adopted. Even though <code>update</code> is called every frame, rendering skip can sometimes happen in any environments. When <code>IsDrawingSkipped</code> returns true, any drawing operations should be skipped for performance since rendering result is not used. In usual Ebiten games, it is expected that updating game states happens before checking <code>IsDrawingSkipped</code>, and drawing happens after checking <code>IsDrawingSkipped</code>. In this hello-world example, <code>IsDrawingSkipped</code> is places first since this doesn't have any game states.</p>
     <p><code>update</code> function returns <code>nil</code> when <code>IsDrawingSkipped</code> returns true. For the returning value of <code>update</code>, I'll describe later.</p>
   </div>
   <div class="grid-item-2">
-    <pre data-codesrc="go/helloworld/main.go" data-codelinerange="14-14"></pre>
+    <pre data-codesrc="/go/helloworld/main.go" data-codelinerange="14-14"></pre>
   </div>
   <div class="grid-item-2">
     <p><code><a href="https://godoc.org/github.com/hajimehoshi/ebiten/ebitenutil#DebugPrint">ebitenutil.DebugPrint</a></code> is a utility function to render a debug message on an image. In this case, <code>screen</code> is passed as the render target of the debug printing. As <code>screen</code> is reset (or cleared in another word) whenever <code>update</code> is called, <code>DebugPrint</code> should be called every time.</p>
     <p><code>DebugPrint</code> always returns <code>nil</code>. The signature says that <code>DebugPrint</code> returns an error value, but this is due to historical reasons. You can ignore the returned error of <code>DebugPrint</code>.</p>
   </div>
   <div class="grid-item-2">
-    <pre data-codesrc="go/helloworld/main.go" data-codelinerange="15-16"></pre>
+    <pre data-codesrc="/go/helloworld/main.go" data-codelinerange="15-16"></pre>
   </div>
   <div class="grid-item-2">
     <p><code>update</code> returns an error value. In that code, <code>update</code> always returns <code>nil</code>. In general, when updating function returns a non-nil error, the Ebiten game suspends. As that program never returns a non-nil error, the Ebiten game never stops unless the user closes the window.</p>
   </div>
   <div class="grid-item-2">
-    <pre data-codesrc="go/helloworld/main.go" data-codelinerange="18-22"></pre>
+    <pre data-codesrc="/go/helloworld/main.go" data-codelinerange="18-22"></pre>
   </div>
   <div class="grid-item-2">
     <p>Defines the <code>main</code> function, which is the entry point of that program. <code><a href="https://godoc.org/github.com/hajimehoshi/ebiten#Run">ebiten.Run</a></code> is the function to run the main loop of an Ebiten game. The first argument is a function that is called every frame. <code>update</code> is passed in that program. The other arguments are the screen width, the screen height, the screen scale, and the title respectively. <code>ebiten.Run</code> returns a non-nil error value when an error happen. In that program, when a non-nil error is returned, that error is logged as a fatal error.</p>
@@ -133,7 +98,7 @@
 
       </article>
       <footer>
-        <p>Feedback about this page? <a href="https://github.com/ebiten/ebiten.org/issues/new?body=https%3a%2f%2febiten.org%2fhelloworld.html%0a%0a">Please reach out on GitHub</a>. Thank you!</p>
+        <p>Feedback about this page? <a href="https://github.com/ebiten/ebiten.org/issues/new?body=https%3a%2f%2febiten.org%2fdocuments%2fhelloworld.html%0a%0a">Please reach out on GitHub</a>. Thank you!</p>
       </footer>
     </main>
   </body>

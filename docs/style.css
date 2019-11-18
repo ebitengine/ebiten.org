@@ -61,7 +61,7 @@ a:hover, a:active {
 body > nav h1 a {
     color: #c54c1b !important; /* 1090-Y60R */
 }
-body > nav a[href="#"] {
+a[href="#"] {
     color: #999999 !important;
     cursor: default;
     text-decoration: none;
