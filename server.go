@@ -22,22 +22,21 @@ import (
 	"net/http"
 	"os"
 	"path/filepath"
-	"runtime"
 )
 
 var (
 	httpAddr = flag.String("http", ":8000", "HTTP address")
 )
 
-func init() {
-	flag.Parse()
-}
-
 var rootPath = ""
 
 func init() {
-	_, path, _, _ := runtime.Caller(0)
-	rootPath = filepath.Join(filepath.Dir(path), "docs")
+	flag.Parse()
+	dir := flag.Arg(0)
+	if dir == "" {
+		dir = "."
+	}
+	rootPath = filepath.Join(dir, "docs")
 }
 
 type handler struct{}
