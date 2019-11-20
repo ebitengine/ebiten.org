@@ -7,14 +7,14 @@
     <meta name="theme-color" content="#db5620">
     <meta property="og:title" content="{{.Title}}">
     <meta property="og:site_name" content="Ebiten - A dead simple 2D game library in Go">
-    <meta property="og:image" content="https://ebiten.org/images/share.png">
+    <meta property="og:image" content="{{.Share}}">
     <meta property="og:description" content="{{.Desc}}">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@hajimehoshi">
     <meta name="twitter:title" content="{{.Title}}">
     <meta name="twitter:description" content="{{.Desc}}">
-    <meta name="twitter:image" content="https://ebiten.org/images/share.png">
-    <title>{{ .Title }}</title>
+    <meta name="twitter:image" content="{{.Share}}">
+    <title>{{.Title}}</title>
     {{ if .Canonical }}<link rel="canonical" href="{{.Canonical}}">{{ end }}
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700%7cRoboto+Mono:400,700&amp;display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">

@@ -17,17 +17,66 @@ package gen
 import (
 	"bytes"
 	"encoding/json"
+	"errors"
 	"fmt"
-	"html"
 	"html/template"
 	"io/ioutil"
 	"os"
 	"path/filepath"
-	"regexp"
 	"strings"
+
+	"golang.org/x/net/html"
 )
 
-var reTitle = regexp.MustCompile(`<h1>([^<]+)</h1>`)
+func walkHTML(node *html.Node, f func(node *html.Node) error) error {
+	if err := f(node); err != nil {
+		return err
+	}
+	for n := node.FirstChild; n != nil; n = n.NextSibling {
+		if err := walkHTML(n, f); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+func findFirstElementByName(node *html.Node, name string) (*html.Node, error) {
+	t := errors.New("regular termination")
+	var found *html.Node
+	if err := walkHTML(node, func(node *html.Node) error {
+		if node.Type == html.ElementNode && node.Data == name {
+			found = node
+			return t
+		}
+		return nil
+	}); err != nil && err != t {
+		return nil, err
+	}
+	return found, nil
+}
+
+func findElementByID(node *html.Node, id string) (*html.Node, error) {
+	t := errors.New("regular termination")
+	var found *html.Node
+	if err := walkHTML(node, func(node *html.Node) error {
+		if node.Type == html.ElementNode {
+			for _, attr := range node.Attr {
+				if attr.Key != "id" {
+					continue
+				}
+				if attr.Val != id {
+					break
+				}
+				found = node
+				return t
+			}
+		}
+		return nil
+	}); err != nil && err != t {
+		return nil, err
+	}
+	return found, nil
+}
 
 func cleanup() error {
 	return filepath.Walk("docs", func(path string, info os.FileInfo, err error) error {
@@ -115,6 +164,12 @@ func Run(url, description string) error {
 			return nil
 		}
 
+		b := bytes.NewReader([]byte(content))
+		node, err := html.Parse(b)
+		if err != nil {
+			return err
+		}
+
 		rel, err := filepath.Rel("contents", path[:len(path)-len(filepath.Ext(path))]+".html")
 		if err != nil {
 			return err
@@ -131,8 +186,13 @@ func Run(url, description string) error {
 
 		title := "Ebiten - A dead simple 2D game library in Go"
 		if path != filepath.Join("contents", "index.html") {
-			m := reTitle.FindStringSubmatch(content)
-			title = fmt.Sprintf("%s - Ebiten", html.UnescapeString(m[1]))
+			h1, err := findFirstElementByName(node, "h1")
+			if err != nil {
+				return err
+			}
+			if h1 != nil {
+				title = fmt.Sprintf("%s - Ebiten", h1.FirstChild.Data)
+			}
 		}
 
 		nav := false
@@ -162,10 +222,29 @@ func Run(url, description string) error {
 		}
 		subnav := string(c)
 
+		var meta map[string]interface{}
+		n, err := findElementByID(node, "meta")
+		if err != nil {
+			return err
+		}
+		if n != nil {
+			if err := json.Unmarshal([]byte(n.FirstChild.Data), &meta); err != nil {
+				return err
+			}
+		}
+
+		share := "https://ebiten.org/images/share.png"
+		if meta != nil {
+			if s, ok := meta["Share"]; ok {
+				share = url + s.(string)
+			}
+		}
+
 		if err := tmpl.Execute(w, map[string]interface{}{
 			"Title":     title,
 			"Desc":      description,
 			"Content":   content,
+			"Share":     share,
 			"Canonical": canonical,
 			"NavExists": nav,
 			"SubNav":    subnav,
