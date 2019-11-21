@@ -124,6 +124,10 @@ iframe {
     border-width: 1px;
     border-color: #333333;
 }
+p.meta {
+    color: #666;
+    text-align: right;
+}
 
 /* image */
 a[href^="http://"]:after,
