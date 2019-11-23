@@ -28,6 +28,48 @@ import (
 	"golang.org/x/net/html"
 )
 
+type page struct {
+	node *html.Node
+}
+
+func newPage(content []byte) (*page, error) {
+	b := bytes.NewReader([]byte(content))
+	node, err := html.Parse(b)
+	if err != nil {
+		return nil, err
+	}
+	c := &page{
+		node: node,
+	}
+	return c, nil
+}
+
+func (p *page) title() (string, error) {
+	h1, err := findFirstElementByName(p.node, "h1")
+	if err != nil {
+		return "", err
+	}
+	return h1.FirstChild.Data, nil
+}
+
+func (p *page) share() (string, error) {
+	var meta map[string]interface{}
+	n, err := findElementByID(p.node, "meta")
+	if err != nil {
+		return "", err
+	}
+	if n != nil {
+		if err := json.Unmarshal([]byte(n.FirstChild.Data), &meta); err != nil {
+			return "", err
+		}
+	}
+	s, ok := meta["Share"]
+	if !ok {
+		return "", nil
+	}
+	return s.(string), nil
+}
+
 func walkHTML(node *html.Node, f func(node *html.Node) error) error {
 	if err := f(node); err != nil {
 		return err
@@ -164,8 +206,7 @@ func Run(url, description string) error {
 			return nil
 		}
 
-		b := bytes.NewReader([]byte(content))
-		node, err := html.Parse(b)
+		p, err := newPage([]byte(content))
 		if err != nil {
 			return err
 		}
@@ -186,12 +227,12 @@ func Run(url, description string) error {
 
 		title := "Ebiten - A dead simple 2D game library in Go"
 		if path != filepath.Join("contents", "index.html") {
-			h1, err := findFirstElementByName(node, "h1")
+			t, err := p.title()
 			if err != nil {
 				return err
 			}
-			if h1 != nil {
-				title = fmt.Sprintf("%s - Ebiten", h1.FirstChild.Data)
+			if t != "" {
+				title = fmt.Sprintf("%s - Ebiten", t)
 			}
 		}
 
@@ -222,22 +263,13 @@ func Run(url, description string) error {
 		}
 		subnav := string(c)
 
-		var meta map[string]interface{}
-		n, err := findElementByID(node, "meta")
+		share := "https://ebiten.org/images/share.png"
+		s, err := p.share()
 		if err != nil {
 			return err
 		}
-		if n != nil {
-			if err := json.Unmarshal([]byte(n.FirstChild.Data), &meta); err != nil {
-				return err
-			}
-		}
-
-		share := "https://ebiten.org/images/share.png"
-		if meta != nil {
-			if s, ok := meta["Share"]; ok {
-				share = url + s.(string)
-			}
+		if s != "" {
+			share = url + s
 		}
 
 		if err := tmpl.Execute(w, map[string]interface{}{
