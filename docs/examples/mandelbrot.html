@@ -20,6 +20,7 @@
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
     <link rel="stylesheet" type="text/css" href="/style.css">
     <link rel="icon" href="/images/favicon.png" type="image/png">
+    
     <script src="/scripts/script.js" defer></script>
   </head>
   <body>
@@ -86,13 +87,9 @@
     </nav>
     <main>
       <article>
-        <script type="text/json" id="meta">
-{
-  "Share": "/images/examples/mandelbrot.png"
-}
-</script>
-<h1>Mandelbrot</h1>
+        <h1>Mandelbrot</h1>
 <p class="img"><iframe src="_wasm.html?mandelbrot" width="640" height="640" allow="autoplay"></iframe></p>
+<p style="display: none;"><img id="meta-share" src="/images/examples/mandelbrot.png"></p>
 <h2>Run locally</h2>
 <pre><coce>go run -tags=example github.com/hajimehoshi/ebiten/examples/mandelbrot</code></pre>
 

@@ -20,6 +20,7 @@
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
     <link rel="stylesheet" type="text/css" href="/style.css">
     <link rel="icon" href="/images/favicon.png" type="image/png">
+    
     <script src="/scripts/script.js" defer></script>
   </head>
   <body>
@@ -86,13 +87,9 @@
     </nav>
     <main>
       <article>
-        <script type="text/json" id="meta">
-{
-  "Share": "/images/examples/audio.png"
-}
-</script>
-<h1>Audio</h1>
+        <h1>Audio</h1>
 <p class="img"><iframe src="_wasm.html?audio" width="640" height="480" allow="autoplay"></iframe></p>
+<p style="display: none;"><img id="meta-share" src="/images/examples/audio.png"></p>
 <h2>Run locally</h2>
 <pre><coce>go run -tags=example github.com/hajimehoshi/ebiten/examples/audio</code></pre>
 

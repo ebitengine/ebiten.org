@@ -1,10 +1,6 @@
-<script type="text/json" id="meta">
-{
-  "Share": "/images/examples/{{.Base}}.png"
-}
-</script>
 <h1>{{.Title}}</h1>
 <p class="img"><iframe src="_wasm.html?{{.Base}}" width="{{.Width}}" height="{{.Height}}" allow="autoplay"></iframe></p>
+<p style="display: none;"><img id="meta-share" src="/images/examples/{{.Base}}.png"></p>
 <h2>Run locally</h2>
 <pre><coce>go run -tags=example github.com/hajimehoshi/ebiten/examples/{{.Base}}</code></pre>
 {{if .Code}}

@@ -29,17 +29,21 @@ import (
 )
 
 type page struct {
-	node *html.Node
+	node    *html.Node
+	name    string
+	content []byte
 }
 
-func newPage(content []byte) (*page, error) {
+func newPage(content []byte, name string) (*page, error) {
 	b := bytes.NewReader([]byte(content))
 	node, err := html.Parse(b)
 	if err != nil {
 		return nil, err
 	}
 	c := &page{
-		node: node,
+		node:    node,
+		name:    name,
+		content: content,
 	}
 	return c, nil
 }
@@ -53,21 +57,30 @@ func (p *page) title() (string, error) {
 }
 
 func (p *page) share() (string, error) {
-	var meta map[string]interface{}
-	n, err := findElementByID(p.node, "meta")
+	img, err := findElementByID(p.node, "meta-share")
 	if err != nil {
 		return "", err
 	}
-	if n != nil {
-		if err := json.Unmarshal([]byte(n.FirstChild.Data), &meta); err != nil {
-			return "", err
-		}
-	}
-	s, ok := meta["Share"]
-	if !ok {
+	if img == nil {
 		return "", nil
 	}
-	return s.(string), nil
+	for _, a := range img.Attr {
+		if a.Key == "src" {
+			return a.Val, nil
+		}
+	}
+	return "", nil
+}
+
+func (p *page) created() (string, error) {
+	span, err := findElementByID(p.node, "meta-created")
+	if err != nil {
+		return "", err
+	}
+	if span == nil {
+		return "", nil
+	}
+	return span.FirstChild.Data, nil
 }
 
 func walkHTML(node *html.Node, f func(node *html.Node) error) error {
@@ -206,7 +219,7 @@ func Run(url, description string) error {
 			return nil
 		}
 
-		p, err := newPage([]byte(content))
+		p, err := newPage([]byte(content), info.Name())
 		if err != nil {
 			return err
 		}
@@ -271,6 +284,10 @@ func Run(url, description string) error {
 		if s != "" {
 			share = url + s
 		}
+		feed := ""
+		if strings.HasPrefix(rel, "blog/") {
+			feed = url + "/blog/feed.xml"
+		}
 
 		if err := tmpl.Execute(w, map[string]interface{}{
 			"Title":     title,
@@ -281,12 +298,17 @@ func Run(url, description string) error {
 			"NavExists": nav,
 			"SubNav":    subnav,
 			"Feedback":  feedback,
+			"Feed":      feed,
 		}); err != nil {
 			return err
 		}
 
 		return nil
 	}); err != nil {
+		return err
+	}
+
+	if err := writeAtom(url); err != nil {
 		return err
 	}
 

@@ -1,0 +1,25 @@
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Ebiten Blog</title>
+  <id>https://ebiten.org/blog/</id>
+  <link rel="self" href="https://ebiten.org/blog/feed.xml"></link>
+  <updated>2019-11-22</updated>
+  <author>
+    <name>Hajime Hoshi</name>
+    <uri>https://star.one</uri>
+    <email>hajimehoshi@gmail.com</email>
+  </author>
+  <entry>
+    <title>Hello!</title>
+    <id>https://ebiten.org/blog/hello.html</id>
+    <link rel="alternate" href="https://ebiten.org/blog/hello.html"></link>
+    <published>2019-11-22</published>
+    <updated>2019-11-22</updated>
+    <author>
+      <name>Hajime Hoshi</name>
+      <uri>https://star.one</uri>
+      <email>hajimehoshi@gmail.com</email>
+    </author>
+    <summary type="html">&lt;h1&gt;Hello!&lt;/h1&gt;&#xA;&lt;p class=&#34;meta&#34;&gt;Hajime Hoshi&lt;br&gt;&lt;span id=&#34;meta-created&#34;&gt;2019-11-22&lt;/span&gt;&lt;/p&gt;&#xA;&lt;p&gt;Hello! This is the very first article of the blog.&lt;/p&gt;&#xA;&lt;p&gt;I&#39;d like to share information about Ebiten e.g., new releases or new updates.&lt;/p&gt;&#xA;&lt;p&gt;I&#39;m now preparing an Atom feed. Stay tuned :-)&lt;/p&gt;&#xA;</summary>
+    <content type="html">&lt;h1&gt;Hello!&lt;/h1&gt;&#xA;&lt;p class=&#34;meta&#34;&gt;Hajime Hoshi&lt;br&gt;&lt;span id=&#34;meta-created&#34;&gt;2019-11-22&lt;/span&gt;&lt;/p&gt;&#xA;&lt;p&gt;Hello! This is the very first article of the blog.&lt;/p&gt;&#xA;&lt;p&gt;I&#39;d like to share information about Ebiten e.g., new releases or new updates.&lt;/p&gt;&#xA;&lt;p&gt;I&#39;m now preparing an Atom feed. Stay tuned :-)&lt;/p&gt;&#xA;</content>
+  </entry>
+</feed>
