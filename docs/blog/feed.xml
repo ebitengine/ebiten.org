@@ -2,7 +2,7 @@
   <title>Ebiten Blog</title>
   <id>https://ebiten.org/blog/</id>
   <link rel="self" href="https://ebiten.org/blog/feed.xml"></link>
-  <updated>2019-11-22</updated>
+  <updated>2019-11-22T00:00:00+09:00</updated>
   <author>
     <name>Hajime Hoshi</name>
     <uri>https://star.one</uri>
@@ -12,8 +12,8 @@
     <title>Hello!</title>
     <id>https://ebiten.org/blog/hello.html</id>
     <link rel="alternate" href="https://ebiten.org/blog/hello.html"></link>
-    <published>2019-11-22</published>
-    <updated>2019-11-22</updated>
+    <published>2019-11-22T00:00:00+09:00</published>
+    <updated>2019-11-22T00:00:00+09:00</updated>
     <author>
       <name>Hajime Hoshi</name>
       <uri>https://star.one</uri>

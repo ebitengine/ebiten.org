@@ -24,6 +24,11 @@ import (
 	"golang.org/x/tools/blog/atom"
 )
 
+func toAtomTimeStr(ymd string) atom.TimeStr {
+	// TODO: Enable to change the timezone.
+	return atom.TimeStr(ymd + "T00:00:00+09:00")
+}
+
 func writeAtom(url string) error {
 	author := &atom.Person{
 		Name:  "Hajime Hoshi",
@@ -79,7 +84,7 @@ func writeAtom(url string) error {
 	if err != nil {
 		return err
 	}
-	feed.Updated = atom.TimeStr(u)
+	feed.Updated = toAtomTimeStr(u)
 
 	for _, p := range pages {
 		t, err := p.title()
@@ -100,8 +105,8 @@ func writeAtom(url string) error {
 					Href: url + "/blog/" + p.name,
 				},
 			},
-			Published: atom.TimeStr(created),
-			Updated:   atom.TimeStr(created),
+			Published: toAtomTimeStr(created),
+			Updated:   toAtomTimeStr(created),
 			Author:    author,
 			Summary: &atom.Text{
 				Type: "html",
