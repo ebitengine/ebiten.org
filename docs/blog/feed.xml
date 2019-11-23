@@ -2,12 +2,26 @@
   <title>Ebiten Blog</title>
   <id>https://ebiten.org/blog/</id>
   <link rel="self" href="https://ebiten.org/blog/feed.xml"></link>
-  <updated>2019-11-22T00:00:00+09:00</updated>
+  <updated>2019-11-24T00:00:00+09:00</updated>
   <author>
     <name>Hajime Hoshi</name>
     <uri>https://star.one</uri>
     <email>hajimehoshi@gmail.com</email>
   </author>
+  <entry>
+    <title>v1.10.1 is released</title>
+    <id>https://ebiten.org/blog/v1.10.1.html</id>
+    <link rel="alternate" href="https://ebiten.org/blog/v1.10.1.html"></link>
+    <published>2019-11-24T00:00:00+09:00</published>
+    <updated>2019-11-24T00:00:00+09:00</updated>
+    <author>
+      <name>Hajime Hoshi</name>
+      <uri>https://star.one</uri>
+      <email>hajimehoshi@gmail.com</email>
+    </author>
+    <summary type="html">&lt;h1&gt;v1.10.1 is released&lt;/h1&gt;&#xA;&lt;p class=&#34;meta&#34;&gt;Hajime Hoshi&lt;br&gt;&lt;span id=&#34;meta-created&#34;&gt;2019-11-24&lt;/span&gt;&lt;/p&gt;&#xA;&lt;p&gt;We are very happy to announce the release of &lt;a href=&#34;https://github.com/hajimehoshi/ebiten/releases/tag/v1.10.1&#34;&gt;v1.10.1&lt;/a&gt;. This includes only bug fixes from v1.10.0.&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;  &lt;li&gt;&lt;code&gt;RepalcePixels&lt;/code&gt; might be very slow unexpectedly (&lt;a href=&#34;https://github.com/hajimehoshi/ebiten/issues/977&#34;&gt;Issue #977&lt;/a&gt;).&lt;/li&gt;&#xA;  &lt;li&gt;CPU was busy when the window is in another workspace (&lt;a href=&#34;https://github.com/hajimehoshi/ebiten/issues/982&#34;&gt;Issue #982&lt;/a&gt;).&lt;/li&gt;&#xA;  &lt;li&gt;Delayed sound on macOS / iOS (&lt;a href=&#34;https://github.com/hajimehoshi/ebiten/issues/975&#34;&gt;Issue #975&lt;/a&gt;).&lt;/li&gt;&#xA;  &lt;li&gt;etc.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Enjoy!&lt;/p&gt;&#xA;</summary>
+    <content type="html">&lt;h1&gt;v1.10.1 is released&lt;/h1&gt;&#xA;&lt;p class=&#34;meta&#34;&gt;Hajime Hoshi&lt;br&gt;&lt;span id=&#34;meta-created&#34;&gt;2019-11-24&lt;/span&gt;&lt;/p&gt;&#xA;&lt;p&gt;We are very happy to announce the release of &lt;a href=&#34;https://github.com/hajimehoshi/ebiten/releases/tag/v1.10.1&#34;&gt;v1.10.1&lt;/a&gt;. This includes only bug fixes from v1.10.0.&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;  &lt;li&gt;&lt;code&gt;RepalcePixels&lt;/code&gt; might be very slow unexpectedly (&lt;a href=&#34;https://github.com/hajimehoshi/ebiten/issues/977&#34;&gt;Issue #977&lt;/a&gt;).&lt;/li&gt;&#xA;  &lt;li&gt;CPU was busy when the window is in another workspace (&lt;a href=&#34;https://github.com/hajimehoshi/ebiten/issues/982&#34;&gt;Issue #982&lt;/a&gt;).&lt;/li&gt;&#xA;  &lt;li&gt;Delayed sound on macOS / iOS (&lt;a href=&#34;https://github.com/hajimehoshi/ebiten/issues/975&#34;&gt;Issue #975&lt;/a&gt;).&lt;/li&gt;&#xA;  &lt;li&gt;etc.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Enjoy!&lt;/p&gt;&#xA;</content>
+  </entry>
   <entry>
     <title>Hello!</title>
     <id>https://ebiten.org/blog/hello.html</id>
