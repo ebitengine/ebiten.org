@@ -64,11 +64,12 @@ func writeAtom(url string) error {
 		if f.Name() == "nav.html" {
 			continue
 		}
-		b, err := ioutil.ReadFile(filepath.Join("contents", "blog", f.Name()))
+		path := filepath.Join("contents", "blog", f.Name())
+		b, err := ioutil.ReadFile(path)
 		if err != nil {
 			return err
 		}
-		p, err := newPage(b, f.Name())
+		p, err := newPage(b, path)
 		if err != nil {
 			return err
 		}
@@ -98,11 +99,11 @@ func writeAtom(url string) error {
 
 		feed.Entry = append(feed.Entry, &atom.Entry{
 			Title: t,
-			ID:    url + "/blog/" + p.name,
+			ID:    url + "/blog/" + p.name(),
 			Link: []atom.Link{
 				{
 					Rel:  "alternate",
-					Href: url + "/blog/" + p.name,
+					Href: url + "/blog/" + p.name(),
 				},
 			},
 			Published: toAtomTimeStr(created),
