@@ -25,10 +25,10 @@ func (g *game) Update(screen *ebiten.Image) error {
     return yourgame.Update(screen)
 }
 
-// Layout is called when the game is initialized or the view size is changed.
-// You can return a fixed screen size, or you can calculate a screen size based on the given view size.
+// Layout is called when the game is initialized or the outside size is changed.
+// You can return a fixed screen size, or you can calculate a screen size based on the given outside size.
 // The scaling is automatically adjusted.
-func (g *game) Layout(viewWidth, viewHeight int) (screenWidth, screenHeight int) {
+func (g *game) Layout(outsideWidth, outsideHeight int) (screenWidth, screenHeight int) {
     return 320, 240
 }
 
