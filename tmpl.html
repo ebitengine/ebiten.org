@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
+    {{ if .Redirect }}<meta http-equiv="refresh" content="0;url={{.Redirect}}">{{ end }}
     <meta name="description" content="{{.Desc}}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#db5620">

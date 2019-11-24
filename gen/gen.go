@@ -186,6 +186,7 @@ func Run(url, description string) error {
 			"SubNav":    subnav,
 			"Feedback":  p.hasFeedback(),
 			"Feed":      feed,
+			"Redirect":  p.redirect(),
 		}); err != nil {
 			return err
 		}

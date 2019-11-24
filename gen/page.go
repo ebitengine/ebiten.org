@@ -86,7 +86,26 @@ func (p *page) hasNav() bool {
 }
 
 func (p *page) hasFeedback() bool {
+	if p.redirect() != "" {
+		return false
+	}
 	return p.path != filepath.Join("contents", "404.html")
+}
+
+func (p *page) redirect() string {
+	a, err := findElementByID(p.node, "meta-redirect")
+	if err != nil {
+		return ""
+	}
+	if a == nil {
+		return ""
+	}
+	for _, attr := range a.Attr {
+		if attr.Key == "href" {
+			return attr.Val
+		}
+	}
+	return ""
 }
 
 func walkHTML(node *html.Node, f func(node *html.Node) error) error {
