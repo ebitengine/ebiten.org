@@ -137,7 +137,7 @@ a[href^="https://"]:after {
     width: 16px;
     height: 16px;
 
-    background-image: url(images/external.svg);
+    background-image: url(../images/external.svg);
     background-position: left center;
     background-repeat: no-repeat;
     background-size: contain;
@@ -149,7 +149,7 @@ a[href^="https://"]:after {
 
 /*body > nav a[href^="http://"]:after,
 body > nav a[href^="https://"]:after {
-    background-image: url(images/externalw.svg);
+    background-image: url(../images/externalw.svg);
 }*/
 
 /* margin */
@@ -487,7 +487,7 @@ h1.big > span.main:after {
     width: 80px;
     height: 80px;
 
-    background-image: url(images/logo.png);
+    background-image: url(../images/logo.png);
     background-position: left center;
     background-repeat: no-repeat;
     background-size: contain;
@@ -503,7 +503,7 @@ body > nav h1:after {
     width: 32px;
     height: 32px;
 
-    background-image: url(images/logo.png);
+    background-image: url(../images/logo.png);
     background-position: left center;
     background-repeat: no-repeat;
     background-size: contain;
@@ -532,7 +532,7 @@ input#sidemenu ~ label.sidemenubutton {
     top: 8px;
     left: 8px;
 
-    background-image: url(images/menu.svg);
+    background-image: url(../images/menu.svg);
     background-position: left center;
     width: 32px;
     height: 32px;
@@ -543,7 +543,7 @@ input#sidemenu ~ label.sidemenubutton {
     z-index: 3;
 }
 input#sidemenu:checked ~ label.sidemenubutton {
-    background-image: url(images/menu.svg);
+    background-image: url(../images/menu.svg);
 }
 input#sidemenu ~ label.sidemenucover {
     display: none;
