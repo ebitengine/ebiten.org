@@ -270,10 +270,36 @@ window.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    // Twitter
+    // https://developer.twitter.com/en/docs/twitter-for-websites/javascript-api/guides/set-up-twitter-for-websites
+    if (document.querySelectorAll('blockquote.twitter-tweet').length > 0) {
+        window.twttr = ((d, s, id) => {
+            var js, fjs = d.getElementsByTagName(s)[0], t = window.twttr || {};
+            if (d.getElementById(id)) {
+                return t;
+            }
+            js = d.createElement(s);
+            js.id = id;
+            js.src = 'https://platform.twitter.com/widgets.js';
+            fjs.parentNode.insertBefore(js, fjs);
+            t._e = [];
+            t.ready = f => {
+                t._e.push(f);
+            };
+            return t;
+        })(document, 'script', 'twitter-wjs');
+        twttr.ready(() => {
+            twttr.events.bind('loaded', e => {
+                for (const w of e.widgets) {
+                    adjustHeight(w);
+                }
+            });
+        });
+    }
 });
 
 window.addEventListener('resize', () => {
     updateImages();
     updateCSS();
 });
-
