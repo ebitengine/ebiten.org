@@ -109,10 +109,6 @@ func writeAtom(url string) error {
 			Published: toAtomTimeStr(created),
 			Updated:   toAtomTimeStr(created),
 			Author:    author,
-			Summary: &atom.Text{
-				Type: "html",
-				Body: string(p.content),
-			},
 			Content: &atom.Text{
 				Type: "html",
 				Body: string(p.content),
@@ -120,7 +116,7 @@ func writeAtom(url string) error {
 		})
 	}
 
-	f, err := os.OpenFile(filepath.Join("docs", "blog", "feed.xml"), os.O_WRONLY|os.O_CREATE, 0755)
+	f, err := os.OpenFile(filepath.Join("docs", "blog", "feed.xml"), os.O_WRONLY|os.O_CREATE|os.O_TRUNC, 0755)
 	if err != nil {
 		return err
 	}
