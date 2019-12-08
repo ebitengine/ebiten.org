@@ -132,7 +132,7 @@ figcaption {
     text-align: center;
 }
 
-/f* fimage */
+/* image */
 a[href^="http://"]:after,
 a[href^="https://"]:after {
     content: "";
