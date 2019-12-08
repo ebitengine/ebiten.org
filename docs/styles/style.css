@@ -133,8 +133,8 @@ figcaption {
 }
 
 /* image */
-a[href^="http://"]:after,
-a[href^="https://"]:after {
+body > nav a[href^="http://"]:after,
+body > nav a[href^="https://"]:after {
     content: "";
     display: inline-block;
     width: 16px;
