@@ -65,7 +65,7 @@
       <li><a href="https://godoc.org/github.com/hajimehoshi/ebiten#SetWindowSize"><code>SetWindowSize</code> function</a></li>
       <li><a href="https://godoc.org/github.com/hajimehoshi/ebiten#WindowSize"><code>WindowSize</code> function</a></li>
     </ul>
-    <p>You can create a resizable window by calling <code>SetWindowResizable(true)</code>. You can specify how the screen size will be updated after resizing the window by <code>Game</code>'s <code>Layout</code> function. The notion of the screen scale is deprecated.</p>
+    <p>You can create a resizable window by calling <code>SetWindowResizable(true)</code>. You can specify how the screen size will be updated after resizing the window by <code>Game</code>'s <code>Layout</code> function. The notion of the screen scale is deprecated, which means that you should not have to care about the screen scale.</p>
   </div>
   <div class="grid-item-2">
     <p class="img"><video controls autoplay src="/images/blog/resizable/demo.mp4" width="400"></p>
@@ -92,7 +92,7 @@
     <pre data-codesrc="/go/blog/resizable/game.go"></pre>
   </div>
   <div class="grid-item-2">
-    <p><code>Game</code> has <code>Update</code> function and <code>Layout</code> function. <code>Update</code> proceeds the game state. <code>Update</code> is called every frame (per 1/60 [s] by default). This is the same as the function given to <code>Run</code>. <code>Layout</code> calculates the logical screen size based on the given outside size. The outside size is a window size on desktops (window mode). The scale is automatically adjusted based on the returned screen scale.</p>
+    <p><code>Game</code> has <code>Update</code> function and <code>Layout</code> function. <code>Update</code> proceeds the game state. <code>Update</code> is called every frame (per 1/60 [s] by default). This is the same as the function given to <code>Run</code>. <code>Layout</code> calculates the logical screen size based on the given outside size. The unit is device-independent pixels. The outside size is a window size on desktops (window mode). The scale is automatically adjusted based on the returned screen scale.</p>
     <p>Actually the mobile environments already has <a href="http://localhost:8000/documents/mobile.html">the same interface</a>.</p>
   </div>
   <div class="grid-item-2">
@@ -145,7 +145,7 @@
 <h2>Example</h2>
 <p>You can see actual examples in <code>examples/widowsize</code>. A flag <code>-autoadjusting</code> switches the <code>Layout</code> function implementation.</p>
 <h2>Scale</h2>
-<p>After the <code>RunGame</code> world, the notion of the screen scale is deprecated. As the screen scale originally was just an aspect of view and did not affect the game logic. Actually, the game was automatically scaled on browsers and mobiles no matter what the specified screen scale was.</p>
+<p>After the <code>RunGame</code> world, the notion of the screen scale is deprecated. You don't have to care how much the screen is scaled. With the new APIs, Ebiten's game screen is automatically scaled along with the outside world (a window on desktop for example). Actually, the game was automatically scaled on browsers and mobiles no matter what the specified screen scale was. The notion of scale will be incognitive from the developer.</p>
 <h3>Deprecated functions</h3>
 <ul>
   <li><a href="https://godoc.org/github.com/hajimehoshi/ebiten#ScreenScale"><code>ScreenScale</code></a></li>
