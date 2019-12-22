@@ -485,7 +485,7 @@ p.img {
     align-items: flex-end;
     justify-content: center;
 }
-p.img img {
+p.img img, p.img video {
     max-width: 100%;
     height: auto;
 }
