@@ -79,7 +79,7 @@ function updateCode() {
                 }
 
                 const code = document.createElement('code');
-                code.textContent = text;
+                code.textContent = text.trim();
                 addCommentStyle(code);
                 e.appendChild(code);
             });
@@ -110,7 +110,7 @@ function addCommentStyle(code) {
 
 function updateImages() {
     for (const e of document.querySelectorAll('p.img')) {
-        const img = e.querySelector('img, iframe');
+        const img = e.querySelector('img, iframe, video');
         if (!img.complete) {
             const f = () => {
                 adjustHeight(img);
