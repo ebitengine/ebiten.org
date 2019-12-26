@@ -2,12 +2,25 @@
   <title>Ebiten Blog</title>
   <id>https://ebiten.org/blog/</id>
   <link rel="self" href="https://ebiten.org/blog/feed.xml"></link>
-  <updated>2019-12-23T00:00:00+09:00</updated>
+  <updated>2019-12-26T00:00:00+09:00</updated>
   <author>
     <name>Hajime Hoshi</name>
     <uri>https://star.one</uri>
     <email>hajimehoshi@gmail.com</email>
   </author>
+  <entry>
+    <title>v1.10.2 is released</title>
+    <id>https://ebiten.org/blog/v1.10.2.html</id>
+    <link rel="alternate" href="https://ebiten.org/blog/v1.10.2.html"></link>
+    <published>2019-12-26T00:00:00+09:00</published>
+    <updated>2019-12-26T00:00:00+09:00</updated>
+    <author>
+      <name>Hajime Hoshi</name>
+      <uri>https://star.one</uri>
+      <email>hajimehoshi@gmail.com</email>
+    </author>
+    <content type="html">&lt;h1&gt;v1.10.2 is released&lt;/h1&gt;&#xA;&lt;p class=&#34;meta&#34;&gt;Hajime Hoshi&lt;br&gt;&lt;span id=&#34;meta-created&#34;&gt;2019-12-26&lt;/span&gt;&lt;/p&gt;&#xA;&lt;p&gt;We are very happy to announce the release of &lt;a href=&#34;https://github.com/hajimehoshi/ebiten/releases/tag/v1.10.2&#34;&gt;v1.10.2&lt;/a&gt;. This includes only bug fixes from v1.10.1.&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;  &lt;li&gt;Compile error with Go 1.14 (beta) for Wasm (&lt;a href=&#34;https://github.com/hajimehoshi/ebiten/issues/1024&#34;&gt;Issue #1024&lt;/a&gt;)&lt;/li&gt;&#xA;  &lt;li&gt;Avoid unnecessary copying: this is a performance improvement rather than a bug fix, but this was needed to pass on the test bots. (&lt;a href=&#34;https://github.com/hajimehoshi/ebiten/issues/983&#34;&gt;Issue #983&lt;/a&gt;)&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Enjoy!&lt;/p&gt;&#xA;</content>
+  </entry>
   <entry>
     <title>New API to make a resizable window</title>
     <id>https://ebiten.org/blog/resizable.html</id>
