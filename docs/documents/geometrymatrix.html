@@ -134,9 +134,11 @@
   0 & 0 & 1 \\
 \end{bmatrix}
 \end{equation}</p>
+    <p class="img"><img src="/images/documents/geometrymatrix/identity.png" width="456"></p>
   </div>
   <div class="grid-item-2">
     <p>The initial value of <code>GeoM</code> represents an identity matrix. This means that nothing was changed. In Ebiten, the default location is the upper-left corner.</p>
+    <p>Note that the direction of the Y axis is downward, not upward. This is different from usual mathematics, but is natural for 2D image rendering.</p>
   </div>
   <div class="grid-item-2">
     <p class="mathjax">\begin{equation}
@@ -147,6 +149,7 @@
 \end{bmatrix}
 g
 \end{equation}</p>
+    <p class="img"><img src="/images/documents/geometrymatrix/scale.png" width="456"></p>
   </div>
   <div class="grid-item-2">
     <p><a href="https://godoc.org/github.com/hajimehoshi/ebiten#GeoM.Scale"><code>(g *GeoM).Scale</code></a> left-multiplies a scaling geometry matrix. The origin position is the upper-left corner of the destination image.</p>
@@ -160,6 +163,7 @@ g
 \end{bmatrix}
 g
 \end{equation}</p>
+    <p class="img"><img src="/images/documents/geometrymatrix/translate.png" width="456"></p>
   </div>
   <div class="grid-item-2">
     <p><a href="https://godoc.org/github.com/hajimehoshi/ebiten#GeoM.Translate"><code>(g *GeoM).Translate</code></a> left-multiplies a translating geometry matrix.</p>
@@ -173,11 +177,13 @@ g
 \end{bmatrix}
 g
 \end{equation}</p>
+    <p class="img"><img src="/images/documents/geometrymatrix/rotate.png" width="456"></p>
   </div>
   <div class="grid-item-2">
     <p><a href="https://godoc.org/github.com/hajimehoshi/ebiten#GeoM.Rotate"><code>(g *GeoM).Rotate</code></a> left-multiplies a rotating geometry matrix. The origin position is the upper-left corner of the destination image.</p>
   </div>
 </div>
+<p>Of course you can combinate multiple operations of a geometry matrix. They are represented as multiplication of matrices. Note that the order of multiplication matters. For example, the result of translating then rotating an image is, in general, different from rotating then translating the image.</p>
 
       </article>
       <footer>
