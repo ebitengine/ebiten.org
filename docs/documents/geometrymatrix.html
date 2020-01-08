@@ -186,7 +186,7 @@ g
     <p>If the multiplicand is identity, the image is rotated by the <code>Rotate</code> arguments. The center of rotating is the left-upper corner.
   </div>
   <div class="grid-item-4">
-    <p>Of course you can combinate multiple operations of a geometry matrix. They are represented as multiplication of matrices. Note that the order of multiplication matters. For example, the result of translating then rotating an image is, in general, different from rotating then translating the image.</p>
+    <p>Of course you can combinate multiple operations of a geometry matrix. They are represented as multiplication of matrices. Note that the order of multiplication matters. For example, the result of translating then rotating an image is, in general, different from rotating then translating the image. In Ebiten, operations are chained by left-multiplying, then the actual operation order is right to left in mathematical expressions.</p>
   </div>
   <div class="grid-item-2">
     <p class="mathjax">\begin{equation}
