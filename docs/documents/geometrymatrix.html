@@ -153,6 +153,7 @@ g
   </div>
   <div class="grid-item-2">
     <p><a href="https://godoc.org/github.com/hajimehoshi/ebiten#GeoM.Scale"><code>(g *GeoM).Scale</code></a> left-multiplies a scaling geometry matrix. The origin position is the upper-left corner of the destination image.</p>
+    <p>If the multiplicand is identity, the image is scaled by the <code>Scale</code> arguments without changing the position of the left-upper corner.
   </div>
   <div class="grid-item-2">
     <p class="mathjax">\begin{equation}
@@ -167,6 +168,7 @@ g
   </div>
   <div class="grid-item-2">
     <p><a href="https://godoc.org/github.com/hajimehoshi/ebiten#GeoM.Translate"><code>(g *GeoM).Translate</code></a> left-multiplies a translating geometry matrix.</p>
+    <p>If the multiplicand is identity, the image is moved from the left-upper corner by the <code>Translate</code> arguments.
   </div>
   <div class="grid-item-2">
     <p class="mathjax">\begin{equation}
@@ -181,6 +183,7 @@ g
   </div>
   <div class="grid-item-2">
     <p><a href="https://godoc.org/github.com/hajimehoshi/ebiten#GeoM.Rotate"><code>(g *GeoM).Rotate</code></a> left-multiplies a rotating geometry matrix. The origin position is the upper-left corner of the destination image.</p>
+    <p>If the multiplicand is identity, the image is rotated by the <code>Rotate</code> arguments. The center of rotating is the left-upper corner.
   </div>
 </div>
 <p>Of course you can combinate multiple operations of a geometry matrix. They are represented as multiplication of matrices. Note that the order of multiplication matters. For example, the result of translating then rotating an image is, in general, different from rotating then translating the image.</p>
