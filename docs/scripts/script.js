@@ -79,7 +79,10 @@ function updateCode() {
                 }
 
                 const code = document.createElement('code');
-                code.textContent = text.trim();
+                if (!e.dataset['codelinerange']) {
+                    text = text.trim();
+                }
+                code.textContent = text;
                 addCommentStyle(code);
                 e.appendChild(code);
             });
