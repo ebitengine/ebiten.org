@@ -30,8 +30,8 @@
   <div class="grid-item-2">
     <p>\begin{equation}
 \begin{bmatrix}
-  a & b & c \\
-  d & e & f \\
+  a & b & t_x \\
+  c & d & t_y \\
   0 & 0 & 1 \\
 \end{bmatrix}
 \end{equation}</p>
@@ -40,22 +40,6 @@
     <p>While <code>GeoM</code> is an matrix for 2D dimension, <code>GeoM</code>'s dimension is 3. It is because <code>GeoM</code> is an affine matrix, which can represent not only scaling or rorating, but also translating. While scaling and rotating don't change the origin point (upper-left), translating does, and such change cannot be achieved with a non-affine 2-dimension matrix. The last row is always $(0, 0, 1)$.</p>
     <p>The geometry matrix is used to determine how to convert the position in the source image to the position in the destination image. In other words, the geometry matrix represents a converting rule of positions. By adjusting the geometry matrix, we can adjust how to render the source image on the destination image.</p>
   </div>
-  <!--div class="grid-item-2">
-    <p>\begin{equation}
-\begin{bmatrix}
-  a & b & t_x \\
-  c & d & t_y \\
-  0 & 0 & 1 \\
-\end{bmatrix}
-\begin{bmatrix}
-  x \\
-  y \\
-  1
-\end{bmatrix}
-\end{equation}</p>
-  </div>
-  <div class="grid-item-2">
-  </div-->
   <div class="grid-item-2">
     <p class="mathjax">\begin{equation}
 \begin{bmatrix}
