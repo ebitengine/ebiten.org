@@ -100,7 +100,7 @@ g
     <p>If the multiplicand is identity, the image is rotated by the <code>Rotate</code> arguments. The center of rotating is the left-upper corner.
   </div>
   <div class="grid-item-4">
-    <p>Of course you can combinate multiple operations of a geometry matrix. They are represented as multiplication of matrices. Note that the order of multiplication matters. For example, the result of translating then rotating an image is, in general, different from rotating then translating the image. In Ebiten, operations are chained by left-multiplying, then the actual operation order is right to left in mathematical expressions.</p>
+    <p>Of course you can combinate multiple operations of a geometry matrix. They are represented as multiplication of matrices. Note that the order of multiplication matters. For example, the result of translating then scaling an image is, in general, different from scaling then translating the image. In Ebiten, operations are chained by left-multiplying, then the actual operation order is right to left in mathematical expressions.</p>
   </div>
   <div class="grid-item-2">
     <p class="mathjax">\begin{equation}
@@ -110,18 +110,18 @@ g
   0 & 0 & 1 \\
 \end{bmatrix}
 \begin{bmatrix}
-  \cos(\theta) & -\sin(\theta) & 0 \\
-  \sin(\theta) & \cos(\theta) & 0 \\
+  s_x & 0 & 0 \\
+  0 & s_y & 0 \\
   0 & 0 & 1 \\
 \end{bmatrix}
 \end{equation}</p>
-    <p class="img"><img src="/images/documents/geometrymatrix/rotate_translate.png" width="456"></p>
+    <p class="img"><img src="/images/documents/geometrymatrix/scale_translate.png" width="456"></p>
   </div>
   <div class="grid-item-2">
     <p class="mathjax">\begin{equation}
 \begin{bmatrix}
-  \cos(\theta) & -\sin(\theta) & 0 \\
-  \sin(\theta) & \cos(\theta) & 0 \\
+  s_x & 0 & 0 \\
+  0 & s_y & 0 \\
   0 & 0 & 1 \\
 \end{bmatrix}
 \begin{bmatrix}
@@ -130,6 +130,6 @@ g
   0 & 0 & 1 \\
 \end{bmatrix}
 \end{equation}</p>
-    <p class="img"><img src="/images/documents/geometrymatrix/translate_rotate.png" width="456"></p>
+    <p class="img"><img src="/images/documents/geometrymatrix/translate_scale.png" width="456"></p>
   </div>
 </div>
