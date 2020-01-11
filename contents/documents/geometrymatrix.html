@@ -1,4 +1,4 @@
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
 <h1>Geometry Matrix</h1>
 <p>This article requires a fundamental knowledge about mathematical matrix. If you are not sure, I recommend to read the article <a href="matrix.html">Matrix in Ebiten</a>.</p>
 <h2>Code</h2>
@@ -26,29 +26,29 @@
   </div>
   <div class="grid-item-2">
     <p>The program is almost same as <a href="renderimage.html">render-an-image example</a>. The difference is whether <a href="https://godoc.org/github.com/hajimehoshi/ebiten#DrawImageOptions"><code>DrawImageOptions</code></a> is specified or not at the <a href="https://godoc.org/github.com/hajimehoshi/ebiten#Image.DrawImage"><code>DrawImage</code></a> call. In this example, a <a href="https://godoc.org/github.com/hajimehoshi/ebiten#GeoM"><code>GeoM</code></a> is adjusted. <code>GeoM</code> represents <a href="https://en.wikipedia.org/wiki/Affine_transformation">an affine matrix</a> to translate, scale or rotate the image.</p>
-    <p>In this example, the image is translated by $(50, 50)$ first, and scaled by $(1.5, 1)$. In Ebiten, Y axis is not upward but downward. Then, tralslating by $(50, 50)$ means that the image is moved by 50 pixels rightward, and by 50 pixels downward. For scaling, the origin point is upper-left and the directions are also downward and rightward.</p>
+    <p>In this example, the image is translated by <span class="math">(50, 50)</span> first, and scaled by <span class="math">(1.5, 1)</span>. In Ebiten, Y axis is not upward but downward. Then, tralslating by <span class="math">(50, 50)</span> means that the image is moved by 50 pixels rightward, and by 50 pixels downward. For scaling, the origin point is upper-left and the directions are also downward and rightward.</p>
   </div>
   <div class="grid-item-2">
-    <p>\begin{equation}
+    <p class="math">\begin{aligned}
 \begin{bmatrix}
   a & b & t_x \\
   c & d & t_y \\
   0 & 0 & 1 \\
 \end{bmatrix}
-\end{equation}</p>
+\end{aligned}</p>
   </div>
   <div class="grid-item-2">
-    <p>While <code>GeoM</code> is an matrix for 2D dimension, <code>GeoM</code>'s dimension is 3. It is because <code>GeoM</code> is an affine matrix, which can represent not only scaling or rotating, but also translating. While scaling and rotating don't change the origin point (upper-left), translating does, and such change cannot be achieved with a non-affine 2-dimension matrix. The last row is always $(0, 0, 1)$.</p>
+    <p>While <code>GeoM</code> is an matrix for 2D dimension, <code>GeoM</code>'s dimension is 3. It is because <code>GeoM</code> is an affine matrix, which can represent not only scaling or rotating, but also translating. While scaling and rotating don't change the origin point (upper-left), translating does, and such change cannot be achieved with a non-affine 2-dimension matrix. The last row is always <span class="math">(0, 0, 1)</span>.</p>
     <p>The geometry matrix is used to determine how to convert the position in the source image to the position in the destination image. In other words, the geometry matrix represents a converting rule of positions. By adjusting the geometry matrix, we can adjust how to render the source image on the destination image.</p>
   </div>
   <div class="grid-item-2">
-    <p class="mathjax">\begin{equation}
+    <p class="math">\begin{aligned}
 \begin{bmatrix}
   1 & 0 & 0 \\
   0 & 1 & 0 \\
   0 & 0 & 1 \\
 \end{bmatrix}
-\end{equation}</p>
+\end{aligned}</p>
     <p class="img"><img src="/images/documents/geometrymatrix/identity.png" width="456"></p>
   </div>
   <div class="grid-item-2">
@@ -56,14 +56,14 @@
     <p>Note that the direction of the Y axis is downward, not upward. This is different from usual mathematics, but is natural for 2D image rendering.</p>
   </div>
   <div class="grid-item-2">
-    <p class="mathjax">\begin{equation}
+    <p class="math">\begin{aligned}
 \begin{bmatrix}
   s_x & 0 & 0 \\
   0 & s_y & 0 \\
   0 & 0 & 1 \\
 \end{bmatrix}
 g
-\end{equation}</p>
+\end{aligned}</p>
     <p class="img"><img src="/images/documents/geometrymatrix/scale.png" width="456"></p>
   </div>
   <div class="grid-item-2">
@@ -71,14 +71,14 @@ g
     <p>If the multiplicand is identity, the image is scaled by the <code>Scale</code> arguments without changing the position of the left-upper corner.
   </div>
   <div class="grid-item-2">
-    <p class="mathjax">\begin{equation}
+    <p class="math">\begin{aligned}
 \begin{bmatrix}
   1 & 0 & t_x \\
   0 & 1 & t_y \\
   0 & 0 & 1 \\
 \end{bmatrix}
 g
-\end{equation}</p>
+\end{aligned}</p>
     <p class="img"><img src="/images/documents/geometrymatrix/translate.png" width="456"></p>
   </div>
   <div class="grid-item-2">
@@ -86,14 +86,14 @@ g
     <p>If the multiplicand is identity, the image is moved from the left-upper corner by the <code>Translate</code> arguments.
   </div>
   <div class="grid-item-2">
-    <p class="mathjax">\begin{equation}
+    <p class="math">\begin{aligned}
 \begin{bmatrix}
   \cos(\theta) & -\sin(\theta) & 0 \\
   \sin(\theta) & \cos(\theta) & 0 \\
   0 & 0 & 1 \\
 \end{bmatrix}
 g
-\end{equation}</p>
+\end{aligned}</p>
     <p class="img"><img src="/images/documents/geometrymatrix/rotate.png" width="456"></p>
   </div>
   <div class="grid-item-2">
@@ -104,7 +104,7 @@ g
     <p>Of course you can combinate multiple operations of a geometry matrix. They are represented as multiplication of matrices. Note that the order of multiplication matters. For example, the result of translating then scaling an image is, in general, different from scaling then translating the image. In Ebiten, operations are chained by left-multiplying, then the actual operation order is right to left in mathematical expressions.</p>
   </div>
   <div class="grid-item-2">
-    <p class="mathjax">\begin{equation}
+    <p class="math">\begin{aligned}
 \begin{bmatrix}
   1 & 0 & t_x \\
   0 & 1 & t_y \\
@@ -115,11 +115,11 @@ g
   0 & s_y & 0 \\
   0 & 0 & 1 \\
 \end{bmatrix}
-\end{equation}</p>
+\end{aligned}</p>
     <p class="img"><img src="/images/documents/geometrymatrix/scale_translate.png" width="456"></p>
   </div>
   <div class="grid-item-2">
-    <p class="mathjax">\begin{equation}
+    <p class="math">\begin{aligned}
 \begin{bmatrix}
   s_x & 0 & 0 \\
   0 & s_y & 0 \\
@@ -130,7 +130,7 @@ g
   0 & 1 & t_y \\
   0 & 0 & 1 \\
 \end{bmatrix}
-\end{equation}</p>
+\end{aligned}</p>
     <p class="img"><img src="/images/documents/geometrymatrix/translate_scale.png" width="456"></p>
   </div>
 </div>

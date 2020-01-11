@@ -1,4 +1,3 @@
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
 <h1>Matrix in Ebiten</h1>
 <p>This article explains what are matrices and how they are used in Ebiten. We don't explain a strict mathematical theory. Instead, we explain essential knowledge for Ebiten.</p>
 <h2>Coordinate System</h2>
@@ -18,7 +17,7 @@
 <div class="grid-container">
   <div class="grid-item-2">
     <p><code>ebiten.Image</code> is a set of pixels on a 2D rectangle. In Ebiten, you can apply a conversion rule for each pixel. By the conversion rule, you can put an image at a specified position, and you can also apply various effects like scaling or rotating. As a conversion rule, Ebiten uses a matrix.</p>
-    <p>In 2D space, a point is represented as a 2D vector $(x, y)$. A 2D matrix converts this and generates a new point.</p>
+    <p>In 2D space, a point is represented as a 2D vector <span class="math">(x, y)</span>. A 2D matrix converts this and generates a new point.</p>
   </div>
   <div class="grid-item-2">
     <figure>
@@ -33,24 +32,24 @@
     <p>A matrix is used in linear algebra. A matrix is an array of numbers. A 2D matrix is like this.</p>
   </div>
   <div class="grid-item-2">
-    <p class="mathjax">\begin{equation}
+    <p class="math">\begin{aligned}
 \begin{bmatrix}
-  0.5000 & −0.8660 \\
+  0.5000 & -0.8660 \\
   0.8660 & 0.5000  \\
 \end{bmatrix}
-\end{equation}</p>
+\end{aligned}</p>
   </div>
   <div class="grid-item-2">
     <p>The horizontal sequences are called rows, and the vertical sequences are called columns. If the size is 2, the matrix is called 2D (two-dimensional) matrix, and if 3, 3D (three-dimensional) matrrix. A 3D matrix is like this.</p>
   </div>
   <div class="grid-item-2">
-    <p class="mathjax">\begin{equation}
+    <p class="math">\begin{aligned}
 \begin{bmatrix}
-  0.2990  & 0.5870  & 0.1140  \\
-  −0.1687 & −0.3313 & 0.5000  \\
-  0.5000  & −0.4187 & −0.0813 \\
+  0.2990   & 0.5870    & 0.1140  \\
+  -0.1687 & -0.3313 & 0.5000  \\
+  0.5000   & -0.4187  & -0.0813 \\
 \end{bmatrix}
-\end{equation}</p>
+\end{aligned}</p>
   </div>
   <div class="grid-item-2">
     <p>If the numbers of columns and rows are the same, the matrix is called a regular matrix. Ebiten treats only regular matrices.</p>
@@ -60,10 +59,10 @@
 <div class="grid-container">
   <div class="grid-item-2">
     <p>You can multiply a matrix and a vector. The matrix is on the left side and the vector is on the right side. In general, the swapped positions are also possible but Ebiten doesn't treat the swapped positions.</p>
-    <p>A matrix is a conversion rule, and in the equation, $(x, y)$ means a point before converting, multiplying means applying the conversion rule, and $(ax+by, cx+dy)$ means a point after converting.</p>
+    <p>A matrix is a conversion rule, and in the equation, <span class="math">(x, y)</span> means a point before converting, multiplying means applying the conversion rule, and <span class="math">(ax+by, cx+dy)</span> means a point after converting.</p>
   </div>
   <div class="grid-item-2">
-    <p class="mathjax">\begin{equation}
+    <p class="math">\begin{aligned}
 \begin{bmatrix}
   a & b \\
   c & d \\
@@ -77,13 +76,13 @@
   ax + by \\
   cx + dy \\
 \end{bmatrix}
-\end{equation}</p>
+\end{aligned}</p>
   </div>
   <div class="grid-item-2">
     <p>By the way, this is same in the three-dimensional case.</p>
   </div>
   <div class="grid-item-2">
-    <p class="mathjax">\begin{equation}
+    <p class="math">\begin{aligned}
 \begin{bmatrix}
   a & b & c \\
   d & e & f \\
@@ -100,7 +99,7 @@
   dx + ey + fz \\
   gx + hy + iz \\
 \end{bmatrix}
-\end{equation}</p>
+\end{aligned}</p>
   </div>
 </div>
 <h3>Identity matrix</h3>
@@ -109,18 +108,18 @@
     <p>An identity matrix is a matrix that doesn't change the multiplicand.</p>
   </div>
   <div class="grid-item-2">
-    <p class="mathjax">\begin{equation}
+    <p class="math">\begin{aligned}
 \begin{bmatrix}
   1 & 0 \\
   0 & 1 \\
 \end{bmatrix}
-\end{equation}</p>
+\end{aligned}</p>
   </div>
   <div class="grid-item-2">
     <p>Let's multiply this identity matrix and a vector. You can confirm that the input and the output are the same. This matrix doesn't change any points on a 2D space.</p>
   </div>
   <div class="grid-item-2">
-    <p class="mathjax">\begin{equation}
+    <p class="math">\begin{aligned}
 \begin{bmatrix}
   1 & 0 \\
   0 & 1 \\
@@ -139,21 +138,21 @@
   x \\
   y \\
 \end{bmatrix}
-\end{equation}</p>
+\end{aligned}</p>
   </div>
 </div>
 <h3>Scaling</h3>
 <div class="grid-container">
   <div class="grid-item-2">
-    <p>A matrix that scales an image by $s_x$ times in X direction and by $s_y$ times in Y direction centering at the origin is this.</p>
+    <p>A matrix that scales an image by <span class="math">s_x</span> times in X direction and by <span class="math">s_y</span> times in Y direction centering at the origin is this.</p>
   </div>
   <div class="grid-item-2">
-    <p class="mathjax">\begin{equation}
+    <p class="math">\begin{aligned}
 \begin{bmatrix}
   s_x & 0   \\
   0   & s_y \\
 \end{bmatrix}
-\end{equation}</p>
+\end{aligned}</p>
     <figure>
       <p class="img"><img src="/images/documents/matrix/scale.png" width="456"></p>
     </figure>
@@ -163,7 +162,7 @@
     <p>Let's multiply this matrix and a vector.</p>
   </div>
   <div class="grid-item-2">
-    <p class="mathjax">\begin{equation}
+    <p class="math">\begin{aligned}
 \begin{bmatrix}
   s_x & 0   \\
   0   & s_y \\
@@ -177,21 +176,21 @@
   s_x x \\
   s_y y \\
 \end{bmatrix}
-\end{equation}</p>
+\end{aligned}</p>
   </div>
 </div>
 <h3>Rotating</h3>
 <div class="grid-container">
   <div class="grid-item-2">
-    <p>A matrix that rotates an image by $\theta$ centering at the origin is this. This uses trigonometric functions. Please don't worry about trigonometric functions. Ebiten has a useful feature to rotate images by calling one function.</p>
+    <p>A matrix that rotates an image by <span class="math">\theta</span> centering at the origin is this. This uses trigonometric functions. Please don't worry about trigonometric functions. Ebiten has a useful feature to rotate images by calling one function.</p>
   </div>
   <div class="grid-item-2">
-    <p class="mathjax">\begin{equation}
+    <p class="math">\begin{aligned}
 \begin{bmatrix}
   \cos \theta & -\sin \theta \\
   \sin \theta & \cos \theta  \\
 \end{bmatrix}
-\end{equation}</p>
+\end{aligned}</p>
     <figure>
       <p class="img"><img src="/images/documents/matrix/rotate.png" width="456"></p>
     </figure>
@@ -209,7 +208,7 @@
     <p>If a vector is multiplied by two matrices, the equation will be like this.</p>
   </div>
   <div class="grid-item-2">
-    <p class="mathjax">\begin{eqnarray}
+    <p class="math">\begin{aligned}
 \begin{bmatrix}
   a_2 & b_2 \\
   c_2 & d_2 \\
@@ -222,7 +221,7 @@
   x \\
   y \\
 \end{bmatrix}
-&=&
+&=
 \begin{bmatrix}
   a_2 & b_2 \\
   c_2 & d_2 \\
@@ -231,17 +230,17 @@
   a_1 x + b_1 y \\
   c_1 x + d_1 y \\
 \end{bmatrix} \\
-&=&
+&=
 \begin{bmatrix}
   a_2(a_1 x + b_1 y) + b_2(c_1 x + d_1 y) \\
   c_2(a_1 x + b_1 y) + d_2(c_1 x + d_1 y) \\
 \end{bmatrix} \\
-&=&
+&=
 \begin{bmatrix}
   (a_2 a_1 + b_2 c_1) x + (a_2 b_1 + b_2 d_1) y \\
   (c_2 a_1 + d_2 c_1) x + (c_2 b_1 + d_2 d_1) y \\
 \end{bmatrix} \\
-&=&
+&=
 \begin{bmatrix}
   a_2 a_1 + b_2 c_1 & a_2 b_1 + b_2 d_1 \\
   c_2 a_1 + d_2 c_1 & c_2 b_1 + d_2 d_1 \\
@@ -250,13 +249,13 @@
   x \\
   y \\
 \end{bmatrix} 
-\end{eqnarray}</p>
+\end{aligned}</p>
   </div>
   <div class="grid-item-2">
     <p>What an intimidating equation! This equation means that we can define multiplying two matrices like this.</p>
   </div>
   <div class="grid-item-2">
-    <p class="mathjax">\begin{equation}
+    <p class="math">\begin{aligned}
 \begin{bmatrix}
   a_2 & b_2 \\
   c_2 & d_2 \\
@@ -270,7 +269,7 @@
   a_2 a_1 + b_2 c_1 & a_2 b_1 + b_2 d_1 \\
   c_2 a_1 + d_2 c_1 & c_2 b_1 + d_2 d_1 \\
 \end{bmatrix} 
-\end{equation}</p>
+\end{aligned}</p>
   </div>
   <div class="grid-item-2">
     <p>Then, we were able to define the combination of matrices, and the result became a matrix. If you combine multiple convention rules, this will be represented as one matrix.</p>
@@ -282,7 +281,7 @@
     <p>By the way, in three-dimensional cases, multiplying will be like this.</p>
   </div>
   <div class="grid-item-2">
-    <p class="mathjax">\begin{eqnarray}
+    <p class="math">\begin{aligned}
 &
 \begin{bmatrix}
   a_2 & b_2 & c_2 \\
@@ -300,13 +299,13 @@
   d_2 a_1 + e_2 d_1 + f_2 d_1 & d_2 b_1 + e_2 e_1 + f_2 h_1 & d_2 c_1 + e_2 f_1 + f_2 i_1 \\
   g_2 a_1 + h_2 d_1 + i_2 d_1 & g_2 b_1 + h_2 e_1 + i_2 h_1 & g_2 c_1 + h_2 f_1 + i_2 i_1 \\
 \end{bmatrix} 
-\end{eqnarray}</p>
+\end{aligned}</p>
   </div>
   <div class="grid-item-2">
-    <p>Be careful that the order of multilyping matters. If there is a matrix $A$ and a matrix $B$, the results of $AB$ and $BA$ are different in general. In the context of conversion rule, rotating and scaling an image in this order is different from scaling and rotating an image in this order in general.</p>
+    <p>Be careful that the order of multilyping matters. If there is a matrix <span class="math">A</span> and a matrix <span class="math">B</span>, the results of <span class="math">AB</span> and <span class="math">BA</span> are different in general. In the context of conversion rule, rotating and scaling an image in this order is different from scaling and rotating an image in this order in general.</p>
   </div>
   <div class="grid-item-2">
-    <p>\begin{eqnarray}
+    <p class="math">\begin{aligned}
 \begin{bmatrix}
   1 & 2 \\
   3 & 4 \\
@@ -315,7 +314,7 @@
   5 & 6 \\
   7 & 8 \\
 \end{bmatrix}
-&=&
+&=
 \begin{bmatrix}
   19 & 22 \\
   43 & 50 \\
@@ -328,7 +327,7 @@
   1 & 2 \\
   3 & 4 \\
 \end{bmatrix}
-&=&
+&=
 \begin{bmatrix}
   23 & 34 \\
   31 & 46 \\
@@ -341,7 +340,7 @@
   5 & 6 \\
   7 & 8 \\
 \end{bmatrix}
-&\ne&
+&\ne
 \begin{bmatrix}
   5 & 6 \\
   7 & 8 \\
@@ -350,16 +349,16 @@
   1 & 2 \\
   3 & 4 \\
 \end{bmatrix}
-\end{eqnarray}</p>
+\end{aligned}</p>
   </div>
 </div>
 <h3>Affine transformation</h3>
 <div class="grid-container">
   <div class="grid-item-2">
-    <p>A 2D matrix looks enough to move points, but there is a problem. Any 2D matrices cannot move the origin point $(0, 0)$.</p>
+    <p>A 2D matrix looks enough to move points, but there is a problem. Any 2D matrices cannot move the origin point <span class="math">(0, 0)</span>.</p>
   </div>
   <div class="grid-item-2">
-    <p class="mathjax">\begin{equation}
+    <p class="math">\begin{aligned}
 \begin{bmatrix}
   a & b \\
   c & d \\
@@ -378,7 +377,7 @@
   0 \\
   0 \\
 \end{bmatrix}
-\end{equation}</p>
+\end{aligned}</p>
   </div>
   <div class="grid-item-2">
     <p>This means that the origin point will never be moved by any 2D matrices. So can't we represent translating by matrices?</p>
@@ -390,28 +389,28 @@
     <figcaption>Whatever matrices are applied to an image, the origin point stays at the same position?</figcaption>
   </div>
   <div class="grid-item-2">
-    <p>Then, we introduce an affine transform matrix. For 2D vectors, an affine transform matrix is like this. The matrix is extended to be three-dimensional. The last row is always $(0, 0, 1)$.</p>
+    <p>Then, we introduce an affine transform matrix. For 2D vectors, an affine transform matrix is like this. The matrix is extended to be three-dimensional. The last row is always <span class="math">(0, 0, 1)</span>.</p>
   </div>
   <div class="grid-item-2">
-    <p class="mathjax">\begin{equation}
+    <p class="math">\begin{aligned}
 \begin{bmatrix}
   a & b & t_x \\
   c & d & t_y \\
   0 & 0 & 1 \\
 \end{bmatrix}
-\end{equation}</p>
+\end{aligned}</p>
   </div>
   <div class="grid-item-2">
-    <p>The vector will also be extended to three dimensional, and the third value is always 1. A 2D vector $(x, y)$ will be $(x, y, 1)$.</p>
+    <p>The vector will also be extended to three dimensional, and the third value is always 1. A 2D vector <span class="math">(x, y)</span> will be <span class="math">(x, y, 1)</span>.</p>
   </div>
   <div class="grid-item-2">
-<p class="mathjax">\begin{equation}
+<p class="math">\begin{aligned}
 \begin{bmatrix}
   x \\
   y \\
   1 \\
 \end{bmatrix}
-\end{equation}</p>
+\end{aligned}</p>
   </div>
 </div>
 <h3>Translating</h3>
@@ -420,19 +419,19 @@
     <p>A matrix that just translates an image is this.</p>
   </div>
   <div class="grid-item-2">
-    <p class="mathjax">\begin{equation}
+    <p class="math">\begin{aligned}
 \begin{bmatrix}
   1 & 0 & t_x \\
   0 & 1 & t_y \\
   0 & 0 & 1 \\
 \end{bmatrix}
-\end{equation}</p>
+\end{aligned}</p>
   </div>
   <div class="grid-item-2">
-    <p>Let's apply this matrix to a vector $(x, y, 1)$. The result is translating $x$ and $y$ by $t_x$ and $t_y$ respectively. </p>
+    <p>Let's apply this matrix to a vector <span class="math">(x, y, 1)</span>. The result is translating <span class="math">x</span> and <span class="math">y</span> by <span class="math">t_x</span> and <span class="math">t_y</span> respectively. </p>
   </div>
   <div class="grid-item-2">
-    <p class="mathjax">\begin{equation}
+    <p class="math">\begin{aligned}
 \begin{bmatrix}
   1 & 0 & t_x \\
   0 & 1 & t_y \\
@@ -455,14 +454,14 @@
   y + t_y \\
   1 \\
 \end{bmatrix}
-\end{equation}</p>
+\end{aligned}</p>
     <figure>
       <p class="img"><img src="/images/documents/matrix/translate.png" width="456"></p>
     </figure>
     <figcaption>Translating an image by a matrix.</figcaption>
   </div>
   <div class="grid-item-2">
-    <p>Scaling and rotating matrix we already explained will be a matrix that $t_x$ and $t_y$ are $0$.</p>
+    <p>Scaling and rotating matrix we already explained will be a matrix that <span class="math">t_x</span> and <span class="math">t_y</span> are <span class="math">0</span>.</p>
     <p>We don't prove this here, but multiplying two affine transform matrices results in an affine transform matrix. This means that any combinations of scaling, rotating and translating are represented as one affine matrix. Based on this fact, Ebiten's API for geometric transform is very simple and requires only one affine transform matrix. Ebiten's matrices are always affine transform, and doesn't treat other matrices.</p>
   </div>
 </div>
@@ -474,7 +473,7 @@
     <p>In Ebiten, matrices are also used when converting colors. We don't explain details here. Ebiten treats an RGBA color as a point in 4D space, and convert it with a matrix. The matrix is an affine transform matrix, and the dimension is 5.</p>
   </div>
   <div class="grid-item-2">
-    <p class="mathjax">\begin{equation}
+    <p class="math">\begin{aligned}
 \begin{bmatrix}
   x_1 & x_2 & x_3 & x_4 & t_r \\
   x_5 & x_6 & x_7 & x_8 & t_g \\
@@ -489,7 +488,7 @@
   a \\
   1 \\
 \end{bmatrix}
-\end{equation}</p>
+\end{aligned}</p>
   </div>
 </div>
 <h2>References</h2>

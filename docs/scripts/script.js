@@ -259,19 +259,24 @@ window.addEventListener('DOMContentLoaded', () => {
         sidemenu.addEventListener('change', updateBody);
     }
 
-    if (typeof MathJax !== 'undefined') {
-        MathJax.Hub.Config({
-            tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
-        });
-        MathJax.Hub.Register.StartupHook('End', () => {
-            for (const e of document.querySelectorAll('p.mathjax')) {
-                const span = e.querySelector('.mjx-chtml');
-                if (span === null) {
-                    continue;
-                }
-                adjustHeight(span);
-            }
-        });
+    if (typeof katex !== 'undefined') {
+        for (const e of document.querySelectorAll('p.math')) {
+            const div = document.createElement('div');
+            const text = e.textContent;
+            e.textContent = '';
+            e.appendChild(div);
+            katex.render(text, div, {
+                displayMode: true,
+                strict: true,
+            });
+            adjustHeight(div);
+        }
+        for (const e of document.querySelectorAll('span.math')) {
+            katex.render(e.textContent, e, {
+                displayMode: false,
+                strict: true,
+            });
+        }
     }
 
     // Twitter
