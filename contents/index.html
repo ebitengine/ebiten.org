@@ -1,7 +1,8 @@
 <div class="grid-container">
   <div class="grid-item-2">
     <h1 class="big"><span class="main">Ebiten</span><span class="sub">A dead simple 2D game library in Go</span></h1>
-    <p>Ebiten (/ebíteɴ/) is an open-source game library, with which you can develop 2D games with simple API for multi platforms in <a href="https://golang.org/">the Go programming language</a>.</p>
+    <p lang="en">Ebiten (/ebíteɴ/) is an open-source game library, with which you can develop 2D games with simple API for multi platforms in <a href="https://golang.org/">the Go programming language</a>.</p>
+    <p lang="ja">Ebiten (えびてん) は<a href="https://golang.org/">プログラミング言語 Go</a> で書かれたオープンソースのゲームライブラリです。シンプルな API を使って、マルチプラットフォームな 2D ゲームを開発することができます。</p>
     <ul class="toplinks">
       <li><img src="images/github.png" width="16" height="16" alt="GitHub"><a href="https://github.com/hajimehoshi/ebiten"><code>hajimehoshi/ebiten</code></a></li>
     </ul>
@@ -10,30 +11,40 @@
     <p class="img"><img src="images/gopherandgame.png" width="450" alt="Gopher and game developing" style="padding-top: 36px;"></p>
   </div>
 </div>
-<h2>What's Ebiten?</h2>
+<h2 lang="en">What's Ebiten?</h2>
+<h2 lang="ja">Ebiten とは</h2>
 <div class="grid-container">
   <div class="grid-item-2">
-    <h3>Dead Simple</h3>
+    <h3 lang="en">Dead Simple</h3>
+    <h3 lang="ja">とてもシンプル</h3>
     <p class="img"><img src="images/deadsimple.png" width="448" height="224" alt="Dead Simple"></p>
-    <p>Most rendering operations are represented as drawing an image to an image. Everything is an image: the screen, data from an image file, an offscreen are represented as image objects.</p>
+    <p lang="en">Most rendering operations are represented as drawing an image to an image. Everything is an image: the screen, data from an image file and an offscreen are represented as image objects.</p>
+    <p lang="ja">ほとんどの描画命令は画像から画像への描画として表現されます。画面、画像ファイル、オフスクリーンなど、あらゆるものが画像として表現されます。</p>
   </div>
   <div class="grid-item-2">
-    <h3>Multi Platforms</h3>
+    <h3 lang="en">Multi Platforms</h3>
+    <h3 lang="ja">マルチプラットフォーム</h3>
     <p class="img"><img src="images/multiplatforms.png" width="448" height="224" alt="Multi Platforms"></p>
-    <p>Ebiten games work on various platforms like desktops (Windows, macOS, Linux, and FreeBSD), web browsers (<a href="https://github.com/gopherjs/gopherjs">GopherJS</a> and WebAssembly), and mobiles (Android and iOS).</p>
+    <p lang="en">Ebiten games work on various platforms like desktops (Windows, macOS, Linux, and FreeBSD), web browsers (<a href="https://github.com/gopherjs/gopherjs">GopherJS</a> and WebAssembly), and mobiles (Android and iOS).</p>
+    <p lang="ja">Ebiten のゲームは様々な環境で動きます。デスクトップ (Windows、macOS、Linux、FreeBSD)、 Web ブラウザ (<a href="https://github.com/gopherjs/gopherjs">GopherJS</a> と WebAssembly)、モバイル (Android と iOS) で動きます。</p>
   </div>
   <div class="grid-item-2">
-    <h3>High Performance</h3>
+    <h3 lang="en">High Performance</h3>
+    <h3 lang="ja">高いパフォーマンス</h3>
     <p class="img"><img src="images/highperformance.png" width="448" height="224" alt="High Performance"></p>
-    <p>While Ebiten's drawing API is very simple, Ebiten games run very fast with GPU power. Multiple images are integrated into a texture atlas internally. Multiple drawing operations are integrated into a batch automatically when possible.</p>
+    <p lang="en">While Ebiten's drawing API is very simple, Ebiten games run very fast with GPU power. Multiple images are integrated into a texture atlas internally. Multiple drawing operations are integrated into a batch automatically when possible.</p>
+    <p lang="ja">Ebiten の API はシンプルですが、ゲームは GPU を活かして高速に実行されます。複数の画像は内部でテクスチャアトラスにまとめられます。複数の描画命令は、可能な限り自動的にバッチにまとめられます。</p>
   </div>
   <div class="grid-item-2">
-    <h3>Production Ready</h3>
+    <h3 lang="en">Production Ready</h3>
+    <h3 lang="ja">商用レベルのゲーム</h3>
     <p class="img"><img src="images/productionready.png" width="448" height="224" alt="Production Ready"></p>
-    <p>Ebiten has capability to develop product-level games. <a href="https://daigostudio.com/bearsrestaurant/">Bear's Restaurant</a>, that reached 400K downloads, is a mobile application in Ebiten.</p>
+    <p lang="en">Ebiten has capability to develop product-level games. <a href="https://daigostudio.com/bearsrestaurant/">Bear's Restaurant</a>, that reached 400K downloads, is a mobile application in Ebiten.</p>
+    <p lang="ja">Ebiten は商用レベルのゲームを作ることができます。<a href="https://daigostudio.com/bearsrestaurant/">くまのレストラン</a>は、 40 万ダウンロードを達成した Ebiten 製のモバイルゲームです。</p>
   </div>
 </div>
-<h2>Playable Examples</h2>
+<h2 lang="en">Playable Examples</h2>
+<h2 lang="ja">遊べるサンプル</h2>
 <div class="grid-container">
   <div class="grid-item-1">
     <h3>2048</h3>
@@ -48,18 +59,24 @@
     <p class="img thumbnail"><a href="examples/flappy.html"><img src="images/examples/flappy.png" width="400" height="300" alt="Flappy"></a></p>
   </div>
   <div class="grid-item-1">
-    <h3>30+ More Examples</h3>
+    <h3 lang="en">30+ More Examples</h3>
+    <h3 lang="ja">その他サンプル 30 以上</h3>
     <p class="img thumbnail"><a href="examples/"><img src="images/moreexamples.png" width="400" height="300" alt="More examples"></a></p>
   </div>
 </div>
-<h2>Community</h2>
+<h2 lang="en">Community</h2>
+<h2 lang="ja">コミュニティ</h2>
 <ul class="toplinks">
-  <li><img src="images/slack.png" width="16" height="16" alt="Slack" style="transform: scale(2, 2);"><a href="https://gophers.slack.com/app_redirect?channel=ebiten"><code>#ebiten</code></a> (<a href="https://invite.slack.golangbridge.org/">Join</a>)</li>
+  <li><img src="images/slack.png" width="16" height="16" alt="Slack" style="transform: scale(2, 2);"><a href="https://gophers.slack.com/app_redirect?channel=ebiten"><code>#ebiten</code></a> (<a href="https://invite.slack.golangbridge.org/"><span lang="en">Join</span><span lang="ja">参加する</span></a>)</li>
 </ul>
-<h2>License</h2>
-<p>Ebiten is licensed under <a href="https://github.com/hajimehoshi/ebiten/blob/master/LICENSE">the Apache License 2.0</a>.</p>
-<p>Go Gopher by Renee French is lincensed under <a href="https://creativecommons.org/licenses/by/3.0/">the Creative Commons Attribution 3.0 License</a>.</p>
-<p>The content of this page is licensed under <a href="https://creativecommons.org/licenses/by/4.0/">the Creative Commons Attribution 4.0 License</a>.</p>
+<h2 lang="en">License</h2>
+<h2 lang="ja">ライセンス</h2>
+<p lang="en">Ebiten is licensed under <a href="https://github.com/hajimehoshi/ebiten/blob/master/LICENSE">the Apache License 2.0</a>.</p>
+<p lang="ja">Ebiten は <a href="https://github.com/hajimehoshi/ebiten/blob/master/LICENSE">Apache License 2.0</a> で公開されています。</p>
+<p lang="en">Go Gopher by Renee French is lincensed under <a href="https://creativecommons.org/licenses/by/3.0/">the Creative Commons Attribution 3.0 License</a>.</p>
+<p lang="ja">Go Gopher は Renee French 氏によって製作され、 <a href="https://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 License</a> で公開されています。</p>
+<p lang="en">The content of this site is licensed under <a href="https://creativecommons.org/licenses/by/4.0/">the Creative Commons Attribution 4.0 License</a>.</p>
+<p lang="ja">このサイトのコンテンツは <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 License</a> で公開されています。</p>
 <script>
   window.addEventListener('DOMContentLoaded', () => {
       disableTOC();

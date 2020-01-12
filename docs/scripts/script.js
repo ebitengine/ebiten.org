@@ -27,6 +27,28 @@ function goos() {
     return '';
 }
 
+function defaultLanguage() {
+    const threeToTwo = {
+        'eng': 'en',
+        'jpn': 'ja',
+    };
+    const lang = navigator.language.match(/^[a-zA-Z]{2,3}/)[0];
+    if (lang.length === 3) {
+        lang = threeToTwo[lang];
+    }
+    if (new Set(['en', 'ja']).has(lang)) {
+        return lang;
+    }
+    return 'en';
+}
+
+function languageName(code) {
+    return {
+        'en': 'English',
+        'ja': '日本語',
+    }[code];
+}
+
 // 'darwin' vs 'darwin' => true
 // 'darwin' vs 'darwin,amd64' => true
 // 'darwin,amd64' vs 'darwin,amd64' => true
@@ -247,12 +269,72 @@ function updateCSS() {
     document.documentElement.style.setProperty('--vh', `${vh}px`);
 }
 
+function initLanguageSelector() {
+    const langs = new Set();
+    for (const e of document.querySelectorAll('article > *[lang]')) {
+        langs.add(e.lang);
+    }
+    const selector = document.querySelector('#language');
+    if (langs.size) {
+        const sortedLangs = Array.from(langs).sort((a, b) => {
+            if (a === 'en') {
+                return -1;
+            }
+            if (b === 'en') {
+                return 1;
+            }
+            if (a < b) {
+                return -1;
+            }
+            if (a > b) {
+                return 1;
+            }
+            return 0;
+        });
+        for (const lang of sortedLangs) {
+            const a = document.createElement('a');
+            a.href = '#!';
+            a.dataset.lang = lang;
+            a.addEventListener('click', e => {
+                updateLanguage(lang);
+                e.preventDefault();
+            });
+            a.textContent = languageName(lang);
+            const li = document.createElement('li');
+            li.appendChild(a);
+            selector.appendChild(li);
+        }
+    } else {
+        selector.style.display = 'none';
+    }
+}
+
+function updateLanguage(lang) {
+    for (const e of document.querySelectorAll('*[lang]')) {
+        if (e.lang === lang) {
+            e.classList.remove('hiddenlang');
+        } else {
+            e.classList.add('hiddenlang');
+        }
+    }
+    for (const e of document.querySelectorAll('#language a')) {
+        if (e.dataset.lang === lang) {
+            e.classList.add('active');
+        } else {
+            e.classList.remove('active');
+        }
+    }
+}
+
 window.addEventListener('DOMContentLoaded', () => {
+    initLanguageSelector();
+
     updateCode();
     updateTOC();
     updateImages();
     updateBody();
     updateCSS();
+    updateLanguage(defaultLanguage());
 
     const sidemenu = document.querySelector('input#sidemenu');
     if (sidemenu !== null) {
