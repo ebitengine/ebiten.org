@@ -275,6 +275,9 @@ function initLanguageSelector() {
         langs.add(e.lang);
     }
     const selector = document.querySelector('#language');
+    if (!selector) {
+        return;
+    }
     if (langs.size) {
         const sortedLangs = Array.from(langs).sort((a, b) => {
             if (a === 'en') {
