@@ -270,13 +270,13 @@ function updateCSS() {
 }
 
 function initLanguageSelector() {
-    const langs = new Set();
-    for (const e of document.querySelectorAll('article > *[lang]')) {
-        langs.add(e.lang);
-    }
     const selector = document.querySelector('#language');
     if (!selector) {
         return;
+    }
+    const langs = new Set();
+    for (const e of document.querySelectorAll('article > *[lang]')) {
+        langs.add(e.lang);
     }
     if (langs.size) {
         const sortedLangs = Array.from(langs).sort((a, b) => {
@@ -337,7 +337,13 @@ window.addEventListener('DOMContentLoaded', () => {
     updateImages();
     updateBody();
     updateCSS();
-    updateLanguage(defaultLanguage());
+
+    let lang = defaultLanguage();
+    // If the page is not translated yet, use English to make the page consistent.
+    if (!document.querySelector('article > *[lang]')) {
+        lang = 'en';
+    }
+    updateLanguage(lang);
 
     const sidemenu = document.querySelector('input#sidemenu');
     if (sidemenu !== null) {
