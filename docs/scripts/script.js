@@ -42,6 +42,14 @@ function defaultLanguage() {
     return 'en';
 }
 
+function currentLanguage() {
+    const lang = localStorage.getItem('language');
+    if (lang) {
+        return lang;
+    }
+    return defaultLanguage();
+}
+
 function languageName(code) {
     return {
         'en': 'English',
@@ -300,6 +308,7 @@ function initLanguageSelector() {
             a.dataset.lang = lang;
             a.addEventListener('click', e => {
                 updateLanguage(lang);
+                localStorage.setItem('language', lang);
                 e.preventDefault();
             });
             a.textContent = languageName(lang);
@@ -337,13 +346,7 @@ window.addEventListener('DOMContentLoaded', () => {
     updateImages();
     updateBody();
     updateCSS();
-
-    let lang = defaultLanguage();
-    // If the page is not translated yet, use English to make the page consistent.
-    if (!document.querySelector('article > *[lang]')) {
-        lang = 'en';
-    }
-    updateLanguage(lang);
+    updateLanguage(currentLanguage());
 
     const sidemenu = document.querySelector('input#sidemenu');
     if (sidemenu !== null) {
