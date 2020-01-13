@@ -342,11 +342,11 @@ window.addEventListener('DOMContentLoaded', () => {
     initLanguageSelector();
 
     updateCode();
-    updateTOC();
     updateImages();
     updateBody();
     updateCSS();
     updateLanguage(currentLanguage());
+    updateTOC();
 
     const sidemenu = document.querySelector('input#sidemenu');
     if (sidemenu !== null) {

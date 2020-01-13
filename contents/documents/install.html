@@ -1,37 +1,47 @@
-<h1>Install</h1>
+<h1 lang="en">Install</h1>
+<h1 lang="ja">インストール</h1>
 <nav class="tags">
   <!-- TODO: Use tab style -->
   <ul>
     <li><span data-tags="!windows"><a href="javascript:void(0)" onclick="switchOS('windows')">Windows</a></span><span data-tags="windows">Windows</span></li><li><span data-tags="!darwin"><a href="javascript:void(0)" onclick="switchOS('darwin')">macOS</a></span><span data-tags="darwin">macOS</span></li><li><span data-tags="!linux"><a href="javascript:void(0)" onclick="switchOS('linux')">Linux</a></span><span data-tags="linux">Linux</span></li><li><span data-tags="!freebsd"><a href="javascript:void(0)" onclick="switchOS('freebsd')">FreeBSD</a></span><span data-tags="freebsd">FreeBSD</span></li>
   </ul>
 </nav>
-<p>Let's get the Ebiten source code and compile it.</p>
 
 <div data-tags="freebsd">
-  <h2>Desktop Environment</h2>
-  <p>Ebiten requires X Window system and you need to install a window manager like GNOME3. See <a href="https://www.freebsd.org/doc/handbook/x11-wm.html">the official manual</a>. Note that you also need to do <code>pkg install xorg</code>.</p>
+  <h2 lang="en">Desktop Environment</h2>
+  <h2 lang="ja">デスクトップ環境</h2>
+  <p lang="en">Ebiten requires X Window system and you need to install a window manager like GNOME3. See <a href="https://www.freebsd.org/doc/handbook/x11-wm.html">the official manual</a>. Note that you also need to do <code>pkg install xorg</code>.</p>
+  <p lang="ja">Ebiten を動かすためには X Window system が必要です。 GNOME3 のようなウィンドウマネージャをインストールする必要があります。<a href="https://www.freebsd.org/doc/handbook/x11-wm.html">公式マニュアル</a>を参照してください。 <code>pkg install xorg</code> を実行する必要があることに注意してください。</p>
 </div>
 
 <h2>Go</h2>
-<p>Install <a href="https://golang.org/">Go</a> on your machine. Ebiten requires Go 1.12 or later.</p>
+<p lang="en">Install <a href="https://golang.org/">Go</a> on your machine. Ebiten requires Go 1.12 or later.</p>
+<p><a href="https://golang.org/">Go</a> をインストールしてください。 Ebiten を動かすためには Go 1.12 以降が必要です。</p>
 
 <div data-tags="windows">
-  <p>Note that you do NOT need a C compiler for Ebiten on Windows.</p>
+  <p lang="en">Note that you do NOT need a C compiler for Ebiten on Windows.</p>
+  <p lang="ja">Windows では、 C コンパイラは必要ありません。</p>
 </div>
 
 <div data-tags="!windows">
-  <h2>C compiler</h2>
-  <p>A C compiler is required as Ebiten uses not only Go but also C.</p>
+  <h2 lang="en">C compiler</h2>
+  <h2 lang="ja">C コンパイラ</h2>
+  <p lang="en">A C compiler is required as Ebiten uses not only Go but also C.</p>
+  <p lang="ja">Ebiten は Go だけではなく C も使っているため、 C コンパイラが必要になります。</p>
   <div data-tags="darwin">
-    <p>On the latest macOS, just type <code>clang</code> on your terminal and a dialog would appear if you don't have clang compiler. Follow the instruction to install it.</p>
-    <p>You might find an error when executing clang.</p>
+    <p lang="en">On the latest macOS, just type <code>clang</code> on your terminal and a dialog would appear if you don't have clang compiler. Follow the instruction to install it.</p>
+    <p lang="ja">最新の macOS ならば、ターミナル上で <code>clang</code> と入力すれば、 clang がまだインストールされていないのであれば、ダイアログが表示されます。指示に従ってインストールしてください。</p>
+    <p lang="en">You might find the following error when executing clang.</p>
+    <p lang="en">clang 実行中に次のようなエラーメッセージが表示されるかもしれません。</p>
     <pre><code>xcrun: error: invalid active developer path (/Library/Developer/CommandLineTools), missing xcrun at: /Library/Developer/CommandLineTools/usr/bin/xcrun</code></pre>
-    <p>In this case, run <code>xcode-select --install</code> and select commandline tools.</p>
+    <p lang="en">In this case, run <code>xcode-select --install</code> and install commandline tools.</p>
+    <p lang="ja">その場合は <code>xcode-select --install</code> を実行して、コマンドラインツールをインストールしてください。</p>
   </div>
   <div data-tags="linux">
     <div class="grid-container">
       <div class="grid-item-2">
-        <p>Use your distribution's package manager. For example, Ubuntu can use <code>apt</code>.</p>
+        <p lang="en">Use your distribution's package manager. For example, Ubuntu can use <code>apt</code>.</p>
+        <p lang="ja">お使いのディストリビューションのパッケージマネージャを使ってください。例えば、 Ubuntu では <code>apt</code> が使えます。</p>
       </div>
       <div class="grid-item-2">
         <pre><code>apt install gcc</code></pre>
@@ -41,13 +51,15 @@
   <div data-tags="freebsd">
     <div class="grid-container">
       <div class="grid-item-2">
-        <p>Use <code>pkg</code>.</p>
+        <p lang="en">Use <code>pkg</code>.</p>
+        <p lang="ja"><code>pkg</code> を使ってください。</p>
       </div>
       <div class="grid-item-2">
         <pre><code>pkg install clang</code></pre>
       </div>
       <div class="grid-item-2">
-        <p>You need to set some environment variables.</p>
+        <p lang="en">You need to set some environment variables.</p>
+        <p lang="ja">いくつか環境変数を設定する必要があります。</p>
       </div>
       <div class="grid-item-2">
         <pre><code>export C_INCLUDE_PATH=/usr/local/include:${C_INCLUDE_PATH}
@@ -59,7 +71,8 @@ export LIBRARY_PATH=/usr/local/lib:${LIBRARY_PATH}</code></pre>
 </div>
 
 <div data-tags="!windows,!darwin">
-  <h2>Dependencies</h2>
+  <h2 lang="en">Dependencies</h2>
+  <h2 lang="ja">依存ライブラリ</h2>
   <div data-tags="linux">
     <h3>Debian / Ubuntu</h3>
     <pre><code>sudo apt install libc6-dev libglu1-mesa-dev libgl1-mesa-dev libxrandr-dev libxcursor-dev libxinerama-dev libxi-dev libasound2-dev</code></pre>
@@ -73,7 +86,8 @@ export LIBRARY_PATH=/usr/local/lib:${LIBRARY_PATH}</code></pre>
   <div data-tags="freebsd">
     <div class="grid-container">
       <div class="grid-item-2">
-        <p>OpenAL is required for Ebiten's audio package. Note that the <code>openal</code> package is pretty old and doesn't work. Install openal-soft instead.</p>
+        <p lang="en">OpenAL is required for Ebiten's audio package. Note that the pkg's <code>openal</code> package is pretty old and doesn't work. Install <code>openal-soft</code> instead.</p>
+        <p lang="ja">OpenAL が Ebiten の audio パッケージのために必要です。 pkg の <code>openal</code> パッケージは古くて動きません。 <code>openal-soft</code> を代わりにインストールしてください。</p>
       </div>
       <div class="grid-item-2">
         <pre><code>pkg install openal-soft</code></pre>
@@ -83,10 +97,12 @@ export LIBRARY_PATH=/usr/local/lib:${LIBRARY_PATH}</code></pre>
 </div>
 
 <h2>Ebiten</h2>
-<p>Ebiten can be used as a usual Go library. Go command automatically installs Ebiten when your program uses Ebiten.</p>
+<p lang="en">Ebiten can be used as a usual Go library. Go command automatically installs Ebiten when your program uses Ebiten.</p>
+<p lang="ja">Ebiten は通常の Go ライブラリとして使用できます。プログラムが Ebiten を使用していれば、 Go コマンドが自動的に Ebiten をインストールします。</p>
 <div class="grid-container">
   <div class="grid-item-2">
-    <p>First, create your local module. Use URL for your package like <code>github.com/yourname/yourgame</code>. Actually, any module name like <code>example.com/m</code> is fine as long as you don't plan to share this publicly. You can change the module name anytime later.</p>
+    <p lang="en">First, create your local module. Use URL for your module name like <code>github.com/yourname/yourgame</code>. Actually, any module name like <code>example.com/m</code> is fine as long as you don't plan to share this publicly. You can change the module name anytime later.</p>
+    <p lang="ja">最初に、ローカルモジュールを作ります。 <code>github.com/yourname/yourgame</code> のような URL をモジュール名に使用します。実際のところ、自分のプログラムを公開するつもりがないのであれば、 <code>example.com/m</code> などどんなモジュール名でも問題ありません。モジュール名は後でいつでも変えられます。</p>
   </div>
   <div class="grid-item-2">
     <pre><code># Create a directory for your game.
@@ -97,14 +113,17 @@ cd yourgame
 go mod init github.com/yourname/yourgame</code></pre>
   </div>
   <div class="grid-item-2">
-    <p>Then, run the command to execute an Ebiten example. <code>go run</code> compiles Go files and runs it immediately after the compilation. As the first compilation might take a little long time, please wait for a while. Note that you can see what is happening on the compilation process with <code>-x</code> option if you want.</p>
-    <p>Note that <code>-tags=example</code> is needed to execute the examples as the Ebiten example packages require the build tag.</p>
+    <p lang="en">Then, run the command to execute an Ebiten example. <code>go run</code> compiles Go files and runs it immediately after the compilation. As the first compilation might take a little long time, please wait for a while. Note that you can see what is happening on the compilation process with <code>-x</code> option if you want.</p>
+    <p lang="ja">次に、 Ebiten のサンプルを実行します。 <code>go run</code> は Go ファイルをコンパイルし、即座に実行します。最初のコンパイルは少々時間がかかるかもしれないため、しばらくお待ち下さい。必要ならば <code>-x</code> をつけることで、コンパイル処理中に何が行われているのかを見ることができます。</p>
+    <p lang="en">Note that <code>-tags=example</code> is needed to execute the examples as the Ebiten example packages require the build tag.</p>
+    <p lang="ja"><code>-tags=example</code> は Ebiten のサンプルを実行するために必要です。 Ebitne サンプルのパッケージがビルドタグを必要とするためです。</p>
   </div>
   <div class="grid-item-2">
     <pre><code>go run -tags=example github.com/hajimehoshi/ebiten/examples/rotate</code></pre>
   </div>
   <div class="grid-item-2">
-    <p>If you see the window with a rotating Gophers picture, congratulations! You have succeeded to install Ebiten.</p>
+    <p lang="en">If you see the window with a rotating Gophers picture, congratulations! You have succeeded to install Ebiten.</p>
+    <p lang="ja">回転する Gopher の絵がウィンドウ上に表示されたならば、おめでとうございます! Ebiten のインストールに成功しました。</p>
   </div>
   <div class="grid-item-2">
     <p class="img thumbnail"><img src="/images/rotate.png" width="320" height="240" alt="Rotate example"></p>
