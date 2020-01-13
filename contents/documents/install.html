@@ -30,16 +30,34 @@
       <li>For 64bit, <code>C:\Program Files (x86)\Git\bin</code></li>
     </ul>
     <h3>Option 2: Scoop</h3>
-    <p>You also can get Git via <a href="https://scoop.sh/">Scoop</a>.</p>
-    <pre><code>scoop install git</code></pre>
+    <div class="grid-container">
+      <div class="grid-item-2">
+        <p>You also can get Git via <a href="https://scoop.sh/">Scoop</a>.</p>
+      </div>
+      <div class="grid-item-2">
+        <pre><code>scoop install git</code></pre>
+      </div>
+    </div>
   </div>
   <div data-tags="linux">
-    <p>Use your distribution's package manager. <a href="https://git-scm.com/download/linux">The official website also says so</a>. For example, on Ubuntu you can use <code>apt</code>:</p>
-    <pre><code>apt install git</code></pre>
+    <div class="grid-container">
+      <div class="grid-item-2">
+        <p>Use your distribution's package manager. <a href="https://git-scm.com/download/linux">The official website also says so</a>. For example, on Ubuntu you can use <code>apt</code>:</p>
+      </div>
+      <div class="grid-item-2">
+        <pre><code>apt install git</code></pre>
+      </div>
+    </div>
   </div>
   <div data-tags="freebsd">
-    <p>Use <code>pkg</code>.</p>
-    <pre><code>pkg install git</code></pre>
+     <div class="grid-container">
+       <div class="grid-item-2">
+         <p>Use <code>pkg</code>.</p>
+       </div>
+       <div class="grid-item-2">
+         <pre><code>pkg install git</code></pre>
+       </div>
+     </div>
   </div>
 </div>
 
@@ -48,21 +66,37 @@
   <p>A C compiler is required as Ebiten uses not only Go but also C.</p>
   <div data-tags="darwin">
     <p>On the latest macOS, just type <code>clang</code> on your terminal and a dialog would appear if you don't have clang compiler. Follow the instruction to install it.</p>
-    <p>You might find an error when executing clang:</p>
+    <p>You might find an error when executing clang.</p>
     <pre><code>xcrun: error: invalid active developer path (/Library/Developer/CommandLineTools), missing xcrun at: /Library/Developer/CommandLineTools/usr/bin/xcrun</code></pre>
     <p>In this case, run <code>xcode-select --install</code> and select commandline tools.</p>
   </div>
   <div data-tags="linux">
-    <p>Use your distribution's package manager. For example, Ubuntu can use <code>apt</code>:</p>
-    <pre><code>apt install gcc</code></pre>
+    <div class="grid-container">
+      <div class="grid-item-2">
+        <p>Use your distribution's package manager. For example, Ubuntu can use <code>apt</code>.</p>
+      </div>
+      <div class="grid-item-2">
+        <pre><code>apt install gcc</code></pre>
+      </div>
+    </div>
   </div>
   <div data-tags="freebsd">
-    <p>Use <code>pkg</code>.</p>
-    <pre><code>pkg install clang</code></pre>
-    <p>You need to set some environment variables:</p>
-    <pre><code>export C_INCLUDE_PATH=/usr/local/include:${C_INCLUDE_PATH}
+    <div class="grid-container">
+      <div class="grid-item-2">
+        <p>Use <code>pkg</code>.</p>
+      </div>
+      <div class="grid-item-2">
+        <pre><code>pkg install clang</code></pre>
+      </div>
+      <div class="grid-item-2">
+        <p>You need to set some environment variables.</p>
+      </div>
+      <div class="grid-item-2">
+        <pre><code>export C_INCLUDE_PATH=/usr/local/include:${C_INCLUDE_PATH}
 export CPLUS_INCLUDE_PATH=/usr/local/include:${CPLUS_INCLUDE_PATH}
 export LIBRARY_PATH=/usr/local/lib:${LIBRARY_PATH}</code></pre>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -79,47 +113,40 @@ export LIBRARY_PATH=/usr/local/lib:${LIBRARY_PATH}</code></pre>
     <pre><code>sudo pacman -S mesa libxrandr libxcursor libxinerama libxi</code></pre>
   </div>
   <div data-tags="freebsd">
-    <p>OpenAL is required for Ebiten's audio package. Note that the <code>openal</code> package is pretty old and doesn't work. Install openal-soft instead.</p>
-    <pre><code>pkg install openal-soft</code></pre>
+    <div class="grid-container">
+      <div class="grid-item-2">
+        <p>OpenAL is required for Ebiten's audio package. Note that the <code>openal</code> package is pretty old and doesn't work. Install openal-soft instead.</p>
+      </div>
+      <div class="grid-item-2">
+        <pre><code>pkg install openal-soft</code></pre>
+      </div>
+    </div>
   </div>
 </div>
 
 <h2>Ebiten</h2>
-<p>Ebiten can be downloaded as a usual Go library. Ebiten is available both with and without Go modules.</p>
-<h3>Option 1: With Go modules</h3>
-<pre><code># Create a directory for your game.
+<p>Ebiten can be used as a usual Go library. Go command automatically installs Ebiten when your program uses Ebiten.</p>
+<div class="grid-container">
+  <div class="grid-item-2">
+    <p>First, create your local module. Use URL for your package like <code>github.com/yourname/yourgame</code>. Actually, any module name like <code>example.com/m</code> is fine as long as you don't plan to share this publicly. You can change the module name anytime later.</p>
+  </div>
+  <div class="grid-item-2">
+    <pre><code># Create a directory for your game.
 mkdir yourgame
 cd yourgame
 
 # Initialize go.mod by `go mod`.
-# Use URL for your package like `github.com/yourname/yourgame`.
-# If you are not sure and don't plan to share it so far, `example.com/m` is fine.
-go mod init example.com/m</code></pre>
-<p>Ebiten package is automatically downloaded when executing your program that imports <code>github.com/hajimehoshi/ebiten</code>. <code>example.com/m</code> is an arbitrary URL for local testing. Use your project's URL (e.g. <code>github.com/yourname/yourproject</code>) when you make this public.</p>
-<p>For more details about Go modules, see <a href="https://github.com/golang/go/wiki/Modules">the Wiki article</a>.</p>
-<h3>Option 2: Without Go modules</h3>
-<p>Run <code>go get</code>.</p>
-<pre><code>go get github.com/hajimehoshi/ebiten/...</code></pre>
-<p><code>...</code> means to install not only Ebiten but also its sub-packages (and their dependencies).</p>
-<h2>Run an example</h2>
-<p>Let's execute an example to check installation finished correctly.</p>
-<h3>Option 1: With Go modules</h3>
-<p>Move to the <code>yourgame</code> directory you made, and run:</p>
-<pre><code>go run -tags=example github.com/hajimehoshi/ebiten/examples/rotate</code></pre>
-<h3>Option 2: Without Go modules</h3>
-<div data-tags="windows">
-  <pre><code>cd %USERPROFILE%\go\src\github.com\hajimehoshi\ebiten
-go run -tags=example ./examples/rotate</code></pre>
-</div>
-<div data-tags="!windows">
-  <pre><code>cd $(go env GOPATH)/src/github.com/hajimehoshi/ebiten
-go run -tags=example ./examples/rotate</code></pre>
-</div>
-<p><code>go run</code> compiles Go files and runs it immediately after the compilation. As the first compilation might take a little long time, please wait for a while. Note that you can see what is happening on the compilation process with <code>-x</code> option if you want.</p>
-<div class="grid-container">
+go mod init github.com/yourname/yourgame</code></pre>
+  </div>
+  <div class="grid-item-2">
+    <p>Then, run the command to execute an Ebiten example. <code>go run</code> compiles Go files and runs it immediately after the compilation. As the first compilation might take a little long time, please wait for a while. Note that you can see what is happening on the compilation process with <code>-x</code> option if you want.</p>
+    <p>Note that <code>-tags=example</code> is needed to execute the examples as the Ebiten example packages require the build tag.</p>
+  </div>
+  <div class="grid-item-2">
+    <pre><code>go run -tags=example github.com/hajimehoshi/ebiten/examples/rotate</code></pre>
+  </div>
   <div class="grid-item-2">
     <p>If you see the window with a rotating Gophers picture, congratulations! You have succeeded to install Ebiten.</p>
-    <p>Note that <code>-tags=example</code> is needed to execute the examples as the Ebiten example packages require the build tag.</p>
   </div>
   <div class="grid-item-2">
     <p class="img thumbnail"><img src="/images/rotate.png" width="320" height="240" alt="Rotate example"></p>
