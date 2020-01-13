@@ -19,48 +19,6 @@
   <p>Note that you do NOT need a C compiler for Ebiten on Windows.</p>
 </div>
 
-<div data-tags="!darwin">
-  <h2>Git</h2>
-  <p>Git is required to get most of Go packages including Ebiten.</p>
-  <div data-tags="windows">
-    <h3>Option 1: The official Git installer</h3>
-    <p><a href="http://git-scm.com/downloads">The official Git website</a> is recommended. After installation, add the below values to <code>PATH</code> environment variable:</p>
-    <ul>
-      <li>For 32bit, <code>C:\Program Files\Git\bin</code></li>
-      <li>For 64bit, <code>C:\Program Files (x86)\Git\bin</code></li>
-    </ul>
-    <h3>Option 2: Scoop</h3>
-    <div class="grid-container">
-      <div class="grid-item-2">
-        <p>You also can get Git via <a href="https://scoop.sh/">Scoop</a>.</p>
-      </div>
-      <div class="grid-item-2">
-        <pre><code>scoop install git</code></pre>
-      </div>
-    </div>
-  </div>
-  <div data-tags="linux">
-    <div class="grid-container">
-      <div class="grid-item-2">
-        <p>Use your distribution's package manager. <a href="https://git-scm.com/download/linux">The official website also says so</a>. For example, on Ubuntu you can use <code>apt</code>:</p>
-      </div>
-      <div class="grid-item-2">
-        <pre><code>apt install git</code></pre>
-      </div>
-    </div>
-  </div>
-  <div data-tags="freebsd">
-     <div class="grid-container">
-       <div class="grid-item-2">
-         <p>Use <code>pkg</code>.</p>
-       </div>
-       <div class="grid-item-2">
-         <pre><code>pkg install git</code></pre>
-       </div>
-     </div>
-  </div>
-</div>
-
 <div data-tags="!windows">
   <h2>C compiler</h2>
   <p>A C compiler is required as Ebiten uses not only Go but also C.</p>
