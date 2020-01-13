@@ -283,7 +283,7 @@ function initLanguageSelector() {
         return;
     }
     const langs = new Set();
-    for (const e of document.querySelectorAll('article > *[lang]')) {
+    for (const e of document.querySelectorAll('article *[lang]')) {
         langs.add(e.lang);
     }
     if (langs.size) {
