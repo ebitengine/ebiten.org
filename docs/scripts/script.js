@@ -336,6 +336,7 @@ function updateLanguage(lang) {
             e.classList.remove('active');
         }
     }
+    updateTOC();
 }
 
 window.addEventListener('DOMContentLoaded', () => {
