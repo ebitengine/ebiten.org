@@ -117,33 +117,28 @@
   <p>Note that you do NOT need a C compiler for Ebiten on Windows.</p>
 </div>
 
-<h2>Git</h2>
-<p>Git is required to get most of Go packages including Ebiten.</p>
-<div data-tags="windows">
-  <h3>Option 1: The official Git installer</h3>
-  <p><a href="http://git-scm.com/downloads">The official Git website</a> is recommended. After installation, add the below values to <code>PATH</code> environment variable:</p>
-  <ul>
-    <li>For 32bit, <code>C:\Program Files\Git\bin</code></li>
-    <li>For 64bit, <code>C:\Program Files (x86)\Git\bin</code></li>
-  </ul>
-  <h3>Option 2: Scoop</h3>
-  <p>You also can get Git via <a href="https://scoop.sh/">Scoop</a>.</p>
-  <pre><code>scoop install git</code></pre>
-</div>
-<div data-tags="darwin">
-  <h3>Option 1: Homebrew</h3>
-  <p><a href="https://brew.sh/">Homebrew</a> is recommended.</p>
-  <pre><code>brew install git</code></pre>
-  <h3>Option 2: The official Git installer</h3>
-  <p><a href="http://git-scm.com/downloads">The official Git installer</a> is also fine.</p>
-</div>
-<div data-tags="linux">
-  <p>Use your distribution's package manager. <a href="https://git-scm.com/download/linux">The official website also says so</a>. For example, on Ubuntu you can use <code>apt</code>:</p>
-  <pre><code>apt install git</code></pre>
-</div>
-<div data-tags="freebsd">
-  <p>Use <code>pkg</code>.</p>
-  <pre><code>pkg install git</code></pre>
+<div data-tags="!darwin">
+  <h2>Git</h2>
+  <p>Git is required to get most of Go packages including Ebiten.</p>
+  <div data-tags="windows">
+    <h3>Option 1: The official Git installer</h3>
+    <p><a href="http://git-scm.com/downloads">The official Git website</a> is recommended. After installation, add the below values to <code>PATH</code> environment variable:</p>
+    <ul>
+      <li>For 32bit, <code>C:\Program Files\Git\bin</code></li>
+      <li>For 64bit, <code>C:\Program Files (x86)\Git\bin</code></li>
+    </ul>
+    <h3>Option 2: Scoop</h3>
+    <p>You also can get Git via <a href="https://scoop.sh/">Scoop</a>.</p>
+    <pre><code>scoop install git</code></pre>
+  </div>
+  <div data-tags="linux">
+    <p>Use your distribution's package manager. <a href="https://git-scm.com/download/linux">The official website also says so</a>. For example, on Ubuntu you can use <code>apt</code>:</p>
+    <pre><code>apt install git</code></pre>
+  </div>
+  <div data-tags="freebsd">
+    <p>Use <code>pkg</code>.</p>
+    <pre><code>pkg install git</code></pre>
+  </div>
 </div>
 
 <div data-tags="!windows">
@@ -190,7 +185,6 @@ export LIBRARY_PATH=/usr/local/lib:${LIBRARY_PATH}</code></pre>
 <h2>Ebiten</h2>
 <p>Ebiten can be downloaded as a usual Go library. Ebiten is available both with and without Go modules.</p>
 <h3>Option 1: With Go modules</h3>
-<p>Go modules are available as of Go 1.11.</p>
 <pre><code># Create a directory for your game.
 mkdir yourgame
 cd yourgame
