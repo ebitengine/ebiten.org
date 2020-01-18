@@ -46,8 +46,8 @@
         <li lang="ja"><a href="/">ホーム</a></li>
         <li lang="en"><a href="https://github.com/hajimehoshi/ebiten">GitHub project</a></li>
         <li lang="ja"><a href="https://github.com/hajimehoshi/ebiten">GitHub プロジェクト</a></li>
-        <li lang="en"><a href="https://godoc.org/github.com/hajimehoshi/ebiten">API reference</a></li>
-        <li lang="ja"><a href="https://godoc.org/github.com/hajimehoshi/ebiten">API リファレンス</a></li>
+        <li lang="en"><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten">API reference</a></li>
+        <li lang="ja"><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten">API リファレンス</a></li>
         <li lang="en"><a href="/tour/">Tour (WIP)</a></li>
         <li lang="ja"><a href="/tour/">ツアー (未完成)</a></li>
         <li lang="en"><a href="/documents/">Documents</a></li>
@@ -104,7 +104,7 @@
     <pre data-codesrc="/go/fill/main.go" data-codelinerange="14-14"></pre>
   </div>
   <div class="grid-item-2">
-    <p><code><a href="https://godoc.org/github.com/hajimehoshi/ebiten#Image.Fill">(*ebiten.Image).Fill</a></code> is a function to fill the image with the specified color. The argument <code>color</code> is a value that implements <code><a href="https://golang.org/pkg/image/color/#Color">color.Color</a></code> interface in the standard <code><a href="https://golang.org/pkg/image/color/">image/color</a></code> package. In this example, the color value is red (the red and alpha part is <code>0xff</code>.)</p>
+    <p><code><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten#Image.Fill">(*ebiten.Image).Fill</a></code> is a function to fill the image with the specified color. The argument <code>color</code> is a value that implements <code><a href="https://golang.org/pkg/image/color/#Color">color.Color</a></code> interface in the standard <code><a href="https://golang.org/pkg/image/color/">image/color</a></code> package. In this example, the color value is red (the red and alpha part is <code>0xff</code>.)</p>
     <p><code>Fill</code> always returns <code>nil</code>. The sigunature says that <code>Fill</code> returns an error value, but this is due to historical reasons. You can ignore the returned error of <code>Fill</code>.</p>
   </div>
 </div>

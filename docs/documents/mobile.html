@@ -46,8 +46,8 @@
         <li lang="ja"><a href="/">ホーム</a></li>
         <li lang="en"><a href="https://github.com/hajimehoshi/ebiten">GitHub project</a></li>
         <li lang="ja"><a href="https://github.com/hajimehoshi/ebiten">GitHub プロジェクト</a></li>
-        <li lang="en"><a href="https://godoc.org/github.com/hajimehoshi/ebiten">API reference</a></li>
-        <li lang="ja"><a href="https://godoc.org/github.com/hajimehoshi/ebiten">API リファレンス</a></li>
+        <li lang="en"><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten">API reference</a></li>
+        <li lang="ja"><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten">API リファレンス</a></li>
         <li lang="en"><a href="/tour/">Tour (WIP)</a></li>
         <li lang="ja"><a href="/tour/">ツアー (未完成)</a></li>
         <li lang="en"><a href="/documents/">Documents</a></li>
@@ -90,7 +90,7 @@
 <h2>Creating a shared library with <code>ebitenmobile bind</code></h2>
 <p>Install <code>ebitenmobile</code> command first:</p>
 <pre><code>go install github.com/hajimehoshi/ebiten/cmd/ebitenmobile</code></pre>
-<p>Create a package for mobiles to use <a href="https://godoc.org/github.com/hajimehoshi/ebiten/mobile"><code>github.com/hajimehoshi/ebiten/mobile</code></a>:</p>
+<p>Create a package for mobiles to use <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/mobile"><code>github.com/hajimehoshi/ebiten/mobile</code></a>:</p>
 <pre><code>package yourgamemobile
 
 import (
@@ -126,7 +126,7 @@ func init() {
 // Dummy forces gomobile to compile this package.
 func Dummy() {}
 </code></pre>
-<p>The key function is <a href="https://godoc.org/github.com/hajimehoshi/ebiten/mobile#SetGame"><code>SetGame</code></a>, and you can ignore the other functions in the <a href="https://godoc.org/github.com/hajimehoshi/ebiten/mobile"><code>mobile</code></a> package.</p>
+<p>The key function is <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/mobile#SetGame"><code>SetGame</code></a>, and you can ignore the other functions in the <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/mobile"><code>mobile</code></a> package.</p>
 
 <h3>Android</h3>
 <p>Run <code>ebitenmobile bind</code> command for your package:</p>
@@ -206,7 +206,7 @@ public class EbitenView extends ViewGroup {
 <p>This way is deprecated so use <code>ebitenmobile bind</code> if possible. This feature is kept for backward compatibility.</p>
 <p>Install <code>gomobile</code> command first.</p>
 <pre><code>go install golang.org/x/mobile/cmd/...</code></pre>
-<p>Create a package for mobiles to use <a href="https://godoc.org/github.com/hajimehoshi/ebiten/mobile"><code>github.com/hajimehoshi/ebiten/mobile</code></a>:</p>
+<p>Create a package for mobiles to use <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/mobile"><code>github.com/hajimehoshi/ebiten/mobile</code></a>:</p>
 <pre><code>package mobile
 
 import (

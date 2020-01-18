@@ -1,5 +1,5 @@
 <h1>Cheat Sheet</h1>
-<p>This cheat sheet describes the essential APIs that are commonly used. For the complete list of the API, see the <a href="https://godoc.org/github.com/hajimehoshi/ebiten">GoDoc</a>.</p>
+<p>This cheat sheet describes the essential APIs that are commonly used. For the complete list of the API, see the <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten">GoDoc</a>.</p>
 <h2>Overview</h2>
 <p class="img"><a href="/images/overview.png"><img src="/images/overview.png" width="1618" height="993" alt="Overview"></a></p>
 <h2>General</h2>
@@ -30,7 +30,7 @@
 }</code></pre>
 <h3><code>ebitenutil.DebugPrint</code></h3>
 <pre><code>func DebugPrint(image *ebiten.Image, str string) error</code></pre>
-<p>(Defined at <a href="https://godoc.org/github.com/hajimehoshi/ebiten/ebitenutil"><code>ebitenutil</code> package</a>)</p>
+<p>(Defined at <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/ebitenutil"><code>ebitenutil</code> package</a>)</p>
 <p>DebugPrint draws the string str on the image on left top corner.</p>
 <p>DebugPrint always returns nil.</p>
 <h2>Graphics</h2>
@@ -153,7 +153,7 @@
 <p><code>IsKeyPressed</code> returns a boolean indicating whether <code>key</code> is pressed.</p>
 <h3><code>inpututil.IsKeyJustPressed</code></h3>
 <pre><code>func IsKeyJustPressed(key ebiten.Key) bool</code></pre>
-<p>(Defined at <a href="https://godoc.org/github.com/hajimehoshi/ebiten/inpututil"><code>inpututil</code> package</a>)</p>
+<p>(Defined at <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/inpututil"><code>inpututil</code> package</a>)</p>
 <p><code>IsKeyJustPressed</code> returns a boolean value indicating whether the given <code>key</code> is pressed just in the current frame.</p>
 <h3><code>ebiten.Key</code></h3>
 <pre><code>type Key int</code></pre>
@@ -252,7 +252,7 @@
 <p><code>IsMouseButtonPressed</code> returns a boolean indicating whether <code>mouseButton</code> is pressed.</p>
 <h3><code>inpututil.IsMouseButtonJustPressed</code></h3>
 <pre><code>func IsMouseButtonJustPressed(button ebiten.MouseButton) bool</code></pre>
-<p>(Defined at <a href="https://godoc.org/github.com/hajimehoshi/ebiten/inpututil"><code>inpututil</code> package</a>)</p>
+<p>(Defined at <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/inpututil"><code>inpututil</code> package</a>)</p>
 <p><code>IsMouseButtonJustPressed</code> returns a boolean value indicating whether the given mouse button is pressed just in the current frame.</p>
 <h3><code>ebiten.MouseButton</code></h3>
 <pre><code>type MouseButton int</code></pre>

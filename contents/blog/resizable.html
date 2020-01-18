@@ -5,12 +5,12 @@
   <div class="grid-item-2">
     <p>We have introduced these new APIs in the master branch:</p>
     <ul>
-      <li><a href="https://godoc.org/github.com/hajimehoshi/ebiten#Game"><code>Game</code> interface</a></li>
-      <li><a href="https://godoc.org/github.com/hajimehoshi/ebiten#RunGame"><code>RunGame</code> function</a></li>
-      <li><a href="https://godoc.org/github.com/hajimehoshi/ebiten#SetWindowResizable"><code>SetWindowResizable</code> function</a></li>
-      <li><a href="https://godoc.org/github.com/hajimehoshi/ebiten#IsWindowResizable"><code>IsWindowResizable</code> function</a></li>
-      <li><a href="https://godoc.org/github.com/hajimehoshi/ebiten#SetWindowSize"><code>SetWindowSize</code> function</a></li>
-      <li><a href="https://godoc.org/github.com/hajimehoshi/ebiten#WindowSize"><code>WindowSize</code> function</a></li>
+      <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten#Game"><code>Game</code> interface</a></li>
+      <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten#RunGame"><code>RunGame</code> function</a></li>
+      <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten#SetWindowResizable"><code>SetWindowResizable</code> function</a></li>
+      <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten#IsWindowResizable"><code>IsWindowResizable</code> function</a></li>
+      <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten#SetWindowSize"><code>SetWindowSize</code> function</a></li>
+      <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten#WindowSize"><code>WindowSize</code> function</a></li>
     </ul>
     <p>You can create a resizable window by calling <code>SetWindowResizable(true)</code>. You can specify how the screen size will be updated after resizing the window by <code>Game</code>'s <code>Layout</code> function. The notion of the screen scale is deprecated, which means that you should not have to care about the screen scale.</p>
   </div>
@@ -22,7 +22,7 @@
 <div class="grid-container">
   <div class="grid-item-2">
     <p>There has been <a href="https://github.com/hajimehoshi/ebiten/issues/320">a request</a> to have a resizable window by the user for a few years. While implementation is not difficult, we hesitated to introduce the API because there is no clear answer what is the best behavior. When a window size is changed by the user, should the game (logical) screen also be resized, or be the same but the scale should be updated? Both would make sense and be useful. There was no clear answer which is better.</p>
-    <p>Changing the window size is actually a new notion to Ebiten. Ebiten has <a href="https://godoc.org/github.com/hajimehoshi/ebiten#SetScreenSize"><code>SetScreenSize</code></a> and <a href="https://godoc.org/github.com/hajimehoshi/ebiten#SetScreenScale"><code>SetScreenScale</code></a>. <code>SetScreenSize</code> changes the logical screen size, and <code>SetScreenScale</code> changes the scale without changing the logical size. Both change the window size as a side effect. Both work only with window mode on desktops, and not with fullscreen mode or browsers or mobiles. There is no API to change the window size directly so far.</p>
+    <p>Changing the window size is actually a new notion to Ebiten. Ebiten has <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten#SetScreenSize"><code>SetScreenSize</code></a> and <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten#SetScreenScale"><code>SetScreenScale</code></a>. <code>SetScreenSize</code> changes the logical screen size, and <code>SetScreenScale</code> changes the scale without changing the logical size. Both change the window size as a side effect. Both work only with window mode on desktops, and not with fullscreen mode or browsers or mobiles. There is no API to change the window size directly so far.</p>
   </div>
   <div class="grid-item-2">
     <figure>
@@ -33,7 +33,7 @@
 </div>
 <!--p>In environments that don't have windows like browsers or mobiles, the scale is automatically adjusted with the outside size. The 'outside' is a body element on borwsers, and the view-element size on mobiles. Can we extend this idea to the desktop windows?</p-->
 <h2>The new interface <code>Game</code></h2>
-<p>We have introduced a brand new interface <a href="https://godoc.org/github.com/hajimehoshi/ebiten#Game"><code>Game</code></a>, and a new function <a href="https://godoc.org/github.com/hajimehoshi/ebiten#RunGame"><code>RunGame</code></a> that takes a <code>Game</code>, in the master branch.</p>
+<p>We have introduced a brand new interface <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten#Game"><code>Game</code></a>, and a new function <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten#RunGame"><code>RunGame</code></a> that takes a <code>Game</code>, in the master branch.</p>
 <div class="grid-container">
   <div class="grid-item-2">
     <pre data-codesrc="/go/blog/resizable/game.go"></pre>
@@ -46,7 +46,7 @@
     <pre data-codesrc="/go/blog/resizable/rungame.go"></pre>
   </div>
   <div class="grid-item-2">
-    <p><code>RunGame</code> is a very similar function to <a href="https://godoc.org/github.com/hajimehoshi/ebiten#Run"><code>Run</code></a>, but takes a <code>Game</code> instead of an updating function. <code>RunGame</code> does not determine the window size, so you have to call <a href="https://godoc.org/github.com/hajimehoshi/ebiten#SetWindowSize"><code>SetWindowSize</code></a> before <code>RunGame</code> if necessary. Otherwise, a default window size is adopted. <code>RunGame</code> also does not take a window title, so you have to call <a href="https://godoc.org/github.com/hajimehoshi/ebiten#SetWindowTitle"><code>SetWindowTitle</code></a> instead.</p>
+    <p><code>RunGame</code> is a very similar function to <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten#Run"><code>Run</code></a>, but takes a <code>Game</code> instead of an updating function. <code>RunGame</code> does not determine the window size, so you have to call <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten#SetWindowSize"><code>SetWindowSize</code></a> before <code>RunGame</code> if necessary. Otherwise, a default window size is adopted. <code>RunGame</code> also does not take a window title, so you have to call <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten#SetWindowTitle"><code>SetWindowTitle</code></a> instead.</p>
   </div>
 </div>
 <h3><code>Layout</code> function</h3>
@@ -81,9 +81,9 @@
   </div>
 </div>
 <h2>Making a resizable window</h2>
-<p>To make a window resizable, call <a href="https://godoc.org/github.com/hajimehoshi/ebiten#SetWindowResizable"><code>SetWindowResizable</code></a> function with <code>true</code>. That's it! You can call it both before and after <code>RunGame</code>. After <code>SetWindowResizable(true)</code>, the player can resize the window by dragging. The user can even maximize the window.</p>
+<p>To make a window resizable, call <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten#SetWindowResizable"><code>SetWindowResizable</code></a> function with <code>true</code>. That's it! You can call it both before and after <code>RunGame</code>. After <code>SetWindowResizable(true)</code>, the player can resize the window by dragging. The user can even maximize the window.</p>
 <p>Note that <code>SetWindowResizable(true)</code> does not work with <code>Run</code>, but <code>RunGame</code>.</p>
-<p><a href="https://godoc.org/github.com/hajimehoshi/ebiten#SetWindowSize"><code>SetWindowSize</code></a> is an API to change the window size directly, and this has nothing to do with <code>SetWindowResizable</code>. No matter what the window is resizable (by the user), <code>SetWindowSize</code> works.</p>
+<p><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten#SetWindowSize"><code>SetWindowSize</code></a> is an API to change the window size directly, and this has nothing to do with <code>SetWindowResizable</code>. No matter what the window is resizable (by the user), <code>SetWindowSize</code> works.</p>
 <p>To summarize, the new way to run the game will be in the next diagram. The new way is a little redundant compared to the current way, but the new way is more flexible for a resizable window.</p>
 <figure>
   <p class="img"><img src="/images/blog/resizable/compare.png" width="700"></p>
@@ -95,10 +95,10 @@
 <p>After the <code>RunGame</code> world, the notion of the screen scale is deprecated. You don't have to care how much the screen is scaled. With the new APIs, Ebiten's game screen is automatically scaled along with the outside world (a window on desktop for example). Actually, the game was automatically scaled on browsers and mobiles no matter what the specified screen scale was. The notion of scale will be incognitive from the developer.</p>
 <h3>Deprecated functions</h3>
 <ul>
-  <li><a href="https://godoc.org/github.com/hajimehoshi/ebiten#ScreenScale"><code>ScreenScale</code></a></li>
-  <li><a href="https://godoc.org/github.com/hajimehoshi/ebiten#ScreenSizeInFullscreen"><code>ScreenSizeInFullscreen</code></a></li>
-  <li><a href="https://godoc.org/github.com/hajimehoshi/ebiten#SetScreenScale"><code>SetScreenScale</code></a></li>
-  <li><a href="https://godoc.org/github.com/hajimehoshi/ebiten#SetScreenSize"><code>SetScreenSize</code></a></li>
+  <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten#ScreenScale"><code>ScreenScale</code></a></li>
+  <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten#ScreenSizeInFullscreen"><code>ScreenSizeInFullscreen</code></a></li>
+  <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten#SetScreenScale"><code>SetScreenScale</code></a></li>
+  <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten#SetScreenSize"><code>SetScreenSize</code></a></li>
 </ul>
-<p>These functions still work, but only with <code>Run</code>. <code>SetScreenSize</code> is deprecated since the new window size is calculated based on the current screen scale. Instead of this, you can use <a href="https://godoc.org/github.com/hajimehoshi/ebiten#SetWindowSize"><code>SetWindowSize</code></a> to change the window size directly. Of course, this works only on desktops.</p>
+<p>These functions still work, but only with <code>Run</code>. <code>SetScreenSize</code> is deprecated since the new window size is calculated based on the current screen scale. Instead of this, you can use <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten#SetWindowSize"><code>SetWindowSize</code></a> to change the window size directly. Of course, this works only on desktops.</p>
 <p><code>Run</code> is not deprecated yet, but we might deprecate this in the near future. <code>Run</code> is still useful as a shorthand.</p>

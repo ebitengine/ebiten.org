@@ -46,8 +46,8 @@
         <li lang="ja"><a href="/">ホーム</a></li>
         <li lang="en"><a href="https://github.com/hajimehoshi/ebiten">GitHub project</a></li>
         <li lang="ja"><a href="https://github.com/hajimehoshi/ebiten">GitHub プロジェクト</a></li>
-        <li lang="en"><a href="https://godoc.org/github.com/hajimehoshi/ebiten">API reference</a></li>
-        <li lang="ja"><a href="https://godoc.org/github.com/hajimehoshi/ebiten">API リファレンス</a></li>
+        <li lang="en"><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten">API reference</a></li>
+        <li lang="ja"><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten">API リファレンス</a></li>
         <li lang="en"><a href="/tour/">Tour (WIP)</a></li>
         <li lang="ja"><a href="/tour/">ツアー (未完成)</a></li>
         <li lang="en"><a href="/documents/">Documents</a></li>
@@ -113,7 +113,7 @@
     <pre data-codesrc="/go/geometrymatrix/main.go" data-codelinerange="25-28"></pre>
   </div>
   <div class="grid-item-2">
-    <p>The program is almost same as <a href="renderimage.html">render-an-image example</a>. The difference is whether <a href="https://godoc.org/github.com/hajimehoshi/ebiten#DrawImageOptions"><code>DrawImageOptions</code></a> is specified or not at the <a href="https://godoc.org/github.com/hajimehoshi/ebiten#Image.DrawImage"><code>DrawImage</code></a> call. In this example, a <a href="https://godoc.org/github.com/hajimehoshi/ebiten#GeoM"><code>GeoM</code></a> is adjusted. <code>GeoM</code> represents <a href="https://en.wikipedia.org/wiki/Affine_transformation">an affine matrix</a> to translate, scale or rotate the image.</p>
+    <p>The program is almost same as <a href="renderimage.html">render-an-image example</a>. The difference is whether <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten#DrawImageOptions"><code>DrawImageOptions</code></a> is specified or not at the <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten#Image.DrawImage"><code>DrawImage</code></a> call. In this example, a <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten#GeoM"><code>GeoM</code></a> is adjusted. <code>GeoM</code> represents <a href="https://en.wikipedia.org/wiki/Affine_transformation">an affine matrix</a> to translate, scale or rotate the image.</p>
     <p>In this example, the image is translated by <span class="math">(50, 50)</span> first, and scaled by <span class="math">(1.5, 1)</span>. In Ebiten, Y axis is not upward but downward. Then, tralslating by <span class="math">(50, 50)</span> means that the image is moved by 50 pixels rightward, and by 50 pixels downward. For scaling, the origin point is upper-left and the directions are also downward and rightward.</p>
   </div>
   <div class="grid-item-2">
@@ -155,7 +155,7 @@ g
     <p class="img"><img src="/images/documents/geometrymatrix/scale.png" width="456"></p>
   </div>
   <div class="grid-item-2">
-    <p><a href="https://godoc.org/github.com/hajimehoshi/ebiten#GeoM.Scale"><code>(g *GeoM).Scale</code></a> left-multiplies a scaling geometry matrix. The origin position is the upper-left corner of the destination image.</p>
+    <p><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten#GeoM.Scale"><code>(g *GeoM).Scale</code></a> left-multiplies a scaling geometry matrix. The origin position is the upper-left corner of the destination image.</p>
     <p>If the multiplicand is identity, the image is scaled by the <code>Scale</code> arguments without changing the position of the left-upper corner.
   </div>
   <div class="grid-item-2">
@@ -170,7 +170,7 @@ g
     <p class="img"><img src="/images/documents/geometrymatrix/translate.png" width="456"></p>
   </div>
   <div class="grid-item-2">
-    <p><a href="https://godoc.org/github.com/hajimehoshi/ebiten#GeoM.Translate"><code>(g *GeoM).Translate</code></a> left-multiplies a translating geometry matrix.</p>
+    <p><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten#GeoM.Translate"><code>(g *GeoM).Translate</code></a> left-multiplies a translating geometry matrix.</p>
     <p>If the multiplicand is identity, the image is moved from the left-upper corner by the <code>Translate</code> arguments.
   </div>
   <div class="grid-item-2">
@@ -185,7 +185,7 @@ g
     <p class="img"><img src="/images/documents/geometrymatrix/rotate.png" width="456"></p>
   </div>
   <div class="grid-item-2">
-    <p><a href="https://godoc.org/github.com/hajimehoshi/ebiten#GeoM.Rotate"><code>(g *GeoM).Rotate</code></a> left-multiplies a rotating geometry matrix. The origin position is the upper-left corner of the destination image.</p>
+    <p><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten#GeoM.Rotate"><code>(g *GeoM).Rotate</code></a> left-multiplies a rotating geometry matrix. The origin position is the upper-left corner of the destination image.</p>
     <p>If the multiplicand is identity, the image is rotated by the <code>Rotate</code> arguments. The center of rotating is the left-upper corner.
   </div>
   <div class="grid-item-4">
