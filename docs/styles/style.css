@@ -8,7 +8,7 @@ body *[lang=en] {
     font-family: 'Roboto Mono', monospace;
 }
 body *[lang=ja] {
-    font-family: 'Roboto', 'Noto Sans JP', monospace;
+    font-family: 'Roboto', 'Noto Sans JP', monospace
 }
 h1.big, body > nav h1 {
     font-family: 'Roboto', sans-serif;
@@ -16,6 +16,9 @@ h1.big, body > nav h1 {
 }
 .hiddenlang {
     display: none;
+}
+.ipa {
+    font-family: 'Roboto', sans-serif;
 }
 
 /* color */
