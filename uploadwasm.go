@@ -17,6 +17,7 @@
 package main
 
 import (
+	"compress/gzip"
 	"context"
 	"flag"
 	"fmt"
@@ -26,6 +27,7 @@ import (
 	"os/exec"
 	"path/filepath"
 	"strings"
+	"sync"
 
 	"cloud.google.com/go/storage"
 	"golang.org/x/sync/errgroup"
@@ -135,7 +137,7 @@ func run() error {
 	}
 	fmt.Printf("Temporary directory: %s\n", tmpout)
 	if *flagUpload {
-		defer ioutil.RemoveAll(tmpout)
+		defer os.RemoveAll(tmpout)
 	}
 
 	ctx := context.Background()
@@ -173,7 +175,30 @@ func run() error {
 					return err
 				}
 
-				ch <- e + ".wasm"
+				in, err := os.Open(filepath.Join(tmpout, name))
+				if err != nil {
+					return err
+				}
+				defer in.Close()
+
+				out, err := os.Create(filepath.Join(tmpout, name+".gz"))
+				if err != nil {
+					return err
+				}
+				defer out.Close()
+
+				w := gzip.NewWriter(out)
+				defer w.Close()
+
+				if _, err := io.Copy(w, in); err != nil {
+					return err
+				}
+
+				if err := os.Remove(filepath.Join(tmpout, name)); err != nil {
+					return err
+				}
+
+				ch <- e + ".wasm.gz"
 
 				return nil
 			})
@@ -181,13 +206,16 @@ func run() error {
 		return g.Wait()
 	})
 	g.Go(func() error {
+		var once sync.Once
 		semaphore := make(chan struct{}, 4)
 
 		var g errgroup.Group
 		for name := range ch {
 			name := name
 			if !*flagUpload {
-				fmt.Printf("%s is created but not uploaded (to upload this, specify -upload)\n", name)
+				once.Do(func() {
+					fmt.Printf("Binary files are not uploaded. To upload this, specify -upload.\n")
+				})
 				continue
 			}
 			semaphore <- struct{}{}

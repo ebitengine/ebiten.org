@@ -7,14 +7,6 @@
     <script src="/scripts/wasm_exec.js"></script>
     <script>
       (async () => {
-          // polyfill
-          if (!WebAssembly.instantiateStreaming) { 
-	      WebAssembly.instantiateStreaming = async (resp, importObject) => {
-	          const source = await (await resp).arrayBuffer();
-	          return await WebAssembly.instantiate(source, importObject);
-	      };
-          }
-
           const go = new Go();
           const name = window.location.search.substring(1);
           let url = `https://storage.googleapis.com/ebiten-dot-org-wasm/${name}.wasm`;
@@ -24,7 +16,14 @@
                   url = params.get('wasmurl');
               }
           }
-          const result = await WebAssembly.instantiateStreaming(fetch(url), go.importObject).catch((err) => {
+          await import('/scripts/pako_inflate.min.js');
+          let wasm = pako.ungzip(await (await fetch(url)).arrayBuffer());
+          // A fetched response might be decompressed twice on Firefox.
+          // See https://bugzilla.mozilla.org/show_bug.cgi?id=610679
+          if (wasm[0] === 0x1f && wasm[1] === 0x8b) {
+              wasm = pako.ungzip(wasm);
+          }
+          const result = await WebAssembly.instantiate(wasm, go.importObject).catch((err) => {
 	      console.error(err);
           });
           document.getElementById('loading').remove();
