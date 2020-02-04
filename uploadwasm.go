@@ -28,6 +28,7 @@ import (
 	"path/filepath"
 	"strings"
 	"sync"
+	"time"
 
 	"cloud.google.com/go/storage"
 	"golang.org/x/sync/errgroup"
@@ -236,6 +237,8 @@ func run() error {
 
 				return nil
 			})
+			// There is a rate limit to upload files. Sleep to avoid exceeding the limit.
+			time.Sleep(500 * time.Millisecond)
 		}
 		return g.Wait()
 	})
