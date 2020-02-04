@@ -9,7 +9,7 @@
       (async () => {
           const go = new Go();
           const name = window.location.search.substring(1);
-          let url = `https://storage.googleapis.com/ebiten-dot-org-wasm/${name}.wasm`;
+          let url = `https://storage.googleapis.com/ebiten-dot-org-wasm/${name}.wasm.gz`;
           if (location.hostname === 'localhost') {
               const params = new URLSearchParams(window.parent.location.search);
               if (params.has('wasmurl')) {
