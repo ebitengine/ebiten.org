@@ -36,7 +36,7 @@ func init() {
 	if dir == "" {
 		dir = "."
 	}
-	rootPath = filepath.Join(dir, "docs")
+	rootPath = dir
 }
 
 type handler struct{}
