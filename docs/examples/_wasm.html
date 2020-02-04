@@ -2,11 +2,28 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700%7cRoboto+Mono:400,700&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/styles/normalize.min.css">
+    <link rel="stylesheet" type="text/css" href="/styles/style.css">
+    <style>
+      body {
+          padding: 0 24px;
+      }
+      #firefox_warning {
+          display: none;
+      }
+    </style>
   </head>
   <body>
     <script src="/scripts/wasm_exec.js"></script>
     <script>
-      (async () => {
+      window.addEventListener('DOMContentLoaded', async () => {
+          if (navigator.userAgent.toLowerCase().indexOf('firefox') >= 0) {
+              document.getElementById('loading').remove();
+              document.getElementById('firefox_warning').style.display = 'block';
+              return;
+          }
+
           const go = new Go();
           const name = window.location.search.substring(1);
           let url = `https://storage.googleapis.com/ebiten-dot-org-wasm/${name}.wasm.gz`;
@@ -27,9 +44,11 @@
 	      console.error(err);
           });
           document.getElementById('loading').remove();
+          console.log(result);
           go.run(result.instance);
-      })();
+      });
     </script>
     <p id="loading">Loading...</p>
+    <p id="firefox_warning">Unfortunately, the current Ebiten/Wasm binaries do not work on Firefox. We're now investigating this issue. For more details, see <a href="https://github.com/hajimehoshi/ebiten/issues/1070" target="_PARENT">the issue on GitHub</a>.</p>
   </body>
 </html>
