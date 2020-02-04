@@ -33,6 +33,7 @@ import (
 
 var (
 	flagEbitenPath = flag.String("ebitenpath", "", "path to ebiten repository")
+	flagUpload     = flag.Bool("upload", false, "upload binary files to the server")
 )
 
 func examples() ([]string, error) {
@@ -132,11 +133,17 @@ func run() error {
 	if err != nil {
 		return err
 	}
+	fmt.Printf("Temporary directory: %s\n", tmpout)
+	if *flagUpload {
+		defer ioutil.RemoveAll(tmpout)
+	}
 
 	ctx := context.Background()
 
-	if err := updateBucket(ctx); err != nil {
-		return err
+	if *flagUpload {
+		if err := updateBucket(ctx); err != nil {
+			return err
+		}
 	}
 
 	ch := make(chan string, 4)
@@ -179,6 +186,10 @@ func run() error {
 		var g errgroup.Group
 		for name := range ch {
 			name := name
+			if !*flagUpload {
+				fmt.Printf("%s is created but not uploaded (to upload this, specify -upload)\n", name)
+				continue
+			}
 			semaphore <- struct{}{}
 			g.Go(func() error {
 				defer func() {
@@ -202,10 +213,6 @@ func run() error {
 	})
 
 	if err := g.Wait(); err != nil {
-		return err
-	}
-
-	if err := os.RemoveAll(tmpout); err != nil {
 		return err
 	}
 
