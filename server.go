@@ -42,6 +42,8 @@ func init() {
 type handler struct{}
 
 func (handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+
 	path := filepath.Join(rootPath, r.URL.Path[1:])
 	f, err := os.Stat(path)
 	if err != nil {
