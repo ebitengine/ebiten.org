@@ -9,21 +9,12 @@
       body {
           padding: 0 24px;
       }
-      #firefox_warning {
-          display: none;
-      }
     </style>
   </head>
   <body>
     <script src="/scripts/wasm_exec.js"></script>
     <script>
       window.addEventListener('DOMContentLoaded', async () => {
-          if (navigator.userAgent.toLowerCase().indexOf('firefox') >= 0) {
-              document.getElementById('loading').remove();
-              document.getElementById('firefox_warning').style.display = 'block';
-              return;
-          }
-
           const go = new Go();
           const name = window.location.search.substring(1);
           let url = `https://storage.googleapis.com/ebiten-dot-org-wasm/${name}.wasm.gz`;
@@ -48,6 +39,5 @@
       });
     </script>
     <p id="loading">Loading...</p>
-    <p id="firefox_warning">Unfortunately, the current Ebiten/Wasm binaries do not work on Firefox. We're now investigating this issue. For more details, see <a href="https://github.com/hajimehoshi/ebiten/issues/1070" target="_PARENT">the issue on GitHub</a>.</p>
   </body>
 </html>
