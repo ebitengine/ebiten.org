@@ -4,8 +4,17 @@
 <p>Use <code>ebitenmobile</code> command to create a shared library. The generated library includes a complete and easy-to-use view (or view controller) class.</p>
 
 <h2>Creating a shared library with <code>ebitenmobile bind</code></h2>
-<p>Install <code>ebitenmobile</code> command first:</p>
-<pre><code>go install github.com/hajimehoshi/ebiten/cmd/ebitenmobile</code></pre>
+<p>Install <code>ebitenmobile</code> command first.</p>
+<pre><code># With Ebiten 1.10. As Ebitenmobile cannot treat Go modules,
+# you need to install Ebiten and Ebitenmobile with GO111MODULE=off.
+env GO111MODULE=off go get github.com/hajimehoshi/ebiten
+cd $(go env GOPATH)/go/src/github.com/hajimehoshi/ebiten
+git checkout v1.10.3
+go install ./cmd/ebitenmobile
+
+# FYI: With Ebiten 1.11, you can use Go modules.
+# cd ./path/to/your/game
+# go install github.com/hajimehoshi/ebiten/cmd/ebitenmobile</code></pre>
 <p>Create a package for mobiles to use <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/mobile"><code>github.com/hajimehoshi/ebiten/mobile</code></a>:</p>
 <pre><code>package yourgamemobile
 
@@ -46,7 +55,7 @@ func Dummy() {}
 
 <h3>Android</h3>
 <p>Run <code>ebitenmobile bind</code> command for your package:</p>
-<pre><code># Ebiten 1.10
+<pre><code># With Ebiten 1.10
 env GO111MODULE=off ebitenmobile bind -target android -javapkg [your.domain] -o [path/to/yourgame.aar] [github.com/yourname/yourgame/yourgamemobile]
 
 # FYI: With Ebiten 1.11 or later, you can use Go modules.
