@@ -6,17 +6,17 @@
     <meta name="description" content="Ebiten is an open-source game library, with which you can develop 2D games with simple API for multi platforms in the Go programming language.">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#db5620">
-    <meta property="og:title" content="FAQ - Ebiten">
+    <meta property="og:title" content="Features - Ebiten">
     <meta property="og:site_name" content="Ebiten - A dead simple 2D game library in Go">
     <meta property="og:image" content="https://ebiten.org/images/share.png">
     <meta property="og:description" content="Ebiten is an open-source game library, with which you can develop 2D games with simple API for multi platforms in the Go programming language.">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@hajimehoshi">
-    <meta name="twitter:title" content="FAQ - Ebiten">
+    <meta name="twitter:title" content="Features - Ebiten">
     <meta name="twitter:description" content="Ebiten is an open-source game library, with which you can develop 2D games with simple API for multi platforms in the Go programming language.">
     <meta name="twitter:image" content="https://ebiten.org/images/share.png">
-    <title>FAQ - Ebiten</title>
-    <link rel="canonical" href="https://ebiten.org/documents/faq.html">
+    <title>Features - Ebiten</title>
+    <link rel="canonical" href="https://ebiten.org/documents/features.html">
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700%7cRoboto+Mono:400,700&amp;display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP:400,700&display=swap&subset=japanese" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="/styles/style.css">
@@ -83,32 +83,64 @@
     </nav>
     <main>
       <article>
-        <h1>FAQ</h1>
-<h2>General</h2>
-<h3>Why do the examples use the build tag <code>example</code>?</h3>
-<p>With the build tag, <code>go get -u github.com/hajimehoshi/ebiten/...</code> doesn't install the example binaries in your <code>$GOPATH/bin</code>.</p>
-<p>Such build tags are an idiom you can find e.g. in <code>golang.org/x/exp/shiny/example</code>.</p>
-<h3>How can I run the examples on browsers?</h3>
-<p>Run <code>gopherjs serve --tags=example</code> and see e.g., <code>https://127.0.0.1:8080/github.com/hajimehoshi/ebiten/examples/blocks</code>.</p>
-<h3>My app built with Ebiten creates an unknown process "Console Window Host". What is this?</h3>
-<p>This is because your app is still a console app, not a GUI app. Ebiten tries to close the console when necessary, but the app itself is still not recognized as a GUI app. You can suppress this by specifying ldflags when go-building like this:</p>
-<pre><code>go build -ldflags -H=windowsgui path/to/your/game</code></pre>
-<h3>Why did you name the lib "Ebiten"?</h3>
-<p>It's because Ebiten is delicious.</p>
-<h2>Graphics</h2>
-<h3>How to draw lines?</h3>
-<p>Use <a href="http://pkg.go.dev/github.com/hajimehoshi/ebiten/ebitenutil#DrawLine"><code>ebitenutil.DrawLine</code></a>. Note that this function is only for debugging and prototyping only.</p>
-<p>See <a href="https://github.com/hajimehoshi/ebiten/issues/137">the discussion #137</a> on other primitive drawings.</p>
-<h3>How to take a screenshot?</h3>
-<p>Specify the key to environment variable <code>EBITEN_SCREENSHOT_KEY</code> and you can take a screenshot by pressing the specified key.</p>
-<pre><code>EBITEN_SCREENSHOT_KEY=escape go run examples/flappy.go</code></pre>
-<h3>Ebiten's screen is scaled (and blurred) on high-DPI screen. Can I disable this scaling? In other words, can I have a hi-DPI mode?</h3>
-<p>You can pass <code>1 / ebiten.DeviceScaleFactor()</code> to <code>Run</code>'s scale argument so that you can get the screen without scaling by the device scale. For an actual example, see <a href="https://github.com/hajimehoshi/ebiten/blob/master/examples/highdpi/main.go"><code>examples/highdpi</code></a>.</p>
+        <style>
+  #features {
+      width: 100%;
+      overflow-x: auto;
+      overflow-y: hidden;
+  }
+  #features table {
+      width: calc(216px * 4 + 24px * 3);
+      table-layout: fixed;
+  }
+  #features th, #features td {
+      width: calc(100% / 8 - 12px);
+  }
+  #features .yes {
+      color: #007f55; /* 2080-G */
+  }
+  #features .no {
+      color: #9c0128; /* 2080-R */
+  }
+  #features .maybe {
+      color: #333333; /* 8000-N */
+  }
+  #features .na {
+      color: #333333; /* 8000-N */
+  }
+  #features tr th:first-child {
+      position: -webkit-sticky;
+      position: sticky;
+      left: 0;
+      z-index: 1;
+  }
+</style>
+<h1 lang="en">Features</h1>
+<h1 lang="ja">機能</h1>
+<p lang="en">This table shows what features are supported for each platform.</p>
+<p lang="ja">プラットフォームごとの対応状況についての表です。</p>
+<div id="features">
+  <table>
+    <tr><th></th><th>Windows</th><th>macOS</th><th>Linux</th><th>FreeBSD</th><th>Web</th><th>Android<a href="#footnote_1">*1</a></th><th>iOS<a href="#footnote_1">*1</a></th></tr>
+    <tr><th><div><span lang="en">Graphics</span><span lang="ja">描画</span></div></th><td class="yes">Yes</td><td class="yes">Yes</td><td class="yes">Yes</td><td class="yes">Yes</td><td class="yes">Yes</td><td class="yes">Yes</td><td class="yes">Yes</td></tr>
+    <tr><th><span lang="en">Window</span><span lang="ja">ウィンドウ</span></th><td class="yes">Yes</td><td class="yes">Yes</td><td class="yes">Yes</td><td class="yes">Yes</td><td class="na">N/A</td><td class="na">N/A</td><td class="na">N/A</td></tr>
+    <tr><th><span lang="en">Keyboard</span><span lang="ja">キーボード</span></th><td class="yes">Yes</td><td class="yes">Yes</td><td class="yes">Yes</td><td class="yes">Yes</td><td class="yes">Yes</td><td class="yes">Yes<a href="#footnote_2">*2</a></td><td class="yes">Yes<a href="#footnote_2">*2</a></td></tr>
+    <tr><th><span lang="en">Mouse</span><span lang="ja">マウス</span></th><td class="yes">Yes</td><td class="yes">Yes</td><td class="yes">Yes</td><td class="yes">Yes</td><td class="yes">Yes</td><td class="no">No</td><td class="no">No</td></tr>
+    <tr><th><span lang="en">Gamepad</span><span lang="ja">ゲームパッド</span></th><td class="yes">Yes</td><td class="yes">Yes</td><td class="yes">Yes</td><td class="yes">Yes</td><td class="yes">Yes</td><td class="maybe">Yes?<a href="#footnote_3">*3</a></td><td class="maybe">Yes?<a href="#footnote_3">*3</a></td></tr>
+    <tr><th><span lang="en">Touch</span><span lang="ja">タッチ</span></th><td class="maybe">Yes?<a href="#footnote_3">*3</a></td><td class="maybe">Yes?<a href="#footnote_3">*3</a></td><td class="maybe">Yes?<a href="#footnote_3">*3</a></td><td class="maybe">Yes?<a href="#footnote_3">*3</a></td><td class="yes">Yes</td><td class="yes">Yes</td><td class="yes">Yes</td></tr>
+    <tr><th><span lang="en">Audio</span><span lang="ja">音</span></th><td class="yes">Yes</td><td class="yes">Yes</td><td class="yes">Yes</td><td class="yes">Yes</td><td class="yes">Yes</td><td class="yes">Yes</td><td class="yes">Yes</td></tr>
+  </table>
+</div>
+<ul>
+  <li><span id="footnote_1">*1</span> <span lang="en">It is assumed to use <a href="/documents/mobile.html">ebitenmobile command</a> on mobile platforms.</span><span lang="ja">モバイルプラットフォームは <a href="/documents/mobile.html">ebitenmobile コマンド</a>を使うことを仮定しています。</span></li>
+  <li><span id="footnote_2">*2</span> <span lang="en">Supported as of Ebiten 1.11.</span><span lang="ja">Ebiten 1.11 からサポート予定。</span></li>
+  <li><span id="footnote_3">*3</span> <span lang="en">Supported as of Ebiten 1.11, maybe?</span><span lang="ja">Ebiten 1.11 からサポート予定、多分?</span></li>
+</ul>
 
       </article>
       <footer>
-        <p lang="en">Feedback about this page? <a href="https://github.com/ebiten/ebiten.org/issues/new?body=https%3a%2f%2febiten.org%2fdocuments%2ffaq.html%0a%0a">Please reach out on GitHub</a>. Thank you!</p>
-        <p lang="ja">このページに何か問題がありましたら、<a href="https://github.com/ebiten/ebiten.org/issues/new?body=https%3a%2f%2febiten.org%2fdocuments%2ffaq.html%0a%0a">GitHub にて報告</a>していただけると幸いです。</p>
+        <p lang="en">Feedback about this page? <a href="https://github.com/ebiten/ebiten.org/issues/new?body=https%3a%2f%2febiten.org%2fdocuments%2ffeatures.html%0a%0a">Please reach out on GitHub</a>. Thank you!</p>
+        <p lang="ja">このページに何か問題がありましたら、<a href="https://github.com/ebiten/ebiten.org/issues/new?body=https%3a%2f%2febiten.org%2fdocuments%2ffeatures.html%0a%0a">GitHub にて報告</a>していただけると幸いです。</p>
       </footer>
     </main>
   </body>

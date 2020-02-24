@@ -22,6 +22,14 @@ h1.big, body > nav h1 {
 .ipa {
     font-family: 'Roboto', sans-serif;
 }
+th {
+    text-align: left;
+}
+a[href^="#footnote_"] {
+    vertical-align: super;
+    font-size: 10px;
+    line-height: 0;
+}
 
 /* color */
 /*
@@ -150,6 +158,12 @@ p.meta {
 }
 figcaption {
     text-align: center;
+}
+td, th {
+    background-color: #ffffff;
+}
+tr:nth-child(even) td, tr:nth-child(even) th {
+    background-color: #f3f3f3; /* 0500-N */
 }
 
 /* image */
@@ -291,14 +305,20 @@ article div.grid-container ul, article div.grid-container ol {
 body > nav ul, nav.tags > ul, nav.path > ul {
     margin-left: 0;
 }
+table {
+    margin-bottom: 24px;
+}
+td, th {
+    padding: 0 6px;
+}
 
 /* font size */
 
-p, pre, ul, ol, code, figcaption {
+p, pre, ul, ol, code, figcaption, table {
     font-size: 14px;
     line-height: 24px;
 }
-p, ul, ol, figcaption {
+p, ul, ol, figcaption, table {
     position: relative;
     top: 7px;
 }
@@ -442,10 +462,6 @@ div.grid-item-4 {
 
 table {
     border-collapse: collapse;
-}
-
-td, th {
-    padding: 0;
 }
 
 /* display */

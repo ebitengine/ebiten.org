@@ -1,0 +1,53 @@
+<style>
+  #features {
+      width: 100%;
+      overflow-x: auto;
+      overflow-y: hidden;
+  }
+  #features table {
+      width: calc(216px * 4 + 24px * 3);
+      table-layout: fixed;
+  }
+  #features th, #features td {
+      width: calc(100% / 8 - 12px);
+  }
+  #features .yes {
+      color: #007f55; /* 2080-G */
+  }
+  #features .no {
+      color: #9c0128; /* 2080-R */
+  }
+  #features .maybe {
+      color: #333333; /* 8000-N */
+  }
+  #features .na {
+      color: #333333; /* 8000-N */
+  }
+  #features tr th:first-child {
+      position: -webkit-sticky;
+      position: sticky;
+      left: 0;
+      z-index: 1;
+  }
+</style>
+<h1 lang="en">Features</h1>
+<h1 lang="ja">機能</h1>
+<p lang="en">This table shows what features are supported for each platform.</p>
+<p lang="ja">プラットフォームごとの対応状況についての表です。</p>
+<div id="features">
+  <table>
+    <tr><th></th><th>Windows</th><th>macOS</th><th>Linux</th><th>FreeBSD</th><th>Web</th><th>Android<a href="#footnote_1">*1</a></th><th>iOS<a href="#footnote_1">*1</a></th></tr>
+    <tr><th><div><span lang="en">Graphics</span><span lang="ja">描画</span></div></th><td class="yes">Yes</td><td class="yes">Yes</td><td class="yes">Yes</td><td class="yes">Yes</td><td class="yes">Yes</td><td class="yes">Yes</td><td class="yes">Yes</td></tr>
+    <tr><th><span lang="en">Window</span><span lang="ja">ウィンドウ</span></th><td class="yes">Yes</td><td class="yes">Yes</td><td class="yes">Yes</td><td class="yes">Yes</td><td class="na">N/A</td><td class="na">N/A</td><td class="na">N/A</td></tr>
+    <tr><th><span lang="en">Keyboard</span><span lang="ja">キーボード</span></th><td class="yes">Yes</td><td class="yes">Yes</td><td class="yes">Yes</td><td class="yes">Yes</td><td class="yes">Yes</td><td class="yes">Yes<a href="#footnote_2">*2</a></td><td class="yes">Yes<a href="#footnote_2">*2</a></td></tr>
+    <tr><th><span lang="en">Mouse</span><span lang="ja">マウス</span></th><td class="yes">Yes</td><td class="yes">Yes</td><td class="yes">Yes</td><td class="yes">Yes</td><td class="yes">Yes</td><td class="no">No</td><td class="no">No</td></tr>
+    <tr><th><span lang="en">Gamepad</span><span lang="ja">ゲームパッド</span></th><td class="yes">Yes</td><td class="yes">Yes</td><td class="yes">Yes</td><td class="yes">Yes</td><td class="yes">Yes</td><td class="maybe">Yes?<a href="#footnote_3">*3</a></td><td class="maybe">Yes?<a href="#footnote_3">*3</a></td></tr>
+    <tr><th><span lang="en">Touch</span><span lang="ja">タッチ</span></th><td class="maybe">Yes?<a href="#footnote_3">*3</a></td><td class="maybe">Yes?<a href="#footnote_3">*3</a></td><td class="maybe">Yes?<a href="#footnote_3">*3</a></td><td class="maybe">Yes?<a href="#footnote_3">*3</a></td><td class="yes">Yes</td><td class="yes">Yes</td><td class="yes">Yes</td></tr>
+    <tr><th><span lang="en">Audio</span><span lang="ja">音</span></th><td class="yes">Yes</td><td class="yes">Yes</td><td class="yes">Yes</td><td class="yes">Yes</td><td class="yes">Yes</td><td class="yes">Yes</td><td class="yes">Yes</td></tr>
+  </table>
+</div>
+<ul>
+  <li><span id="footnote_1">*1</span> <span lang="en">It is assumed to use <a href="/documents/mobile.html">ebitenmobile command</a> on mobile platforms.</span><span lang="ja">モバイルプラットフォームは <a href="/documents/mobile.html">ebitenmobile コマンド</a>を使うことを仮定しています。</span></li>
+  <li><span id="footnote_2">*2</span> <span lang="en">Supported as of Ebiten 1.11.</span><span lang="ja">Ebiten 1.11 からサポート予定。</span></li>
+  <li><span id="footnote_3">*3</span> <span lang="en">Supported as of Ebiten 1.11, maybe?</span><span lang="ja">Ebiten 1.11 からサポート予定、多分?</span></li>
+</ul>
