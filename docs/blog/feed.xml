@@ -2,12 +2,25 @@
   <title>Ebiten Blog</title>
   <id>https://ebiten.org/blog/</id>
   <link rel="self" href="https://ebiten.org/blog/feed.xml"></link>
-  <updated>2020-01-18T00:00:00+09:00</updated>
+  <updated>2020-02-28T00:00:00+09:00</updated>
   <author>
     <name>Hajime Hoshi</name>
     <uri>https://star.one</uri>
     <email>hajimehoshi@gmail.com</email>
   </author>
+  <entry>
+    <title>v1.10.4 is released</title>
+    <id>https://ebiten.org/blog/v1.10.4.html</id>
+    <link rel="alternate" href="https://ebiten.org/blog/v1.10.4.html"></link>
+    <published>2020-02-28T00:00:00+09:00</published>
+    <updated>2020-02-28T00:00:00+09:00</updated>
+    <author>
+      <name>Hajime Hoshi</name>
+      <uri>https://star.one</uri>
+      <email>hajimehoshi@gmail.com</email>
+    </author>
+    <content type="html">&lt;h1&gt;v1.10.4 is released&lt;/h1&gt;&#xA;&lt;p class=&#34;meta&#34;&gt;Hajime Hoshi&lt;br&gt;&lt;span id=&#34;meta-created&#34;&gt;2020-02-28&lt;/span&gt;&lt;/p&gt;&#xA;&lt;p&gt;We are very happy to announce the release of &lt;a href=&#34;https://github.com/hajimehoshi/ebiten/releases/tag/v1.10.4&#34;&gt;v1.10.4&lt;/a&gt;. This includes only &lt;a href=&#34;https://github.com/hajimehoshi/ebiten/milestone/36?closed=1&#34;&gt;bug fixes&lt;/a&gt; from v1.10.3.&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;  &lt;li&gt;Calling &lt;code&gt;(*Image).Set&lt;/code&gt;, &lt;code&gt;(*Image).Fill&lt;/code&gt; and &lt;code&gt;(*Image).Set&lt;/code&gt; in this order before the main loop didn&#39;t work correctly (&lt;a href=&#34;https://github.com/hajimehoshi/ebiten/issues/1081&#34;&gt;Issue #1081&lt;/a&gt;).&lt;/li&gt;&#xA;  &lt;li&gt;&lt;code&gt;ebitenutil.NewImageFromFile&lt;/code&gt; was not defined on Wasm (&lt;a href=&#34;https://github.com/hajimehoshi/ebiten/issues/1087&#34;&gt;Issue #1087&lt;/a&gt;)&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Enjoy!&lt;/p&gt;&#xA;</content>
+  </entry>
   <entry>
     <title>v1.10.3 is released</title>
     <id>https://ebiten.org/blog/v1.10.3.html</id>

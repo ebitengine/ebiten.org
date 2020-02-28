@@ -6,17 +6,17 @@
     <meta name="description" content="Ebiten is an open-source game library, with which you can develop 2D games with simple API for multi platforms in the Go programming language.">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#db5620">
-    <meta property="og:title" content="Hello! - Ebiten">
+    <meta property="og:title" content="v1.10.4 is released - Ebiten">
     <meta property="og:site_name" content="Ebiten - A dead simple 2D game library in Go">
     <meta property="og:image" content="https://ebiten.org/images/share.png">
     <meta property="og:description" content="Ebiten is an open-source game library, with which you can develop 2D games with simple API for multi platforms in the Go programming language.">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@hajimehoshi">
-    <meta name="twitter:title" content="Hello! - Ebiten">
+    <meta name="twitter:title" content="v1.10.4 is released - Ebiten">
     <meta name="twitter:description" content="Ebiten is an open-source game library, with which you can develop 2D games with simple API for multi platforms in the Go programming language.">
     <meta name="twitter:image" content="https://ebiten.org/images/share.png">
-    <title>Hello! - Ebiten</title>
-    <link rel="canonical" href="https://ebiten.org/blog/hello.html">
+    <title>v1.10.4 is released - Ebiten</title>
+    <link rel="canonical" href="https://ebiten.org/blog/v1.10.4.html">
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700%7cRoboto+Mono:400,700&amp;display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP:400,700&display=swap&subset=japanese" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="/styles/style.css">
@@ -80,16 +80,19 @@
     </nav>
     <main>
       <article>
-        <h1>Hello!</h1>
-<p class="meta">Hajime Hoshi<br><span id="meta-created">2019-11-22</span></p>
-<p>Hello! This is the very first article of the blog.</p>
-<p>I'd like to share information about Ebiten e.g., new releases or new updates.</p>
-<p>I'm now preparing an Atom feed. Stay tuned :-)</p>
+        <h1>v1.10.4 is released</h1>
+<p class="meta">Hajime Hoshi<br><span id="meta-created">2020-02-28</span></p>
+<p>We are very happy to announce the release of <a href="https://github.com/hajimehoshi/ebiten/releases/tag/v1.10.4">v1.10.4</a>. This includes only <a href="https://github.com/hajimehoshi/ebiten/milestone/36?closed=1">bug fixes</a> from v1.10.3.</p>
+<ul>
+  <li>Calling <code>(*Image).Set</code>, <code>(*Image).Fill</code> and <code>(*Image).Set</code> in this order before the main loop didn't work correctly (<a href="https://github.com/hajimehoshi/ebiten/issues/1081">Issue #1081</a>).</li>
+  <li><code>ebitenutil.NewImageFromFile</code> was not defined on Wasm (<a href="https://github.com/hajimehoshi/ebiten/issues/1087">Issue #1087</a>)</li>
+</ul>
+<p>Enjoy!</p>
 
       </article>
       <footer>
-        <p lang="en">Feedback about this page? <a href="https://github.com/ebiten/ebiten.org/issues/new?body=https%3a%2f%2febiten.org%2fblog%2fhello.html%0a%0a">Please reach out on GitHub</a>. Thank you!</p>
-        <p lang="ja">このページに何か問題がありましたら、<a href="https://github.com/ebiten/ebiten.org/issues/new?body=https%3a%2f%2febiten.org%2fblog%2fhello.html%0a%0a">GitHub にて報告</a>していただけると幸いです。</p>
+        <p lang="en">Feedback about this page? <a href="https://github.com/ebiten/ebiten.org/issues/new?body=https%3a%2f%2febiten.org%2fblog%2fv1.10.4.html%0a%0a">Please reach out on GitHub</a>. Thank you!</p>
+        <p lang="ja">このページに何か問題がありましたら、<a href="https://github.com/ebiten/ebiten.org/issues/new?body=https%3a%2f%2febiten.org%2fblog%2fv1.10.4.html%0a%0a">GitHub にて報告</a>していただけると幸いです。</p>
       </footer>
     </main>
   </body>
