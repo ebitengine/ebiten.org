@@ -96,9 +96,10 @@
 <h3>Deprecated functions</h3>
 <ul>
   <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten#ScreenScale"><code>ScreenScale</code></a></li>
-  <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten#ScreenSizeInFullscreen"><code>ScreenSizeInFullscreen</code></a></li>
+  <li><s><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten#ScreenSizeInFullscreen"><code>ScreenSizeInFullscreen</code></a></s></li>
   <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten#SetScreenScale"><code>SetScreenScale</code></a></li>
   <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten#SetScreenSize"><code>SetScreenSize</code></a></li>
 </ul>
+<p>EDIT (2020-03-22): <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten#ScreenSizeInFullscreen"><code>ScreenSizeInFullscreen</code></a> is now non-deprecated. This function is useful in limited use cases like developing a desktop mascot.</p>
 <p>These functions still work, but only with <code>Run</code>. <code>SetScreenSize</code> is deprecated since the new window size is calculated based on the current screen scale. Instead of this, you can use <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten#SetWindowSize"><code>SetWindowSize</code></a> to change the window size directly. Of course, this works only on desktops.</p>
 <p><code>Run</code> is not deprecated yet, but we might deprecate this in the near future. <code>Run</code> is still useful as a shorthand.</p>
