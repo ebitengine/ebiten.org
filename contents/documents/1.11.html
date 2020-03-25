@@ -1,0 +1,140 @@
+<h1 lang="en">Ebiten 1.11 Release Notes</h1>
+<h1 lang="ja">Ebiten 1.11 リリースノート</h1>
+<p lang="en">Note: This article is a draft. Ebiten 1.11 is not released yet!</p>
+<p lang="ja">注意: この記事は下書きです。 Ebiten 1.11 はまだリリースされていません!</p>
+<h2>v1.11</h2>
+<p><a href="https://github.com/hajimehoshi/ebiten/milestone/28?closed=1">Issues for v1.11</a></p>
+<h3 lang="en">New features</h3>
+<h3 lang="ja">新機能</h3>
+<h4 lang="en"><code>Game</code> interface and Resizable window</h4>
+<h4 lang="ja"><code>Game</code> インターフェイスとサイズ可変ウィンドウ</h4>
+<div class="grid-container">
+  <div class="grid-item-2">
+    <p lang="en">For more details about a resizable window, see <a href="/blog/resizable.html">the blog article</a>.</p>
+    <p lang="ja">サイズ可変ウィンドウの詳細については<a href="/blog/resizable.html">ブログ記事</a>を参照してください。</p>
+    <ul>
+      <li lang="en"><code>Game</code> interface and <code>RunGame</code> function are introduced. These are needed to make the window resizable instead of <code>Run</code> (<a href="https://github.com/hajimehoshi/ebiten/issues/943">Issue 943</a>).</li>
+      <li lang="ja"><code>Game</code> インターフェイスと <code>RunGame</code> 関数が新規追加されました。これらはウィンドウを可変サイズにするために <code>Run</code> の代わりに使う必要があります (<a href="https://github.com/hajimehoshi/ebiten/issues/943">Issue 943</a>)。</li>
+      <li lang="en"><code>IsWindowResizable</code> / <code>SetWindowResizable</code> are introduced (<a href="https://github.com/hajimehoshi/ebiten/issues/320">Issue 320</a>).</li>
+      <li lang="ja"><code>IsWindowResizable</code> / <code>SetWindowResizable</code> が新規追加されました (<a href="https://github.com/hajimehoshi/ebiten/issues/320">Issue 320</a>)。</li>
+      <li lang="en"><code>WindowSize</code> / <code>SetWindowSize</code> are introduced (<a href="https://github.com/hajimehoshi/ebiten/issues/320">Issue 320</a>).</li>
+      <li lang="ja"><code>WindowSize</code> / <code>SetWindowSize</code> が新規追加されました (<a href="https://github.com/hajimehoshi/ebiten/issues/320">Issue 320</a>)。</li>
+      <li lang="en"><code>MaximizeWindow</code> / <code>IsWindowMaximized</code> are introduced (<a href="https://github.com/hajimehoshi/ebiten/issues/994">Issue 994</a>).</li>
+      <li lang="ja"><code>MaximizeWindow</code> / <code>IsWindowMazimized</code> が新規追加されました (<a href="https://github.com/hajimehoshi/ebiten/issues/994">Issue 994</a>)。</li>
+      <li lang="en"><code>MinimizeWindow</code> / <code>IsWindowMinimized</code> are introduced (<a href="https://github.com/hajimehoshi/ebiten/issues/994">Issue 994</a>).</li>
+      <li lang="ja"><code>MinimizeWindow</code> / <code>IsWindowMinimized</code> が新規追加されました (<a href="https://github.com/hajimehoshi/ebiten/issues/994">Issue 994</a>)。</li>
+      <li lang="en"><code>RestoreWindow</code> is introduced (<a href="https://github.com/hajimehoshi/ebiten/issues/994">Issue 994</a>).</li>
+      <li lang="ja"><code>RestoreWindow</code> が新規追加されました (<a href="https://github.com/hajimehoshi/ebiten/issues/994">Issue 994</a>)。</li>
+    </ul>
+    <p lang="en"><code>Run</code> function is not deprecated and will remain for a while, but it is recommended to use <code>Game</code> interface and <code>RunGame</code> function for new usages.</p>
+    <p lang="ja"><code>Run</code> 関数は廃止されず当面残りますが、新規案件では <code>Game</code> インターフェイスと <code>RunGame</code> 関数を使うことが推奨されます。</p>
+  </div>
+  <div class="grid-item-2">
+    <pre><code>type Game struct{}
+
+func (g *Game) Update(screen *ebiten.Image) error {
+    // Update the game state
+    return nil
+}
+
+func (g *Game) Draw(screen *ebiten.Image) {
+    // Draw the current game state
+}
+
+func (g *Game) Layout(outsideWidth, outsideHeight int)
+    (screenWidth, screenHeight int) {
+    // Accepts the outside size (e.g., window size), and
+    // returns the game screen size.
+    // The game screen scale is automatically adjusted.
+    return 320, 240
+}
+
+func main() {
+    g := &amp;Game{}
+    if err := ebiten.RunGame(g); err != nil {
+        panic(err)
+    }
+}</code></pre>
+  </div>
+</div>
+<div class="grid-container">
+  <div class="grid-item-2">
+    <h4 lang="en">Window position</h4>
+    <h4 lang="ja">ウィンドウ位置</h4>
+    <ul>
+      <li lang="en"><code>WindowPosition</code> / <code>SetWindowPosition</code> are introduced (<a href="https://github.com/hajimehoshi/ebiten/issues/936">Issue 936</a>).</li>
+      <li lang="ja"><code>WindowPosition</code> / <code>SetWindowPosition</code> が新規追加されました (<a href="https://github.com/hajimehoshi/ebiten/issues/936">Issue 936</a>)。</li>
+    </ul>
+    <h4 lang="en">Transparent screen</h4>
+    <h4 lang="ja">透過スクリーン</h4>
+    <ul>
+      <li lang="en"><code>SetScreenTransparent</code> / <code>IsScreenTransparent</code> are introduced (<a href="https://github.com/hajimehoshi/ebiten/issues/1001">Issue 1001</a>).</li>
+      <li lang="ja"><code>SetScreenTransparent</code> / <code>IsScreenTransparent</code> が新規追加されました (<a href="https://github.com/hajimehoshi/ebiten/issues/1001">Issue 1001</a>)。</li>
+    </ul>
+    <h4 lang="en">Floating window</h4>
+    <h4 lang="ja">常時最前面ウィンドウ</h4>
+    <ul>
+      <li lang="en"><code>SetWindowFloating</code> / <code>IsWindowFloating</code> are introduced (<a href="https://github.com/hajimehoshi/ebiten/issues/880">Issue 880</a>).</li>
+      <li lang="ja"><code>SetWindowFloating</code> / <code>IsWindowFloating</code> が新規追加されました (<a href="https://github.com/hajimehoshi/ebiten/issues/880">Issue 880</a>)。</li>
+    </ul>
+    <p lang="en">You can develop a desktop mascot application with this API. See <a href="https://github.com/hajimehoshi/ebiten/blob/master/examples/mascot/main.go">the mascot example</a>.</p>
+    <p lang="ja">この API を使って、デスクトップマスコットアプリケーションが作れます。 <a href="https://github.com/hajimehoshi/ebiten/blob/master/examples/mascot/main.go">mascot サンプル</a>を参考にしてください。</p>
+  </div>
+  <div class="grid-item-2">
+    <p class="img"><video controls autoplay src="/images/documents/1.11/mascot.mp4" width="400"></p>
+  </div>
+</div>
+<h4 lang="en">Capturing cursor</h4>
+<h4 lang="ja">カーソルキャプチャ</h4>
+<ul>
+  <li lang="en"><code>CursorModeType</code> / <code>CursorMode</code> / <code>SetCursorMode</code> are introduced (<a href="https://github.com/hajimehoshi/ebiten/issues/1016">Issue 1016</a>).</li>
+  <li lang="ja"><code>CursorModeType</code> / <code>CursorMode</code> / <code>SetCursorMode</code> が新規導入されました (<a href="https://github.com/hajimehoshi/ebiten/issues/1016">Issue 1016</a>)。</li>
+</ul>
+<h4 lang="en">Misc.</h4>
+<h4 lang="ja">その他</h4>
+<ul>
+  <li lang="en"><code>SetWindowDecorated</code> before <code>Run</code>/<code>RunGame</code> is allowed (<a href="https://github.com/hajimehoshi/ebiten/issues/556">Issue 556</a>).</li>
+  <li lang="ja"><code>SetWindowDecorated</code> が <code>Run</code>/<code>RunGame</code> の前に呼べるようになりました (<a href="https://github.com/hajimehoshi/ebiten/issues/556">Issue 556</a>)。</li>
+  <li lang="en"><code>ReplacePixels</code> on a sub-image is allowed (<a href="https://github.com/hajimehoshi/ebiten/issues/980">Issue 980</a>).</li>
+  <li lang="ja"><code>ReplacePixels</code> が部分画像上で呼べるようになりました (<a href="https://github.com/hajimehoshi/ebiten/issues/980">Issue 980</a>)。</li>
+  <li lang="en">Keyboards are supported on Android and iOS (<a href="https://github.com/hajimehoshi/ebiten/issues/237">Issue 237</a>).</li>
+  <li lang="ja">Android と iOS でキーボードがサポートされました (<a href="https://github.com/hajimehoshi/ebiten/issues/237">Issue 237</a>)。</li>
+  <li lang="en">Gamepads are supported on Android (<a href="https://github.com/hajimehoshi/ebiten/issues/1083">Issue 1083</a>).</li>
+  <li lang="ja">Android でゲームパッドがサポートされました (<a href="https://github.com/hajimehoshi/ebiten/issues/1083">Issue 1083</a>)。</li>
+</ul>
+<h3 lang="en">Performance improvement</h3>
+<h3 lang="ja">パフォーマンス改善</h3>
+<ul>
+  <li lang="en">Creating images and replacing pixels are fater by using PBO (Pixel Buffer Object) (<a href="https://github.com/hajimehoshi/ebiten/issues/988">Issue 988</a>).</li>
+  <li lang="ja">PBO (Pixel Buffer Object) の使用により、画像の作成やピクセルの置換が高速になった (<a href="https://github.com/hajimehoshi/ebiten/issues/988">Issue 988</a>)。</li>
+  <li lang="en">Other small optimizations (<a href="https://github.com/hajimehoshi/ebiten/issues/976">Issue 976</a>, <a href="https://github.com/hajimehoshi/ebiten/issues/981">Issue 981</a>, <a href="https://github.com/hajimehoshi/ebiten/issues/990">Issue 990</a>, <a href="https://github.com/hajimehoshi/ebiten/issues/1101">Issue 1101</a>).</li>
+  <li lang="ja">その他細かい最適化 (<a href="https://github.com/hajimehoshi/ebiten/issues/976">Issue 976</a>、 <a href="https://github.com/hajimehoshi/ebiten/issues/981">Issue 981</a>、 <a href="https://github.com/hajimehoshi/ebiten/issues/990">Issue 990</a>、 <a href="https://github.com/hajimehoshi/ebiten/issues/1101">Issue 1101</a>).</li>
+</ul>
+<h3 lang="en">Deprecated API</h3>
+<h3 lang="ja">廃止予定 API</h3>
+<ul>
+  <li lang="en"><code>SetScreenSize</code>: Use <code>Game</code> interface and <code>RunGame</code> function instead.</li>
+  <li lang="ja"><code>SetScreenSize</code>: 代わりに <code>Game</code> インターフェイスと <code>RunGame</code> 関数を使用してください。</li>
+  <li lang="en"><code>ScreenScale</code>: Use <code>WindowSize</code> instead.</li>
+  <li lang="ja"><code>ScreenScale</code>: 代わりに <code>WindowSize</code> を使用してください。</li>
+  <li lang="en"><code>SetScreenScale</code>: Use <code>SetWindowSize</code> instead.</li>
+  <li lang="ja"><code>SetScreenScale</code>: 代わりに <code>SetWindowSize</code> を使用してください。</li>
+  <li lang="en"><code>IsCursorVisible</code>: Use <code>CursorMode</code> instead.</li>
+  <li lang="ja"><code>IsCursorVisible</code>: 代わりに <code>CursorMode</code> を使用してください。</li>
+  <li lang="en"><code>SetCursorVisible</code>: Use <code>SetCursorMode</code> instead.</li>
+  <li lang="ja"><code>SetCursorVisible</code>: 代わりに <code>SetCursorMode</code> を使用してください。</li>
+  <li lang="en"><code>IsRunnableInBackground</code>: Use <code>IsRunnableOnUnfocused</code> instead.</li>
+  <li lang="ja"><code>IsRunnableInBackground</code>: 代わりに <code>IsRunnableOnUnfocused</code> を使用してください。</li>
+  <li lang="en"><code>SetRunnableInBackground</code>: Use <code>SetRunnableOnUnfocused</code> instead.</li>
+  <li lang="ja"><code>SetRunnableInBackground</code>: 代わりに <code>SetRunnableOnUnfocused</code> を使用してください。</li>
+</ul>
+<h3 lang="en">Bug fix</h3>
+<h3 lang="ja">バグ修正</h3>
+<ul>
+  <li lang="en">This release includes all the bug fixes in v1.10.x.</li>
+  <li lang="ja">このリリースには、 v1.10.x にあるすべてのバグ修正が含まれます。</li>
+  <li lang="en">Enlarging an image failed on Android Huawei ALE-L02 (<a href="https://github.com/hajimehoshi/ebiten/issues/1044">Issue 1044</a>).</li>
+  <li lang="ja">Android Huawei ALE-L02 において、画像の拡大に失敗していた (<a href="https://github.com/hajimehoshi/ebiten/issues/1044">Issue 1044</a>)。</li>
+  <li lang="en">Blinking edges on iPad (<a href="https://github.com/hajimehoshi/ebiten/issues/1019">Issue 1019</a>).</li>
+  <li lang="ja">iPad 上で画面端が点滅していた (<a href="https://github.com/hajimehoshi/ebiten/issues/1019">Issue 1019</a>)。</li>
+</ul>
