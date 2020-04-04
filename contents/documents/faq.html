@@ -19,3 +19,5 @@
 <pre><code>EBITEN_SCREENSHOT_KEY=escape go run examples/flappy.go</code></pre>
 <h3>Ebiten's screen is scaled (and blurred) on high-DPI screen. Can I disable this scaling? In other words, can I have a hi-DPI mode?</h3>
 <p>You can pass <code>1 / ebiten.DeviceScaleFactor()</code> to <code>Run</code>'s scale argument so that you can get the screen without scaling by the device scale. For an actual example, see <a href="https://github.com/hajimehoshi/ebiten/blob/master/examples/highdpi/main.go"><code>examples/highdpi</code></a>.</p>
+<h3>Is it possible to cross-compile an application with Ebiten?</h3>
+<p>Yes and no. If the target is Windows, yes. Otherwise, it is almost impossible to cross-compile due to Cgo unfortunately. See also <a href="https://github.com/golang/go/issues/18296">a Go issue #18296</a>.</p>
