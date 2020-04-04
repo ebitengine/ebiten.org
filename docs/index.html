@@ -62,8 +62,8 @@
       <article>
         <div class="grid-container">
   <div class="grid-item-2">
-    <h1 class="big"><span class="main">Ebiten</span><span class="sub">A dead simple 2D game library in Go</span></h1>
-    <p lang="en">Ebiten (/<span class="ipa">ebíteɴ</span>/) is an open-source game library, with which you can develop 2D games with simple API for multi platforms in <a href="https://golang.org/">the Go programming language</a>.</p>
+    <h1 class="big"><span class="main">Ebiten</span><span class="sub">A dead simple 2D game library for Go</span></h1>
+    <p lang="en">Ebiten (/<span class="ipa">ebíteɴ</span>/) is an open source game library for <a href="https://golang.org/">the Go programming language</a>. Ebiten's simple API allows you to quickly and easily develop 2D games that can be deployed across multiple platforms.</p>
     <p lang="ja">Ebiten (読み: えびてん) は<a href="https://golang.org/">プログラミング言語 Go</a> で書かれたオープンソースのゲームライブラリです。シンプルな API を使って、マルチプラットフォームな 2D ゲームを開発することができます。</p>
     <ul class="toplinks">
       <li lang="en"><img src="images/github.png" width="16" height="16" alt="GitHub"><a href="https://github.com/hajimehoshi/ebiten"><code>hajimehoshi/ebiten</code></a> (<a href="/documents/install.html">Install</a>)</li>
@@ -74,35 +74,35 @@
     <p class="img"><img src="images/gopherandgame.png" width="450" alt="Gopher and game developing" style="padding-top: 36px;"></p>
   </div>
 </div>
-<h2 lang="en">What's Ebiten?</h2>
+<h2 lang="en">What is Ebiten?</h2>
 <h2 lang="ja">Ebiten の特徴</h2>
 <div class="grid-container">
   <div class="grid-item-2">
     <h3 lang="en">Dead Simple</h3>
     <h3 lang="ja">とてもシンプル</h3>
     <p class="img"><img src="images/deadsimple.png" width="448" height="224" alt="Dead Simple"></p>
-    <p lang="en">Most rendering operations are represented as drawing an image to an image. Everything is an image: the screen, data from an image file and an offscreen are represented as image objects.</p>
+    <p lang="en">In Ebiten, everything is an image: the screen, data from an image file, and even offscreen items are all represented as image objects. Most rendering operations consist of drawing one image on top of another.</p>
     <p lang="ja">ほとんどの描画命令は画像から画像への描画として表現されます。画面、画像ファイル、オフスクリーンなど、あらゆるものが画像として表現されます。</p>
   </div>
   <div class="grid-item-2">
-    <h3 lang="en">Multi Platforms</h3>
+    <h3 lang="en">Multiplatform</h3>
     <h3 lang="ja">マルチプラットフォーム</h3>
-    <p class="img"><img src="images/multiplatforms.png" width="448" height="224" alt="Multi Platforms"></p>
-    <p lang="en">Ebiten games work on various platforms like desktops (Windows, macOS, Linux, and FreeBSD), web browsers (<a href="https://github.com/gopherjs/gopherjs">GopherJS</a> and WebAssembly), and mobiles (Android and iOS).</p>
+    <p class="img"><img src="images/multiplatforms.png" width="448" height="224" alt="Multiplatform"></p>
+    <p lang="en">Ebiten games work on desktop (Windows, macOS, Linux, and FreeBSD), web browsers (through <a href="https://github.com/gopherjs/gopherjs">GopherJS</a> and WebAssembly), and even on mobile (Android and iOS)! Plus, Ebiten is implemented in pure Go on Windows, so Windows developers do not need to install a C compiler.</p>
     <p lang="ja">Ebiten のゲームは様々な環境で動きます。デスクトップ (Windows、macOS、Linux、FreeBSD)、 Web ブラウザ (<a href="https://github.com/gopherjs/gopherjs">GopherJS</a> と WebAssembly)、モバイル (Android と iOS) で動きます。</p>
   </div>
   <div class="grid-item-2">
     <h3 lang="en">High Performance</h3>
     <h3 lang="ja">高いパフォーマンス</h3>
     <p class="img"><img src="images/highperformance.png" width="448" height="224" alt="High Performance"></p>
-    <p lang="en">While Ebiten's drawing API is very simple, Ebiten games run very fast with GPU power. Multiple images are integrated into a texture atlas internally. Multiple drawing operations are integrated into a batch automatically when possible.</p>
+    <p lang="en">While Ebiten's drawing API is very simple, Ebiten games run very fast with GPU power. Multiple images are integrated into a texture atlas internally, and drawing operations are automatically performed in batch when possible.</p>
     <p lang="ja">Ebiten の API はシンプルですが、ゲームは GPU を活かして高速に実行されます。複数の画像は内部でテクスチャアトラスにまとめられます。複数の描画命令は、可能な限り自動的にバッチにまとめられます。</p>
   </div>
   <div class="grid-item-2">
-    <h3 lang="en">Production Ready</h3>
+    <h3 lang="en">Production-Ready</h3>
     <h3 lang="ja">商用レベルのゲーム</h3>
     <p class="img"><img src="images/productionready.png" width="448" height="224" alt="Production Ready"></p>
-    <p lang="en">Ebiten has capability to develop product-level games. <a href="https://daigostudio.com/bearsrestaurant/">Bear's Restaurant</a>, that reached 400K downloads, is a mobile application in Ebiten.</p>
+    <p lang="en">Ebiten has been used to develop production-level games. One such example is <a href="https://daigostudio.com/bearsrestaurant/">Bear's Restaurant</a>, a mobile application that has been downloaded over 400,000 times.</p>
     <p lang="ja">Ebiten は商用レベルのゲームを作ることができます。<a href="https://daigostudio.com/bearsrestaurant/">くまのレストラン</a>は、 40 万ダウンロードを達成した Ebiten 製のモバイルゲームです。</p>
   </div>
 </div>
