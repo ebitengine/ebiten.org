@@ -11,7 +11,7 @@
 <h3>Why did you name the lib "Ebiten"?</h3>
 <p>It's because Ebiten is delicious.</p>
 <h3>Is it possible to cross-compile an application with Ebiten?</h3>
-<p>Yes and no. If the target is Windows, yes. Otherwise, it is almost impossible to cross-compile due to Cgo unfortunately. See also <a href="https://github.com/golang/go/issues/18296">a Go issue #18296</a>.</p>
+<p>Yes and no. If the target is Windows or Wasm, yes. Otherwise, it is almost impossible to cross-compile due to Cgo unfortunately. See also <a href="https://github.com/golang/go/issues/18296">Go issue #18296</a>.</p>
 <h2>Graphics</h2>
 <h3>How to draw lines?</h3>
 <p>Use <a href="http://pkg.go.dev/github.com/hajimehoshi/ebiten/ebitenutil#DrawLine"><code>ebitenutil.DrawLine</code></a>. Note that this function is only for debugging and prototyping only.</p>
