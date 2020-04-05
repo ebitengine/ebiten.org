@@ -173,7 +173,6 @@ func Run(url, description string) error {
 		}
 
 		feed := ""
-		// Checks for "blog/" on Linux, "blog\" on Windows
 		if strings.HasPrefix(rel, "blog"+string(filepath.Separator)) {
 			feed = url + "/blog/feed.xml"
 		}
