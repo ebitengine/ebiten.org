@@ -130,7 +130,7 @@ function addCommentStyle(code) {
     }
     code.textContent = '';
     for (const line of text.wholeText.split('\n')) {
-        if (!/^\s*\/\//.test(line)) {
+        if (!/^\s*\/\//.test(line) && !/^\s*#(\s|$)/.test(line)) {
             code.appendChild(document.createTextNode(line + '\n'))
             continue;
         }

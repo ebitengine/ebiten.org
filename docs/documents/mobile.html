@@ -122,7 +122,6 @@ func init() {
     // yourgame.Game must implement mobile.Game (= ebiten.Game) interface.
     // For more details, see
     // * https://pkg.go.dev/github.com/hajimehoshi/ebiten?tab=doc#Game
-    // * https://pkg.go.dev/github.com/hajimehoshi/ebiten?tab=doc#RunGame
     mobile.SetGame(&yourgame.Game{})
 }
 
@@ -130,18 +129,17 @@ func init() {
 //
 // gomobile doesn't compile a package that doesn't include any exported function.
 // Dummy forces gomobile to compile this package.
-func Dummy() {}
-</code></pre>
+func Dummy() {}</code></pre>
 <p>The key function is <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/mobile#SetGame"><code>SetGame</code></a>, and you can ignore the other functions in the <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/mobile"><code>mobile</code></a> package.</p>
 
 <h3>Android</h3>
 <p>Run <code>ebitenmobile bind</code> command for your package:</p>
-<pre><code># With Ebiten 1.10
-env GO111MODULE=off ebitenmobile bind -target android -javapkg [your.domain] -o [path/to/yourgame.aar] [github.com/yourname/yourgame/yourgamemobile]
+<pre><code>cd /path/to/yourgame
+ebitenmobile bind -target android -javapkg [your.domain] -o [path/to/yourgame.aar] .
 
-# FYI: With Ebiten 1.11 or later, you can use Go modules.
-# $ cd /path/to/yourgame
-# $ ebitenmobile bind -target android -javapkg [your.domain] -o [path/to/yourgame.aar] .</code></pre>
+# With Ebiten 1.10, you need to disable Go modules.
+#
+# env GO111MODULE=off ebitenmobile bind -target android -javapkg [your.domain] -o [path/to/yourgame.aar] [github.com/yourname/yourgame/yourgamemobile]</code></pre>
 <p>Then your can get a <code>.aar</code> file. This <code>.aar</code> file defines a view class named <code>EbitenView</code> under the specified Java package (<code>-javapkg</code> option + your package name). You can put it on your screen. That's it!</p>
 <p>The view class is defined like this:</p>
 <pre><code>package your.domain.yourgamemobile;
@@ -172,12 +170,12 @@ public class EbitenView extends ViewGroup {
 
 <h3>iOS</h3>
 <p>Run <code>ebitenmobile bind</code> command for your package:</p>
-<pre><code># Ebiten 1.10
-env GO111MODULE=off ebitenmobile bind -target ios -o [path/to/yourgame.framework] [github.com/yourname/yourgame/yourgamemobile]
+<pre><code>cd /path/to/yourgame
+ebitenmobile bind -target ios -o [path/to/yourgame.framework] .
 
-# FYI: With Ebiten 1.11 or later, you can use Go modules.
-# $ cd /path/to/yourgame
-# $ ebitenmobile bind -target ios -o [path/to/yourgame.framework] .</code></pre>
+# With Ebiten 1.10, you need to disable Go modules.
+#
+# env GO111MODULE=off ebitenmobile bind -target ios -o [path/to/yourgame.framework] [github.com/yourname/yourgame/yourgamemobile]</code></pre>
 <p>Then your can get a <code>.framework</code> file. This <code>.framework</code> defines a view controller class named <code>(Package Name)EbitenViewController</code>. You can put it on your screen by connecting with any <code>UIView</code>. That's it!</p>
 <p>The view controller class is defined like this:</p>
 <pre><code>#import &lt;UIKit/UIKit.h&gt;
@@ -292,10 +290,10 @@ func UpdateTouchesOnIOS(phase int, ptr int64, x, y int) {
 <p>Install <code>gomobile</code> command first.</p>
 <pre><code>go install golang.org/x/mobile/cmd/...</code></pre>
 <p>Then, run <code>gomobile build</code></p>
-<pre><code>env GO111MODULE=off gomobile build [github.com/yourname/yourpackage]</code></pre>
+<pre><code>gomobile build [github.com/yourname/yourpackage]</code></pre>
 <p>That's it!</p>
 <p>You can install an Ebiten's example directly with <code>gomobile install</code> on your Android device:</p>
-<pre><code>env GO111MODULE=off gomobile install -tags=example github.com/hajimehoshi/ebiten/examples/paint</code></pre>
+<pre><code>gomobile install -tags=example github.com/hajimehoshi/ebiten/examples/paint</code></pre>
 <p>For more details, see <a href="https://github.com/golang/go/wiki/Mobile">the official Wiki page about gomobile</a>.</p>
 
 <!--h2><code>gomobile build</code> vs <code>gomobile bind</code></h2>
