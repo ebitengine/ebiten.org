@@ -108,7 +108,7 @@
 <p>Specify the key to environment variable <code>EBITEN_SCREENSHOT_KEY</code> and you can take a screenshot by pressing the specified key.</p>
 <pre><code>EBITEN_SCREENSHOT_KEY=escape go run examples/flappy.go</code></pre>
 <h3>Ebiten's screen is scaled (and blurred) on h-DPI screen. Can I disable this scaling? In other words, can I have a hi-DPI mode?</h3>
-<p>You can make <code>(ebiten.Game).Layout</code> return a bigger size than the outside size. By multiplying the outside size by <code>ebiten.DeviceScaleFactor()</code>, you can get the screen without scaling by the device scale. For an actual example, see <a href="https://github.com/hajimehoshi/ebiten/blob/master/examples/highdpi/main.go"><code>examples/highdpi</code></a>.</p>
+<p>You can make <code>(ebiten.Game).Layout</code> return a bigger size than the outside size. By multiplying the outside size by <code>ebiten.DeviceScaleFactor()</code>, you can get a hi-DPI game screen. For an actual example, see <a href="https://github.com/hajimehoshi/ebiten/blob/master/examples/highdpi/main.go"><code>examples/highdpi</code></a>.</p>
 
       </article>
       <footer>
