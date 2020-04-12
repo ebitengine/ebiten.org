@@ -3,8 +3,6 @@
 <h3>Why do the examples use the build tag <code>example</code>?</h3>
 <p>With the build tag, <code>go get -u github.com/hajimehoshi/ebiten/...</code> doesn't install the example binaries in your <code>$GOPATH/bin</code>.</p>
 <p>Such build tags are an idiom you can find e.g. in <code>golang.org/x/exp/shiny/example</code>.</p>
-<h3>How can I run the examples on browsers?</h3>
-<p>Run <code>gopherjs serve --tags=example</code> and see e.g., <code>https://127.0.0.1:8080/github.com/hajimehoshi/ebiten/examples/blocks</code>.</p>
 <h3>My app built with Ebiten creates an unknown process "Console Window Host". What is this?</h3>
 <p>This is because your app is still a console app, not a GUI app. Ebiten tries to close the console when necessary, but the app itself is still not recognized as a GUI app. You can suppress this by specifying ldflags when go-building like this:</p>
 <pre><code>go build -ldflags -H=windowsgui path/to/your/game</code></pre>
