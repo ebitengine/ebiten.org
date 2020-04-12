@@ -7,16 +7,24 @@ import (
 	"github.com/hajimehoshi/ebiten"
 )
 
-func update(screen *ebiten.Image) error {
-	if ebiten.IsDrawingSkipped() {
-		return nil
-	}
-	screen.Fill(color.RGBA{0xff, 0, 0, 0xff})
+type Game struct{}
+
+func (g *Game) Update(screen *ebiten.Image) error {
 	return nil
 }
 
+func (g *Game) Draw(screen *ebiten.Image) {
+	screen.Fill(color.RGBA{0xff, 0, 0, 0xff})
+}
+
+func (g *Game) Layout(outsideWidth, outsideHeight int) (screenWidth, screenHeight int) {
+	return 320, 240
+}
+
 func main() {
-	if err := ebiten.Run(update, 640, 480, 1, "Fill"); err != nil {
+	ebiten.SetWindowSize(640, 480)
+	ebiten.SetWindowTitle("Fill")
+	if err := ebiten.RunGame(&Game{}); err != nil {
 		log.Fatal(err)
 	}
 }

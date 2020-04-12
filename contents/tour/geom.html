@@ -22,7 +22,7 @@
 <h2>How the code works</h2>
 <div class="grid-container">
   <div class="grid-item-2">
-    <pre data-codesrc="/go/geometrymatrix/main.go" data-codelinerange="25-28"></pre>
+    <pre data-codesrc="/go/geometrymatrix/main.go" data-codelinerange="28-31"></pre>
   </div>
   <div class="grid-item-2">
     <p>The program is almost same as <a href="renderimage.html">render-an-image example</a>. The difference is whether <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten#DrawImageOptions"><code>DrawImageOptions</code></a> is specified or not at the <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten#Image.DrawImage"><code>DrawImage</code></a> call. In this example, a <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten#GeoM"><code>GeoM</code></a> is adjusted. <code>GeoM</code> represents <a href="https://en.wikipedia.org/wiki/Affine_transformation">an affine matrix</a> to translate, scale or rotate the image.</p>

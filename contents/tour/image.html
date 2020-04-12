@@ -40,7 +40,7 @@
     <p>As an image can be reused unless disposing, the image is created once in init function.</p>
   </div>
   <div class="grid-item-2">
-    <pre data-codesrc="/go/renderimage/main.go" data-codelinerange="25"></pre>
+    <pre data-codesrc="/go/renderimage/main.go" data-codelinerange="28"></pre>
   </div>
   <div class="grid-item-2">
     <p>Draws an image on an image by <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten#Image.DrawImage"><code>(*Image).DrawImage</code></a>. This function draws a given image onto the receiver image. The second argument is an option to indicate where to put the image, how colors are changed, which filter is applied, and so on. As <code>nil</code> is given here, the image is rendered at the default position (upper-left corder), without changing any colors.</p>
