@@ -1,33 +1,71 @@
 <h1>Cheat Sheet</h1>
-<p>This cheat sheet describes the essential APIs that are commonly used. For the complete list of the API, see the <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten">GoDoc</a>.</p>
+<p>This cheat sheet describes the essential APIs that are commonly used. For the complete list of the API, see the <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten">API reference</a>.</p>
 <h2>Overview</h2>
-<p class="img"><a href="/images/overview.png"><img src="/images/overview.png" width="1618" height="993" alt="Overview"></a></p>
+<p class="img"><a href="/images/overview.png"><img src="/images/overview1.11.png" width="1618" height="993" alt="Overview"></a></p>
 <h2>General</h2>
-<h3><code>ebiten.Run</code></h3>
-<pre><code>func Run(f func(*Image) error, width, height int, scale float64, title string) error</code></pre>
-<p><code>Run</code> runs the game. <code>f</code> is a function which is called at every frame. The argument <code>(*Image)</code> is the render target that represents the screen. The screen size is based on the given values (<code>width</code> and <code>height</code>).</p>
-<p>Ebiten tries to call f 60 times a second. In other words, TPS (ticks per second) is 60. This is not related to framerate (display's refresh rate).</p>
-<p>f is not called when the window is in background by default. This setting is configurable with <code>SetRunnableInBackground</code>.</p>
-<p><code>Run</code> returns error when 1) OpenGL error happens, 2) audio error happens or 3) f returns error. In the case of 3), <code>Run</code> returns the same error.</p>
-<p>Don't call Run twice or more in one process.</p>
-<h3><code>ebiten.IsDrawingSkipped</code></h3>
-<pre><code>func IsDrawingSkipped() bool</code></pre>
-<p><code>IsDrawingSkipped</code> returns true if rendering result is not adopted. It is recommended to skip drawing images or screen when <code>IsDrawingSkipped</code> is true.</p>
-<p>The typical code with <code>IsDrawingSkipped</code> is this:</p>
-<pre><code>func update(screen *ebiten.Image) error {
+<h3><code>ebiten.Game</code></h3>
+<pre><code>type Game interface {
+    // Update updates a game by one tick. The given argument represents a screen image.
+    Update(screen *Image) error
 
-    // Update the state.
+    // Draw draw the game screen. The given argument represents a screen image.
+    //
+    // (To be exact, Draw is not defined in this interface due to backward compatibility, but RunGame's
+    // behavior depends on the existence of Draw.)
+    Draw(screen *Image)
 
-    // When IsDrawingSkipped is true, the rendered result is not adopted.
-    // Skip rendering then.
-    if ebiten.IsDrawingSkipped() {
-        return nil
-    }
-
-    // Draw something to the screen.
-
-    return nil
+    // Layout accepts a native outside size in device-independent pixels and returns the game's logical
+    // screen size. On desktops, the outside is a window or a monitor (fullscreen mode)
+    //
+    // Even though the outside size and the screen size differ, the rendering scale is automatically
+    // adjusted to fit with the outside.
+    //
+    // You can return a fixed screen size if you don't care, or you can also return a calculated screen
+    // size adjusted with the given outside size.
+    Layout(outsideWidth, outsideHeight int) (screenWidth, screenHeight int)
 }</code></pre>
+<p><code>Game</code> defines necessary functions for a game.</p>
+<h3><code>ebiten.RunGame</code></h3>
+<pre><code>func RunGame(game Game) error</code></pre>
+<p><code>RunGame</code> runs the game. <code>game</code>'s <code>Update</code> is called every tick (1/60 [s] by default) and <code>game</code>'s <code>Draw</code> is called every frame (typically 1/60[s] for 60Hz display). The argument <code>(*Image)</code> is the render target that represents the screen.</p>
+<p>The <code>Update</code> and the <code>Draw</code> are not called when the window is unfocused by default. This setting is configurable with <code>SetRunnableOnUnfocused</code>.</p>
+<p><code>RunGame</code> returns error when 1) OpenGL error happens, 2) audio error happens or 3) f returns error. In the case of 3), <code>RunGame</code> returns the same error.</p>
+<p>Don't call <code>RunGame</code> twice or more in one process.</p>
+<p>The typical code with <code>Game</code> and <code>RunGame</code> is this:</p>
+<pre><code>// Game implements ebiten.Game interface.
+type Game struct{}
+
+// Update proceeds the game state.
+// Update is called every tick (1/60 [s] by default).
+func (g *Game) Update(screen *ebiten.Image) error {
+    // Write your game's logical update.
+    return nil
+}
+
+// Draw draws the game screen.
+// Draw is called every frame (typically 1/60[s] for 60Hz display).
+func (g *Game) Draw(screen *ebiten.Image) {
+    // Write your game's rendering.
+}
+
+// Layout takes the outside size (e.g., the window size) and returns the (logical) screen size.
+// If you don't have to adjust the screen size with the outside size, just return a fixed size.
+func (g *Game) Layout(outsideWidth, outsideHeight int) (screenWidth, screenHeight int) {
+    return 320, 240
+}
+
+func main() {
+    game := &amp;Game{}
+    // Sepcify the window size as you like. Here, a doulbed size is specified.
+    ebiten.SetWindowSize(640, 480)
+    ebiten.SetWindowTitle("Your game's title")
+    // Call ebiten.RunGame to start your game loop.
+    if err := ebiten.RunGame(game); err != nil {
+        log.Fatal(err)
+    }
+}</code></pre>
+<h3><code>ebiten.Run</code></h3>
+<p><code>Run</code> is for backward compatibility and was replaced with <code>RunGame</code>.</p>
 <h3><code>ebitenutil.DebugPrint</code></h3>
 <pre><code>func DebugPrint(image *ebiten.Image, str string) error</code></pre>
 <p>(Defined at <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/ebitenutil"><code>ebitenutil</code> package</a>)</p>
