@@ -61,9 +61,27 @@
     <p>Defines <code>(*Game).Layout</code> function. <code>Layout</code> accepts an outside size, which is a window size on desktop, and returns the game's logical screen size. This code ignores the arguments and returns the fixed values. This means that the game screen size is always same, whatever the window's size is. <code>Layout</code> will be more meaningful e.g., when the window is resizable.</p>
   </div>
   <div class="grid-item-2">
-    <pre data-codesrc="/go/helloworld/main.go" data-codelinerange="24-30"></pre>
+    <pre data-codesrc="/go/helloworld/main.go" data-codelinerange="24-24"></pre>
   </div>
   <div class="grid-item-2">
-    <p>Defines the <code>main</code> function, which is the entry point of this program. <code><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten#RunGame">ebiten.RunGame</a></code> is the function to run the main loop of an Ebiten game. The argument is a <code>Game</code> object, that implements <code>ebiten.Game</code>. <code>ebiten.RunGame</code> returns a non-nil error value when an error happen. In this program, when a non-nil error is returned, this error is logged as a fatal error.</p>
+    <p>Defines the <code>main</code> function, which is the entry point of this program.</p>
+  </div>
+  <div class="grid-item-2">
+    <pre data-codesrc="/go/helloworld/main.go" data-codelinerange="25-25"></pre>
+  </div>
+  <div class="grid-item-2">
+    <p><code><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten#SetWindowSize">ebiten.SetWindowSize</a> sets the window's size. Without calling this, the default window size is used.</code></p>
+  </div>
+  <div class="grid-item-2">
+    <pre data-codesrc="/go/helloworld/main.go" data-codelinerange="26-26"></pre>
+  </div>
+  <div class="grid-item-2">
+    <p><code><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten#SetWindowTitle">ebiten.SetWindowTitle</a> sets the window's title.</code></p>
+  </div>
+  <div class="grid-item-2">
+    <pre data-codesrc="/go/helloworld/main.go" data-codelinerange="27-30"></pre>
+  </div>
+  <div class="grid-item-2">
+    <p><code><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten#RunGame">ebiten.RunGame</a></code> is the function to run the main loop of an Ebiten game. The argument is a <code>Game</code> object, that implements <code>ebiten.Game</code>. <code>ebiten.RunGame</code> returns a non-nil error value when an error happen. In this program, when a non-nil error is returned, this error is logged as a fatal error.</p>
   </div>
 </div>
