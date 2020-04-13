@@ -2,12 +2,25 @@
   <title>Ebiten Blog</title>
   <id>https://ebiten.org/blog/</id>
   <link rel="self" href="https://ebiten.org/blog/feed.xml"></link>
-  <updated>2020-03-12T00:00:00+09:00</updated>
+  <updated>2020-04-13T00:00:00+09:00</updated>
   <author>
     <name>Hajime Hoshi</name>
     <uri>https://star.one</uri>
     <email>hajimehoshi@gmail.com</email>
   </author>
+  <entry>
+    <title>v1.11.0 is released</title>
+    <id>https://ebiten.org/blog/v1.11.0.html</id>
+    <link rel="alternate" href="https://ebiten.org/blog/v1.11.0.html"></link>
+    <published>2020-04-13T00:00:00+09:00</published>
+    <updated>2020-04-13T00:00:00+09:00</updated>
+    <author>
+      <name>Hajime Hoshi</name>
+      <uri>https://star.one</uri>
+      <email>hajimehoshi@gmail.com</email>
+    </author>
+    <content type="html">&lt;h1 lang=&#34;en&#34;&gt;v1.11.0 is released&lt;/h1&gt;&#xA;&lt;h1 lang=&#34;ja&#34;&gt;v1.11.0 がリリースされました&lt;/h1&gt;&#xA;&lt;p class=&#34;meta&#34;&gt;Hajime Hoshi&lt;br&gt;&lt;span id=&#34;meta-created&#34;&gt;2020-04-13&lt;/span&gt;&lt;/p&gt;&#xA;&lt;div class=&#34;grid-container&#34;&gt;&#xA;  &lt;div class=&#34;grid-item-2&#34;&gt;&#xA;    &lt;p lang=&#34;en&#34;&gt;We are very happy to announce the release of v1.11.0 (&lt;a href=&#34;/documents/1.11.html&#34;&gt;Releaase Note&lt;/a&gt;). The new features are:&lt;/p&gt;&#xA;    &lt;p lang=&#34;ja&#34;&gt;v1.11.0 がリリースされました! 詳しくは&lt;a href=&#34;/documents/1.11.html&#34;&gt;リリースノート&lt;/a&gt;を参照してください。新しい機能は次のとおりです:&lt;/p&gt;&#xA;    &lt;ul&gt;&#xA;      &lt;li lang=&#34;en&#34;&gt;&lt;code&gt;&lt;a href=&#34;https://pkg.go.dev/github.com/hajimehoshi/ebiten?tab=doc#Game&#34;&gt;Game&lt;/a&gt;&lt;/code&gt; interface and &lt;code&gt;&lt;a href=&#34;https://pkg.go.dev/github.com/hajimehoshi/ebiten?tab=doc#RunGame&#34;&gt;RunGame&lt;/a&gt;&lt;/code&gt;&lt;/li&gt;&#xA;      &lt;li lang=&#34;ja&#34;&gt;&lt;code&gt;&lt;a href=&#34;https://pkg.go.dev/github.com/hajimehoshi/ebiten?tab=doc#Game&#34;&gt;Game&lt;/a&gt;&lt;/code&gt; インターフェイスと &lt;code&gt;&lt;a href=&#34;https://pkg.go.dev/github.com/hajimehoshi/ebiten?tab=doc#RunGame&#34;&gt;RunGame&lt;/a&gt;&lt;/code&gt;&lt;/li&gt;&#xA;      &lt;li lang=&#34;en&#34;&gt;Resizable window&lt;/li&gt;&#xA;      &lt;li lang=&#34;ja&#34;&gt;サイズ可変ウィンドウ&lt;/li&gt;&#xA;      &lt;li lang=&#34;en&#34;&gt;Window position&lt;/li&gt;&#xA;      &lt;li lang=&#34;ja&#34;&gt;ウィンドウ位置&lt;/li&gt;&#xA;      &lt;li lang=&#34;en&#34;&gt;Transparent screen&lt;/li&gt;&#xA;      &lt;li lang=&#34;ja&#34;&gt;透過スクリーン&lt;/li&gt;&#xA;      &lt;li lang=&#34;en&#34;&gt;Floating window&lt;/li&gt;&#xA;      &lt;li lang=&#34;ja&#34;&gt;常時最前面ウィンドウ&lt;/li&gt;&#xA;      &lt;li lang=&#34;en&#34;&gt;Capturing cursor&lt;/li&gt;&#xA;      &lt;li lang=&#34;ja&#34;&gt;カーソルキャプチャ&lt;/li&gt;&#xA;    &lt;/ul&gt;&#xA;    &lt;p lang=&#34;en&#34;&gt;You can develop a desktop mascot application with these API. See &lt;a href=&#34;https://github.com/hajimehoshi/ebiten/blob/master/examples/mascot/main.go&#34;&gt;the mascot example&lt;/a&gt;.&lt;/p&gt;&#xA;    &lt;p lang=&#34;ja&#34;&gt;これら API を使って、デスクトップマスコットアプリケーションが作れます。 &lt;a href=&#34;https://github.com/hajimehoshi/ebiten/blob/master/examples/mascot/main.go&#34;&gt;mascot サンプル&lt;/a&gt;を参考にしてください。&lt;/p&gt;&#xA;    &lt;p lang=&#34;en&#34;&gt;Enjoy!&lt;/p&gt;&#xA;  &lt;/div&gt;&#xA;  &lt;div class=&#34;grid-item-2&#34;&gt;&#xA;    &lt;p class=&#34;img&#34;&gt;&lt;video controls autoplay src=&#34;/images/documents/1.11/mascot.mp4&#34; width=&#34;400&#34;&gt;&lt;/p&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;&#xA;</content>
+  </entry>
   <entry>
     <title>v1.10.5 is released</title>
     <id>https://ebiten.org/blog/v1.10.5.html</id>
