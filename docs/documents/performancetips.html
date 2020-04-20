@@ -91,13 +91,13 @@
         <h1>Performance Tips</h1>
 <h2>Make similar draw function calls successive</h2>
 <p>The less draw commands, the better the performance is.</p>
-<p>One drawing function like <code>DrawImage</code> or <code>Fill</code> is usually treated as one (internal) draw command, but there is an exception. Successive drawing commands are treated as one draw command when all the below conditions are satisfied:</p>
+<p>One drawing function like <code><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten?tab=doc#Image.DrawImage">DrawImage</a></code> or <code><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten?tab=doc#Image.Fill">Fill</a></code> is usually treated as one (internal) draw command, but there is an exception. Successive drawing commands are treated as one draw command when all the below conditions are satisfied:</p>
 <ul>
-  <li>All the functions are <code>DrawImage</code> or <code>DrawTriangles</code></li>
+  <li>All the functions are <code>DrawImage</code> or <code><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten?tab=doc#Image.DrawTriangles">DrawTriangles</a></code></li>
   <li>All the render targets are same (<code>A</code> in <code>A.DrawImage(B, op)</code>)</li>
   <li>Either all ColorM element values are same or all the ColorM have only diagonal ('scale') elements
     <ul>
-      <li>If only <code>(*ColorM).Scale</code> is applied to a ColorM, the ColorM has only diagonal elements. The other ColorM functions might modify the other elements.</li>
+      <li>If only <code><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten?tab=doc#ColorM.Scale">(*ColorM).Scale</a></code> is applied to a ColorM, the ColorM has only diagonal elements. The other ColorM functions might modify the other elements.</li>
     </ul>
   </li>
   <li>All the composite modes are same</li>
@@ -132,19 +132,25 @@ draw-triangles: dst: 8 (screen) <- src: 1, colorm: &lt;nil&gt;, mode clear, filt
 draw-triangles: dst: 8 (screen) <- src: 7, colorm: &lt;nil&gt;, mode copy, filter: screen, address: clamp_to_zero
 --
 ...</code></pre>
-<h2>Avoid changing render sources' pixels</h2>
-<p>Ebiten records almost all draw functions in order to restore when context lost happens. When a render source's pixel is changed after it is used as a render source, Ebiten tries a complicated calculation for restoring.</p>
+<h2>Avoid changing render sources&apos; pixels</h2>
+<p>Ebiten records almost all draw functions in order to restore when context lost happens. When a render source&apos;s pixel is changed after it is used as a render source, Ebiten tries a complicated calculation for restoring.</p>
 <pre><code>A.DrawImage(B, op) // B is a render source
-B.DrawImage(C, op) // tries to change B's pixels. Avoid this if possible.</code></pre>
+B.DrawImage(C, op) // tries to change B&apos;s pixels. Avoid this if possible.</code></pre>
 <p>As well, cyclic drawing should also be avoided.</p>
 <pre><code>A.DrawImage(B, op)
 B.DrawImage(A, op) // cyclic drawing! Avoid this if possible.</code></pre>
 <h2>Avoid using the screen as a render source</h2>
 <p>The screen is a special image because the image is cleared at every frame. As explained above, Ebiten records a drawing function calls but using the screen as a render source makes the calculation complicated.</p>
-<h2>Don't call <code>(*Image).ReplacePixels</code> too much</h2>
-<p>ReplacePixels is a relatively heavy function that calls <code>glTexSubImage2D</code> internally.</p>
-<h2>Don't call <code>(*Image).At</code> too much</h2>
-<p>At is also heavy that tries to solve all the queued draw commands.</p>
+<h2>Don&apos;t call <code>(*Image).ReplacePixels</code> too much</h2>
+<p>ReplacePixels is a relatively heavy function.</p>
+<h2>Don&apos;t call <code>(*Image).At</code> too much</h2>
+<p>At is also heavy that tries to solve all the queued draw commands and retrieve pixels from GPU.</p>
+<h2>It is fine to create one player for one short sound effect</h2>
+<p>Creating an <code><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/audio?tab=doc#Player">audio.Player</a></code> is not expensive. It is fine to create one player for one short sound effect. For example, this code is totally fine:</p>
+<pre><code>sePlayer, _ := audio.NewPlayerFromBytes(audioContext, bytes)
+sePlayer.Play()</code></pre>
+<p>In this code, <code><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/audio?tab=doc#NewPlayerFromBytes">audio.NewPlayerFromBytes</a></code> is used instead of <code><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/audio?tab=doc#NewPlayer">audio.NewPlayer</a></code>. <code>audio.NewPlayerFromBytes</code> creates a new stream on call, while <code>audio.NewPlayer</code> accepts an existing stream. As a stream has a byte stream its position, one stream cannot be shared by multiple players. With <code>NewPlayerFromBytes</code>, you can play sounds effects regardless of whether the same sound is playing or not.</p>
+<p>As for BGMs that bytes can be much bigger than SEs, it is recommended to reuse one <code>audio.Player</code> by, e.g., <code><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/audio?tab=doc#Player.Rewind">(*audio.Player).Rewind</a></code>. It is because preparing a byte slice for the whole music at one time might be expensive. It should be rare to play the same BGM at the same time anyway.</p>
 
       </article>
       <footer>
