@@ -9,7 +9,7 @@ wasmserve ./path/to/yourgame</code></pre>
 <h3>Compiling your game</h3>
 <pre><code>GOOS=js GOARCH=wasm go build -o yourgame.wasm github.com/yourname/yourgame</code></pre>
 <h3>Copying <code>wasm_exec.js</code> to execute the Wasm binary</pre></h3>
-<pre><code>cp $(go env GOROT)/misc/wasm/wasm_exec.js .</code></pre>
+<pre><code>cp $(go env GOROOT)/misc/wasm/wasm_exec.js .</code></pre>
 <h3>Creating an HTML</h3>
 <pre><code>&lt;!DOCTYPE html&gt;
 &lt;script src="wasm_exec.js"&gt;&lt;/script&gt;

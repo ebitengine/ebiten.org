@@ -21,5 +21,5 @@ GOOGLE_APPLICATION_CREDENTIALS=/path/to/credentials.json go run uploadwasm.go -e
 ## Test on your local machine
 
 ```
-go run server ./docs
+go run server.go ./docs
 ```
