@@ -22,7 +22,7 @@ import (
 
 const (
 	url         = "https://ebiten.org"
-	description = "Ebiten is an open-source game library, with which you can develop 2D games with simple API for multi platforms in the Go programming language."
+	description = "Ebiten is an open source game library for the Go programming language. Ebiten's simple API allows you to quickly and easily develop 2D games that can be deployed across multiple platforms."
 )
 
 func main() {
