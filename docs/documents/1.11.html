@@ -249,10 +249,22 @@ func main() {
 <h3 lang="en">Bug fix</h3>
 <h3 lang="ja">バグ修正</h3>
 <ul>
-  <li lang="en">A possible freeze on browsers (<a href="https://github.com/hajimehoshi/ebiten/issues/1161">Issue 1161</a>)</li>
-  <li lang="ja">ブラウザ上でフリーズする可能性があったのを修正 (<a href="https://github.com/hajimehoshi/ebiten/issues/1161">Issue 1161</a>)</li>
-  <li lang="en">An image rendered by <code>Fill</code> may be failed to restore correctly after context-lost (<a href="https://github.com/hajimehoshi/ebiten/issues/1170">Issue 1170</a>)</li>
-  <li lang="ja"><code>Fill</code> で描画された画像がコンテキストロストから正しく復帰しないことがあったのを修正 (<a href="https://github.com/hajimehoshi/ebiten/issues/1170">Issue 1170</a>)</li>
+  <li lang="en">A possible freeze on browsers (<a href="https://github.com/hajimehoshi/ebiten/issues/1161">Issue 1161</a>).</li>
+  <li lang="ja">ブラウザ上でフリーズする可能性があったのを修正 (<a href="https://github.com/hajimehoshi/ebiten/issues/1161">Issue 1161</a>)。</li>
+  <li lang="en">An image rendered by <code>Fill</code> may be failed to restore correctly after context-lost (<a href="https://github.com/hajimehoshi/ebiten/issues/1170">Issue 1170</a>).</li>
+  <li lang="ja"><code>Fill</code> で描画された画像がコンテキストロストから正しく復帰しないことがあったのを修正 (<a href="https://github.com/hajimehoshi/ebiten/issues/1170">Issue 1170</a>)。</li>
+</ul>
+<h2>v1.11.3</h2>
+<p><a href="https://github.com/hajimehoshi/ebiten/milestone/40?closed=1">Issues for v1.11.3</a></p>
+<h3 lang="en">Bug fix</h3>
+<h3 lang="ja">バグ修正</h3>
+<ul>
+  <li lang="en">Ensured that <code>Update</code> must be called at least once before <code>Draw</code> in the first frame (<a href="https://github.com/hajimehoshi/ebiten/issues/1155">Issue 1155</a>).</li>
+  <li lang="ja">一番最初のフレームで <code>Draw</code> の前に <code>Update</code> が最低限一回が呼ばれるように保証 (<a href="https://github.com/hajimehoshi/ebiten/issues/1155">Issue 1155</a>)。</li>
+  <li lang="en">Crashed when an input device is detached on Android (<a href="https://github.com/hajimehoshi/ebiten/issues/1185">Issue 1185</a>).</li>
+  <li lang="ja">Android で入力デバイスがデタッチしたときにクラッシュしていたのを修正 (<a href="https://github.com/hajimehoshi/ebiten/issues/1185">Issue 1185</a>)。</li>
+  <li lang="en"><code>SetVsyncEnabled(false)</code> before <code>Run</code> / <code>RunGame</code> didn&apos;t work  (<a href="https://github.com/hajimehoshi/ebiten/issues/1197">Issue 1197</a>).</li>
+  <li lang="ja"><code>Run</code> / <code>RunGame</code> 前の <code>SetVsyncEnabled(false)</code> が動かなかったのを修正 (<a href="https://github.com/hajimehoshi/ebiten/issues/1197">Issue 1197</a>)。</li>
 </ul>
 
       </article>
