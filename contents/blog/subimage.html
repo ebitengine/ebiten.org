@@ -71,8 +71,8 @@
 <p lang="ja">よって、サブ画像についてはパディングを追加するのは諦めました。結果として、サブ画像の描画は 1.11 と比べると違った結果を引き起こすことがあります。特に、画像を回転または拡大縮小させた場合、隣接する領域のピクセルが描画されることがあります。</p>
 <h2 lang="en">Example</h2>
 <h2 lang="ja">例</h2>
-<p lang="en">This is an example that causes bleeding edges by a scaled and rotated sub-image. You can see an unexpected green pixel on the right side. This rendering is tested on the latest master branch. The result depends on the machine's GPU.</p>
-<p lang="ja">拡大と回転したサブ画像によって、隣接領域が見えてしまった描画の例です。右側に本来描画されるべきではない緑色のピクセルが描画されています。この描画は最新の master ブランチでテストされました。結果は GPU によって異なります。</p>
+<p lang="en">This is an example that causes bleeding edges by a scaled and rotated sub-image. You can see an unexpected green pixel on the right side. This rendering is tested on the latest master branch (<a href="https://github.com/hajimehoshi/ebiten/tree/aee5d6d7084732e4d608ec72e9938e04ceddef5c">aee5d6d7</a>). The result depends on the machine's GPU.</p>
+<p lang="ja">拡大と回転したサブ画像によって、隣接領域が見えてしまった描画の例です。右側に本来描画されるべきではない緑色のピクセルが描画されています。この描画は最新の master ブランチ (<a href="https://github.com/hajimehoshi/ebiten/tree/aee5d6d7084732e4d608ec72e9938e04ceddef5c">aee5d6d7</a>) でテストされました。結果は GPU によって異なります。</p>
 <div class="grid-container">
   <div class="grid-item-2">
     <pre data-codesrc="/go/blog/subimage/example.go"></pre>
