@@ -1,0 +1,75 @@
+<h1 lang="en">Breaking change to 1.12: rendering sub-images</h1>
+<h1 lang="ja">1.12 に入る破壊的変更: サブ画像の描画</h1>
+<p class="meta">Hajime Hoshi<br><span id="meta-created">2020-06-28</span></p>
+<p lang="en">This artcile includes the information in June 2020. There's a possibility the plan will change.</p>
+<p lang="ja">この記事は 2020 年 6 月現在の情報であり、予定を変更する可能性もあります。</p>
+<h2 lang="en">TL;DR</h2>
+<h2 lang="ja">要約</h2>
+<p lang="en">Ebiten is adding a breaking change to 1.12 (the current master branch). Ebiten will no longer check the source-image region when rendering an image, and unexpected pixels might be rendered in some cases. This rendering result's difference might be seen when all the following conditions are satisfied:</p>
+<p lang="ja">Ebiten は 1.12 (現在の master ブランチ) から破壊的を導入する予定です。 Ebiten は、画像の描画の際、描画元領域のチェックをしないようになり、そのためいくつかのケースでは予期しないピクセルが描画されることがあります。この描画結果の違いは、以下の条件のすべてが満たされた場合に発生しえます:</p>
+<ul>
+  <li lang="en">A sub-image (an image created by <code>SubImage</code> function) is used</li>
+  <li lang="ja">サブ画像 (<code>SubImage</code> 関数で作られた画像) が使われる</li>
+  <li lang="en">The image is rendered with scaling or rotating</li>
+  <li lang="ja">画像が拡大縮小または回転されて描画される</li>
+  <li lang="en">The adjacent areas's graphics of the sub-image are not continuous</li>
+  <li lang="ja">サブ画像に隣接する領域の画像が連続していない</li>
+</ul>
+<p lang="en">For example, rendering tiles on texture atlas with scaling or rotating might cause a different result from 1.11. The rendering result might include pixels in its adjacent area. On the other hand, for example, rendering 9-patches should not be problematic since the areas are continuous.</p>
+<p lang="ja">例えば、テクスチャアトラス上のタイルを拡大縮小や回転をさせて描画する場合、 1.11 とは違った結果になりえます。描画結果が隣接する領域のピクセルを含むかもしれません。一方例えば、 9-patch で描画するような場合は、画像が連続しているので問題にはなりません。</p>
+<div class="grid-container">
+  <div class="grid-item-2">
+    <p lang="en">The next image is an example that has sub-images and the graphics are not continuous on the right side.</p>
+    <p lang="ja">次の画像はサブ画像を含み、右側に連続しない画像を含む例です。</p>
+    <p lang="en">If necessary, you'd need to create a texture atlas with paddings for each area.</p>
+    <p lang="ja">必要ならば、テクスチャアトラスの各領域にパディングを追加する必要があります。</p>
+  </div>
+  <div class="grid-item-2">
+    <p class="img"><img src="/images/blog/subimage/subimage.png" width="360"></p>
+  </div>
+</div>
+<h2 lang="en">Background</h2>
+<h2 lang="ja">背景</h2>
+<div class="grid-container">
+  <div class="grid-item-2">
+    <p lang="en">Ebiten has a feature called automatic texture atlases. Even if you create many <code>ebiten.Image</code> objects, Ebiten tries to allocate them onto one texture atlas when possible. This is for an efficient rendering by reducing graphics commands sent to the GPU. Additionally, Ebiten users don't have to care about this. That's great!</p>
+    <p lang="ja">Ebiten には自動テクスチャアトラスと呼ばれる機能があります。たとえ大量の <code>ebiten.Image</code> を作ったとしても、 Ebiten はそれらを一つのテクスチャアトラス領域上に可能な限り確保しようとします。これによって GPU に送られるグラフィックス命令を減らすことができ、効果的な描画が実現できます。さらに、 Ebiten ユーザーはこのことを気にする必要がないのです。素晴らしい!</p>
+  </div>
+  <div class="grid-item-2">
+    <p class="img"><img src="/images/blog/subimage/textureatlas.png" width="300"></p>
+  </div>
+</div>
+<p lang="en">When Ebiten rendered a part of a texture atlas, Ebiten did a hack not to expose the pixels in the adjacent areas. Without the hack, such adjacent pixels can be exposed, especially when the image is rendered with rotating or scaling. This is a general issue of graphics programming. As the hack, Ebiten did two things:</p>
+<p lang="ja">Ebiten がテクスチャアトラスの一部を描画するとき、 Ebiten は隣接する領域のピクセルを露出させないために、あるハック (小細工) をしていました。このハックがないと、特に画像を回転または拡大縮小させて描画したときに、隣接するピクセルが露出してしまいます。これは一般的なゲームプログラミングの問題です。ハックとして、 Ebiten は次の 2 つのことをしていました:</p>
+<ul>
+  <li lang="en">Shift the texels a little bit.</li>
+  <li lang="ja">テクセル (テクスチャの座標) をちょっとだけずらす</li>
+  <li lang="en">Check the source region in the shader.</li>
+  <li lang="ja">シェーダー内で描画元領域をチェックする</li>
+</ul>
+<p lang="en">Both were problematic in terms of code maintainability, and the second hack was especially problematic. One reason is performance. This hack requires 'if' branches in the shader programs and degrades the performance. Another thing is that this hack made it hard to define custom shaders, we are now introducing at 1.12. In the custom shaders, we wanted the users to take pixels from an image in an easy way, but we would need a special function for this purpose to perform this hack.</p>
+<p lang="ja">両方ともコードのメンテナンス性の観点から問題でしたが、特に 2 つ目のハックが問題でした。一つの理由はパフォーマンスです。このハックのせいで if 分岐がシェーダーに追加されてしまい、パフォーマンスが落ちていました。もう一つの理由は、 1.12 に向けて導入中のカスタムシェーダーの定義が難しくなることです。カスタムシェーダー内で、画像からピクセルを取るときに簡単な方法で取れるのが望ましいのですが、このハックを実現するために特殊な関数などを用意しなければなりません。</p>
+<h2 lang="en">Removing the hacks</h2>
+<h2 lang="ja">ハックの削除</h2>
+<div class="grid-container">
+  <div class="grid-item-2">
+    <p lang="en">We decided to remove these hacks. Instead, all the images are allocated onto the automatic texture atlas with 1px paddings. Even without the check of the source region, the outside pixels are transparent color and then this never violates the adjacent areas.</p>
+    <p lang="ja">我々はこれらのハックを削除することにしました。代わりに全ての自動テクスチャアトラス上の画像は 1px のパディング付きで確保されます。描画元領域のチェックがなくとも、外側のピクセルは透明であり、隣接する領域を侵害してしまうことは決してないのです。</p>
+  </div>
+  <div class="grid-item-2">
+    <p class="img"><img src="/images/blog/subimage/textureatlas_with_paddings.png" width="300"></p>
+  </div>
+  <div class="grid-item-2">
+    <p lang="en">However, Ebiten can treat sub-images, which are created by <code>(*ebiten.Image).SubImage</code> function. They are parts of existing images. They cannot be allocated with paddings independently. There was an idea to allocate all the sub-images as independent images with paddings, but this was not good for performance and memory. If a user called <code>SubImage</code> onto an image many times with 1px-shifted regions, each sub-image would be allocated.</p>
+    <p lang="ja">しかし、 Ebiten はサブ画像も取り扱えます。サブ画像は <code>(*ebiten.Image).SubImage</code> 関数で作られた画像です。これらは既存の画像の一部です。サブ画像はパディング付きで独立して確保することができません。全てのサブ画像をパディング付きの独立した画像として確保する案もありましたが、これはパフォーマンスとメモリの観点から良くありませんでした。もしユーザーが画像上で <code>SubImage</code> を 1px ずつずらした領域で大量に呼んだ場合、それぞれのサブ画像分領域が確保されてしまいます。</p>
+  </div>
+  <div class="grid-item-2">
+    <p class="img"><img src="/images/blog/subimage/subimage_textureatlas.png" width="456"></p>
+  </div>
+</div>
+<p lang="en">Then, we gave up to support such paddings around sub-images. As a result, rendering a sub-image can cause different results compared to 1.11. The adjacent area's pixels can be rendered, especially when the image is rotated or scaled.</p>
+<p lang="ja">よって、サブ画像についてはパディングを追加するのは諦めました。結果として、サブ画像の描画は 1.11 と比べると違った結果を引き起こすことがあります。特に、画像を回転または拡大縮小させた場合、隣接する領域のピクセルが描画されることがあります。</p>
+<h2 lang="en">What you should do</h2>
+<h2 lang="ja">あなたがすべきこと</h2>
+<p lang="en">If you have your own texture atlas, and the parts are rendered with scaling or rotating, and the parts' graphics are not continuous, you need to add paddings for each part.</p>
+<p lang="ja">もし自作のテクスチャアトラスがあり、かつそれらの一部を拡大縮小または回転させて描画させ、かつそれらの画像が連続していない場合、パディングをそれぞれのパートに追加する必要があります。</p>
