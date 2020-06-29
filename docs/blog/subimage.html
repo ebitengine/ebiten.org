@@ -108,15 +108,15 @@
   <li lang="ja">サブ画像 (<code>SubImage</code> 関数で作られた画像) が使われる</li>
   <li lang="en">The image is rendered with scaling or rotating</li>
   <li lang="ja">画像が拡大縮小または回転されて描画される</li>
-  <li lang="en">The adjacent areas's graphics of the sub-image are not continuous</li>
-  <li lang="ja">サブ画像に隣接する領域の画像が連続していない</li>
+  <li lang="en">The adjacent areas's graphics are not continuous</li>
+  <li lang="ja">隣接する領域の画像が連続していない</li>
 </ul>
 <p lang="en">For example, rendering tiles on texture atlas with scaling or rotating might cause a different result from 1.11. The rendering result might include pixels in its adjacent area. On the other hand, for example, rendering 9-patches should not be problematic since the graphics are continuous.</p>
 <p lang="ja">例えば、テクスチャアトラス上のタイルを拡大縮小や回転をさせて描画する場合、 1.11 とは違った結果になりえます。描画結果が隣接する領域のピクセルを含むかもしれません。一方例えば、 9-patch で描画するような場合は、画像が連続しているので問題にはなりません。</p>
 <div class="grid-container">
   <div class="grid-item-2">
-    <p lang="en">The next image is an example that has sub-images and the graphics are not continuous on the right side.</p>
-    <p lang="ja">次の画像はサブ画像を含み、右側に連続しない画像を含む例です。</p>
+    <p lang="en">The next image is an example of a sub-image and the graphics that are not continuous on the right side.</p>
+    <p lang="ja">次の画像はサブ画像、および右側に連続しない画像を含む例です。</p>
     <p lang="en">If necessary, you'd need to create a texture atlas with paddings for each area.</p>
     <p lang="ja">必要ならば、テクスチャアトラスの各領域にパディングを追加する必要があります。</p>
   </div>
