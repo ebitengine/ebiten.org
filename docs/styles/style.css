@@ -146,6 +146,9 @@ iframe {
     border-width: 1px;
     border-color: #333333;
 }
+.twitter-tweet iframe {
+    border-style: none;
+}
 p.meta {
     color: #666;
     text-align: right;
