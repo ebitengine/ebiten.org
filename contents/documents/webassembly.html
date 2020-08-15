@@ -11,6 +11,7 @@ wasmserve ./path/to/yourgame</code></pre>
 <h3>Copying <code>wasm_exec.js</code> to execute the Wasm binary</pre></h3>
 <pre><code>cp $(go env GOROOT)/misc/wasm/wasm_exec.js .</code></pre>
 <h3>Creating an HTML</h3>
+<p>Create this HTML:</p>
 <pre><code>&lt;!DOCTYPE html&gt;
 &lt;script src="wasm_exec.js"&gt;&lt;/script&gt;
 &lt;script&gt;
@@ -27,8 +28,10 @@ WebAssembly.instantiateStreaming(fetch("yourgame.wasm"), go.importObject).then(r
   go.run(result.instance);
 });
 &lt;/script&gt;</code></pre>
-<p>Then open the HTML. You might need a local HTTP server.</p>
-<p>If you want to embed your game into your web page, using iframe is strongly recommended.</p>
+<p>Then open this HTML in your browser. You might need a local HTTP server.</p>
+<p>If you want to embed your game into your web page, using iframe is strongly recommended. The screen scale is automatically adjusted. If the above HTML&apos;s name is <code>main.html</code>, the host HTML will be like this:</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;iframe src="main.html" width="640" height="480"&gt;&lt;/iframe&gt;</code></pre>
 <p>You might find this message with Chrome:</p>
 <pre>The AudioContext was not allowed to start. It must be resume (or created) after a user gesture on the page. https://goo.gl/7K7WLu</pre>
 <p>In this case, you can solve this by putting <code>allow="autoplay"</code> on the iframe.</p>
