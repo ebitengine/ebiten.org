@@ -45,15 +45,15 @@ func Dummy() {}</code></pre>
 <h3>Android</h3>
 <p>Run <code>ebitenmobile bind</code> command for your package:</p>
 <pre><code>cd /path/to/yourgame
-ebitenmobile bind -target android -javapkg [your.domain] -o [path/to/yourgame.aar] .
+ebitenmobile bind -target android -javapkg [your.package.name] -o [path/to/yourgame.aar] .
 
 # With Ebiten 1.10, you need to disable Go modules.
 #
-# env GO111MODULE=off ebitenmobile bind -target android -javapkg [your.domain] -o [path/to/yourgame.aar] \
+# env GO111MODULE=off ebitenmobile bind -target android -javapkg [your.package.name] -o [path/to/yourgame.aar] \
 #   [github.com/yourname/yourgame/yourgamemobile]</code></pre>
 <p>Then your can get a <code>.aar</code> file. This <code>.aar</code> file defines a view class named <code>EbitenView</code> under the specified Java package (<code>-javapkg</code> option + your package name). You can put it on your screen. That's it!</p>
 <p>The view class is defined like this:</p>
-<pre><code>package your.domain.yourgamemobile;
+<pre><code>package your.package.name.yourgamemobile;
 
 import android.view.ViewGroup;
 
