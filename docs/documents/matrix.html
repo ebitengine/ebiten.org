@@ -351,11 +351,11 @@
 \begin{bmatrix}
   a_2 a_1 + b_2 c_1 & a_2 b_1 + b_2 d_1 \\
   c_2 a_1 + d_2 c_1 & c_2 b_1 + d_2 d_1 \\
-\end{bmatrix} 
+\end{bmatrix}
 \begin{bmatrix}
   x \\
   y \\
-\end{bmatrix} 
+\end{bmatrix}
 \end{aligned}</p>
   </div>
   <div class="grid-item-2">
@@ -375,11 +375,11 @@
 \begin{bmatrix}
   a_2 a_1 + b_2 c_1 & a_2 b_1 + b_2 d_1 \\
   c_2 a_1 + d_2 c_1 & c_2 b_1 + d_2 d_1 \\
-\end{bmatrix} 
+\end{bmatrix}
 \end{aligned}</p>
   </div>
   <div class="grid-item-2">
-    <p>Then, we were able to define the combination of matrices, and the result became another matrix. If you combine multiple convention rules, this will be represented as one matrix.</p>
+    <p>Then, we were able to define the combination of matrices, and the result became another matrix. If you combine multiple conversion rules, this will be represented as one matrix.</p>
     <p>You don't have to remember this equation, but please remember the fact that multiplying two matrices results in one matrix.</p>
   </div>
   <div class="grid-item-2">
@@ -405,11 +405,11 @@
   a_2 a_1 + b_2 d_1 + c_2 d_1 & a_2 b_1 + b_2 e_1 + c_2 h_1 & a_2 c_1 + b_2 f_1 + c_2 i_1 \\
   d_2 a_1 + e_2 d_1 + f_2 d_1 & d_2 b_1 + e_2 e_1 + f_2 h_1 & d_2 c_1 + e_2 f_1 + f_2 i_1 \\
   g_2 a_1 + h_2 d_1 + i_2 d_1 & g_2 b_1 + h_2 e_1 + i_2 h_1 & g_2 c_1 + h_2 f_1 + i_2 i_1 \\
-\end{bmatrix} 
+\end{bmatrix}
 \end{aligned}</p>
   </div>
   <div class="grid-item-2">
-    <p>Be careful that the order of multilyping matters. If there is a matrix <span class="math">A</span> and a matrix <span class="math">B</span>, the results of <span class="math">AB</span> and <span class="math">BA</span> are different in general. For example, <span class="math">\big[\begin{smallmatrix}1&2\\3&4\end{smallmatrix}\big]</span><span class="math">\big[\begin{smallmatrix}5&6\\7&8\end{smallmatrix}\big]</span> is different from <span class="math">\big[\begin{smallmatrix}5&6\\7&8\end{smallmatrix}\big]</span><span class="math">\big[\begin{smallmatrix}1&2\\3&4\end{smallmatrix}\big]</span>. In the context of conversion rule, rotating and scaling an image in this order is different from scaling and rotating an image in this order in general.</p>
+    <p>Be careful that the order of multiplying matters. If there is a matrix <span class="math">A</span> and a matrix <span class="math">B</span>, the results of <span class="math">AB</span> and <span class="math">BA</span> are different in general. For example, <span class="math">\big[\begin{smallmatrix}1&2\\3&4\end{smallmatrix}\big]</span><span class="math">\big[\begin{smallmatrix}5&6\\7&8\end{smallmatrix}\big]</span> is different from <span class="math">\big[\begin{smallmatrix}5&6\\7&8\end{smallmatrix}\big]</span><span class="math">\big[\begin{smallmatrix}1&2\\3&4\end{smallmatrix}\big]</span>. In the context of conversion rule, rotating and scaling an image in this order is different from scaling and rotating an image in this order in general.</p>
   </div>
   <div class="grid-item-2">
     <p class="math">\begin{aligned}
@@ -602,7 +602,7 @@
   </div>
 </div>
 <h2>Filter</h2>
-<p>We explained that converting an image is represented by a matrix that moves each pixel of the image. You might already realize this, but as a matter of fact, enlarging an image in this way results in an image with full of holes, since the destination area is larger than the soruce area. To avoid such odd results, Ebiten complements pixels by filters. The way in which the pixels are complemented is determined by a filter type, like <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten#Filter"><code>ebiten.FilterNearest</code> or <code>ebiten.FilterLinear</code></a></p>
+<p>We explained that converting an image is represented by a matrix that moves each pixel of the image. You might already realize this, but as a matter of fact, enlarging an image in this way results in an image with full of holes, since the destination area is larger than the source area. To avoid such odd results, Ebiten complements pixels by filters. The way in which the pixels are complemented is determined by a filter type, like <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten#Filter"><code>ebiten.FilterNearest</code> or <code>ebiten.FilterLinear</code></a></p>
 <h2>Color matrix</h2>
 <div class="grid-container">
   <div class="grid-item-2">
