@@ -160,7 +160,7 @@ td, th {
     background-color: #ffffff;
 }
 tr:nth-child(even) td, tr:nth-child(even) th {
-    background-color: #f3f3f3; /* 0500-N */
+    background-color: #e6e6e6; /* 1000-N */
 }
 
 /* image */
@@ -210,7 +210,7 @@ h2 {
     margin-bottom: 24px;
 }
 h3 {
-    margin-top: 0;
+    margin-top: 24px;
     margin-bottom: 24px;
 }
 h4, h5, h6 {
@@ -306,6 +306,7 @@ table {
     margin-bottom: 24px;
 }
 td, th {
+    vertical-align: top;
     padding: 0 6px;
 }
 
