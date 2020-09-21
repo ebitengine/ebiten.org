@@ -115,10 +115,7 @@ code {
     border-color: #f3f3f3; /* 0500-N */
     border-width: 1px 2px;
     border-radius: 4px;
-    margin-block-start: 0;
-    margin-block-end: 0;
-    margin-inline-start: -2px;
-    margin-inline-end: -2px;
+    margin: 0 -2px 0 -2px;
 }
 h1 code, h2 code, h3 code, h4 code {
     border-width: 0 2px;
@@ -179,7 +176,7 @@ body > nav a[href^="https://"]:after {
     background-repeat: no-repeat;
     background-size: contain;
 
-    margin-inline-start: 4px;
+    margin-left: 4px;
     position: relative;
     top: 4px;
 }
@@ -192,55 +189,49 @@ body > nav a[href^="https://"]:after {
 /* margin */
 
 main {
-    padding-block-start: 24px;
+    padding-top: 24px;
 }
 article {
-    margin-block-end: 48px;
+    margin-bottom: 48px;
 }
 footer {
-    margin-block-end: 24px;
+    margin-bottom: 24px;
 }
 h1 {
-    margin-block-start: 24px;
-    margin-block-end: 24px;
+    margin-top: 24px;
+    margin-bottom: 24px;
 }
 h1.big {
-    margin-block-start: 0;
-    margin-block-end: 48px;
+    margin-top: 0;
+    margin-bottom: 48px;
 }
 h2 {
-    margin-block-start: 48px;
-    margin-block-end: 24px;
+    margin-top: 48px;
+    margin-bottom: 24px;
 }
 h3 {
-    margin-block-start: 0;
-    margin-block-end: 24px;
+    margin-top: 0;
+    margin-bottom: 24px;
 }
 h4, h5, h6 {
-    margin-block-start: 0;
-    margin-block-end: 24px;
+    margin-top: 0;
+    margin-bottom: 24px;
 }
 p, ul, ol, nav.tags {
-    margin-block-start: 0;
-    margin-block-end: 24px;
+    margin-top: 0;
+    margin-bottom: 24px;
 }
 figcaption {
-    margin-block-start: 0;
-    margin-block-end: 24px;
+    margin-top: 0;
+    margin-bottom: 24px;
 }
 nav.path {
-    margin-block-start: 0;
-    margin-block-end: -24px;
+    margin-top: 0;
+    margin-bottom: -24px;
 }
 pre {
-    padding-block-start: 7px;
-    padding-block-end: 10px;
-    padding-inline-start: 18px;
-    padding-inline-end: 18px;
-    margin-block-start: 0;
-    margin-block-end: 7px;
-    margin-inline-start: 0;
-    margin-inline-end: 0;
+    padding: 7px 18px 10px 18px;
+    margin: 0 0 7px 0;
     overflow-x: auto;
 }
 figure {
@@ -250,44 +241,41 @@ div.grid-container > div {
     padding: 0;
 }
 div.toc > div {
-    padding-block-start: 7px;
-    padding-block-end: 10px;
-    padding-inline-start: 18px;
-    padding-inline-end: 18px;
-    margin-block-end: 7px;
+    padding: 7px 18px 10px 18px;
+    margin-bottom: 7px;
     overflow-x: auto;
 }
 div.toc > div ul {
     top: 0;
-    margin-block-end: 0;
+    margin-bottom: 0;
     width: 100%;
 }
 ul ul, ul ol, ol ul, ol ol {
-    margin-block-end: 0px;
+    margin-bottom: 0px;
     position: relative;
     top: 0;
 }
 .toc ul:first-child {
-    margin-inline-start: 0;
+    margin-left: 0;
 }
 .toc ul {
     list-style-type: none;
 }
 body > nav h1 {
-    margin-block-start: 24px;
-    margin-block-end: 13px;
+    margin-top: 24px;
+    margin-bottom: 13px;
 }
 body > nav h2 {
-    margin-block-start: 0;
-    margin-block-end: 24px;
+    margin-top: 0;
+    margin-bottom: 24px;
 }
 body > nav h3 {
-    margin-block-start: 0;
-    margin-block-end: 0;
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
 body > nav li img {
-    margin-inline-start: 12px;
+    margin-left: 12px;
     vertical-align: middle;
     width: 18px;
     height: 18px;
@@ -297,31 +285,28 @@ body > nav {
 }
 
 ul, ol {
-    padding-inline-start: 0;
+    padding-left: 0;
 }
 article ul, article ol {
-    margin-inline-start: 48px;
+    margin-left: 48px;
     width: calc(100% - 48px);
 }
 ul ul, ul ol, ol ul, ol ol {
-    margin-inline-start: 24px;
+    margin-left: 24px;
     width: calc(100% - 24px);
 }
 article div.grid-container ul, article div.grid-container ol {
-    margin-inline-start: 24px;
+    margin-left: 24px;
     width: calc(100% - 24px);
 }
 body > nav ul, nav.tags > ul, nav.path > ul {
-    margin-inline-start: 0;
+    margin-left: 0;
 }
 table {
-    margin-block-end: 24px;
+    margin-bottom: 24px;
 }
 td, th {
-    padding-block-start: 0;
-    padding-block-end: 0;
-    padding-inline-start: 6px;
-    padding-inline-end: 6px;
+    padding: 0 6px;
 }
 
 /* font size */
@@ -507,11 +492,11 @@ body > nav h1 a {
 }
 nav.tags > ul > li {
     display: inline;
-    margin-inline-start: 24px;
+    margin-left: 24px;
     font-weight: bold;
 }
 nav.tags > ul > li:first-child {
-    margin-inline-start: 0;
+    margin-left: 0;
 }
 nav.tags > ul > li a {
     font-weight: normal;
@@ -519,13 +504,13 @@ nav.tags > ul > li a {
 
 nav.path > ul > li {
     display: inline;
-    margin-inline-start: 0;
-    margin-inline-end: 0;
+    margin-left: 0;
+    margin-right: 0;
 }
 nav.path > ul > li:after {
     content: '>';
-    margin-inline-start: 12px;
-    margin-inline-end: 12px;
+    margin-left: 12px;
+    margin-right: 12px;
 }
 
 p.img {
@@ -554,7 +539,7 @@ h1.big > span.main:after {
     background-repeat: no-repeat;
     background-size: contain;
 
-    margin-inline-start: 4px;
+    margin-left: 4px;
     position: relative;
     top: 9px;
 }
@@ -570,7 +555,7 @@ body > nav h1:after {
     background-repeat: no-repeat;
     background-size: contain;
 
-    margin-inline-start: 2px;
+    margin-left: 2px;
     position: relative;
     top: 4px;
 }
@@ -668,7 +653,7 @@ input#sidemenu:checked ~ label.sidemenucover {
         tab-size: 4;
     }
     article ul, article ol {
-        margin-inline-start: 24px;
+        margin-left: 24px;
         width: calc(100% - 24px);
     }
 }
@@ -700,7 +685,7 @@ input#sidemenu:checked ~ label.sidemenucover {
         grid-column-start: span 1;
     }
     h1.big {
-        margin-block-end: 38px;
+        margin-bottom: 38px;
     }
     h1.big > span.sub {
         font-size: 18px;
@@ -708,7 +693,7 @@ input#sidemenu:checked ~ label.sidemenucover {
 }
 @media only screen and (max-width: 320px) {
     h1.big {
-        margin-block-end: 37px;
+        margin-bottom: 37px;
     }
     h1.big > span.sub {
         font-size: 16px;
@@ -718,8 +703,8 @@ input#sidemenu:checked ~ label.sidemenucover {
 /* toplinks (for the top page) */
 ul.toplinks {
     list-style-type: none;
-    margin-inline-start: 0 !important;
-    padding-inline-start: 0 !important;
+    margin-left: 0 !important;
+    padding-left: 0 !important;
 }
 ul.toplinks li {
     dipslay: inline-block;
@@ -727,7 +712,7 @@ ul.toplinks li {
 ul.toplinks li img {
     position: relative;
     top: 3px;
-    margin-inline-end: 6px;
+    margin-right: 6px;
     opacity: 0.7;
 }
 
