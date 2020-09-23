@@ -15,16 +15,17 @@
 <p lang="ja">Ebiten はシェーディング言語として Kage という独自言語を採用しています。これは Go 互換の文法を持ちますが、細部が Go とは異なります。 Kage は高いポータビリティを持ちます。 Ebiten は環境によって OpenGL や Metal などをグラフィックスライブラリとして使いますが、 Kage はどの環境でも同様に動くように、動的にコンパイルされます。</p>
 <h2 lang="en">Ebiten API</h2>
 <h2 lang="ja">Ebiten API</h2>
-<h3><code>func NewShader(src []byte) (*Shader, error)</code></h3>
+<h3><code>NewShader</code></h3>
+<pre><code>func NewShader(src []byte) (*Shader, error)</code></pre>
 <p lang="en"><code>NewShader</code> compiles a shader program in the shading language Kage, and retruns the result.</p>
 <p lang="ja"><code>NewShader</code> はシェーディング言語 Kage で記述されたシェーダプログラムをコンパイルし、結果を返します。</p>
 <p lang="en">If the compilation fails, <code>NewShader</code> returns an error.</p>
 <p lang="ja">もしコンパイルエラーが起きたならば、 <code>NewShader</code> はエラーを返します。</p>
 <h3><code>(*Image).DrawRectShader</code></h3>
-<pre><code>DrawRectShader(width, height int, shader *Shader, options *DrawRectShaderOptions)</code></pre>
+<pre><code>func DrawRectShader(width, height int, shader *Shader, options *DrawRectShaderOptions)</code></pre>
 <p lang="en"><code>DrawRectShader</code> draws a rectangle with the specified width and height with the specified shader.</p>
 <p lang="ja"><code>DrawRectShader</code> は指定された幅と高さ、指定されたシェーダを使って矩形を描画します。</p>
-<h3><code>DrawRectShaderOptions</code></h3>
+<h3><code>type DrawRectShaderOptions</code></h3>
 <pre lang="en"><code>type DrawRectShaderOptions struct {
     // GeoM is a geometry matrix to draw.
     // The default (zero) value is identity, which draws the rectangle at (0, 0).
