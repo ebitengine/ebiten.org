@@ -111,8 +111,8 @@ func Fragment(position vec4, texCoord vec2, color vec4) vec4 {
 <p lang="en">Kage doesn't have these Go's features so far.</p>
 <p lang="ja">Kage には現在 Go の以下の機能がありません。</p>
 <ul>
-  <li lang="en">Some types (<code>rune</code>, <code>string</code>, <code>interface</code>, slices, pointers, structs, complex numbers, function types, channels)</li>
-  <li lang="ja">一部の型 (<code>rune</code>、 <code>string</code>、 <code>interface</code>、スライス、ポインタ、構造体、複素数、関数型、チャネル)</li>
+  <li lang="en">Most types (<code>rune</code>, <code>string</code>, numeric types except for <code>int</code>, <code>interface</code>, slices, pointers, structs, function types, channels)</li>
+  <li lang="ja">一部の型 (<code>rune</code>、 <code>string</code>、 <code>int</code> を除く数値型、 <code>interface</code>、スライス、ポインタ、構造体、関数型、チャネル)</li>
   <li lang="en">Built-in functions except for <code>len</code> (e.g., <code>new</code>, <code>make</code>, <code>panic</code>)</li>
   <li lang="ja"><code>len</code> 以外の組み込み関数 (<code>new</code>、 <code>make</code>、 <code>panic</code> など)</li>
   <li lang="en">New type definition with <code>type</code></li>
@@ -158,7 +158,7 @@ func Fragment(position vec4, texCoord vec2, color vec4) vec4 {
   <li lang="en"><code>mat2</code>, <code>mat3</code>, <code>mat4</code> (Matrix)</li>
   <li lang="ja"><code>mat2</code>, <code>mat3</code>, <code>mat4</code> (行列型)</li>
 </ul>
-<p lang="en"><code>float</code> is a floating poitn number. Unlike Go's <code>float32</code> and <code>float64</code>, <code>float</code> doesn't have a guarantee for the precision.</p>
+<p lang="en"><code>float</code> is a floating point number. Unlike Go's <code>float32</code> and <code>float64</code>, <code>float</code> doesn't have a guarantee for the precision.</p>
 <p lang="ja"><code>float</code> は浮動小数点型です。 Go の <code>float32</code> や <code>float64</code> とは異なり精度の保証がありません。</p>
 <p lang="en"><code>vec2</code>, <code>vec3</code>, <code>vec4</code>, called vectors, are tuples that has 2, 3, and 4 components respectively. Each component is <code>float</code>. Swizzling operation is available on vector values.</p>
 <p lang="ja"><code>vec2</code>、 <code>vec3</code>、 <code>vec4</code> はベクターと呼ばれ、それぞれ 2、 3、 4 つの値の組を表す型です。各要素は <code>float</code> です。 Swizzling と呼ばれる操作を行えます。</p>
