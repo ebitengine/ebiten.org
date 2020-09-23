@@ -105,6 +105,36 @@
 <pre><code>go run -tags=example github.com/hajimehoshi/ebiten/examples/shader</code></pre>
 <p lang="en">Ebiten adopts an original shading language 'Kage'. This has a compatible syntax with Go, but the details are different. Kage has high portability. Ebiten uses graphics libraries like OpenGL or Metal and this depends on environments, but Kage is compiled on the fly so that this works equally everywhere.</p>
 <p lang="ja">Ebiten はシェーディング言語として Kage という独自言語を採用しています。これは Go 互換の文法を持ちますが、細部が Go とは異なります。 Kage は高いポータビリティを持ちます。 Ebiten は環境によって OpenGL や Metal などをグラフィックスライブラリとして使いますが、 Kage はどの環境でも同様に動くように、動的にコンパイルされます。</p>
+<h2 lang="en">Example</h2>
+<h2 lang="ja">例</h2>
+<div class="grid-container">
+  <div class="grid-item-2">
+    <pre><code>package main
+
+// Uniform variables.
+var Time float
+var Cursor vec2
+var ScreenSize vec2
+
+// Fragment is the entry point of the fragment shader.
+// Fragment returns the color value for the current position.
+func Fragment(position vec4, texCoord vec2, color vec4) vec4 {
+	// You can define variables with a short variable declaration like Go.
+	lightpos := vec3(Cursor, 50)
+	lightdir := normalize(lightpos - position.xyz)
+	normal := normalize(imageSrc1UnsafeAt(texCoord) - 0.5)
+	ambient := 0.25
+	diffuse := 0.75 * max(0.0, dot(normal.xyz, lightdir))
+
+	// You can treat multiple source images by
+	// imageSrc[N]At or imageSrc[N]UnsafeAt.
+	return imageSrc0UnsafeAt(texCoord) * (ambient + diffuse)
+}</code></pre>
+  </div>
+  <div class="grid-item-2">
+    <p class="img"><video controls autoplay src="/images/documents/shader/lighting.mp4" width="456"></p>
+  </div>
+</div>
 <h2 lang="en">Ebiten API</h2>
 <h2 lang="ja">Ebiten API</h2>
 <h3><code>NewShader</code></h3>
@@ -117,7 +147,7 @@
 <pre><code>func DrawRectShader(width, height int, shader *Shader, options *DrawRectShaderOptions)</code></pre>
 <p lang="en"><code>DrawRectShader</code> draws a rectangle with the specified width and height with the specified shader.</p>
 <p lang="ja"><code>DrawRectShader</code> は指定された幅と高さ、指定されたシェーダを使って矩形を描画します。</p>
-<h3><code>type DrawRectShaderOptions</code></h3>
+<h3><code>DrawRectShaderOptions</code></h3>
 <pre lang="en"><code>type DrawRectShaderOptions struct {
     // GeoM is a geometry matrix to draw.
     // The default (zero) value is identity, which draws the rectangle at (0, 0).
