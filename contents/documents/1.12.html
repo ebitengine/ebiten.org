@@ -1,0 +1,75 @@
+<h1 lang="en">Ebiten 1.12 Release Notes</h1>
+<h1 lang="ja">Ebiten 1.12 リリースノート</h1>
+<p lang="en">(Note: This document is draft. Ebiten 1.12 is still a 'Release Candidate'.)</p>
+<p lang="ja">(注意: このドキュメントはドラフトです。 Ebiten 1.12 はまだ Release Candidate バージョンです。)</p>
+<h2>v1.12.0</h2>
+<p><a href="https://github.com/hajimehoshi/ebiten/milestone/34?closed=1">Issues for v1.12.0</a></p>
+<h3 lang="en">New features</h3>
+<h3 lang="ja">新機能</h3>
+<h4 lang="en">Shader</h3>
+<h4 lang="ja">シェーダー</h3>
+<p lang="en">A feature to write a custom shader and a new Go-flavored language Kage are introduced. See the document <a href="/documents/shader.html">Shader</a> for the details.</p>
+<p lang="ja">カスタムシェーダーが書ける機能、及び Go 風シェーディング言語 Kage が新規追加されました。詳しくは <a href="/documents/shader.html">Shader</a> のドキュメントを参照してください。</p>
+<p lang="en">The below APIs are added for this feature.</p>
+<p lang="ja">それに伴い、次の API が追加されました。</p>
+<ul>
+  <li><code><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten#DrawRectShaderOptions">func DrawRectShaderOptions</a></code></li>
+  <li><code><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten#DrawTrianglesShaderOptions">func DrawTrianglesShaderOptions</a></code></li>
+  <li><code><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten#Image.DrawRectShader">func (*Image).DrawRectShader</a></code></li>
+  <li><code><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten#Image.DrawTrianglesShader">func (*Image).DrawTrianglesShader</a></code></li>
+  <li><code><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten#Shader">type Shader</a></code></li>
+  <li><code><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten#NewShader">type NewShader</a></code></li>
+  <li><code><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten#Shader.Dispose">func (*Shader).Dispose</a></code></li>
+</ul>
+<h4 lang="en">Misc.</h3>
+<h4 lang="ja">その他</h3>
+<ul>
+  <li lang="en"><code><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten#Address">AddressUnsafe</a></code> is newly introduced (<a href="https://github.com/hajimehoshi/ebiten/issues/1219">Issue 1219</a>).</li>
+  <li lang="ja"><code><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten#Address">AddressUnsafe</a></code> が新規追加されました (<a href="https://github.com/hajimehoshi/ebiten/issues/1219">Issue 1219</a>)。</li>
+  <li lang="en"><code><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten#ColorM.Invert">(*ColorM).Invert</a></code> is newly introduced (<a href="https://github.com/hajimehoshi/ebiten/issues/548">Issue 548</a>).</li>
+  <li lang="ja"><code><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten#ColorM.Invert">(*ColorM).Invert</a></code> が新規追加されました (<a href="https://github.com/hajimehoshi/ebiten/issues/548">Issue 548</a>)。</li>
+  <li lang="en"><code><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten#CompositeMode">CompositeModeMultiply</a></code> is newly introduced (<a href="https://github.com/hajimehoshi/ebiten/issues/410">Issue 410</a>).</li>
+  <li lang="ja"><code><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten#CompositeMode">CompositeModeMultiply</a></code> が新規追加されました (<a href="https://github.com/hajimehoshi/ebiten/issues/410">Issue 410</a>)。</li>
+  <li lang="en"><code><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten#SetInitFocused">SetInitFocused</a></code> is newly introduced (<a href="https://github.com/hajimehoshi/ebiten/issues/769">Issue 769</a>).</li>
+  <li lang="ja"><code><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten#SetInitFocused">SetInitFocused</a></code> が新規追加されました (<a href="https://github.com/hajimehoshi/ebiten/issues/769">Issue 769</a>)。</li>
+  <li lang="en"><code><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten#SetScreenClearedEveryFrame">SetScreenClearedEveryFrame</a></code> / <code><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten#IsScreenClearedEveryFrame">IsScreenClearedEveryFrame</a></code> is newly introduced (<a href="https://github.com/hajimehoshi/ebiten/issues/1132">Issue 1132</a>, <a href="https://github.com/hajimehoshi/ebiten/issues/1315">Issue 1315</a>).</li>
+  <li lang="ja"><code><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten#SetScreenClearedEveryFrame">SetScreenClearedEveryFrame</a></code> / <code><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten#IsScreenClearedEveryFrame">IsScreenClearedEveryFrame</a></code> が新規追加されました (<a href="https://github.com/hajimehoshi/ebiten/issues/1132">Issue 1132</a>、<a href="https://github.com/hajimehoshi/ebiten/issues/1315">Issue 1315</a>)。</li>
+  <li lang="en"><code><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/text#BoundString">text.BoundString</a></code> is newly introduced (<a href="https://github.com/hajimehoshi/ebiten/issues/1151">Issue 1151</a>, <a href="https://github.com/hajimehoshi/ebiten/issues/1272">Issue 1272</a>).</li>
+  <li lang="ja"><code><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/text#BoundString">text.BoundString</a></code> が新規追加されました (<a href="https://github.com/hajimehoshi/ebiten/issues/1151">Issue 1151</a>、<a href="https://github.com/hajimehoshi/ebiten/issues/1272">Issue 1272</a>)。</li>
+</ul>
+<h3 lang="en">Backward Compatibility</h3>
+<h3 lang="ja">後方互換性</h3>
+<p lang="en">A breaking change with <code>SubImage</code> rendering is introduced. See the blog article "<a href="/blog/subimage.html">Breaking change to 1.12: rendering sub-images</a>" for the details.</p>
+<p lang="ja"><code>SubImage</code>の描画について、一部非互換の挙動が入ります。詳しくはブログ記事「<a href="/blog/subimage.html">1.12 に入る破壊的変更: サブ画像の描画</a>」を参照してください。</p>
+<h3 lang="en">Deprecated API</h3>
+<h3 lang="ja">廃止予定 API</h3>
+<ul>
+  <li lang="en"><code>Run</code>: Use <code>Game</code> interface and <code>RunGame</code> function instead.</li>
+  <li lang="ja"><code>Run</code>: 代わりに <code>Game</code> インターフェイスと <code>RunGame</code> 関数を使用してください。</li>
+</ul>
+<h3 lang="en">Bug fix</h3>
+<h3 lang="ja">バグ修正</h3>
+<ul>
+  <li lang="en">This release includes all the bug fixes in v1.11.x.</li>
+  <li lang="ja">このリリースには、 v1.11.x にあるすべてのバグ修正が含まれます。</li>
+  <li lang="en">The upper side was cropped unexpectedly (<a href="https://github.com/hajimehoshi/ebiten/issues/1163">Issue 1163</a>).</li>
+  <li lang="ja">上部が切れることがあった問題を修正 (<a href="https://github.com/hajimehoshi/ebiten/issues/1163">Issue 1163</a>)。</li>
+  <li lang="en">Edges at the rendering target were sometimes missing (<a href="https://github.com/hajimehoshi/ebiten/issues/1171">Issue 1171</a>).</li>
+  <li lang="ja">描画先の端が欠けることがあった問題を修正 (<a href="https://github.com/hajimehoshi/ebiten/issues/1171">Issue 1171</a>)。</li>
+  <li lang="en">Crash with a specific gamepad (<a href="https://github.com/hajimehoshi/ebiten/issues/1173">Issue 1173</a>).</li>
+  <li lang="ja">特定のゲームパッドでクラッシュする問題の修正 (<a href="https://github.com/hajimehoshi/ebiten/issues/1173">Issue 1173</a>)。</li>
+  <li lang="en">Crash on Mint Linux on Parallels (<a href="https://github.com/hajimehoshi/ebiten/issues/1310">Issue 1310</a>).</li>
+  <li lang="ja">Parallels 上の Mint Linux でのクラッシュを修正 (<a href="https://github.com/hajimehoshi/ebiten/issues/1310">Issue 1310</a>)。</li>
+  <li lang="en">Crash on a specific Android device (<a href="https://github.com/hajimehoshi/ebiten/issues/1342">Issue 1342</a>).</li>
+  <li lang="ja">特定の Android デバイスでのクラッシュを修正 (<a href="https://github.com/hajimehoshi/ebiten/issues/1342">Issue 1342</a>)。</li>
+  <li lang="en">Wrong scaling on Cinnamon desktop (<a href="https://github.com/hajimehoshi/ebiten/issues/1307">Issue 1307</a>, <a href="https://github.com/hajimehoshi/ebiten/issues/1350">Issue 1350</a>).</li>
+  <li lang="ja">Cinnamon デスクトップでスケーリングが正しくなかった問題の修正 (<a href="https://github.com/hajimehoshi/ebiten/issues/1307">Issue 1307</a>、<a href="https://github.com/hajimehoshi/ebiten/issues/1350">Issue 1350</a>)。</li>
+</ul>
+<h3 lang="en">Performance improvement</h3>
+<h3 lang="ja">パフォーマンス改善</h3>
+<ul>
+  <li lang="en">Adopted an explicit way to detect the context lost on browsers and Android (<a href="https://github.com/hajimehoshi/ebiten/issues/1175">Issue 1175</a>, <a href="https://github.com/hajimehoshi/ebiten/issues/1176">Issue 1176</a>).</li>
+  <li lang="ja">ブラウザと Android でコンテキストロストを明示的に検知する方法を採用 (<a href="https://github.com/hajimehoshi/ebiten/issues/1175">Issue 1175</a>、<a href="https://github.com/hajimehoshi/ebiten/issues/1176">Issue 1176</a>)。</li>
+  <li lang="en">Improved memory usage (<a href="https://github.com/hajimehoshi/ebiten/issues/797">Issue 797</a>, <a href="https://github.com/hajimehoshi/ebiten/issues/1220">Issue 1220</a>, <a href="https://github.com/hajimehoshi/ebiten/issues/1221">Issue 1221</a>, <a href="https://github.com/hajimehoshi/ebiten/issues/1222">Issue 1222</a>).</li>
+  <li lang="ja">メモリ使用量の改善 (<a href="https://github.com/hajimehoshi/ebiten/issues/797">Issue 797</a>、<a href="https://github.com/hajimehoshi/ebiten/issues/1220">Issue 1220</a>、<a href="https://github.com/hajimehoshi/ebiten/issues/1221">Issue 1221</a>、<a href="https://github.com/hajimehoshi/ebiten/issues/1222">Issue 1222</a>)。</li>
+</ul>
