@@ -2,12 +2,25 @@
   <title>Ebiten Blog</title>
   <id>https://ebiten.org/blog/</id>
   <link rel="self" href="https://ebiten.org/blog/feed.xml"></link>
-  <updated>2020-07-25T00:00:00+09:00</updated>
+  <updated>2020-10-01T00:00:00+09:00</updated>
   <author>
     <name>Hajime Hoshi</name>
     <uri>https://star.one</uri>
     <email>hajimehoshi@gmail.com</email>
   </author>
+  <entry>
+    <title>v1.12.0 is released</title>
+    <id>https://ebiten.org/blog/v1.12.0.html</id>
+    <link rel="alternate" href="https://ebiten.org/blog/v1.12.0.html"></link>
+    <published>2020-10-01T00:00:00+09:00</published>
+    <updated>2020-10-01T00:00:00+09:00</updated>
+    <author>
+      <name>Hajime Hoshi</name>
+      <uri>https://star.one</uri>
+      <email>hajimehoshi@gmail.com</email>
+    </author>
+    <content type="html">&lt;h1 lang=&#34;en&#34;&gt;v1.12.0 is released&lt;/h1&gt;&#xA;&lt;h1 lang=&#34;ja&#34;&gt;v1.12.0 がリリースされました&lt;/h1&gt;&#xA;&lt;p class=&#34;meta&#34;&gt;Hajime Hoshi&lt;br&gt;&lt;span id=&#34;meta-created&#34;&gt;2020-10-01&lt;/span&gt;&lt;/p&gt;&#xA;&lt;p lang=&#34;en&#34;&gt;We are very happy to announce the release of v1.12.0 (&lt;a href=&#34;/documents/1.12.html&#34;&gt;Release Note&lt;/a&gt;).&lt;/p&gt;&#xA;&lt;p lang=&#34;ja&#34;&gt;v1.12.0 がリリースされました! 詳しくは&lt;a href=&#34;/documents/1.12.html&#34;&gt;リリースノート&lt;/a&gt;を参照してください。&lt;/p&gt;&#xA;&lt;p lang=&#34;en&#34;&gt;I appreciate all the contributors and &lt;a href=&#34;https://github.com/sponsors/hajimehoshi&#34;&gt;all the sponsors&lt;/a&gt;. Thank you very much!&lt;/p&gt;&#xA;&lt;p lang=&#34;ja&#34;&gt;すべてのコントリビューターと&lt;a href=&#34;https://github.com/sponsors/hajimehoshi&#34;&gt;スポンサーの皆様&lt;/a&gt;に感謝いたします。どうもありがとうございます!&lt;/p&gt;&#xA;&lt;p lang=&#34;en&#34;&gt;The main new feature is &lt;a href=&#34;/documents/shader.html&#34;&gt;a custom shader with a new shading languge Kage&lt;/a&gt;. You can write a fragment shader in a Go-flavored language.&lt;/p&gt;&#xA;&lt;p lang=&#34;ja&#34;&gt;主な新しい機能は、 &lt;a href=&#34;/documents/shader.html&#34;&gt;カスタムシェーダとシェーディング言語 Kage&lt;/a&gt; です。 Go 風味の言語でフラグメントシェーダを書くことができます。&lt;/p&gt;&#xA;&lt;div class=&#34;grid-container&#34;&gt;&#xA;  &lt;div class=&#34;grid-item-2&#34;&gt;&#xA;    &lt;pre&gt;&lt;code&gt;package main&#xA;&#xA;// Uniform variables.&#xA;var Time float&#xA;var Cursor vec2&#xA;var ScreenSize vec2&#xA;&#xA;// Fragment is the entry point of the fragment shader.&#xA;// Fragment returns the color value for the current position.&#xA;func Fragment(position vec4, texCoord vec2, color vec4) vec4 {&#xA;&#x9;// You can define variables with a short variable declaration like Go.&#xA;&#x9;lightpos := vec3(Cursor, 50)&#xA;&#x9;lightdir := normalize(lightpos - position.xyz)&#xA;&#x9;normal := normalize(imageSrc1UnsafeAt(texCoord) - 0.5)&#xA;&#x9;ambient := 0.25&#xA;&#x9;diffuse := 0.75 * max(0.0, dot(normal.xyz, lightdir))&#xA;&#xA;&#x9;// You can treat multiple source images by&#xA;&#x9;// imageSrc[N]At or imageSrc[N]UnsafeAt.&#xA;&#x9;return imageSrc0UnsafeAt(texCoord) * (ambient + diffuse)&#xA;}&lt;/code&gt;&lt;/pre&gt;&#xA;  &lt;/div&gt;&#xA;  &lt;div class=&#34;grid-item-2&#34;&gt;&#xA;    &lt;p class=&#34;img&#34;&gt;&lt;video controls autoplay src=&#34;/images/documents/shader/lighting.mp4&#34; width=&#34;456&#34;&gt;&lt;/p&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;&#xA;&lt;p lang=&#34;en&#34;&gt;Enjoy!&lt;/p&gt;&#xA;</content>
+  </entry>
   <entry>
     <title>Roadmap in 2020 and later</title>
     <id>https://ebiten.org/blog/roadmap2020.html</id>
