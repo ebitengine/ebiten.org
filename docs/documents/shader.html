@@ -101,7 +101,7 @@
 <p lang="ja">シェーダは GPU 上で実行されるプログラムです。カスタムシェーダは Ebiten ユーザーが記述できるシェーダです。シェーダを使うことで、複雑な描画が GPU 上で効率的にできるようになります。</p>
 <p lang="en">In Ebiten, you can write a 'fragment shader'. A fragment shader is a shader executed on each pixel. Roughly speaking, this is a function to calculate a color for each pixel. This color calculation is executed on GPU in parallel.</p>
 <p lang="ja">Ebiten はシェーダのうちフラグメントシェーダと呼ばれるものが記述できます。フラグメントシェーダはピクセルごとに実行されるシェーダです。大雑把に言うと、ピクセルごとに色を計算する関数です。この色の計算が、 GPU 上で並列に走ります。</p>
-<p lang="en">With shaders, you can execute vairous effects like lighting or blur. For an example, see <code>example/shader</code>.</p>
+<p lang="en">With shaders, you can execute various effects like lighting or blur. For an example, see <code>example/shader</code>.</p>
 <p lang="ja">シェーダを使うことでライティング、ブラーなどの様々な効果が実現できます。サンプルについては <code>example/shader</code> を参照してください。</p>
 <pre><code>go run -tags=example github.com/hajimehoshi/ebiten/examples/shader</code></pre>
 <p lang="en">Ebiten adopts an original shading language 'Kage'. This has a compatible syntax with Go, but the details are different. Kage has high portability. Ebiten uses graphics libraries like OpenGL or Metal and this depends on environments, but Kage is compiled on the fly so that this works equally everywhere.</p>
@@ -140,7 +140,7 @@ func Fragment(position vec4, texCoord vec2, color vec4) vec4 {
 <h2 lang="ja">Ebiten API</h2>
 <h3><code>NewShader</code></h3>
 <pre><code>func NewShader(src []byte) (*Shader, error)</code></pre>
-<p lang="en"><code>NewShader</code> compiles a shader program in the shading language Kage, and retruns the result.</p>
+<p lang="en"><code>NewShader</code> compiles a shader program in the shading language Kage, and returns the result.</p>
 <p lang="ja"><code>NewShader</code> はシェーディング言語 Kage で記述されたシェーダプログラムをコンパイルし、結果を返します。</p>
 <p lang="en">If the compilation fails, <code>NewShader</code> returns an error.</p>
 <p lang="ja">もしコンパイルエラーが起きたならば、 <code>NewShader</code> はエラーを返します。</p>
@@ -199,7 +199,7 @@ func Fragment(position vec4, texCoord vec2, color vec4) vec4 {
 <h2 lang="ja">シェーディング言語 Kage</h2>
 <h3 lang="en">Syntax</h3>
 <h3 lang="ja">文法</h3>
-<p lang="en">The syntax is basially same as Go. This is completely same in the syntax level. You can do even <code>gofmt</code>.</p>
+<p lang="en">The syntax is basically same as Go. This is completely same in the syntax level. You can do even <code>gofmt</code>.</p>
 <p lang="ja">基本的に Go と同じです。文法レベルでは完全互換です。 <code>gofmt</code> を実行することさえ出来ます。</p>
 <p lang="en">Kage doesn't have these Go's features so far.</p>
 <p lang="ja">Kage には現在 Go の以下の機能がありません。</p>
@@ -235,7 +235,7 @@ func Fragment(position vec4, texCoord vec2, color vec4) vec4 {
   <tr><th><span lang="en">Name</span><span lang="ja">名前</span></th><th><span lang="en">Type</span><span lang="ja">型</span></th><th><span lang="en">Description</span><span lang="ja">説明</span></th></tr>
   <tr><td><code>position</code></td><td><code>vec4</code><td><span lang="en">The destination position in pixels. The 3rd and 4th components are always 0 and 1.</span><span lang="ja">描画先の座標。単位はピクセル。第 3、第 4 要素は常にそれぞれ 0、 1。</span></td></tr>
   <tr><td><code>texCoord</code></td><td><code>vec2</code><td><span lang="en">The source texture's position in texels.</span><span lang="ja">描画元テクスチャの座標。単位はテクセル。</span></td></tr>
-  <tr><td><code>color</code></td><td><code>vec4</code><td><span lang="en">Supplimental color information given from vertices. Each component values are in between 0 and 1.</span><span lang="ja">頂点から与えられる補助的な色情報。各要素は 0 から 1 の値。</span></td></tr>
+  <tr><td><code>color</code></td><td><code>vec4</code><td><span lang="en">Supplemental color information given from vertices. Each component values are in between 0 and 1.</span><span lang="ja">頂点から与えられる補助的な色情報。各要素は 0 から 1 の値。</span></td></tr>
   <tr><td><span lang="en">(Returning value)</span><span lang="ja">(戻り値)</span></td><td><code>vec4</code><td><span lang="en">The current position's color. Each component values are in between 0 and 1.</span><span lang="ja">現在の座標の色。各要素は 0 から 1 の値。</span></td></tr>
 </table>
 <h3 lang="en">Built-in types</h3>
@@ -278,7 +278,7 @@ m2 := mat4(v1, v2, v3, v1) // Returns a mat4 whose columns are v1, v2, v3 and v1
 v2 := v1.xyz           // Get vec3(1, 2, 3) and initialize v2 with this.
 v2.xyz = v2.xxx        // Get vec3(1, 1, 1), and set it to all the components to v2.
                        // Then, v2 is now (1, 1, 1).</code></pre>
-<p lang="en">Each compnent is represent like below. You can mix them in the same group, but you cannot in different groups. For example, <code>.xxyy</code> and <code>.abgr</code> are available, but <code>.xxgg</code> is invalid.</p>
+<p lang="en">Each component is represent like below. You can mix them in the same group, but you cannot in different groups. For example, <code>.xxyy</code> and <code>.abgr</code> are available, but <code>.xxgg</code> is invalid.</p>
 <p lang="ja">各要素は次のように表されます。同じグループ内ならば自由に組み合わせができますが、違うグループのものを混ぜることはできません。例えば <code>.xxyy</code> や <code>.abgr</code> は問題ありませんが、 <code>.xxgg</code> などは無効です。</p>
 <ul>
   <li><code>x</code>, <code>y</code>, <code>z</code>, <code>w</code></li>
