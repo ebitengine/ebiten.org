@@ -15,7 +15,7 @@ Contributions are welcome. However, if you try to contribute one or more section
 ## Uploading WASM files
 
 ```
-GOOGLE_APPLICATION_CREDENTIALS=/path/to/credentials.json go run uploadwasm.go -ebitenpath=../path/to/ebiten -upload
+GOOGLE_APPLICATION_CREDENTIALS=/path/to/credentials.json go run ./cmd/uploadwasm/ -ebitenpath=../path/to/ebiten -upload
 ```
 
 ## Test on your local machine
