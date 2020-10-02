@@ -12,7 +12,7 @@ go generate .
 
 Contributions are welcome. However, if you try to contribute one or more sections or articles, please ask Hajime Hoshi <hajimehoshi@gmail.com> before writing.
 
-## Upload WASM files
+## Uploading WASM files
 
 ```
 GOOGLE_APPLICATION_CREDENTIALS=/path/to/credentials.json go run uploadwasm.go -ebitenpath=../path/to/ebiten -upload
