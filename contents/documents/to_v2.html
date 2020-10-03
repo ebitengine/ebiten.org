@@ -1,0 +1,51 @@
+<h1 lang="en">Ebiten v2 Migration Guide</h1>
+<h1 lang="ja">Ebiten v2 移行ガイド</h1>
+<p lang="en">This document is still draft. Ebiten v2 is not released yet.</p>
+<p lang="ja">このドキュメントはドラフトです。 Ebiten v2 はまだリリースされていません。</p>
+<h2 lang="en">Outline</h2>
+<h2 lang="ja">概要</h2>
+<p lang="en">Ebiten v2 is a major version update from v1. There are some breaking changes in the API. Thus, you have to update the program in order to migrate to Ebiten v2.</p>
+<p lang="ja">Ebiten v2 は v1 からのメジャーバージョンアップデートです。 API に関して破壊的変更を伴います。そのため v2 への移行はプログラムの修正が必要です。</p>
+<p lang="en">This document lists the action items for the migration to Ebiten v2.</p>
+<p lang="ja">このドキュメントでは、 v2 移行の際に実際にやらなければならないことを列挙します。</p>
+<p lang="en">We don't add drastic changes to v2. Instead, we plan to add quiet changes.</p>
+<p lang="ja">v2 には過激な変更を入れるのではなく、代わりにおとなしめの変更が入ります。</p>
+<ul>
+  <li lang="en">Removing already-deprecated features (e.g., <code>Run</code>)</li>
+  <li lang="ja">すでに廃止予定の機能を削除 (例: <code>Run</code>)</li>
+  <li lang="en">Removing 'error' returning values from some functions (e.g., <code>DrawImage</code>)</li>
+  <li lang="ja">いくつかの関数から、戻り値のエラーを削除 (例: <code>DrawImage</code>)</li>
+  <li lang="en">Adding new types to replace integers (e.g., <code>GamepadIDs</code> will return <code>[]GamepadID</code> instead of <code>[]int</code>)</li>
+  <li lang="ja">整数型に代わる新しい型を追加 (例: <code>GamepadIDs</code> が <code>[]int</code> の代わりに <code>[]GamepadID</code> を返すようになる)</li>
+</ul>
+<h2 lang="en">Action items</h2>
+<h2 lang="ja">やることリスト</h2>
+<h3 lang="en">Updating the import paths</h2>
+<h3 lang="ja">インポートパスの更新</h2>
+<p lang="en">Update all the <code>github.com/hajimehoshi/ebiten</code> in <code>import</code>  <code>github.com/hajimehoshi/ebiten/v2</code>. <code>github.com/hajimehoshi/ebiten/text</code> will be <code>github.com/hajimehoshi/ebiten/v2/text</code>.</p>
+<p lang="ja"><code>import</code> 内の <code>github.com/hajimehoshi/ebiten</code> をすべて <code>github.com/hajimehoshi/ebiten/v2</code> に更新します。 <code>github.com/hajimehoshi/ebiten/text</code> は <code>github.com/hajimehoshi/ebiten/v2/text</code> になります。</p>
+<p lang="en">Lastly, execute <code>go mod tidy</code> command so that your <code>go.mod</code> will include <code>github.com/hajimehoshi/ebiten/v2</code> and exclude <code>github.com/hajimehoshi/ebiten</code>.</p>
+<p lang="ja">最後に <code>go mod tidy</code> コマンドを実行します。 <code>go.mod</code> に <code>github.com/hajimehoshi/ebiten/v2</code> が含まれるようになり、 <code>github.com/hajimehoshi/ebiten</code> が消えるはずです。</p>
+<h3 lang="en">Updating the API usages</h2>
+<h3 lang="ja">API の更新</h2>
+<h4><code>github.com/hajimehoshi/ebiten</code></h4>
+<table>
+  <tr><th>v1</th><th>v2</th></tr>
+  <tr><td><code>const FPS</code></td><td>(No replacement)</td></tr>
+  <tr><td><code>const MaxImageSize</code></td><td>(No replacement)</td></tr>
+  <tr><td><code>struct DrawImageOptions's ImageParts</code></td><td>func (*Image).SubImage</td></tr>
+  <tr><td><code>struct DrawImageOptions's Parts</code></td><td>func (*Image).SubImage</td></tr>
+  <tr><td><code>struct DrawImageOptions's SourceRect</code></td><td>func (*Image).SubImage</td></tr>
+  <tr><td><code>func IsCursorVisible</code></td><td><code>func CursorMode</code></td></tr>
+  <tr><td><code>func IsRunningInBackground</code></td><td><code>func IsRunnableOnUnfocused</code></td></tr>
+  <tr><td><code>func IsRunningSlowly</code></td><td><code>func RunGame</code> and <code>interface Game</code>'s <code>Draw</code></td></tr>
+  <tr><td><code>func MonitorSize</code></td><td><code>func ScreenSizeInFullscreen</code></td></tr>
+  <tr><td><code>func Run</code></td><td><code>func RunGame</code></td></tr>
+  <tr><td><code>func ScreenScale</code></td><td><code>func WindowSize</code></td></tr>
+  <tr><td><code>func SetCursorVisible</code></td><td><code>func SetCursorMode</code></td></tr>
+  <tr><td><code>func SetCursorVisibility</code></td><td><code>func SetCursorMode</code></td></tr>
+  <tr><td><code>func SetRunningInBackground</code></td><td><code>func SetRunnableOnUnfocused</code></td></tr>
+  <tr><td><code>func SetScreenScale</code></td><td><code>func RunGame</code> and <code>interface Game</code>'s <code>Layout</code></td></tr>
+  <tr><td><code>func SetScreenSize</code></td><td><code>func RunGame</code> and <code>interface Game</code>'s <code>Layout</code></td></tr>
+</table>
+<p>(TBD)</p>

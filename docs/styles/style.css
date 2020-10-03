@@ -117,6 +117,10 @@ code {
     border-radius: 4px;
     margin: 0 -2px 0 -2px;
 }
+table code {
+    background-color: transparent;
+    border-color: transparent;
+}
 h1 code, h2 code, h3 code, h4 code {
     border-width: 0 2px;
     position: relative;
