@@ -29,8 +29,17 @@
 <h3 lang="en">Updating the API usages</h2>
 <h3 lang="ja">API の更新</h2>
 <h4><code>github.com/hajimehoshi/ebiten</code></h4>
+<ul>
+  <li lang="en">Interface <code>Game</code>'s <code>Draw</code> function was optional in v1, but is mandatory in v2.</li>
+  <li lang="ja">インターフェイス <code>Game</code> の <code>Draw</code> 関数は v1 ではオプショナルでしたが、 v2 からは必須になります。</li>
+  <li lang="en">The argument in interface <code>Game</code>'s <code>Update</code> is removed in v2.</li>
+  <li lang="ja">インターフェイス <code>Game</code> の <code>Update</code> 引数は v2 で削除されます。</li>
+  <li lang="en">The second arguments from <code>NewImage</code> and <code>NewImageFromImage</code> are removed in v2.</li>
+  <li lang="ja"><code>NewImage</code> と <code>NewImageFromImage</code> の第 2 引数は v2 で削除されます。</li>
+</ul>
 <table>
   <tr><th>v1</th><th>v2</th></tr>
+  <tr><td><code>const FilterDefault</code></td><td>(No replacement)</td></tr>
   <tr><td><code>const FPS</code></td><td>(No replacement)</td></tr>
   <tr><td><code>const MaxImageSize</code></td><td>(No replacement)</td></tr>
   <tr><td><code>struct DrawImageOptions's ImageParts</code></td><td>func (*Image).SubImage</td></tr>
@@ -60,12 +69,6 @@
   <tr><td><code>func TranslateColor</code></td><td><code>func (*ColorM).Translate</code></td></tr>
   <tr><td><code>func TranslateGeo</code></td><td><code>func (*GeoM).Translate</code></td></tr>
 </table>
-<ul>
-  <li lang="en">Interface <code>Game</code>'s <code>Draw</code> function was optional in v1, but is mandatory in v2.</li>
-  <li lang="ja">インターフェイス <code>Game</code> の <code>Draw</code> 関数は v1 ではオプショナルでしたが、 v2 からは必須になります。</li>
-  <li lang="en">The argument in interface <code>Game</code>'s <code>Update</code> is removed in v2.</li>
-  <li lang="ja">インターフェイス <code>Game</code> の <code>Update</code> 引数は v2 で削除されます。</li>
-</ul>
 <h4><code>github.com/hajimehoshi/ebiten/audio</code></h4>
 <table>
   <tr><th>v1</th><th>v2</th></tr>
@@ -86,6 +89,11 @@
   <tr><th>v1</th><th>v2</th></tr>
   <tr><td><code>func (*Stream).Size</code></td><td><code>func (*Stream).Length</code></td></tr>
 </table>
+<h4><code>github.com/hajimehoshi/ebiten/ebitenutil</code></h4>
+<ul>
+  <li lang="en">The second arguments from <code>NewImageFromFile</code> is removed in v2.</li>
+  <li lang="ja"><code>NewImageFromFile</code> の第 2 引数は v2 で削除されます。</li>
+</ul>
 <h4><code>github.com/hajimehoshi/ebiten/mobile</code></h4>
 <table>
   <tr><th>v1</th><th>v2</th></tr>
