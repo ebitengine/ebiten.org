@@ -133,8 +133,10 @@
   <li lang="ja">インターフェイス <code>Game</code> の <code>Draw</code> 関数は v1 ではオプショナルでしたが、 v2 からは必須になります。</li>
   <li lang="en">The argument in interface <code>Game</code>'s <code>Update</code> is removed in v2.</li>
   <li lang="ja">インターフェイス <code>Game</code> の <code>Update</code> 引数は v2 で削除されます。</li>
-  <li lang="en">The second arguments from <code>NewImage</code> and <code>NewImageFromImage</code> are removed in v2.</li>
-  <li lang="ja"><code>NewImage</code> と <code>NewImageFromImage</code> の第 2 引数は v2 で削除されます。</li>
+  <li lang="en">The second argument in <code>NewImage</code> is removed in v2.</li>
+  <li lang="ja"><code>NewImage</code> の第 2 引数は v2 で削除されます。</li>
+  <li lang="en">The second argument in <code>NewImageFromImage</code> is removed in v2.</li>
+  <li lang="ja"><code>NewImageFromImage</code> の第 2 引数は v2 で削除されます。</li>
 </ul>
 <table>
   <tr><th>v1</th><th>v2</th></tr>
@@ -169,6 +171,10 @@
   <tr><td><code>func TranslateGeo</code></td><td><code>func (*GeoM).Translate</code></td></tr>
 </table>
 <h4><code>github.com/hajimehoshi/ebiten/audio</code></h4>
+<ul>
+  <li lang="en">The second returning value 'error' in <code>NewPlayerFromBytes</code>is removed in v2.</li>
+  <li lang="ja"><code>NewImage</code> と <code>NewImageFromImage</code> の第 2 引数は v2 で削除されます。</li>
+</ul>
 <table>
   <tr><th>v1</th><th>v2</th></tr>
   <tr><td><code>func (*Context).Update</code></td><td>(No replacement)</td></tr>
@@ -190,8 +196,10 @@
 </table>
 <h4><code>github.com/hajimehoshi/ebiten/ebitenutil</code></h4>
 <ul>
-  <li lang="en">The second arguments from <code>NewImageFromFile</code> is removed in v2.</li>
-  <li lang="ja"><code>NewImageFromFile</code> の第 2 引数は v2 で削除されます。</li>
+  <li lang="en">The second argument (error) from <code>NewContext</code> is removed in v2.</li>
+  <li lang="ja"><code>NewContext</code> の第 2 戻り値 (error) は v2 で削除されます。</li>
+  <li lang="en">The second argument (error) from <code>NewImageFromFile</code> is removed in v2.</li>
+  <li lang="ja"><code>NewImageFromFile</code> の第 2 戻り値 (error) は v2 で削除されます。</li>
 </ul>
 <h4><code>github.com/hajimehoshi/ebiten/mobile</code></h4>
 <table>
