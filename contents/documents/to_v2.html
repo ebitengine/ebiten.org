@@ -2,7 +2,7 @@
 <h1 lang="ja">Ebiten v2 移行ガイド</h1>
 <p lang="en">This document is still draft. Ebiten v2 is not released yet.</p>
 <p lang="ja">このドキュメントはドラフトです。 Ebiten v2 はまだリリースされていません。</p>
-<h2 lang="en">Outline</h2>
+<h2 lang="en">Overview</h2>
 <h2 lang="ja">概要</h2>
 <p lang="en">Ebiten v2 is a major version update from v1. There are some breaking changes in the API. Thus, you have to update the program in order to migrate to Ebiten v2.</p>
 <p lang="ja">Ebiten v2 は v1 からのメジャーバージョンアップデートです。 API に関して破壊的変更を伴います。そのため v2 への移行はプログラムの修正が必要です。</p>
@@ -40,8 +40,9 @@
   <tr><td><code>func (*ColorM).Add</code></td><td>(No replacement)</td></tr>
   <tr><td><code>func (*GeoM).Add</code></td><td>(No replacement)</td></tr>
   <tr><td><code>func IsCursorVisible</code></td><td><code>func CursorMode</code></td></tr>
+  <tr><td><code>func IsDrawingSkipped</code></td><td><code>func RunGame</code> and interface <code>Game</code>'s <code>Draw</code></td></tr>
   <tr><td><code>func IsRunningInBackground</code></td><td><code>func IsRunnableOnUnfocused</code></td></tr>
-  <tr><td><code>func IsRunningSlowly</code></td><td><code>func RunGame</code> and <code>interface Game</code>'s <code>Draw</code></td></tr>
+  <tr><td><code>func IsRunningSlowly</code></td><td><code>func RunGame</code> and interface <code>Game</code>'s <code>Draw</code></td></tr>
   <tr><td><code>func MonitorSize</code></td><td><code>func ScreenSizeInFullscreen</code></td></tr>
   <tr><td><code>func Monochrome</code></td><td><code>func ChangeHSV with 0, 0, 1</code></td></tr>
   <tr><td><code>func RotateGeo</code></td><td><code>func (*GeoM).Rotate</code></td></tr>
@@ -53,13 +54,18 @@
   <tr><td><code>func SetCursorVisible</code></td><td><code>func SetCursorMode</code></td></tr>
   <tr><td><code>func SetCursorVisibility</code></td><td><code>func SetCursorMode</code></td></tr>
   <tr><td><code>func SetRunningInBackground</code></td><td><code>func SetRunnableOnUnfocused</code></td></tr>
-  <tr><td><code>func SetScreenScale</code></td><td><code>func RunGame</code> and <code>interface Game</code>'s <code>Layout</code></td></tr>
-  <tr><td><code>func SetScreenSize</code></td><td><code>func RunGame</code> and <code>interface Game</code>'s <code>Layout</code></td></tr>
+  <tr><td><code>func SetScreenScale</code></td><td><code>func RunGame</code> and interface <code>Game</code>'s <code>Layout</code></td></tr>
+  <tr><td><code>func SetScreenSize</code></td><td><code>func RunGame</code> and interface <code>Game</code>'s <code>Layout</code></td></tr>
   <tr><td><code>func Touches</code></td><td><code>func TouchIDs</code></td></tr>
   <tr><td><code>func TranslateColor</code></td><td><code>func (*ColorM).Translate</code></td></tr>
   <tr><td><code>func TranslateGeo</code></td><td><code>func (*GeoM).Translate</code></td></tr>
 </table>
-<p>(TBD)</p>
+<ul>
+  <li lang="en">Interface <code>Game</code>'s <code>Draw</code> function was optional in v1, but is mandatory in v2.</li>
+  <li lang="ja">インターフェイス <code>Game</code> の <code>Draw</code> 関数は v1 ではオプショナルでしたが、 v2 からは必須になります。</li>
+  <li lang="en">The argument in interface <code>Game</code>'s <code>Update</code> is removed in v2.</li>
+  <li lang="ja">インターフェイス <code>Game</code> の <code>Update</code> 引数は v2 で削除されます。</li>
+</ul>
 <h4><code>github.com/hajimehoshi/ebiten/audio</code></h4>
 <table>
   <tr><th>v1</th><th>v2</th></tr>

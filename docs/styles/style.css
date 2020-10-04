@@ -164,7 +164,7 @@ td, th {
     background-color: #ffffff;
 }
 tr:nth-child(even) td, tr:nth-child(even) th {
-    background-color: #e6e6e6; /* 1000-N */
+    background-color: #f3f3f3; /* 0500-N */
 }
 
 /* image */
