@@ -18,6 +18,12 @@
   <li lang="en">Adding new types to replace integers (e.g., <code>GamepadIDs</code> will return <code>[]GamepadID</code> instead of <code>[]int</code>)</li>
   <li lang="ja">整数型に代わる新しい型を追加 (例: <code>GamepadIDs</code> が <code>[]int</code> の代わりに <code>[]GamepadID</code> を返すようになる)</li>
 </ul>
+<h2 lang="en">Platforms</h2>
+<h2 lang="ja">プラットフォーム</h2>
+<ul>
+  <li lang="en"><a href="/documents/gopherjs.html">GopherJS</a> is no longer supported as of v2. Use <a href="/documents/webassembly.html">WebAssembly</a> instead.</li>
+  <li lang="ja"><a href="/documents/gopherjs.html">GopherJS</a> は v2 からサポートされません。代わりに <a href="/documents/webassembly.html">WebAssembly</a> を使用してください。</li>
+</ul>
 <h2 lang="en">Action items</h2>
 <h2 lang="ja">やることリスト</h2>
 <h3 lang="en">Updating the import paths</h2>
@@ -34,6 +40,8 @@
   <li lang="ja">インターフェイス <code>Game</code> の <code>Draw</code> 関数は v1 ではオプショナルでしたが、 v2 からは必須になります。</li>
   <li lang="en">The argument in interface <code>Game</code>'s <code>Update</code> is removed in v2.</li>
   <li lang="ja">インターフェイス <code>Game</code> の <code>Update</code> 引数は v2 で削除されます。</li>
+  <li lang="en">The default value of <code>IsRunnableOnUnfocused</code> is <code>true</code> in v2.</li>
+  <li lang="ja"><code>IsRunnableOnUnfocused</code> のデフォルト値は v2 では <code>true</code> になります。</li>
   <li lang="en">The third argument <code>filter</code> of <code>NewImage</code> is removed in v2.</li>
   <li lang="ja"><code>NewImage</code> の第 3 引数 <code>filter</code> は v2 で削除されます。</li>
   <li lang="en">The second returning value <code>error</code> of <code>NewImage</code> is removed in v2.</li>
