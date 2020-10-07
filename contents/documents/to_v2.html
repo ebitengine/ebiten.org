@@ -63,21 +63,21 @@
 </ul>
 <table>
   <tr><th>v1</th><th>v2</th></tr>
-  <tr><td><code>const FilterDefault</code></td><td>(No replacement)</td></tr>
-  <tr><td><code>const FPS</code></td><td>(No replacement)</td></tr>
-  <tr><td><code>const MaxImageSize</code></td><td>(No replacement)</td></tr>
-  <tr><td><code>struct DrawImageOptions's ImageParts</code></td><td>func (*Image).SubImage</td></tr>
-  <tr><td><code>struct DrawImageOptions's Parts</code></td><td>func (*Image).SubImage</td></tr>
-  <tr><td><code>struct DrawImageOptions's SourceRect</code></td><td>func (*Image).SubImage</td></tr>
+  <tr><td><code>const FilterDefault</code></td><td><span lang="en">(No replacement)</span><span lang="ja">(置き換え先なし)</span></td></tr>
+  <tr><td><code>const FPS</code></td><td><span lang="en">(No replacement)</span><span lang="ja">(置き換え先なし)</span></td></tr>
+  <tr><td><code>const MaxImageSize</code></td><td><span lang="en">(No replacement)</span><span lang="ja">(置き換え先なし)</span></td></tr>
+  <tr><td><span lang="en"><code>struct DrawImageOptions</code>'s <code>ImageParts</code></span><span lang="ja"><code>DrawImageOptions</code> 構造体の <code>ImageParts</code></span></td><td>func (*Image).SubImage</td></tr>
+  <tr><td><span lang="en"><code>struct DrawImageOptions</code>'s <code>Parts</code></span><span lang="ja"><code>DrawImageOptions</code> 構造体の <code>Parts</code></span></td><td>func (*Image).SubImage</td></tr>
+  <tr><td><span lang="en"><code>struct DrawImageOptions</code>'s <code>SourceRect</code></span><span lang="ja"><code>DrawImageOptions</code> 構造体の <code>SourceRect</code></span></td><td>func (*Image).SubImage</td></tr>
   <tr><td><code>interface Touch</code></td><td>func TouchPosition</td></tr>
-  <tr><td><code>func (*ColorM).Add</code></td><td>(No replacement)</td></tr>
-  <tr><td><code>func (*GeoM).Add</code></td><td>(No replacement)</td></tr>
+  <tr><td><code>func (*ColorM).Add</code></td><td><span lang="en">(No replacement)</span><span lang="ja">(置き換え先なし)</span></td></tr>
+  <tr><td><code>func (*GeoM).Add</code></td><td><span lang="en">(No replacement)</span><span lang="ja">(置き換え先なし)</span></td></tr>
   <tr><td><code>func IsCursorVisible</code></td><td><code>func CursorMode</code></td></tr>
-  <tr><td><code>func IsDrawingSkipped</code></td><td><code>func RunGame</code> and interface <code>Game</code>'s <code>Draw</code></td></tr>
+  <tr><td><code>func IsDrawingSkipped</code></td><td><span lang="en"><code>func RunGame</code> and interface <code>Game</code>'s <code>Draw</code></span><span lang="ja"><code>RunGame</code> 関数と <code>Game</code> インターフェイスの <code>Draw</code></span></td></tr>
   <tr><td><code>func IsRunningInBackground</code></td><td><code>func IsRunnableOnUnfocused</code></td></tr>
-  <tr><td><code>func IsRunningSlowly</code></td><td><code>func RunGame</code> and interface <code>Game</code>'s <code>Draw</code></td></tr>
+  <tr><td><code>func IsRunningSlowly</code></td><td><span lang="en"><code>func RunGame</code> and interface <code>Game</code>'s <code>Draw</code></span><span lang="ja"><code>RunGame</code> 関数と <code>Game</code> インターフェイスの <code>Draw</code></span></td></tr>
   <tr><td><code>func MonitorSize</code></td><td><code>func ScreenSizeInFullscreen</code></td></tr>
-  <tr><td><code>func Monochrome</code></td><td><code>func ChangeHSV with 0, 0, 1</code></td></tr>
+  <tr><td><code>func Monochrome</code></td><td><span lang="en"><code>func (*ColorM).ChangeHSV</code> with arguments <code>0, 0, 1</code></span><span lang="ja"><code>(*ColorM).ChangeHSV</code> 関数 (引数は <code>0, 0, 1</code>)</span></td></tr>
   <tr><td><code>func RotateGeo</code></td><td><code>func (*GeoM).Rotate</code></td></tr>
   <tr><td><code>func RotateHue</code></td><td><code>func (*ColorM).RotateHue</code></td></tr>
   <tr><td><code>func Run</code></td><td><code>func RunGame</code></td></tr>
@@ -87,8 +87,8 @@
   <tr><td><code>func SetCursorVisible</code></td><td><code>func SetCursorMode</code></td></tr>
   <tr><td><code>func SetCursorVisibility</code></td><td><code>func SetCursorMode</code></td></tr>
   <tr><td><code>func SetRunningInBackground</code></td><td><code>func SetRunnableOnUnfocused</code></td></tr>
-  <tr><td><code>func SetScreenScale</code></td><td><code>func RunGame</code> and interface <code>Game</code>'s <code>Layout</code></td></tr>
-  <tr><td><code>func SetScreenSize</code></td><td><code>func RunGame</code> and interface <code>Game</code>'s <code>Layout</code></td></tr>
+  <tr><td><code>func SetScreenScale</code></td><td><span lang="en"><code>func RunGame</code> and interface <code>Game</code>'s <code>Layout</code></span><span lang="ja"><code>RunGame</code> 関数と <code>Game</code> インターフェイスの <code>Layout</code></span></td></tr>
+  <tr><td><code>func SetScreenSize</code></td><td><span lang="en"><code>func RunGame</code> and interface <code>Game</code>'s <code>Layout</code></span><span lang="ja"><code>RunGame</code> 関数と <code>Game</code> インターフェイスの <code>Layout</code></span></td></tr>
   <tr><td><code>func Touches</code></td><td><code>func TouchIDs</code></td></tr>
   <tr><td><code>func TranslateColor</code></td><td><code>func (*ColorM).Translate</code></td></tr>
   <tr><td><code>func TranslateGeo</code></td><td><code>func (*GeoM).Translate</code></td></tr>
@@ -97,26 +97,57 @@
 <ul>
   <li lang="en">The second returning value <code>error</code> of <code>NewContext</code> is removed in v2.</li>
   <li lang="ja"><code>NewContext</code> の第 2 戻り値 <code>error</code> は v2 で削除されます。</li>
+  <li lang="en">The first argument <code>src</code> of <code>NewInfiniteLoop</code> is now <code>io.ReadSeeker</code> instead of <code>audio.ReadSeekCloser</code> in v2.</li>
+  <li lang="ja"><code>NewInfiniteLoop</code> の第 1 引数 <code>src</code> は v2 で <code>audio.ReadSeekCloser</code> の代わりに <code>io.ReadSeeker</code> になります。</li>
+  <li lang="en">The first argument <code>src</code> of <code>NewInfiniteLoopWithIntro</code> is now <code>io.ReadSeeker</code> instead of <code>audio.ReadSeekCloser</code> in v2.</li>
+  <li lang="ja"><code>NewInfiniteLoopWithIntro</code> の第 1 引数 <code>src</code> は v2 で <code>audio.ReadSeekCloser</code> の代わりに <code>io.ReadSeeker</code> になります。</li>
+  <li lang="en">The second argument <code>src</code> of <code>NewPlayer</code> is now <code>io.Reader</code> instead of <code>io.ReadCloser</code> in v2.</li>
+  <li lang="ja"><code>NewPlayer</code> の第 2 引数 <code>src</code> は v2 で <code>io.ReadCloser</code> の代わりに <code>io.Reader</code> になります。</li>
   <li lang="en">The second returning value <code>error</code> of <code>NewPlayerFromBytes</code> is removed in v2.</li>
   <li lang="ja"><code>NewPlayerFromBytes</code> の第 2 戻り値 <code>error</code> は v2 で削除されます。</li>
+  <li lang="en"><code>Player</code> can take a source that doesn't implement <code>io.Closer</code>, and <code>Player</code> no longer closes the original source in v2.</li>
+  <li lang="ja"><code>Player</code> は <code>io.Closer</code> ではないソースを取ることができるようになり、 <code>Player</code> はもはや v2 では元のソースをクローズしません。</li>
 </ul>
 <table>
   <tr><th>v1</th><th>v2</th></tr>
-  <tr><td><code>func (*Context).Update</code></td><td>(No replacement)</td></tr>
+  <tr><td><code>BytesReadSeekCloser</code></td><td><span lang="en">(No replacement, but <code>bytes.NewReader</code> is available in most cases)</span><span lang="ja">(置き換え先はないが、大抵の場合 <code>bytes.NewReader</code> で事足りる)</span></td></tr>
+  <tr><td><code>func (*Context).Update</code></td><td><span lang="en">(No replacement)</span><span lang="ja">(置き換え先なし)</span></td></tr>
+  <tr><td><code>ReadSeekCloser</code></td><td><span lang="en">(No replacement, but <code>io.ReadSeeker</code> is available in most cases)</span><span lang="ja">(置き換え先はないが、大抵の場合 <code>io.ReadSeeker</code> で事足りる)</span></td></tr>
 </table>
 <h4><code>github.com/hajimehoshi/ebiten/audio/mp3</code></h4>
+<ul>
+  <li lang="en">The second argument <code>src</code> of <code>Decode</code> is now <code>io.ReadSeeker</code> instead of <code>audio.ReadSeekCloser</code> in v2.</li>
+  <li lang="ja"><code>Decode</code> の第 2 引数 <code>src</code> は v2 で <code>audio.ReadSeekCloser</code> の代わりに <code>io.ReadSeeker</code> になります。</li>
+  <li lang="en"><code>Stream</code>'s <code>Close</code> is removed, and <code>Stream</code> no longer closes the original source in v2.</li>
+  <li lang="ja"><code>Stream</code> の Close は削除され、 <code>Stream</code> はもはや v2 では元のソースをクローズしません。</li>
+</ul>
 <table>
   <tr><th>v1</th><th>v2</th></tr>
+  <tr><td><code>func (*Stream).Close</code></td><td><code><span lang="en">(No replacement)</span><span lang="ja">(置き換え先なし)</span></code></td></tr>
   <tr><td><code>func (*Stream).Size</code></td><td><code>func (*Stream).Length</code></td></tr>
 </table>
 <h4><code>github.com/hajimehoshi/ebiten/audio/vorbis</code></h4>
+<ul>
+  <li lang="en">The second argument <code>src</code> of <code>Decode</code> is now <code>io.ReadSeeker</code> instead of <code>audio.ReadSeekCloser</code> in v2.</li>
+  <li lang="ja"><code>Decode</code> の第 2 引数 <code>src</code> は v2 で <code>audio.ReadSeekCloser</code> の代わりに <code>io.ReadSeeker</code> になります。</li>
+  <li lang="en"><code>Stream</code>'s <code>Close</code> is removed, and <code>Stream</code> no longer closes the original source in v2.</li>
+  <li lang="ja"><code>Stream</code> の <code>Close</code> は削除され、 <code>Stream</code> はもはや v2 では元のソースをクローズしません。</li>
+</ul>
 <table>
   <tr><th>v1</th><th>v2</th></tr>
+  <tr><td><code>func (*Stream).Close</code></td><td><code><span lang="en">(No replacement)</span><span lang="ja">(置き換え先なし)</span></code></td></tr>
   <tr><td><code>func (*Stream).Size</code></td><td><code>func (*Stream).Length</code></td></tr>
 </table>
 <h4><code>github.com/hajimehoshi/ebiten/audio/wav</code></h4>
+<ul>
+  <li lang="en">The second argument <code>src</code> of <code>Decode</code> is now <code>io.ReadSeeker</code> instead of <code>audio.ReadSeekCloser</code> in v2.</li>
+  <li lang="ja"><code>Decode</code> の第 2 引数 <code>src</code> は v2 で <code>audio.ReadSeekCloser</code> の代わりに <code>io.ReadSeeker</code> になります。</li>
+  <li lang="en"><code>Stream</code>'s <code>Close</code> is removed, and <code>Stream</code> no longer closes the original source in v2.</li>
+  <li lang="ja"><code>Stream</code> の <code>Close</code> は削除され、 <code>Stream</code> はもはや v2 では元のソースをクローズしません。</li>
+</ul>
 <table>
   <tr><th>v1</th><th>v2</th></tr>
+  <tr><td><code>func (*Stream).Close</code></td><td><code><span lang="en">(No replacement)</span><span lang="ja">(置き換え先なし)</span></code></td></tr>
   <tr><td><code>func (*Stream).Size</code></td><td><code>func (*Stream).Length</code></td></tr>
 </table>
 <h4><code>github.com/hajimehoshi/ebiten/ebitenutil</code></h4>
@@ -127,9 +158,9 @@
 <h4><code>github.com/hajimehoshi/ebiten/mobile</code></h4>
 <table>
   <tr><th>v1</th><th>v2</th></tr>
-  <tr><td><code>interface Game</code></td><td><code>ebiten</code>'s <code>interface Game</code></td></tr>
-  <tr><td><code>func Start</code></td><td><code>ebitenmobile</code> command and <code>func SetGame</code></td></tr>
-  <tr><td><code>func Update</code></td><td><code>ebitenmobile</code> command and <code>func SetGame</code></td></tr>
-  <tr><td><code>func UpdateTouchesOnAndroid</code></td><td><code>ebitenmobile</code> command</td></tr>
-  <tr><td><code>func UpdateTouchesOnIOS</code></td><td><code>ebitenmobile</code> command</td></tr>
+  <tr><td><code>interface Game</code></td><td><span lang="en"><code>ebiten</code>'s <code>interface Game</code></span><span lang="ja"><code>ebiten</code> の <code>Game</code> インターフェイス</span></td></tr>
+  <tr><td><code>func Start</code></td><td><span lang="en"><code>ebitenmobile</code> command and <code>func SetGame</code></span><span lang="ja"><code>ebitenmobile</code> コマンドと <code>SetGame</code> 関数</span></td></tr>
+  <tr><td><code>func Update</code></td><td><span lang="en"><code>ebitenmobile</code> command and <code>func SetGame</code></span><span lang="ja"><code>ebitenmobile</code> コマンドと <code>SetGame</code> 関数</span></td></tr>
+  <tr><td><code>func UpdateTouchesOnAndroid</code></td><td><span lang="en"><code>ebitenmobile</code> command</span><span lang="ja"><code>ebitenmobile</code> コマンド</span></td></tr>
+  <tr><td><code>func UpdateTouchesOnIOS</code></td><td><span lang="en"><code>ebitenmobile</code> command</span><span lang="ja"><code>ebitenmobile</code> コマンド</span></td></tr>
 </table>
