@@ -43,25 +43,19 @@
   <li lang="ja">インターフェイス <code>Game</code> の <code>Update</code> 引数は v2 で削除されます。</li>
   <li lang="en">The default value of <code>IsRunnableOnUnfocused</code> is <code>true</code> in v2.</li>
   <li lang="ja"><code>IsRunnableOnUnfocused</code> のデフォルト値は v2 では <code>true</code> になります。</li>
-  <li lang="en">The third argument <code>filter</code> of <code>NewImage</code> is removed in v2.</li>
-  <li lang="ja"><code>NewImage</code> の第 3 引数 <code>filter</code> は v2 で削除されます。</li>
-  <li lang="en">The second returning value <code>error</code> of <code>NewImage</code> is removed in v2.</li>
-  <li lang="ja"><code>NewImage</code> の第 2 戻り値 <code>error</code> は v2 で削除されます。</li>
-  <li lang="en">The second argument <code>filter</code> of <code>NewImageFromImage</code> is removed in v2.</li>
-  <li lang="ja"><code>NewImageFromImage</code> の第 2 引数 <code>filter</code> は v2 で削除されます。</li>
-  <li lang="en">The second returning value <code>error</code> of <code>NewImageFromImage</code> is removed in v2.</li>
-  <li lang="ja"><code>NewImageFromImage</code> の第 2 戻り値 <code>error</code> は v2 で削除されます。</li>
-  <li lang="en">The returning value <code>error</code> of <code>(*Image).Clear</code> is removed in v2.</li>
-  <li lang="ja"><code>(*Image).Clear</code> の戻り値 <code>error</code> は v2 で削除されます。</li>
-  <li lang="en">The returning value <code>error</code> of <code>(*Image).Dispose</code> is removed in v2.</li>
-  <li lang="ja"><code>(*Image).Dispose</code> の戻り値 <code>error</code> は v2 で削除されます。</li>
-  <li lang="en">The returning value <code>error</code> of <code>(*Image).DrawImage</code> is removed in v2.</li>
-  <li lang="ja"><code>(*Image).DrawImage</code> の戻り値 <code>error</code> は v2 で削除されます。</li>
-  <li lang="en">The returning value <code>error</code> of <code>(*Image).Fill</code> is removed in v2.</li>
-  <li lang="ja"><code>(*Image).Fill</code> の戻り値 <code>error</code> は v2 で削除されます。</li>
-  <li lang="en">The returning value <code>error</code> of <code>(*Image).ReplacePixels</code> is removed in v2.</li>
-  <li lang="ja"><code>(*Image).ReplacePixels</code> の戻り値 <code>error</code> は v2 で削除されます。</li>
 </ul>
+<p lang="en">These APIs' signatures are changed.</p>
+<p lang="ja">次の API のシグニチャが変更されます。</p>
+<table>
+  <tr><th>v1</th><th>v2</th></tr>
+  <tr><td><code>func (*Image).Clear() error</code></td><td><code>func (*Image).Clear()</code></td></tr>
+  <tr><td><code>func (*Image).Dispose() error</code></td><td><code>func (*Image).Dispose()</code></td></tr>
+  <tr><td><code>func (*Image).DrawImage(img *Image, options *DrawImageOptions) error</code></td><td><code>func (*Image).DrawImage(img *Image, options *DrawImageOptions)</code></td></tr>
+  <tr><td><code>func (*Image).Fill(clr color.Color) error</code></td><td><code>func (*Image).Fill(clr color.Color)</code></td></tr>
+  <tr><td><code>func (*Image).ReplacePixels(pixels []byte) error</code></td><td><code>func (*Image).ReplacePixels(pixels []byte)</code></td></tr>
+  <tr><td><code>func NewImage(width, height int, filter Filter) (*Image, error)</code></td><td><code>func NewImage(width, height int) *Image</code></td></tr>
+  <tr><td><code>func NewImageFromImage(source image.Image, filter Filter) (*Image, error)</code></td><td><code>func NewImage(source image.Image) *Image</code></td></tr>
+</table>
 <p lang="en">These APIs are removed or replaced.</p>
 <p lang="ja">次の API が削除されるか置き換えられます。</p>
 <table>
@@ -98,19 +92,19 @@
 </table>
 <h4><code>github.com/hajimehoshi/ebiten/audio</code></h4>
 <ul>
-  <li lang="en">The second returning value <code>error</code> of <code>NewContext</code> is removed in v2.</li>
-  <li lang="ja"><code>NewContext</code> の第 2 戻り値 <code>error</code> は v2 で削除されます。</li>
-  <li lang="en">The first argument <code>src</code> of <code>NewInfiniteLoop</code> is now <code>io.ReadSeeker</code> instead of <code>audio.ReadSeekCloser</code> in v2.</li>
-  <li lang="ja"><code>NewInfiniteLoop</code> の第 1 引数 <code>src</code> は v2 で <code>audio.ReadSeekCloser</code> の代わりに <code>io.ReadSeeker</code> になります。</li>
-  <li lang="en">The first argument <code>src</code> of <code>NewInfiniteLoopWithIntro</code> is now <code>io.ReadSeeker</code> instead of <code>audio.ReadSeekCloser</code> in v2.</li>
-  <li lang="ja"><code>NewInfiniteLoopWithIntro</code> の第 1 引数 <code>src</code> は v2 で <code>audio.ReadSeekCloser</code> の代わりに <code>io.ReadSeeker</code> になります。</li>
-  <li lang="en">The second argument <code>src</code> of <code>NewPlayer</code> is now <code>io.Reader</code> instead of <code>io.ReadCloser</code> in v2.</li>
-  <li lang="ja"><code>NewPlayer</code> の第 2 引数 <code>src</code> は v2 で <code>io.ReadCloser</code> の代わりに <code>io.Reader</code> になります。</li>
-  <li lang="en">The second returning value <code>error</code> of <code>NewPlayerFromBytes</code> is removed in v2.</li>
-  <li lang="ja"><code>NewPlayerFromBytes</code> の第 2 戻り値 <code>error</code> は v2 で削除されます。</li>
   <li lang="en"><code>Player</code> can take a source that doesn't implement <code>io.Closer</code>, and <code>Player</code> no longer closes the original source in v2.</li>
   <li lang="ja"><code>Player</code> は <code>io.Closer</code> ではないソースを取ることができるようになり、 <code>Player</code> はもはや v2 では元のソースをクローズしません。</li>
 </ul>
+<p lang="en">These APIs' signatures are changed.</p>
+<p lang="ja">次の API のシグニチャが変更されます。</p>
+<table>
+  <tr><th>v1</th><th>v2</th></tr>
+  <tr><td><code>func NewContext(sampleRate int) (*Context, error)</code></td><td><code>func NewContext(sampleRate int) *Context</code></td></tr>
+  <tr><td><code>func NewInfiniteLoop(src ReadSeekCloser, length int64) *InfiniteLoop</code></td><td><code>func NewInfiniteLoop(src io.ReadSeeker, length int64) *InfiniteLoop</code></td></tr>
+  <tr><td><code>func NewInfiniteLoopWithIntro(src ReadSeekCloser, introLength int64, loopLength int64) *InfiniteLoop</code></td><td><code>func NewInfiniteLoopWithIntro(src io.ReadSeeker, introLength int64, loopLength int64) *InfiniteLoop</code></td></tr>
+  <tr><td><code>func NewPlayer(context *Context, src io.ReadCloser) (*Player, error)</code></td><td><code>func NewPlayer(context *Context, src io.Reader) (*Player, error)</code></td></tr>
+  <tr><td><code>func NewPlayerFromBytes(context *Context, src []byte) (*Player, error)</code></td><td><code>func NewPlayerFromBytes(context *Context, src []byte) *Player</code></td></tr>
+</table>
 <p lang="en">These APIs are removed or replaced.</p>
 <p lang="ja">次の API が削除されるか置き換えられます。</p>
 <table>
@@ -121,11 +115,15 @@
 </table>
 <h4><code>github.com/hajimehoshi/ebiten/audio/mp3</code></h4>
 <ul>
-  <li lang="en">The second argument <code>src</code> of <code>Decode</code> is now <code>io.ReadSeeker</code> instead of <code>audio.ReadSeekCloser</code> in v2.</li>
-  <li lang="ja"><code>Decode</code> の第 2 引数 <code>src</code> は v2 で <code>audio.ReadSeekCloser</code> の代わりに <code>io.ReadSeeker</code> になります。</li>
   <li lang="en"><code>Stream</code>'s <code>Close</code> is removed, and <code>Stream</code> no longer closes the original source in v2.</li>
   <li lang="ja"><code>Stream</code> の Close は削除され、 <code>Stream</code> はもはや v2 では元のソースをクローズしません。</li>
 </ul>
+<p lang="en">These APIs' signatures are changed.</p>
+<p lang="ja">次の API のシグニチャが変更されます。</p>
+<table>
+  <tr><th>v1</th><th>v2</th></tr>
+  <tr><td><code>func Decode(context *audio.Context, src audio.ReadSeekCloser) (*Stream, error)</code></td><td><code>func Decode(context *audio.Context, src io.ReadSeeker) (*Stream, error)</code></td></tr>
+</table>
 <p lang="en">These APIs are removed or replaced.</p>
 <p lang="ja">次の API が削除されるか置き換えられます。</p>
 <table>
@@ -135,11 +133,15 @@
 </table>
 <h4><code>github.com/hajimehoshi/ebiten/audio/vorbis</code></h4>
 <ul>
-  <li lang="en">The second argument <code>src</code> of <code>Decode</code> is now <code>io.ReadSeeker</code> instead of <code>audio.ReadSeekCloser</code> in v2.</li>
-  <li lang="ja"><code>Decode</code> の第 2 引数 <code>src</code> は v2 で <code>audio.ReadSeekCloser</code> の代わりに <code>io.ReadSeeker</code> になります。</li>
   <li lang="en"><code>Stream</code>'s <code>Close</code> is removed, and <code>Stream</code> no longer closes the original source in v2.</li>
   <li lang="ja"><code>Stream</code> の <code>Close</code> は削除され、 <code>Stream</code> はもはや v2 では元のソースをクローズしません。</li>
 </ul>
+<p lang="en">These APIs' signatures are changed.</p>
+<p lang="ja">次の API のシグニチャが変更されます。</p>
+<table>
+  <tr><th>v1</th><th>v2</th></tr>
+  <tr><td><code>func Decode(context *audio.Context, src audio.ReadSeekCloser) (*Stream, error)</code></td><td><code>func Decode(context *audio.Context, src io.ReadSeeker) (*Stream, error)</code></td></tr>
+</table>
 <p lang="en">These APIs are removed or replaced.</p>
 <p lang="ja">次の API が削除されるか置き換えられます。</p>
 <table>
@@ -149,11 +151,15 @@
 </table>
 <h4><code>github.com/hajimehoshi/ebiten/audio/wav</code></h4>
 <ul>
-  <li lang="en">The second argument <code>src</code> of <code>Decode</code> is now <code>io.ReadSeeker</code> instead of <code>audio.ReadSeekCloser</code> in v2.</li>
-  <li lang="ja"><code>Decode</code> の第 2 引数 <code>src</code> は v2 で <code>audio.ReadSeekCloser</code> の代わりに <code>io.ReadSeeker</code> になります。</li>
   <li lang="en"><code>Stream</code>'s <code>Close</code> is removed, and <code>Stream</code> no longer closes the original source in v2.</li>
   <li lang="ja"><code>Stream</code> の <code>Close</code> は削除され、 <code>Stream</code> はもはや v2 では元のソースをクローズしません。</li>
 </ul>
+<p lang="en">These APIs' signatures are changed.</p>
+<p lang="ja">次の API のシグニチャが変更されます。</p>
+<table>
+  <tr><th>v1</th><th>v2</th></tr>
+  <tr><td><code>func Decode(context *audio.Context, src audio.ReadSeekCloser) (*Stream, error)</code></td><td><code>func Decode(context *audio.Context, src io.ReadSeeker) (*Stream, error)</code></td></tr>
+</table>
 <p lang="en">These APIs are removed or replaced.</p>
 <p lang="ja">次の API が削除されるか置き換えられます。</p>
 <table>
@@ -162,10 +168,12 @@
   <tr><td><code>func (*Stream).Size</code></td><td><code>func (*Stream).Length</code></td></tr>
 </table>
 <h4><code>github.com/hajimehoshi/ebiten/ebitenutil</code></h4>
-<ul>
-  <li lang="en">The returning value <code>error</code> of <code>DebugPrint</code> is removed in v2.</li>
-  <li lang="ja"><code>DebugPrint</code> の戻り値 <code>error</code> は v2 で削除されます。</li>
-</ul>
+<p lang="en">These APIs' signatures are changed.</p>
+<p lang="ja">次の API のシグニチャが変更されます。</p>
+<table>
+  <tr><th>v1</th><th>v2</th></tr>
+  <tr><td><code>func DebugPrint(image *ebiten.Image, str string) error</code></td><td><code>func DebugPrint(image *ebiten.Image, str string)</code></td></tr>
+</table>
 <h4><code>github.com/hajimehoshi/ebiten/mobile</code></h4>
 <p lang="en">These APIs are removed or replaced.</p>
 <p lang="ja">次の API が削除されるか置き換えられます。</p>
