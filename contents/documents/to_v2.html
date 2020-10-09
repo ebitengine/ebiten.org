@@ -41,6 +41,8 @@
   <li lang="ja">インターフェイス <code>Game</code> の <code>Draw</code> 関数は v1 ではオプショナルでしたが、 v2 からは必須になります。</li>
   <li lang="en">The argument in interface <code>Game</code>'s <code>Update</code> is removed in v2.</li>
   <li lang="ja">インターフェイス <code>Game</code> の <code>Update</code> 引数は v2 で削除されます。</li>
+  <li lang="en">A new type <code>GamepadID</code> is introduced in v2.</li>
+  <li lang="ja">新しい型 <code>GamepadID</code> が v2 で導入されます。</li>
   <li lang="en">The default value of <code>IsRunnableOnUnfocused</code> is <code>true</code> in v2.</li>
   <li lang="ja"><code>IsRunnableOnUnfocused</code> のデフォルト値は v2 では <code>true</code> になります。</li>
 </ul>
@@ -48,11 +50,18 @@
 <p lang="ja">次の API のシグニチャが変更されます。</p>
 <table>
   <tr><th>v1</th><th>v2</th></tr>
+  <tr><td><code>func GamepadAxisNum(id int, axis int) int</code></td><td><code>func GamepadAxisNum(id GamepadID, axis int) int</code></td></tr>
+  <tr><td><code>func GamepadAxisNum(id int) int</code></td><td><code>func GamepadAxisNum(id GamepadID) int</code></td></tr>
+  <tr><td><code>func GamepadButtonNum(id int) int</code></td><td><code>func GamepadButtonNum(id GamepadID) int</code></td></tr>
+  <tr><td><code>func GamepadIDs() []int</code></td><td><code>GamepadIDs() []GamepadID</code></td></tr>
+  <tr><td><code>func GamepadName(id int) string</code></td><td><code>GamepadName(id GamepadID) string</code></td></tr>
+  <tr><td><code>func GamepadSDLID(id int) string</code></td><td><code>GamepadSDLID(id GamepadID) string</code></td></tr>
   <tr><td><code>func (*Image).Clear() error</code></td><td><code>func (*Image).Clear()</code></td></tr>
   <tr><td><code>func (*Image).Dispose() error</code></td><td><code>func (*Image).Dispose()</code></td></tr>
   <tr><td><code>func (*Image).DrawImage(img *Image, options *DrawImageOptions) error</code></td><td><code>func (*Image).DrawImage(img *Image, options *DrawImageOptions)</code></td></tr>
   <tr><td><code>func (*Image).Fill(clr color.Color) error</code></td><td><code>func (*Image).Fill(clr color.Color)</code></td></tr>
   <tr><td><code>func (*Image).ReplacePixels(pixels []byte) error</code></td><td><code>func (*Image).ReplacePixels(pixels []byte)</code></td></tr>
+  <tr><td><code>func IsGamepadButtonPressed(id int, button GamepadButton) bool</code></td><td><code>func IsGamepadButtonPressed(id GamepadID, button GamepadButton) bool</code></td></tr>
   <tr><td><code>func NewImage(width, height int, filter Filter) (*Image, error)</code></td><td><code>func NewImage(width, height int) *Image</code></td></tr>
   <tr><td><code>func NewImageFromImage(source image.Image, filter Filter) (*Image, error)</code></td><td><code>func NewImage(source image.Image) *Image</code></td></tr>
 </table>
@@ -173,6 +182,17 @@
 <table>
   <tr><th>v1</th><th>v2</th></tr>
   <tr><td><code>func DebugPrint(image *ebiten.Image, str string) error</code></td><td><code>func DebugPrint(image *ebiten.Image, str string)</code></td></tr>
+</table>
+<h4><code>github.com/hajimehoshi/ebiten/inpututil</code></h4>
+<p lang="en">These APIs' signatures are changed.</p>
+<p lang="ja">次の API のシグニチャが変更されます。</p>
+<table>
+  <tr><th>v1</th><th>v2</th></tr>
+  <tr><td><code>func GamepadButtonPressDuration(id int, button ebiten.GamepadButton) int</code></td><td><code>func GamepadButtonPressDuration(id ebiten.GamepadID, button ebiten.GamepadButton) int</code></td></tr>
+  <tr><td><code>func IsGamepadButtonJustPressed(id int, button ebiten.GamepadButton) bool</code></td><td><code>func IsGamepadButtonJustPressed(id ebiten.GamepadID, button ebiten.GamepadButton) bool</code></td></tr>
+  <tr><td><code>func IsGamepadButtonJustReleased(id int, button ebiten.GamepadButton) bool</code></td><td><code>func IsGamepadButtonJustReleased(id ebiten.GamepadID, button ebiten.GamepadButton) bool</code></td></tr>
+  <tr><td><code>func IsGamepadJustDisconnected(id int) bool</code></td><td><code>func IsGamepadJustDisconnected(id ebiten.GamepadID) bool</code></td></tr>
+  <tr><td><code>func JustConnectedGamepadIDs() []int</code></td><td><code>func JustConnectedGamepadIDs() []ebiten.GamepadID</code></td></tr>
 </table>
 <h4><code>github.com/hajimehoshi/ebiten/mobile</code></h4>
 <p lang="en">These APIs are removed or replaced.</p>

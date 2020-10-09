@@ -218,7 +218,7 @@ h3 {
     margin-bottom: 24px;
 }
 h4, h5, h6 {
-    margin-top: 0;
+    margin-top: 24px;
     margin-bottom: 24px;
 }
 p, ul, ol, nav.tags {
