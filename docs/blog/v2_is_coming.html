@@ -6,17 +6,17 @@
     <meta name="description" content="Ebiten is an open source game library for the Go programming language. Ebiten&#39;s simple API allows you to quickly and easily develop 2D games that can be deployed across multiple platforms.">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#db5620">
-    <meta property="og:title" content="v1.10.2 is released - Ebiten">
+    <meta property="og:title" content="Ebiten v2 is coming - Ebiten">
     <meta property="og:site_name" content="Ebiten - A dead simple 2D game library for Go">
     <meta property="og:image" content="https://ebiten.org/images/share.png">
     <meta property="og:description" content="Ebiten is an open source game library for the Go programming language. Ebiten&#39;s simple API allows you to quickly and easily develop 2D games that can be deployed across multiple platforms.">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@hajimehoshi">
-    <meta name="twitter:title" content="v1.10.2 is released - Ebiten">
+    <meta name="twitter:title" content="Ebiten v2 is coming - Ebiten">
     <meta name="twitter:description" content="Ebiten is an open source game library for the Go programming language. Ebiten&#39;s simple API allows you to quickly and easily develop 2D games that can be deployed across multiple platforms.">
     <meta name="twitter:image" content="https://ebiten.org/images/share.png">
-    <title>v1.10.2 is released - Ebiten</title>
-    <link rel="canonical" href="https://ebiten.org/blog/v1.10.2.html">
+    <title>Ebiten v2 is coming - Ebiten</title>
+    <link rel="canonical" href="https://ebiten.org/blog/v2_is_coming.html">
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700%7cRoboto+Mono:400,700&amp;display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP:400,700&display=swap&subset=japanese" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="/styles/style.css">
@@ -106,19 +106,28 @@
     </nav>
     <main>
       <article>
-        <h1>v1.10.2 is released</h1>
-<p class="meta">Hajime Hoshi<br><span id="meta-created">2019-12-26</span></p>
-<p>We are very happy to announce the release of <a href="https://github.com/hajimehoshi/ebiten/releases/tag/v1.10.2">v1.10.2</a>. This includes only bug fixes from v1.10.1.</p>
+        <h1 lang="en">Ebiten v2 is coming</h1>
+<h1 lang="ja">Ebiten v2 がやってくる</h1>
+<p class="meta">Hajime Hoshi<br><span id="meta-created">2020-10-10</span></p>
+<p lang="en">As we described in the <a href="/blog/roadmap2020.html">roadmap</a>, we will release Ebiten v2 this month. v2 includes incompatible changes with v2 in the API, but the others are almost same as v1. For migration from v1 to v2, please see <a href="/documents/to_v2.html">Ebiten v2 migration guide</a>. Basically we plan to add these quiet changes.</p>
+<p lang="ja"><a href="/blog/roadmap2020.html">ロードマップ</a>での目論見通り、今月中に v2 がリリースされます。 v2 は v1 の API とは互換性のない変更を含みますが、その他はほぼすべて同じです。v1 から v2 への移行については、 <a href="/documents/to_v2.html">Ebiten v2 移行ガイド</a>を参照してください。基本的に次のような、おとなしめの変更がはいります。</p>
 <ul>
-  <li>Compile error with Go 1.14 (beta) for Wasm (<a href="https://github.com/hajimehoshi/ebiten/issues/1024">Issue #1024</a>)</li>
-  <li>Avoid unnecessary copying: this is a performance improvement rather than a bug fix, but this was needed to pass on the test bots. (<a href="https://github.com/hajimehoshi/ebiten/issues/983">Issue #983</a>)</li>
+  <li lang="en">Removing already-deprecated features (e.g., <code>Run</code>)</li>
+  <li lang="ja">すでに廃止予定の機能を削除 (例: <code>Run</code>)</li>
+  <li lang="en">Removing 'error' returning values from some functions (e.g., <code>DrawImage</code>)</li>
+  <li lang="ja">いくつかの関数から、戻り値のエラーを削除 (例: <code>DrawImage</code>)</li>
+  <li lang="en">Adding new types to replace integers (e.g., <code>GamepadIDs</code>s will return <code>[]GamepadID</code> instead of <code>[]int</code>)</li>
+  <li lang="ja">整数型に代わる新しい型を追加 (例: <code>GamepadIDs</code> が <code>[]int</code> の代わりに <code>[]GamepadID</code> を返すようになる)</li>
 </ul>
-<p>Enjoy!</p>
+<p lang="en">Ebiten v2.0.0-rc.1 has already been released, and you can try that now.</p>
+<p lang="ja">Ebiten v2.0.0-rc.1 はすでにリリース済みで、すぐに試すことができます。</p>
+<p lang="en">Ebiten v2.0.0 will come at earliest in a week. Stay tuned!</p>
+<p lang="ja">Ebiten v2.0.0 は早くて一週間後リリース予定です。お楽しみに!</p>
 
       </article>
       <footer>
-        <p lang="en">Feedback about this page? <a href="https://github.com/ebiten/ebiten.org/issues/new?body=https%3a%2f%2febiten.org%2fblog%2fv1.10.2.html%0a%0a">Please reach out on GitHub</a>. Thank you!</p>
-        <p lang="ja">このページに何か問題がありましたら、<a href="https://github.com/ebiten/ebiten.org/issues/new?body=https%3a%2f%2febiten.org%2fblog%2fv1.10.2.html%0a%0a">GitHub にて報告</a>していただけると幸いです。</p>
+        <p lang="en">Feedback about this page? <a href="https://github.com/ebiten/ebiten.org/issues/new?body=https%3a%2f%2febiten.org%2fblog%2fv2_is_coming.html%0a%0a">Please reach out on GitHub</a>. Thank you!</p>
+        <p lang="ja">このページに何か問題がありましたら、<a href="https://github.com/ebiten/ebiten.org/issues/new?body=https%3a%2f%2febiten.org%2fblog%2fv2_is_coming.html%0a%0a">GitHub にて報告</a>していただけると幸いです。</p>
       </footer>
     </main>
   </body>
