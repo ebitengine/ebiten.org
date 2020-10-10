@@ -132,6 +132,8 @@
   <tr><td><code>func NewInfiniteLoopWithIntro(src <span class="old">ReadSeekCloser</span>, introLength int64, loopLength int64) *InfiniteLoop</code></td><td><code>func NewInfiniteLoopWithIntro(src <span class="new">io.ReadSeeker</span>, introLength int64, loopLength int64) *InfiniteLoop</code></td></tr>
   <tr><td><code>func NewPlayer(context *Context, src io.ReadCloser) (*Player, <span class="old">error</span>)</code></td><td><code>func NewPlayer(context *Context, src io.Reader) (*Player, error)</code></td></tr>
   <tr><td><code>func NewPlayerFromBytes(context *Context, src []byte) (*Player, <span class="old">error</span>)</code></td><td><code>func NewPlayerFromBytes(context *Context, src []byte) *Player</code></td></tr>
+  <tr><td><code>func (*Player).Pause() <span class="old">error</span></code></td><td><code>func (*Player).Pause()</code></td></tr>
+  <tr><td><code>func (*Player).Play() <span class="old">error</span></code></td><td><code>func (*Player).Play()</code></td></tr>
 </table>
 <p lang="en">These APIs are removed or replaced.</p>
 <p lang="ja">次の API が削除されるか置き換えられます。</p>
