@@ -40,8 +40,8 @@
 <p lang="ja"><code>import</code> 内の <code>github.com/hajimehoshi/ebiten</code> をすべて <code>github.com/hajimehoshi/ebiten/v2</code> に更新します。 <code>github.com/hajimehoshi/ebiten/text</code> は <code>github.com/hajimehoshi/ebiten/v2/text</code> になります。</p>
 <p lang="en">Lastly, execute <code>go mod tidy</code> command so that your <code>go.mod</code> will include <code>github.com/hajimehoshi/ebiten/v2</code> and exclude <code>github.com/hajimehoshi/ebiten</code>.</p>
 <p lang="ja">最後に <code>go mod tidy</code> コマンドを実行します。 <code>go.mod</code> に <code>github.com/hajimehoshi/ebiten/v2</code> が含まれるようになり、 <code>github.com/hajimehoshi/ebiten</code> が消えるはずです。</p>
-<p lang="en">You cannot mix Ebiten v1 and v2. If you run <code>go mod tidy</code> but there are both version in your <code>go.mod</code>, confirm the dependency relationships and remove the dependency on v1.</p>
-<p lang="ja">Ebiten v1 と v2 は混ぜて使用することが出来ません。 <code>go mod tidy</code> を実行したあとにも関わらず <code>go.mod</code> で両方記述されてしまっている場合は、依存関係を確認して v1 の依存を消してください。</p>
+<p lang="en">You cannot mix Ebiten v1 and v2 for one application. If you run <code>go mod tidy</code> but there are both version in your <code>go.mod</code>, confirm the dependency relationships and remove the dependency on v1. However, you don't have to do it if you intentionally manage multiple applications in one module.</p>
+<p lang="ja">Ebiten v1 と v2 は 1 つのアプリケーションに混ぜて使用することが出来ません。 <code>go mod tidy</code> を実行したあとにも関わらず <code>go.mod</code> で両方記述されてしまっている場合は、依存関係を確認して v1 の依存を消してください。ただし複数のアプリケーションを 1 つのモジュールで意図的に管理するような場合は、その限りではありません。</p>
 <h3 lang="en">Updating the API usages</h2>
 <h3 lang="ja">API の更新</h2>
 <h4><code>github.com/hajimehoshi/ebiten</code></h4>
