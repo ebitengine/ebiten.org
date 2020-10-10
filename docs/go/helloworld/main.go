@@ -3,13 +3,13 @@ package main
 import (
 	"log"
 
-	"github.com/hajimehoshi/ebiten"
-	"github.com/hajimehoshi/ebiten/ebitenutil"
+	"github.com/hajimehoshi/ebiten/v2"
+	"github.com/hajimehoshi/ebiten/v2/ebitenutil"
 )
 
 type Game struct{}
 
-func (g *Game) Update(screen *ebiten.Image) error {
+func (g *Game) Update() error {
 	return nil
 }
 

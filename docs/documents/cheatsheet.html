@@ -45,8 +45,10 @@
         <li lang="ja"><a href="/">ホーム</a></li>
         <li lang="en"><a href="https://github.com/hajimehoshi/ebiten">GitHub project</a></li>
         <li lang="ja"><a href="https://github.com/hajimehoshi/ebiten">GitHub プロジェクト</a></li>
-        <li lang="en"><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten">API reference</a></li>
-        <li lang="ja"><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten">API リファレンス</a></li>
+        <li lang="en"><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2">API reference (v2)</a></li>
+        <li lang="ja"><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2">API リファレンス (v2)</a></li>
+        <li lang="en"><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten">API reference (v1)</a></li>
+        <li lang="ja"><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten">API リファレンス (v1)</a></li>
         <li lang="en"><a href="/tour/">Tour (WIP)</a></li>
         <li lang="ja"><a href="/tour/">ツアー (未完成)</a></li>
         <li lang="en"><a href="/documents/">Documents</a></li>
@@ -78,6 +80,7 @@
 <h3 lang="en">Release Notes</h2>
 <h3 lang="ja">リリースノート</h2>
 <ul>
+  <li><a href="./2.0.html">2.0</a></li>
   <li><a href="./1.12.html">1.12</a></li>
   <li><a href="./1.11.html">1.11</a></li>
 </ul>
@@ -98,19 +101,16 @@
     <main>
       <article>
         <h1>Cheat Sheet</h1>
-<p>This cheat sheet describes the essential APIs that are commonly used. For the complete list of the API, see the <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten">API reference</a>.</p>
+<p>This cheat sheet describes the essential APIs that are commonly used. For the complete list of the API, see the <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2">API reference</a>.</p>
 <h2>Overview</h2>
-<p class="img"><a href="/images/overview1.12.png"><img src="/images/overview1.12.png" width="1618" height="993" alt="Overview"></a></p>
+<p class="img"><a href="/images/overview2.0.png"><img src="/images/overview2.0.png" width="1618" height="993" alt="Overview"></a></p>
 <h2>General</h2>
 <h3><code>ebiten.Game</code></h3>
 <pre><code>type Game interface {
-    // Update updates a game by one tick. The given argument represents a screen image.
-    Update(screen *Image) error
+    // Update updates a game by one tick.
+    Update() error
 
     // Draw draw the game screen. The given argument represents a screen image.
-    //
-    // (To be exact, Draw is not defined in this interface due to backward compatibility, but RunGame's
-    // behavior depends on the existence of Draw.)
     Draw(screen *Image)
 
     // Layout accepts a native outside size in device-independent pixels and returns the game's logical
@@ -136,7 +136,7 @@ type Game struct{}
 
 // Update proceeds the game state.
 // Update is called every tick (1/60 [s] by default).
-func (g *Game) Update(screen *ebiten.Image) error {
+func (g *Game) Update() error {
     // Write your game's logical update.
     return nil
 }
@@ -166,8 +166,8 @@ func main() {
 <h3><code>ebiten.Run</code></h3>
 <p><code>Run</code> is for backward compatibility and was replaced with <code>RunGame</code>.</p>
 <h3><code>ebitenutil.DebugPrint</code></h3>
-<pre><code>func DebugPrint(image *ebiten.Image, str string) error</code></pre>
-<p>(Defined at <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/ebitenutil"><code>ebitenutil</code> package</a>)</p>
+<pre><code>func DebugPrint(image *ebiten.Image, str string)</code></pre>
+<p>(Defined at <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2/ebitenutil"><code>ebitenutil</code> package</a>)</p>
 <p>DebugPrint draws the string str on the image on left top corner.</p>
 <p>DebugPrint always returns nil.</p>
 <h2>Graphics</h2>
@@ -177,21 +177,17 @@ func main() {
 }</code></pre>
 <p><code>Image</code> represents a rectangle set of pixels. The pixel format is alpha-premultiplied RGBA. <code>Image</code> implements <a href="https://golang.org/pkg/image/#Image"><code>image.Image</code></a>.</p>
 <h4><code>ebiten.NewImage</code></h4>
-<pre><code>func NewImage(width, height int, filter Filter) (*Image, error)</code></pre>
-<p><code>NewImage</code> returns an empty image. <code>NewImage</code> always returns nil error (so you can ignore that).</p>
-<p><code>filter</code> argument is just for backward compatibility. If you are not sure, specify <code>FilterDefault</code>.</p>
+<pre><code>func NewImage(width, height int) *Image</code></pre>
+<p><code>NewImage</code> returns an empty image.</p>
 <h4><code>ebiten.NewImageFromImage</code></h4>
-<pre><code>func NewImageFromImage(source image.Image, filter Filter) (*Image, error)</code></pre>
-<p><code>NewImageFromImage</code> creates a new image with the given image (source). <code>NewImageFromImage</code> always returns nil error.</p>
-<p><code>filter</code> argument is just for backward compatibility. If you are not sure, specify <code>FilterDefault</code>.</p>
+<pre><code>func NewImageFromImage(source image.Image) *Image</code></pre>
+<p><code>NewImageFromImage</code> creates a new image with the given image (source).</p>
 <h4><code>(*ebiten.Image).Clear</code></h4>
-<pre><code>func (i *Image) Clear() error</code></pre>
+<pre><code>func (i *Image) Clear()</code></pre>
 <p><code>Clear</code> resets the pixels of the image into 0.</p>
-<p><code>Clear</code> always returns nil.</p>
 <h4><code>(*ebiten.Image).Fill</code></h4>
-<pre><code>func (i *Image) Fill(clr color.Color) error</code></pre>
+<pre><code>func (i *Image) Fill(clr color.Color)</code></pre>
 <p><code>Fill</code> fills the image with a solid color.</p>
-<p><code>Fill</code> always returns nil.</p>
 <h4><code>(*ebiten.Image).Size</code></h4>
 <pre><code>func (i *Image) Size() (width, height int)</code></pre>
 <p><code>Size</code> returns the size of the image.</p>
@@ -202,7 +198,7 @@ func main() {
 <p>If the image is disposed, SubImage returns nil.</p>
 <p>In the current Ebiten implementation, <code>SubImage</code> is available only as a rendering source.</p>
 <h4><code>(*ebiten.Image).DrawImage</code></h4>
-<pre><code>func (i *Image) DrawImage(img *Image, options *DrawImageOptions) error</code></pre>
+<pre><code>func (i *Image) DrawImage(img *Image, options *DrawImageOptions)</code></pre>
 <p><code>DrawImage</code> draws the given image on the image <code>i</code>.</p>
 <p><code>DrawImage</code> accepts the <code>options</code>. For details, see the document of <code>DrawImageOptions</code>.</p>
 <p><code>DrawImage</code> determines the part to draw, then <code>DrawImage</code> applies the geometry matrix and the color matrix.</p>
@@ -220,7 +216,6 @@ func main() {
   <li>All Filter values are same</li>
 </ul>
 <p>For more details, see <a href="performancetips.html">Performance Tips</a>.</p>
-<p><code>DrawImage</code> always returns nil.</p>
 <h3><code>ebiten.DrawImageOptions</code></h3>
 <pre><code>type DrawImageOptions struct {
     // GeoM is a geometry matrix to draw.
@@ -236,7 +231,7 @@ func main() {
     CompositeMode CompositeMode
 
     // Filter is a type of texture filter.
-    // The default (zero) value is FilterDefault.
+    // The default (zero) value is FilterNearest.
     Filter Filter
 }</code></pre>
 <p><code>DrawImageOptions</code> represents options to render an image on an image.</p>
@@ -290,7 +285,7 @@ func main() {
 <p><code>IsKeyPressed</code> returns a boolean indicating whether <code>key</code> is pressed.</p>
 <h3><code>inpututil.IsKeyJustPressed</code></h3>
 <pre><code>func IsKeyJustPressed(key ebiten.Key) bool</code></pre>
-<p>(Defined at <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/inpututil"><code>inpututil</code> package</a>)</p>
+<p>(Defined at <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2/inpututil"><code>inpututil</code> package</a>)</p>
 <p><code>IsKeyJustPressed</code> returns a boolean value indicating whether the given <code>key</code> is pressed just in the current frame.</p>
 <h3><code>ebiten.Key</code></h3>
 <pre><code>type Key int</code></pre>
@@ -389,7 +384,7 @@ func main() {
 <p><code>IsMouseButtonPressed</code> returns a boolean indicating whether <code>mouseButton</code> is pressed.</p>
 <h3><code>inpututil.IsMouseButtonJustPressed</code></h3>
 <pre><code>func IsMouseButtonJustPressed(button ebiten.MouseButton) bool</code></pre>
-<p>(Defined at <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/inpututil"><code>inpututil</code> package</a>)</p>
+<p>(Defined at <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2/inpututil"><code>inpututil</code> package</a>)</p>
 <p><code>IsMouseButtonJustPressed</code> returns a boolean value indicating whether the given mouse button is pressed just in the current frame.</p>
 <h3><code>ebiten.MouseButton</code></h3>
 <pre><code>type MouseButton int</code></pre>

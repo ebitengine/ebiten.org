@@ -4,12 +4,12 @@ import (
 	"image/color"
 	"log"
 
-	"github.com/hajimehoshi/ebiten"
+	"github.com/hajimehoshi/ebiten/v2"
 )
 
 type Game struct{}
 
-func (g *Game) Update(screen *ebiten.Image) error {
+func (g *Game) Update() error {
 	return nil
 }
 

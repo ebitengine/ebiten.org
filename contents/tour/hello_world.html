@@ -20,16 +20,16 @@
     <pre data-codesrc="/go/helloworld/main.go" data-codelinerange="1-8"></pre>
   </div>
   <div class="grid-item-2">
-    <p>Imports Ebiten packages. This program imports two packages: <code><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten">github.com/hajimehoshi/ebiten</a></code> and <code><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/ebitenutil">github.com/hajimehoshi/ebiten/ebitenutil</a></code>.</p>
-    <p><code>github.com/hajimehoshi/ebiten</code> is the core package of Ebiten, which provides functions for drawing and inputs.</p>
-    <p><code>github.com/hajimehoshi/ebiten/ebitenutil</code> is the utility package of Ebiten. In this program, this package is used to print a debug message on the screen.</p>
+    <p>Imports Ebiten packages. This program imports two packages: <code><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2">github.com/hajimehoshi/ebiten/v2</a></code> and <code><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2/ebitenutil">github.com/hajimehoshi/ebiten/v2/ebitenutil</a></code>.</p>
+    <p><code>github.com/hajimehoshi/ebiten/v2</code> is the core package of Ebiten, which provides functions for drawing and inputs.</p>
+    <p><code>github.com/hajimehoshi/ebiten/v2/ebitenutil</code> is the utility package of Ebiten. In this program, this package is used to print a debug message on the screen.</p>
     <p>There are other several packages in Ebiten. See <a href="packages.html">the packages page</a> for more details.</p>
   </div>
   <div class="grid-item-2">
     <pre data-codesrc="/go/helloworld/main.go" data-codelinerange="10-10"></pre>
   </div>
   <div class="grid-item-2">
-    <p>Defines <code>Game</code> struct. <code>Game</code> implements <code><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten#Game">ebiten.Game</a></code> interface. <code>ebiten.Game</code> has necessary functions for an Ebiten game: <code>Update</code>, <code>Draw</code> and <code>Layout</code>. Let's see them one by one.</p>
+    <p>Defines <code>Game</code> struct. <code>Game</code> implements <code><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#Game">ebiten.Game</a></code> interface. <code>ebiten.Game</code> has necessary functions for an Ebiten game: <code>Update</code>, <code>Draw</code> and <code>Layout</code>. Let's see them one by one.</p>
   </div>
   <div class="grid-item-2">
     <pre data-codesrc="/go/helloworld/main.go" data-codelinerange="12-14"></pre>
@@ -51,8 +51,7 @@
     <pre data-codesrc="/go/helloworld/main.go" data-codelinerange="17-18"></pre>
   </div>
   <div class="grid-item-2">
-    <p><code><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/ebitenutil#DebugPrint">ebitenutil.DebugPrint</a></code> is a utility function to render a debug message on an image. In this case, <code>screen</code> is passed as the render target of the debug printing. As <code>screen</code> is reset (or cleared in another word) whenever <code>Draw</code> is called, <code>DebugPrint</code> should be called every time.</p>
-    <p><code>DebugPrint</code> always returns <code>nil</code>. The signature says this <code>DebugPrint</code> returns an error value, but this is due to historical reasons. You can ignore the returned error of <code>DebugPrint</code>.</p>
+    <p><code><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2/ebitenutil#DebugPrint">ebitenutil.DebugPrint</a></code> is a utility function to render a debug message on an image. In this case, <code>screen</code> is passed as the render target of the debug printing. As <code>screen</code> is reset (or cleared in another word) whenever <code>Draw</code> is called, <code>DebugPrint</code> should be called every time.</p>
   </div>
   <div class="grid-item-2">
     <pre data-codesrc="/go/helloworld/main.go" data-codelinerange="20-22"></pre>
@@ -70,18 +69,18 @@
     <pre data-codesrc="/go/helloworld/main.go" data-codelinerange="25-25"></pre>
   </div>
   <div class="grid-item-2">
-    <p><code><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten#SetWindowSize">ebiten.SetWindowSize</a></code> sets the window's size. Without calling this, the default window size is used.</code></p>
+    <p><code><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#SetWindowSize">ebiten.SetWindowSize</a></code> sets the window's size. Without calling this, the default window size is used.</code></p>
   </div>
   <div class="grid-item-2">
     <pre data-codesrc="/go/helloworld/main.go" data-codelinerange="26-26"></pre>
   </div>
   <div class="grid-item-2">
-    <p><code><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten#SetWindowTitle">ebiten.SetWindowTitle</a></code> sets the window's title.</code></p>
+    <p><code><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#SetWindowTitle">ebiten.SetWindowTitle</a></code> sets the window's title.</code></p>
   </div>
   <div class="grid-item-2">
     <pre data-codesrc="/go/helloworld/main.go" data-codelinerange="27-30"></pre>
   </div>
   <div class="grid-item-2">
-    <p><code><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten#RunGame">ebiten.RunGame</a></code> is the function to run the main loop of an Ebiten game. The argument is a <code>Game</code> object, that implements <code>ebiten.Game</code>. <code>ebiten.RunGame</code> returns a non-nil error value when an error happen. In this program, when a non-nil error is returned, this error is logged as a fatal error.</p>
+    <p><code><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#RunGame">ebiten.RunGame</a></code> is the function to run the main loop of an Ebiten game. The argument is a <code>Game</code> object, that implements <code>ebiten.Game</code>. <code>ebiten.RunGame</code> returns a non-nil error value when an error happen. In this program, when a non-nil error is returned, this error is logged as a fatal error.</p>
   </div>
 </div>

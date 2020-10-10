@@ -45,8 +45,10 @@
         <li lang="ja"><a href="/">ホーム</a></li>
         <li lang="en"><a href="https://github.com/hajimehoshi/ebiten">GitHub project</a></li>
         <li lang="ja"><a href="https://github.com/hajimehoshi/ebiten">GitHub プロジェクト</a></li>
-        <li lang="en"><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten">API reference</a></li>
-        <li lang="ja"><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten">API リファレンス</a></li>
+        <li lang="en"><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2">API reference (v2)</a></li>
+        <li lang="ja"><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2">API リファレンス (v2)</a></li>
+        <li lang="en"><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten">API reference (v1)</a></li>
+        <li lang="ja"><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten">API リファレンス (v1)</a></li>
         <li lang="en"><a href="/tour/">Tour (WIP)</a></li>
         <li lang="ja"><a href="/tour/">ツアー (未完成)</a></li>
         <li lang="en"><a href="/documents/">Documents</a></li>
@@ -78,6 +80,7 @@
 <h3 lang="en">Release Notes</h2>
 <h3 lang="ja">リリースノート</h2>
 <ul>
+  <li><a href="./2.0.html">2.0</a></li>
   <li><a href="./1.12.html">1.12</a></li>
   <li><a href="./1.11.html">1.11</a></li>
 </ul>
@@ -220,7 +223,7 @@ go mod init github.com/yourname/yourgame</code></pre>
     <p lang="ja"><code>-tags=example</code> は Ebiten のサンプルを実行するために必要です。 Ebiten サンプルのパッケージがビルドタグを必要とするためです。</p>
   </div>
   <div class="grid-item-2">
-    <pre><code>go run -tags=example github.com/hajimehoshi/ebiten/examples/rotate</code></pre>
+    <pre><code>go run -tags=example github.com/hajimehoshi/ebiten/v2/examples/rotate</code></pre>
   </div>
   <div class="grid-item-2">
     <p lang="en">If you see the window with a rotating Gophers picture, congratulations! You have succeeded to install Ebiten.</p>

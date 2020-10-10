@@ -45,8 +45,10 @@
         <li lang="ja"><a href="/">ホーム</a></li>
         <li lang="en"><a href="https://github.com/hajimehoshi/ebiten">GitHub project</a></li>
         <li lang="ja"><a href="https://github.com/hajimehoshi/ebiten">GitHub プロジェクト</a></li>
-        <li lang="en"><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten">API reference</a></li>
-        <li lang="ja"><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten">API リファレンス</a></li>
+        <li lang="en"><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2">API reference (v2)</a></li>
+        <li lang="ja"><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2">API リファレンス (v2)</a></li>
+        <li lang="en"><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten">API reference (v1)</a></li>
+        <li lang="ja"><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten">API リファレンス (v1)</a></li>
         <li lang="en"><a href="/tour/">Tour (WIP)</a></li>
         <li lang="ja"><a href="/tour/">ツアー (未完成)</a></li>
         <li lang="en"><a href="/documents/">Documents</a></li>
@@ -78,6 +80,7 @@
 <h3 lang="en">Release Notes</h2>
 <h3 lang="ja">リリースノート</h2>
 <ul>
+  <li><a href="./2.0.html">2.0</a></li>
   <li><a href="./1.12.html">1.12</a></li>
   <li><a href="./1.11.html">1.11</a></li>
 </ul>
@@ -100,13 +103,13 @@
         <h1>Performance Tips</h1>
 <h2>Make similar draw function calls successive</h2>
 <p>The less draw commands, the better the performance is.</p>
-<p>One drawing function like <code><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten?tab=doc#Image.DrawImage">DrawImage</a></code> or <code><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten?tab=doc#Image.Fill">Fill</a></code> is usually treated as one (internal) draw command, but there is an exception. Successive drawing commands are treated as one draw command when all the below conditions are satisfied:</p>
+<p>One drawing function like <code><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#Image.DrawImage">DrawImage</a></code> or <code><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#Image.Fill">Fill</a></code> is usually treated as one (internal) draw command, but there is an exception. Successive drawing commands are treated as one draw command when all the below conditions are satisfied:</p>
 <ul>
-  <li>All the functions are <code>DrawImage</code> or <code><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten?tab=doc#Image.DrawTriangles">DrawTriangles</a></code></li>
+  <li>All the functions are <code>DrawImage</code> or <code><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#Image.DrawTriangles">DrawTriangles</a></code></li>
   <li>All the render targets are same (<code>A</code> in <code>A.DrawImage(B, op)</code>)</li>
   <li>Either all ColorM element values are same or all the ColorM have only diagonal ('scale') elements
     <ul>
-      <li>If only <code><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten?tab=doc#ColorM.Scale">(*ColorM).Scale</a></code> is applied to a ColorM, the ColorM has only diagonal elements. The other ColorM functions might modify the other elements.</li>
+      <li>If only <code><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#ColorM.Scale">(*ColorM).Scale</a></code> is applied to a ColorM, the ColorM has only diagonal elements. The other ColorM functions might modify the other elements.</li>
     </ul>
   </li>
   <li>All the composite modes are same</li>
@@ -117,7 +120,7 @@
 <p>examples/sprites is a good example to draw > 10000 sprites with one (or a few) draw command(s).</p>
 <h2>Know the actual drawing commands with <code>ebitendebug</code> build tag</h2>
 <p>To see actual drawing commands, you can use <code>ebitendebug</code> build tag. For example, if you execute <code>blocks</code> example, you will see the below logs:</p>
-<pre><code>go run -tags=example,ebitendebug github.com/hajimehoshi/ebiten/examples/blocks</code></pre>
+<pre><code>go run -tags=example,ebitendebug github.com/hajimehoshi/ebiten/v2/examples/blocks</code></pre>
 <pre><code>...
 --
 draw-triangles: dst: 7 <- src: 1, colorm: &lt;nil&gt;, mode copy, filter: nearest, address: clamp_to_zero
@@ -155,15 +158,15 @@ B.DrawImage(A, op) // cyclic drawing! Avoid this if possible.</code></pre>
 <h2>Don&apos;t call <code>(*Image).At</code> too much</h2>
 <p>At is also heavy that tries to solve all the queued draw commands and retrieve pixels from GPU.</p>
 <h2>It is fine to create one player for one short sound effect</h2>
-<p>Creating an <code><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/audio?tab=doc#Player">audio.Player</a></code> is not expensive. It is fine to create one player for one short sound effect. For example, this code is totally fine:</p>
+<p>Creating an <code><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2/audio#Player">audio.Player</a></code> is not expensive. It is fine to create one player for one short sound effect. For example, this code is totally fine:</p>
 <pre><code>// PlaySE plays a sound effect.
 func PlaySE(bs []byte) {
-    sePlayer, _ := audio.NewPlayerFromBytes(audioContext, bs)
+    sePlayer := audio.NewPlayerFromBytes(audioContext, bs)
     // sePlayer is never GCed as long as it plays.
     sePlayer.Play()
 }</code></pre>
-<p>In this code, <code><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/audio?tab=doc#NewPlayerFromBytes">audio.NewPlayerFromBytes</a></code> is used instead of <code><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/audio?tab=doc#NewPlayer">audio.NewPlayer</a></code>. <code>audio.NewPlayerFromBytes</code> creates a new stream on call, while <code>audio.NewPlayer</code> accepts an existing stream. As a stream has a byte data and its position, one stream cannot be shared by multiple players. With <code>NewPlayerFromBytes</code>, you can play sounds effects regardless of whether the same sound is playing or not.</p>
-<p>As for BGMs that bytes can be much bigger than SEs, it is recommended to reuse one <code>audio.Player</code> by, e.g., <code><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/audio?tab=doc#Player.Rewind">(*audio.Player).Rewind</a></code>. It is because preparing a byte slice for the whole music at one time might be expensive. It should be rare to play the same BGM at the same time anyway.</p>
+<p>In this code, <code><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2/audio#NewPlayerFromBytes">audio.NewPlayerFromBytes</a></code> is used instead of <code><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2/audio#NewPlayer">audio.NewPlayer</a></code>. <code>audio.NewPlayerFromBytes</code> creates a new stream on call, while <code>audio.NewPlayer</code> accepts an existing stream. As a stream has a byte data and its position, one stream cannot be shared by multiple players. With <code>NewPlayerFromBytes</code>, you can play sounds effects regardless of whether the same sound is playing or not.</p>
+<p>As for BGMs that bytes can be much bigger than SEs, it is recommended to reuse one <code>audio.Player</code> by, e.g., <code><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2/audio#Player.Rewind">(*audio.Player).Rewind</a></code>. It is because preparing a byte slice for the whole music at one time might be expensive. It should be rare to play the same BGM at the same time anyway.</p>
 <h2>Encourage using the discrete GPU on Windows</h2>
 <p>On Windows, you can encourage your application to use the discrete GPU instead of the integrated GPU by exporting some symbols: <code>NvOptimusEnablement</code> and <code>AmdPowerXpressRequestHighPerformance</code>. This requires <a href="https://golang.org/cmd/cgo/">Cgo</a> unfortunately, then Ebiten does not do this by default.</p>
 <p><a href="https://github.com/silbinarywolf/preferdiscretegpu">Jae&apos;s preferdiscretegpu</a> is a nice package to enable this very easily.</p>

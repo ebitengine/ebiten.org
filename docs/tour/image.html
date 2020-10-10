@@ -45,8 +45,10 @@
         <li lang="ja"><a href="/">ホーム</a></li>
         <li lang="en"><a href="https://github.com/hajimehoshi/ebiten">GitHub project</a></li>
         <li lang="ja"><a href="https://github.com/hajimehoshi/ebiten">GitHub プロジェクト</a></li>
-        <li lang="en"><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten">API reference</a></li>
-        <li lang="ja"><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten">API リファレンス</a></li>
+        <li lang="en"><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2">API reference (v2)</a></li>
+        <li lang="ja"><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2">API リファレンス (v2)</a></li>
+        <li lang="en"><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten">API reference (v1)</a></li>
+        <li lang="ja"><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten">API リファレンス (v1)</a></li>
         <li lang="en"><a href="/tour/">Tour (WIP)</a></li>
         <li lang="ja"><a href="/tour/">ツアー (未完成)</a></li>
         <li lang="en"><a href="/documents/">Documents</a></li>
@@ -116,12 +118,12 @@
     <pre data-codesrc="/go/renderimage/main.go" data-codelinerange="11-19"></pre>
   </div>
   <div class="grid-item-2">
-    <p>Loads an image and creates an Ebiten image. <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/ebitenutil#NewImageFromFile"><code>ebitenutil.NewImageFromFile</code></a> is a utility function to create an Ebiten image object from an image file. As this seeks the specified file on the local file system, the image file must be at the specified place, or this function returns an error. As the given path is a relative path, the working directory, i.e. the place where the program is executed matters. The second argument, <code>ebiten.FilterDefault</code> here, is a legacy argument. If you are not sure, use <code>FilterDefault</code>.</p>
-    <p><code>NewImageFromFile</code> calls <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten#NewImageFromImage"><code>ebiten.NewImageFromImage</code></a> internally, which creates an Ebiten image from an <a href="https://golang.org/pkg/image/#Image"><code>image.Image</code></a>, and actually this is the only way to create an Ebiten image from an <code>image.Image</code>. On the ohter hand, there are various ways to get an <code>image.Image</code> object.</p>
+    <p>Loads an image and creates an Ebiten image. <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2/ebitenutil#NewImageFromFile"><code>ebitenutil.NewImageFromFile</code></a> is a utility function to create an Ebiten image object from an image file. As this seeks the specified file on the local file system, the image file must be at the specified place, or this function returns an error. As the given path is a relative path, the working directory, i.e. the place where the program is executed matters.</p>
+    <p><code>NewImageFromFile</code> calls <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#NewImageFromImage"><code>ebiten.NewImageFromImage</code></a> internally, which creates an Ebiten image from an <a href="https://golang.org/pkg/image/#Image"><code>image.Image</code></a>, and actually this is the only way to create an Ebiten image from an <code>image.Image</code>. On the ohter hand, there are various ways to get an <code>image.Image</code> object.</p>
     <ul>
       <li><a href="https://golang.org/pkg/os/#Open"><code>os.Open</code></a>: This is the most fundamental way to get a data for an image, but is not portable since this works only on desktops. To make matters worse, the working directory affects the result.</li>
-      <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/ebitenutil#OpenFile"><code>ebitenutil.OpenFile</code></a>: This is a little better than <code>os.Open</code>. This works even on browsers, but does not work on mobiles. <code>ebitenutil.NewImageFromFile</code> is the shortcut to call this <code>OpenFile</code> and <code>NewImageFromImage</code> internally.</li>
-      <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/ebitenutil#NewImageFromURL"><code>ebitenutil.NewImageFromURL</code></a>: This obtains an image from a specified URL. This is portable and working directory doesn't affect the result, but requires networking.</li>
+      <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2/ebitenutil#OpenFile"><code>ebitenutil.OpenFile</code></a>: This is a little better than <code>os.Open</code>. This works even on browsers, but does not work on mobiles. <code>ebitenutil.NewImageFromFile</code> is the shortcut to call this <code>OpenFile</code> and <code>NewImageFromImage</code> internally.</li>
+      <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2/ebitenutil#NewImageFromURL"><code>ebitenutil.NewImageFromURL</code></a>: This obtains an image from a specified URL. This is portable and working directory doesn't affect the result, but requires networking.</li>
       <li>Embedding an image file into a Go file: The most portable way is to embed the image in Go file with e.g. <a href="https://github.com/rakyll/statik">statik</a> or <a href="https://github.com/hajimehoshi/file2byteslice">file2byteslice</a>. This works everywhere and is deterministic.</li>
     </ul>
     <p>As an image can be reused unless disposing, the image is created once in init function.</p>
@@ -130,7 +132,7 @@
     <pre data-codesrc="/go/renderimage/main.go" data-codelinerange="28"></pre>
   </div>
   <div class="grid-item-2">
-    <p>Draws an image on an image by <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten#Image.DrawImage"><code>(*Image).DrawImage</code></a>. This function draws a given image onto the receiver image. The second argument is an option to indicate where to put the image, how colors are changed, which filter is applied, and so on. As <code>nil</code> is given here, the image is rendered at the default position (upper-left corder), without changing any colors.</p>
+    <p>Draws an image on an image by <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#Image.DrawImage"><code>(*Image).DrawImage</code></a>. This function draws a given image onto the receiver image. The second argument is an option to indicate where to put the image, how colors are changed, which filter is applied, and so on. As <code>nil</code> is given here, the image is rendered at the default position (upper-left corder), without changing any colors.</p>
   </div>
 </div>
 
