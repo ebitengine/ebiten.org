@@ -78,7 +78,7 @@
   <tr><td><code>func (*Image).ReplacePixels(pixels []byte) <span class="old">error</span></code></td><td><code>func (*Image).ReplacePixels(pixels []byte)</code></td></tr>
   <tr><td><code>func IsGamepadButtonPressed(id <span class="old">int</span>, button GamepadButton) bool</code></td><td><code>func IsGamepadButtonPressed(id <span class="new">GamepadID</span>, button GamepadButton) bool</code></td></tr>
   <tr><td><code>func NewImage(width, height int, <span class="old">filter Filter</span>) (*Image, <span class="old">error</span>)</code></td><td><code>func NewImage(width, height int) *Image</code></td></tr>
-  <tr><td><code>func NewImageFromImage(source image.Image, <span class="old">filter Filter</span>) (*Image, <span class="old">error</span>)</code></td><td><code>func NewImage(source image.Image) *Image</code></td></tr>
+  <tr><td><code>func NewImageFromImage(source image.Image, <span class="old">filter Filter</span>) (*Image, <span class="old">error</span>)</code></td><td><code>func NewImageFromImage(source image.Image) *Image</code></td></tr>
   <tr><td><code>func TouchIDs() <span class="old">[]int</span></code></td><td><code>func TouchIDs() <span class="new">[]TouchID</span></code></td></tr>
   <tr><td><code>func TouchPosition(id <span class="old">int</span>) (int, int)</code></td><td><code>func TouchPosition(id <span class="new">TouchID</span>) (int, int)</code></td></tr>
 </table>
