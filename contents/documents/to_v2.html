@@ -118,8 +118,8 @@
 </table>
 <h4><code>github.com/hajimehoshi/ebiten/audio</code></h4>
 <ul>
-  <li lang="en"><code>Player</code> can take a source that doesn't implement <code>io.Closer</code>, and <code>Player</code> no longer closes the original source in v2.</li>
-  <li lang="ja">v2 では、 <code>Player</code> は <code>io.Closer</code> ではないソースを取ることができるようになり、 <code>Player</code> はもはや元のソースをクローズしません。</li>
+  <li lang="en"><code>Player</code> can take a source that doesn't implement <code><a href="https://golang.org/pkg/io/#Closer">io.Closer</a></code>, and <code>Player</code> no longer closes the original source in v2.</li>
+  <li lang="ja">v2 では、 <code>Player</code> は <code><a href="https://golang.org/pkg/io/#Closer">io.Closer</a></code> ではないソースを取ることができるようになり、 <code>Player</code> はもはや元のソースをクローズしません。</li>
 </ul>
 <p lang="en">These APIs' signatures are changed.</p>
 <p lang="ja">次の API のシグニチャが変更されます。</p>
@@ -137,9 +137,9 @@
 <p lang="ja">次の API が削除されるか置き換えられます。</p>
 <table>
   <tr><th>v1</th><th>v2</th></tr>
-  <tr><td><code>BytesReadSeekCloser</code></td><td><span lang="en">(No replacement, but <code>bytes.NewReader</code> works in most cases)</span><span lang="ja">(置き換え先はないが、大抵の場合 <code>bytes.NewReader</code> で事足りる)</span></td></tr>
+  <tr><td><code>BytesReadSeekCloser</code></td><td><span lang="en">(No replacement, but <code><a href="https://golang.org/pkg/bytes/#NewReader">bytes.NewReader</a></code> works in most cases)</span><span lang="ja">(置き換え先はないが、大抵の場合 <code><a href="https://golang.org/pkg/bytes/#NewReader">bytes.NewReader</a></code> で事足りる)</span></td></tr>
   <tr><td><code>func (*Context).Update</code></td><td><span lang="en">(No replacement)</span><span lang="ja">(置き換え先なし)</span></td></tr>
-  <tr><td><code>ReadSeekCloser</code></td><td><span lang="en">(No replacement, but <code>io.ReadSeeker</code> works in most cases)</span><span lang="ja">(置き換え先はないが、大抵の場合 <code>io.ReadSeeker</code> で事足りる)</span></td></tr>
+  <tr><td><code>ReadSeekCloser</code></td><td><span lang="en">(No replacement, but <code><a href="https://golang.org/pkg/io/#ReadSeeker">io.ReadSeeker</a></code> works in most cases)</span><span lang="ja">(置き換え先はないが、大抵の場合 <code><a href="https://golang.org/pkg/io/#ReadSeeker">io.ReadSeeker</a></code> で事足りる)</span></td></tr>
 </table>
 <h4><code>github.com/hajimehoshi/ebiten/audio/mp3</code></h4>
 <ul>
@@ -196,6 +196,10 @@
   <tr><td><code>func (*Stream).Size</code></td><td><code>func (*Stream).Length</code></td></tr>
 </table>
 <h4><code>github.com/hajimehoshi/ebiten/ebitenutil</code></h4>
+<ul>
+  <li lang="en"><code>ebitenutil</code> no longer imports <code>image/gif</code> or <code>image/png</code> in v2. This affects the behavior of <code><a href="https://golang.org/pkg/image/#Decode">image.Decode</a></code>.</li>
+  <li lang="ja">v2 から、<code>ebitenutil</code> はもはや <code>image/gif</code> や <code>image/png</code> をインポートしません。これは <code><a href="https://golang.org/pkg/image/#Decode">image.Decode</a></code> の挙動に影響を与えます。</li>
+</ul>
 <p lang="en">These APIs' signatures are changed.</p>
 <p lang="ja">次の API のシグニチャが変更されます。</p>
 <table>
