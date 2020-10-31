@@ -244,7 +244,7 @@ func Fragment(position vec4, texCoord vec2, color vec4) vec4 {
   <tr><th><span lang="en">Name</span><span lang="ja">名前</span></th><th><span lang="en">Type</span><span lang="ja">型</span></th><th><span lang="en">Description</span><span lang="ja">説明</span></th></tr>
   <tr><td><code>position</code></td><td><code>vec4</code><td><span lang="en">The destination position in pixels. The 3rd and 4th components are always 0 and 1.</span><span lang="ja">描画先の座標。単位はピクセル。第 3、第 4 要素は常にそれぞれ 0、 1。</span></td></tr>
   <tr><td><code>texCoord</code></td><td><code>vec2</code><td><span lang="en">The source texture's position in texels.</span><span lang="ja">描画元テクスチャの座標。単位はテクセル。</span></td></tr>
-  <tr><td><code>color</code></td><td><code>vec4</code><td><span lang="en">Supplemental color information given from vertices. Each component values are in between 0 and 1.</span><span lang="ja">頂点から与えられる補助的な色情報。各要素は 0 から 1 の値。</span></td></tr>
+  <tr><td><code>color</code></td><td><code>vec4</code><td><span lang="en">Supplemental color information given from vertices. Each component values are in between 0 and 1. This value is meaningful only when <code>DrawTrianglesShader</code> is used.</span><span lang="ja">頂点から与えられる補助的な色情報。各要素は 0 から 1 の値。 <code>DrawTrianglesShader</code> 関数使用時にのみ意味を持つ。</span></td></tr>
   <tr><td><span lang="en">(Returning value)</span><span lang="ja">(戻り値)</span></td><td><code>vec4</code><td><span lang="en">The current position's color. Each component values are in between 0 and 1.</span><span lang="ja">現在の座標の色。各要素は 0 から 1 の値。</span></td></tr>
 </table>
 <h3 lang="en">Built-in types</h3>
