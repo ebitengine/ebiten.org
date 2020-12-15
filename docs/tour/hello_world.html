@@ -126,7 +126,6 @@
   <div class="grid-item-2">
     <p>Defines <code>(*Game).Update</code> function, that is called every tick. Tick is a time unit for logical updating. The default value is 1/60 [s], then <code>Update</code> is called 60 times per second by default (i.e. an Ebiten game works in 60 ticks-per-second).</p>
     <p><code>Update</code> updates the game's logical state. This hello-world example doesn't have any state and then this function does nothing.</p>
-    <p><code>Update</code> takes an argument <code>screen</code>, which is a pointer to an <code>ebiten.Image</code>. This example doesn't use this.</p>
     <p><code>Update</code> returns an error value. In this code, <code>Update</code> always returns <code>nil</code>. In general, when updating function returns a non-nil error, the Ebiten game suspends. As this program never returns a non-nil error, the Ebiten game never stops unless the user closes the window.</p>
   </div>
   <div class="grid-item-2">
@@ -134,7 +133,7 @@
   </div>
   <div class="grid-item-2">
     <p>Defines <code>(*Game).Draw</code> function, that is called every frame. Frame is a time unit for rendering and this depends on the display's refresh rate. If the monitor's refresh rate is 60 [Hz], <code>Draw</code> is called 60 times per second.</p>
-    <p><code>Draw</code> also takes an argument <code>screen</code>, which is a pointer to an <code>ebiten.Image</code>. In Ebiten, all images like images created from image files, offscreen images (temporary render target), and the screen are represented as <code>ebiten.Image</code> objects. <code>screen</code> argument is the final destination of rendering. The window shows the final state of <code>screen</code> every frame.</p>
+    <p><code>Draw</code> takes an argument <code>screen</code>, which is a pointer to an <code>ebiten.Image</code>. In Ebiten, all images like images created from image files, offscreen images (temporary render target), and the screen are represented as <code>ebiten.Image</code> objects. <code>screen</code> argument is the final destination of rendering. The window shows the final state of <code>screen</code> every frame.</p>
   </div>
   <div class="grid-item-2">
     <pre data-codesrc="/go/helloworld/main.go" data-codelinerange="17-18"></pre>
