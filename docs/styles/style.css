@@ -153,6 +153,9 @@ iframe {
 .twitter-tweet iframe {
     border-style: none;
 }
+iframe[src^="https://www.youtube.com/embed/"] {
+    border-style: none;
+}
 p.meta {
     color: #666;
     text-align: right;
