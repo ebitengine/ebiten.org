@@ -86,7 +86,8 @@
 <h3 lang="ja">その他</h3>
 <ul>
   <li><a href="./cheatsheet.html">Cheat Sheet</a></li>
-  <li><a href="./matrix.html">Matrix in Ebiten</a></li>
+  <li lang="en"><a href="./matrix.html">Matrix in Ebiten</a></li>
+  <li lang="ja"><a href="./matrix.html">Ebiten における行列</a></li>
   <li><a href="./faq.html">FAQ</a></li>
   <li><a href="./performancetips.html">Performance Tips</a></li>
   <li><a href="./packages.html">Packages</a></li>
@@ -98,40 +99,54 @@
     </nav>
     <main>
       <article>
-        <h1>Matrix in Ebiten</h1>
-<p>This article explains what are matrices and how they are used in Ebiten. We don't explain a strict mathematical theory. Instead, we explain essential knowledge for Ebiten.</p>
-<h2>TL;DR</h2>
-<p>Ebiten uses a mathematical matrix to specify how an image is transformed geometrically like scaling or rotating. A combination of multiple geometric transforms can be represented by one matrix.</p>
-<h2>Coordinate System</h2>
+        <h1 lang="en">Matrix in Ebiten</h1>
+<h1 lang="ja">Ebiten における行列</h1>
+<p lang="en">This article explains what are matrices and how they are used in Ebiten. We don't explain a strict mathematical theory. Instead, we explain essential knowledge for Ebiten.</p>
+<p lang="ja">この記事では、 行列とは何か、行列を Ebiten でどう使うのかについて説明します。厳密な数学の理論は説明しません。代わりに、 Ebiten のためのエッセンスを紹介します。</p>
+<h2 lang="en">TL;DR</h2>
+<h2 lang="ja">要約</h2>
+<p lang="en">Ebiten uses a mathematical matrix to specify how an image is transformed geometrically like scaling or rotating. A combination of multiple geometric transforms can be represented by one matrix.</p>
+<p lang="ja">Ebiten は数学の「行列」を、画像の拡大縮小や回転などの変換指定に用います。複数の幾何変換行列の組み合わせは、 1 つの行列で表されます。<p>
+<h2 lang="en">Coordinate System</h2>
+<h2 lang="ja">座標系</h2>
 <div class="grid-container">
   <div class="grid-item-2">
-    <p>Ebiten treats 2D graphics, and defines a coordinate system. X axis is rightward, and Y axis is downward. The origin point is upper left.</p>
-    <p>The coordinate system exists for each <code>ebiten.Image</code> object. The upper left point of the destination image is the origin point of the coordinate system.</p>
+    <p lang="en">Ebiten treats 2D graphics, and defines its coordinate system. X axis is rightward, and Y axis is downward. The origin point is upper left.</p>
+    <p lang="ja">Ebiten は 2 次元のグラフィックスを扱い、その座標系を定めています。 X 軸は右方向で、 Y 軸は下方向です。原点は左上です。</p>
+    <p lang="en">The coordinate system exists for each <code>ebiten.Image</code> object. The upper left point of the destination image is the origin point of the coordinate system.</p>
+    <p lang="ja">座標系は各 <code>ebiten.Image</code> ごとに存在します。描画先画像の左上の点が座標系の原点になります。</p>
   </div>
   <div class="grid-item-2">
     <figure>
       <p class="img"><img src="/images/documents/matrix/axes.png" width="456"></p>
     </figure>
-    <figcaption>A coordinate system in Ebiten. Be careful that Y axis is downward.</figcaption>
+    <figcaption lang="en">A coordinate system in Ebiten. Be careful that Y axis is downward.</figcaption>
+    <figcaption lang="ja">Ebiten における座標系。 Y 軸が下向きであることに注意。</figcaption>
   </div>
 </div>
-<h2>Matrix</h2>
+<h2 lang="en">Matrix</h2>
+<h2 lang="ja">行列</h2>
 <div class="grid-container">
   <div class="grid-item-2">
-    <p><code>ebiten.Image</code> is a set of pixels on a 2D rectangle. In Ebiten, you can apply a conversion rule for each pixel. By the conversion rule, you can put an image at a specified position, and you can also apply various effects like scaling or rotating. As a conversion rule, Ebiten uses a matrix.</p>
-    <p>In 2D space, a point is represented as a 2D vector <span class="math">(x, y)</span>. A 2D matrix converts this and generates a new point.</p>
+    <p lang="en"><code>ebiten.Image</code> is a set of pixels on a 2D rectangle. In Ebiten, you can apply a conversion rule for each pixel. By the conversion rule, you can put an image at a specified position, and you can also apply various effects like scaling or rotating. As a conversion rule, Ebiten uses a matrix.</p>
+    <p lang="ja"><code>ebiten.Image</code> は 2 次元矩形のピクセルの集合です。 Ebiten では、各ピクセルに変換ルールを施すことができます。この変換ルールによって、画像を指定した位置に描画したり、また拡大縮小や回転などの様々なエフェクトを施すことが出来ます。変換ルールとして、 Ebiten は行列を使用します。</p>
+    <p lang="en">In 2D space, a point is represented as a 2D vector <span class="math">(x, y)</span>. A 2D matrix converts this and generates a new point.</p>
+    <p lang="ja">2 次元空間上では、点は 2 次元ベクトル <span class="math">(x, y)</span> で表されます。 2 次元行列はこれを変換し、新しい点を生成します。</p>
   </div>
   <div class="grid-item-2">
     <figure>
       <p class="img"><img src="/images/documents/matrix/conversion.png" width="456"></p>
     </figure>
-    <figcaption>A conversion rule is applied to pixels of an image. As a result, the image is moved and/or transformed.</figcaption>
+    <figcaption lang="en">A conversion rule is applied to pixels of an image. As a result, the image is moved and/or transformed.</figcaption>
+    <figcaption lang="ja">画像のピクセルに変換ルールが適用されます。結果として、画像は動いたり変形したりします。</figcaption>
   </div>
 </div>
-<h3>Definition</h3>
+<h3 lang="en">Definition</h3>
+<h3 lang="ja">定義</h3>
 <div class="grid-container">
   <div class="grid-item-2">
-    <p>A matrix is used in linear algebra. A matrix is an array of numbers. A 2D matrix is like this.</p>
+    <p lang="en">A matrix is used in linear algebra. A matrix is an array of numbers. A 2D matrix is like this.</p>
+    <p lang="ja">行列は線形代数で使われます。行列は数字の配列です。 2 次行列は次のようなものです:</p>
   </div>
   <div class="grid-item-2">
     <p class="math">\begin{aligned}
@@ -142,7 +157,8 @@
 \end{aligned}</p>
   </div>
   <div class="grid-item-2">
-    <p>The horizontal sequences are called rows, and the vertical sequences are called columns. If the size is 2, the matrix is called 2D (two-dimensional) matrix, and if 3, 3D (three-dimensional) matrrix. A 3D matrix is like this.</p>
+    <p lang="en">The horizontal sequences are called rows, and the vertical sequences are called columns. If the size is 2, the matrix is called 2D (two-dimensional) matrix, and if 3, 3D (three-dimensional) matrrix. A 3D matrix is like this.</p>
+    <p lang="ja">水平な並びは行、垂直な並びは列と呼ばれます。大きさが 2 ならば、行列は 2 次行列と呼ばれ、また 3 ならば 3 次行列と呼ばれます。 3 次行列は次のようなものです:</p>
   </div>
   <div class="grid-item-2">
     <p class="math">\begin{aligned}
@@ -154,14 +170,18 @@
 \end{aligned}</p>
   </div>
   <div class="grid-item-2">
-    <p>If the numbers of columns and rows are the same, the matrix is called a regular matrix. Ebiten treats only regular matrices.</p>
+    <p lang="en">If the numbers of columns and rows are the same, the matrix is called a regular matrix. Ebiten treats only regular matrices.</p>
+    <p lang="ja">行と列の数が同じならば、その行列は正方行列と呼ばれます。 Ebiten は正方行列のみ取り扱います。</p>
   </div>
 </div>
-<h3>Multiplying a matrix and a vector</h3>
+<h3 lang="en">Multiplying a matrix and a vector</h3>
+<h3 lang="ja">行列とベクトルの乗算</h3>
 <div class="grid-container">
   <div class="grid-item-2">
-    <p>You can multiply a matrix and a vector. The matrix is on the left side and the vector is on the right side. In general, the swapped positions are also possible but Ebiten doesn't treat the swapped positions.</p>
-    <p>A matrix is a conversion rule, and in the equation, <span class="math">(x, y)</span> means a point before converting, multiplying means applying the conversion rule, and <span class="math">(ax+by, cx+dy)</span> means a point after converting.</p>
+    <p lang="en">You can multiply a matrix and a vector. The matrix is on the left side and the vector is on the right side. In general mathematics, the swapped positions are also possible but Ebiten doesn't treat the swapped positions.</p>
+    <p lang="ja">行列とベクトルを掛け算することが出来ます。行列は左側、ベクトルは右側です。一般的な数学では、逆の位置もありえますが、 Ebiten は逆の位置は取り扱いません。</p>
+    <p lang="en">A matrix is a conversion rule, and in the equation, <span class="math">(x, y)</span> means a point before converting, multiplying means applying the conversion rule, and <span class="math">(ax+by, cx+dy)</span> means a point after converting.</p>
+    <p lang="ja">行列は変換ルールであり、次の等式では <span class="math">(x, y)</span> は変換前の点、乗算は変換ルールの適用、 <span class="math">(ax+by, cx+dy)</span> は変換後の点を表しています。</p>
   </div>
   <div class="grid-item-2">
     <p class="math">\begin{aligned}
@@ -181,7 +201,8 @@
 \end{aligned}</p>
   </div>
   <div class="grid-item-2">
-    <p>By the way, this is same in the three-dimensional case.</p>
+    <p lang="en">By the way, this is the same in the three-dimensional case.</p>
+    <p lang="ja">ところで、これは 3 次の場合でも同じです。</p>
   </div>
   <div class="grid-item-2">
     <p class="math">\begin{aligned}
@@ -204,10 +225,12 @@
 \end{aligned}</p>
   </div>
 </div>
-<h3>Identity matrix</h3>
+<h3 lang="en">Identity matrix</h3>
+<h3 lang="ja">単位行列</h3>
 <div class="grid-container">
   <div class="grid-item-2">
-    <p>An identity matrix is a matrix that doesn't change the multiplicand.</p>
+    <p lang="en">An identity matrix is a matrix that doesn't change the multiplicand.</p>
+    <p lang="ja">単位行列は、掛けられる側を何も変えない行列です。</p>
   </div>
   <div class="grid-item-2">
     <p class="math">\begin{aligned}
@@ -218,7 +241,8 @@
 \end{aligned}</p>
   </div>
   <div class="grid-item-2">
-    <p>Let's multiply this identity matrix and a vector. You can confirm that the input and the output are the same. This matrix doesn't change any points on a 2D space.</p>
+    <p lang="en">Let's multiply this identity matrix and a vector. You can confirm that the input and the output are the same. This matrix doesn't change any points on a 2D space.</p>
+    <p lang="ja">単位行列とベクトルを掛け算してみましょう。</p>
   </div>
   <div class="grid-item-2">
     <p class="math">\begin{aligned}
@@ -243,10 +267,12 @@
 \end{aligned}</p>
   </div>
 </div>
-<h3>Scaling</h3>
+<h3 lang="en">Scaling</h3>
+<h3 lang="ja">拡大</h3>
 <div class="grid-container">
   <div class="grid-item-2">
-    <p>A matrix that scales an image by <span class="math">s_x</span> times in X direction and by <span class="math">s_y</span> times in Y direction centering at the origin is this.</p>
+    <p lang="en">A matrix that scales an image by <span class="math">s_x</span> times in X direction and by <span class="math">s_y</span> times in Y direction centering at the origin is this.</p>
+    <p lang="ja">画像を X 軸方向に <span class="math">s_x</span>、 Y 軸方向に <span class="math">s_y</span> だけ、原点中心に拡大させるような行列は次のようなものです:</p>
   </div>
   <div class="grid-item-2">
     <p class="math">\begin{aligned}
@@ -258,10 +284,12 @@
     <figure>
       <p class="img"><img src="/images/documents/matrix/scale.png" width="456"></p>
     </figure>
-    <figcaption>Scaling an image by a matrix.</figcaption>
+    <figcaption lang="en">Scaling an image by a matrix.</figcaption>
+    <figcaption lang="ja">行列による画像の拡大。</figcaption>
   </div>
   <div class="grid-item-2">
-    <p>Let's multiply this matrix and a vector.</p>
+    <p lang="en">Let's multiply this matrix and a vector.</p>
+    <p lang="ja">行列とベクトルを掛け算してみましょう。</p>
   </div>
   <div class="grid-item-2">
     <p class="math">\begin{aligned}
@@ -286,10 +314,12 @@
 \end{aligned}</p>
   </div>
 </div>
-<h3>Rotating</h3>
+<h3 lang="en">Rotating</h3>
+<h3 lang="ja">回転</h3>
 <div class="grid-container">
   <div class="grid-item-2">
-    <p>A matrix that rotates an image by <span class="math">\theta</span> centering at the origin is this. This uses trigonometric functions. Please don't worry about trigonometric functions. Ebiten has a useful feature to rotate images by calling one function.</p>
+    <p lang="en">A matrix that rotates an image by an angle <span class="math">\theta</span> centering at the origin is this. This uses trigonometric functions. Please don't worry if you don't know trigonometric functions. Ebiten has <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#GeoM.Rotate">a useful function</a> to rotate images.</p>
+    <p lang="ja">画像を <span class="math">\theta</span> の角度だけ、原点中心に回転させるような行列は次のようになります。これは三角関数を使用しています。三角関数について知らなくても大丈夫です。 Ebiten には、画像を回転させる<a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#GeoM.Rotate">便利な関数</a>があります。</p>
   </div>
   <div class="grid-item-2">
     <p class="math">\begin{aligned}
@@ -301,18 +331,22 @@
     <figure>
       <p class="img"><img src="/images/documents/matrix/rotate.png" width="456"></p>
     </figure>
-    <figcaption>Rotating an image by a matrix.</figcaption>
+    <figcaption lang="en">Rotating an image by a matrix.</figcaption>
+    <figcaption lang="ja">行列による画像の回転。</figcaption>
   </div>
 </div>
-<h3>Multiplying a matrix and a matrix</h3>
+<h3 lang="en">Multiplying a matrix and a matrix</h3>
+<h3 lang="ja">行列と行列の乗算</h3>
 <div class="grid-container">
   <div class="grid-item-2">
-    <p>For example, what if you want to combine scaling and rotating? To come to the point, such combinations of conversion rules can be represented as one matrix. Let's see how two matrices are combined.</p>
+    <p lang="en">For example, what if you want to combine scaling and rotating? To come to the point, such combinations of conversion rules can be represented as one matrix. Let's see how two matrices are combined.</p>
+    <p lang="ja">例えば、拡大と回転を組み合わせたい場合はどうしたら良いでしょうか? 単刀直入に言うと、そのような変換ルールも 1 つの行列として表されます。どのように 2 つの行列を組み合わせるのか見てみましょう。</p>
   </div>
   <div class="grid-item-2">
   </div>
   <div class="grid-item-2">
-    <p>If a vector is multiplied by two matrices, the equation will be like this.</p>
+    <p lang="en">If a vector is multiplied by two matrices, the equation will be like this.</p>
+    <p lang="ja">もしベクターに 2 つの行列を掛けると、等式は次のようになります。</p>
   </div>
   <div class="grid-item-2">
     <p class="math">\begin{aligned}
@@ -369,7 +403,8 @@
 \end{aligned}</p>
   </div>
   <div class="grid-item-2">
-    <p>What an intimidating equation! However, this is a very beautiful result. This equation means that we can define multiplying two matrices like this.</p>
+    <p lang="en">What an intimidating equation! However, this is a very beautiful result. This equation means that we can define multiplying two matrices like this.</p>
+    <p lang="ja">なんともおぞましい式になってしまいました。しかしながら、とても美しい結果になりました。この等式が意味することは、 2 つの行列の乗算を次のように表せるということです。</p>
   </div>
   <div class="grid-item-2">
     <p class="math">\begin{aligned}
@@ -389,13 +424,16 @@
 \end{aligned}</p>
   </div>
   <div class="grid-item-2">
-    <p>Then, we were able to define the combination of matrices, and the result became another matrix. If you combine multiple conversion rules, this will be represented as one matrix.</p>
-    <p>You don't have to remember this equation, but please remember the fact that multiplying two matrices results in one matrix.</p>
+    <p lang="en">Then, we were able to define the combination of matrices, and the result became another matrix. If you combine multiple conversion rules, this will be represented as one matrix.</p>
+    <p lang="ja">よって、行列の組み合わせを定義することも出来ましたし、その結果を別の行列にすることもできました。もし複数の変換ルールを組み合わせたければ、それは一つの行列として表されます。</p>
+    <p lang="en">You don't have to remember this equation, but please remember the fact that multiplying two matrices results in one matrix.</p>
+    <p lang="ja">この等式を覚える必要はありませんが、 2 つの行列の乗算は 1 つの行列になる、という事実は覚えておいてください。</p>
   </div>
   <div class="grid-item-2">
   </div>
   <div class="grid-item-2">
-    <p>By the way, in three-dimensional cases, multiplying will be like this.</p>
+    <p lang="en">By the way, in three-dimensional cases, multiplying will be like this.</p>
+    <p lang="ja">ところで、 3 次の場合、乗算は次のようになります。</p>
   </div>
   <div class="grid-item-2">
     <p class="math">\begin{aligned}
@@ -419,7 +457,8 @@
 \end{aligned}</p>
   </div>
   <div class="grid-item-2">
-    <p>Be careful that the order of multiplying matters. If there is a matrix <span class="math">A</span> and a matrix <span class="math">B</span>, the results of <span class="math">AB</span> and <span class="math">BA</span> are different in general. For example, <span class="math">\big[\begin{smallmatrix}1&2\\3&4\end{smallmatrix}\big]</span><span class="math">\big[\begin{smallmatrix}5&6\\7&8\end{smallmatrix}\big]</span> is different from <span class="math">\big[\begin{smallmatrix}5&6\\7&8\end{smallmatrix}\big]</span><span class="math">\big[\begin{smallmatrix}1&2\\3&4\end{smallmatrix}\big]</span>. In the context of conversion rule, rotating and scaling an image in this order is different from scaling and rotating an image in this order in general.</p>
+    <p lang="en">Be careful that the order of multiplying matters. If there is a matrix <span class="math">A</span> and a matrix <span class="math">B</span>, the results of <span class="math">AB</span> and <span class="math">BA</span> are different in general. For example, <span class="math">\big[\begin{smallmatrix}1&2\\3&4\end{smallmatrix}\big]</span><span class="math">\big[\begin{smallmatrix}5&6\\7&8\end{smallmatrix}\big]</span> is different from <span class="math">\big[\begin{smallmatrix}5&6\\7&8\end{smallmatrix}\big]</span><span class="math">\big[\begin{smallmatrix}1&2\\3&4\end{smallmatrix}\big]</span>. In the context of conversion rule, rotating and scaling an image in this order is different from scaling and rotating the image in this order in general.</p>
+    <p lang="ja">行列の順序を変えると意味が変わってしまうことに注意してください。もし行列 <span class="math">A</span> と行列 <span class="math">B</span> があったとして、 <span class="math">AB</span> の結果と <span class="math">BA</span> の結果は一般的には異なります。たとえば、 <span class="math">\big[\begin{smallmatrix}1&2\\3&4\end{smallmatrix}\big]</span><span class="math">\big[\begin{smallmatrix}5&6\\7&8\end{smallmatrix}\big]</span> は <span class="math">\big[\begin{smallmatrix}5&6\\7&8\end{smallmatrix}\big]</span><span class="math">\big[\begin{smallmatrix}1&2\\3&4\end{smallmatrix}\big]</span> と異なります。変換ルールの文脈では、画像を回転してと拡大するというのをこの順序で行うことと、画像を拡大して回転するということは、一般的には異なります。</p>
   </div>
   <div class="grid-item-2">
     <p class="math">\begin{aligned}
@@ -469,10 +508,12 @@
 \end{aligned}</p>
   </div>
 </div>
-<h3>Affine transformation</h3>
+<h3 lang="en">Affine transformation</h3>
+<h3 lang="ja">アフィン変換</h3>
 <div class="grid-container">
   <div class="grid-item-2">
-    <p>A 2D matrix looks enough to move points, but there is a problem. Any 2D matrices cannot move the origin point <span class="math">(0, 0)</span>.</p>
+    <p lang="en">A 2D matrix looks enough to move points, but there is a problem. Any 2D matrices cannot move the origin point <span class="math">(0, 0)</span>.</p>
+    <p lang="ja">点を動かすのに 2 次行列は十分に見えますが、実は問題があります。どんな 2 次行列でも原点 <span class="math">(0, 0)</span> を動かすことは出来ないのです。</p>
   </div>
   <div class="grid-item-2">
     <p class="math">\begin{aligned}
@@ -497,16 +538,19 @@
 \end{aligned}</p>
   </div>
   <div class="grid-item-2">
-    <p>This means that the origin point will never be moved by any 2D matrices. So can't we represent translating by matrices?</p>
+    <p lang="en">So can't we represent translating by matrices?</p>
+    <p lang="ja">つまり、平行移動を行列で表すことは出来ないのでしょうか?</p>
   </div>
   <div class="grid-item-2">
     <figure>
       <p class="img"><img src="/images/documents/matrix/origin.png" width="456"></p>
     </figure>
-    <figcaption>Whatever matrices are applied to an image, the origin point stays at the same position?</figcaption>
+    <figcaption lang="en">Whatever matrices are applied to an image, does the origin point stay at the same position?</figcaption>
+    <figcaption lang="ja">どんな行列を画像に適用しても、原点は常に同じ場所に居続ける?</figcaption>
   </div>
   <div class="grid-item-2">
-    <p>Then, we introduce an affine transform matrix. For 2D vectors, an affine transform matrix is like this. The matrix is extended to be three-dimensional. The last row is always <span class="math">(0, 0, 1)</span>.</p>
+    <p lang="en">Then, we introduce an affine transform matrix. For 2D vectors, an affine transform matrix is like this. The matrix is extended to be three-dimensional. The last row is always <span class="math">(0, 0, 1)</span>.</p>
+    <p lang="ja">なので、「アフィン変換行列」というのを導入します。 2 次ベクターに対しては、アフィン変換行列は次のようになります。この行列は 3 次元に拡張されています。最後の行は常に <span class="math">(0, 0, 1)</span> です。</p>
   </div>
   <div class="grid-item-2">
     <p class="math">\begin{aligned}
@@ -518,10 +562,11 @@
 \end{aligned}</p>
   </div>
   <div class="grid-item-2">
-    <p>The vector will also be extended to three dimensional, and the third value is always 1. A 2D vector <span class="math">(x, y)</span> will be <span class="math">(x, y, 1)</span>.</p>
+    <p lang="en">The vector will also be extended to three dimensional, and the third value is always 1. A 2D vector <span class="math">(x, y)</span> will be <span class="math">(x, y, 1)</span>.</p>
+    <p lang="ja">ベクターも同様に 3 次元に拡張され、 3 番目の値は常に 1 です。 2 次ベクター <span class="math">(x, y)</span> は <span class="math">(x, y, 1)</span> となります。</p>
   </div>
   <div class="grid-item-2">
-<p class="math">\begin{aligned}
+    <p class="math">\begin{aligned}
 \begin{bmatrix}
   x \\
   y \\
@@ -530,7 +575,8 @@
 \end{aligned}</p>
   </div>
   <div class="grid-item-2">
-    <p>Let's multiply this affine transform matrix and the extended vector. You can confirm that the result includes new terms <span class="math">t_x</span> and <span class="math">t_y</span>.</p>
+    <p lang="en">Let's multiply this affine transform matrix and the extended vector. You can confirm that the result includes new terms <span class="math">t_x</span> and <span class="math">t_y</span>.</p>
+    <p lang="ja">アフィン変換行列と拡張したベクトルを乗算してみましょう。結果に新しい項 <span class="math">t_x</span> と <span class="math">t_y</span> が追加されていることが確認できます。</p>
   </div>
   <div class="grid-item-2">
 <p class="math">\begin{aligned}
@@ -559,10 +605,12 @@
 \end{aligned}</p>
   </div>
 </div>
-<h3>Translating</h3>
+<h3 lang="en">Translating</h3>
+<h3 lang="ja">平行移動</h3>
 <div class="grid-container">
   <div class="grid-item-2">
-    <p>A matrix that just translates an image is this.</p>
+    <p lang="en">A matrix that just translates an image is this.</p>
+    <p lang="ja">画像を単に平行移動するだけの行列は次のようになります。</p>
   </div>
   <div class="grid-item-2">
     <p class="math">\begin{aligned}
@@ -574,7 +622,8 @@
 \end{aligned}</p>
   </div>
   <div class="grid-item-2">
-    <p>Let's apply this matrix to a vector <span class="math">(x, y, 1)</span>. The result is translating <span class="math">x</span> and <span class="math">y</span> by <span class="math">t_x</span> and <span class="math">t_y</span> respectively. </p>
+    <p lang="en">Let's apply this matrix to a vector <span class="math">(x, y, 1)</span>. The result is translating <span class="math">x</span> and <span class="math">y</span> by <span class="math">t_x</span> and <span class="math">t_y</span> respectively. </p>
+    <p lang="ja">この行列をベクトル <span class="math">(x, y, 1)</span> に適用してみましょう。結果は <span class="math">x</span> と <span class="math">y</span> を <span class="math">t_x</span> と <span class="math">t_y</span> だけこの順に移動させたものになります。</p>
   </div>
   <div class="grid-item-2">
     <p class="math">\begin{aligned}
@@ -604,19 +653,26 @@
     <figure>
       <p class="img"><img src="/images/documents/matrix/translate.png" width="456"></p>
     </figure>
-    <figcaption>Translating an image by a matrix.</figcaption>
+    <figcaption lang="en">Translating an image by a matrix.</figcaption>
+    <figcaption lang="ja">行列による画像の平行移動。</figcaption>
   </div>
   <div class="grid-item-2">
-    <p>Scaling and rotating matrix we already explained will be a matrix that <span class="math">t_x</span> and <span class="math">t_y</span> are <span class="math">0</span>.</p>
-    <p>We don't prove this here, but multiplying two affine transform matrices results in an affine transform matrix. This means that any combinations of scaling, rotating and translating are represented as one affine matrix. Based on this fact, Ebiten's API for geometric transform is very simple and requires only one affine transform matrix. Ebiten's matrices are always affine transform, and doesn't treat other matrices.</p>
+    <p lang="en">Scaling and rotating matrix we already explained will be a matrix that <span class="math">t_x</span> and <span class="math">t_y</span> are <span class="math">0</span>.</p>
+    <p lang="ja">すでに説明した拡大と回転の行列は <span class="math">t_x</span> と <span class="math">t_y</span> が <span class="math">0</span> になるような行列です。</p>
+    <p lang="en">We don't prove this here, but multiplying two affine transform matrices results in an affine transform matrix. This means that any combinations of scaling, rotating and translating are represented as one affine transform matrix. Based on this fact, Ebiten's API for geometric transform is very simple and requires only one affine transform matrix. Ebiten's matrices are always affine transform, and doesn't treat other matrices.</p>
+    <p lang="ja">ここで証明はしませんが、 2 つのアフィン変換行列を乗算したものは、 1 つのアフィン変換行列になります。これは、拡大、回転、平行移動のいかなる組み合わせも 1 つのアフィン変換行列として表されることを意味します。この事実を元に、 Ebiten の幾何変換 API は非常にシンプルで、たった 1 つのアフィン変換行列を取るものになっています。 Ebiten の行列は常にアフィン変換行列で、他の行列は取り扱いません。</p>
   </div>
 </div>
-<h2>Filter</h2>
-<p>We explained that converting an image is represented by a matrix that moves each pixel of the image. You might already realize this, but as a matter of fact, enlarging an image in this way results in an image with full of holes, since the destination area is larger than the source area. To avoid such odd results, Ebiten complements pixels by filters. The way in which the pixels are complemented is determined by a filter type, like <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#Filter"><code>ebiten.FilterNearest</code> or <code>ebiten.FilterLinear</code></a></p>
-<h2>Color matrix</h2>
+<h2 lang="en">Filter</h2>
+<h2 lang="ja">フィルタ</h2>
+<p lang="en">We explained that converting an image is represented by a matrix that moves each pixel of the image. You might already realize this, but as a matter of fact, enlarging an image in this way results in an image with full of holes, since the destination area is larger than the source area. To avoid such odd results, Ebiten complements pixels by filters. The way in which the pixels are complemented is determined by a filter type, like <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#Filter"><code>ebiten.FilterNearest</code> or <code>ebiten.FilterLinear</code></a></p>
+<p lang="ja">これまで、画像の変換が画像の各点を移動させる行列によって表されることを説明してきました。勘のいい人はお気づきかもしれませんが、実際のところ、画像をこの方法で拡大すると画像が穴だらけになってしまいます。なぜなら変換先の領域は変換元の領域よりも大きいからです。このような結果を避けるために、 Ebiten はフィルタでピクセルを補完します。どのようにピクセルを補完するかは、 <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#Filter"><code>ebiten.FilterNearest</code> または <code>ebiten.FilterLinear</code></a> といったフィルタの種類によって決まります。</p>
+<h2 lang="en">Color matrix</h2>
+<h2 lang="ja">色行列</h2>
 <div class="grid-container">
   <div class="grid-item-2">
-    <p>In Ebiten, matrices are also used when converting colors. We don't explain details here. Ebiten treats an RGBA color as a point in 4D space, and convert it with a matrix. The matrix is an affine transform matrix, and the dimension is 5.</p>
+    <p lang="en">In Ebiten, matrices are also used when converting colors. We don't explain details here. Ebiten treats an RGBA color as a point in 4D space, and convert it with a matrix. The matrix is an affine transform matrix, and the dimension is 5.</p>
+    <p lang="ja">Ebiten では、行列は色を変換するのにも使われます。詳細はここでは説明しません。 Ebiten は RGBA カラーを 4 次空間の点として扱い、行列を用いて変換します。行列はアフィン変換行列であり、その次元は 5 です。</p>
   </div>
   <div class="grid-item-2">
     <p class="math">\begin{aligned}
@@ -637,7 +693,8 @@
 \end{aligned}</p>
   </div>
 </div>
-<h2>References</h2>
+<h2 lang="en">References</h2>
+<h2 lang="ja">参照リソース</h2>
 <ul>
   <li><a href="https://en.wikipedia.org/wiki/Matrix_(mathematics)">Matrix (mathematics) - Wikipedia</a></li>
   <li><a href="https://en.wikipedia.org/wiki/Affine_transformation">Affine transformation - Wikipedia</a></li>
