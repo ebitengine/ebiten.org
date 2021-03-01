@@ -217,13 +217,14 @@ cd yourgame
 go mod init github.com/yourname/yourgame</code></pre>
   </div>
   <div class="grid-item-2">
-    <p lang="en">Then, run the command to execute an Ebiten example. <code>go run</code> compiles Go files and runs it immediately after the compilation. As the first compilation might take a little long time, please wait for a while. Note that you can see what is happening on the compilation process with <code>-x</code> option if you want.</p>
-    <p lang="ja">次に、 Ebiten のサンプルを実行します。 <code>go run</code> は Go ファイルをコンパイルし、即座に実行します。最初のコンパイルは少々時間がかかるかもしれないため、しばらくお待ち下さい。必要ならば <code>-x</code> をつけることで、コンパイル処理中に何が行われているのかを見ることができます。</p>
+    <p lang="en">Then, run the command to execute an Ebiten example. <code>go get</code> retrieves the code of Ebiten. <code>go run</code> compiles Go files and runs it immediately after the compilation. As the first retrieving the code and compilation might take a little long time, please wait for a while. Note that you can see what is happening on the compilation process with <code>-x</code> option if you want.</p>
+    <p lang="ja">次に、 Ebiten のサンプルを実行します。 <code>go get</code> は Ebiten のコードを取得します。 <code>go run</code> は Go ファイルをコンパイルし、即座に実行します。最初のコード取得とコンパイルは少々時間がかかるかもしれないため、しばらくお待ち下さい。必要ならば <code>-x</code> をつけることで、コンパイル処理中に何が行われているのかを見ることができます。</p>
     <p lang="en">Note that <code>-tags=example</code> is needed to execute the examples as the Ebiten example packages require the build tag.</p>
     <p lang="ja"><code>-tags=example</code> は Ebiten のサンプルを実行するために必要です。 Ebiten サンプルのパッケージがビルドタグを必要とするためです。</p>
   </div>
   <div class="grid-item-2">
-    <pre><code>go run -tags=example github.com/hajimehoshi/ebiten/v2/examples/rotate</code></pre>
+    <pre><code>go get github.com/hajimehoshi/ebiten/v2
+go run -tags=example github.com/hajimehoshi/ebiten/v2/examples/rotate</code></pre>
   </div>
   <div class="grid-item-2">
     <p lang="en">If you see the window with a rotating Gophers picture, congratulations! You have succeeded to install Ebiten.</p>
