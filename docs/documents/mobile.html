@@ -108,8 +108,7 @@
 <h2>Creating a shared library with <code>ebitenmobile bind</code></h2>
 <h3>Installing <code>ebitenmobile</code></h3>
 <p>Install <code>ebitenmobile</code> command first.</p>
-<pre><code>cd ./path/to/your/game
-go install github.com/hajimehoshi/ebiten/v2/cmd/ebitenmobile</code></pre>
+<pre><code>go install github.com/hajimehoshi/ebiten/v2/cmd/ebitenmobile@latest</code></pre>
 <p>As <code>ebitenmobile</code> of Ebiten 1.10 cannot treat Go modules, your project also has to be under <code>GOPATH</code>.</p>
 <h3>Creating a binding</h3>
 <p>Create a package for mobiles to use <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2/mobile"><code>github.com/hajimehoshi/ebiten/v2/mobile</code></a>:</p>
@@ -225,7 +224,7 @@ ebitenmobile bind -target ios -o path/to/yourgame.framework .
 <p>NOTICE: Now <code>gomobile build</code> does not work for iOS. See <a href="https://github.com/golang/go/issues/32963">the Go issue</a>.</p>
 <p>Ebiten application also works with <code>gomobile build</code>. This is useful for testing, but not suitable for actual applications in the stores.</p>
 <p>Install <code>gomobile</code> command first.</p>
-<pre><code>go install golang.org/x/mobile/cmd/...</code></pre>
+<pre><code>go install golang.org/x/mobile/cmd/...@latest</code></pre>
 <p>Then, run <code>gomobile build</code></p>
 <pre><code>gomobile build github.com/yourname/yourpackage</code></pre>
 <p>That's it!</p>
