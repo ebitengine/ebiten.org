@@ -110,8 +110,8 @@
 <p lang="ja">シェーダは GPU 上で実行されるプログラムです。カスタムシェーダは Ebiten ユーザーが記述できるシェーダです。シェーダを使うことで、複雑な描画が GPU 上で効率的にできるようになります。</p>
 <p lang="en">In Ebiten, you can write a 'fragment shader'. A fragment shader is a shader executed on each pixel. Roughly speaking, this is a function to calculate a color for each pixel. This color calculation is executed on GPU in parallel.</p>
 <p lang="ja">Ebiten はシェーダのうちフラグメントシェーダと呼ばれるものが記述できます。フラグメントシェーダはピクセルごとに実行されるシェーダです。大雑把に言うと、ピクセルごとに色を計算する関数です。この色の計算が、 GPU 上で並列に走ります。</p>
-<p lang="en">With shaders, you can execute various effects like lighting or blur. For an example, see <code>example/shader</code>.</p>
-<p lang="ja">シェーダを使うことでライティング、ブラーなどの様々な効果が実現できます。サンプルについては <code>example/shader</code> を参照してください。</p>
+<p lang="en">With shaders, you can execute various effects like lighting or blur. For an example, see <code>examples/shader</code>.</p>
+<p lang="ja">シェーダを使うことでライティング、ブラーなどの様々な効果が実現できます。サンプルについては <code>examples/shader</code> を参照してください。</p>
 <pre><code>go run -tags=example github.com/hajimehoshi/ebiten/v2/examples/shader</code></pre>
 <p lang="en">Ebiten adopts an original shading language 'Kage'. This has a compatible syntax with Go, but the details are different. Kage has high portability. Ebiten uses graphics libraries like OpenGL or Metal and this depends on environments, but Kage is compiled on the fly so that this works equally everywhere.</p>
 <p lang="ja">Ebiten はシェーディング言語として Kage という独自言語を採用しています。これは Go 互換の文法を持ちますが、細部が Go とは異なります。 Kage は高いポータビリティを持ちます。 Ebiten は環境によって OpenGL や Metal などをグラフィックスライブラリとして使いますが、 Kage はどの環境でも同様に動くように、動的にコンパイルされます。</p>
