@@ -536,7 +536,7 @@ p.img.thumbnail img, p.img iframe {
 
 /* logo */
 
-h1.big > span.main:after {
+h1.big > span.main:before {
     content: "";
     display: inline-block;
     width: 80px;
@@ -547,12 +547,12 @@ h1.big > span.main:after {
     background-repeat: no-repeat;
     background-size: contain;
 
-    margin-left: 4px;
+    margin-left: -5px;
     position: relative;
     top: 9px;
 }
 
-body > nav h1:after {
+body > nav h1:before {
     content: "";
     display: inline-block;
     width: 32px;
@@ -563,7 +563,7 @@ body > nav h1:after {
     background-repeat: no-repeat;
     background-size: contain;
 
-    margin-left: 2px;
+    margin-left: -2px;
     position: relative;
     top: 4px;
 }
