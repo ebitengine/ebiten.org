@@ -336,7 +336,13 @@ function updateLanguage(lang) {
             e.classList.remove('active');
         }
     }
+
+    updateImages();
     updateTOC();
+
+    for (const e of document.querySelectorAll('p.math')) {
+        adjustHeight(e.firstChild);
+    }
 }
 
 window.addEventListener('DOMContentLoaded', () => {
