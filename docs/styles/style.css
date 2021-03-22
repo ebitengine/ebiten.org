@@ -168,8 +168,7 @@ tr:nth-child(even) td, tr:nth-child(even) th {
 body > nav a[href^="http://"]:after,
 body > nav a[href^="https://"]:after {
     content: "";
-    /* Disable margin-collapse */
-    padding: 0.05px;
+    display: inline-block;
     width: 16px;
     height: 16px;
 
@@ -240,7 +239,7 @@ figure {
     margin: 0;
 }
 div.grid-container > div {
-    padding: 0.05px;
+    padding: 0;
 }
 div.toc > div {
     padding: 7px 18px 10px 18px;
@@ -287,7 +286,7 @@ body > nav {
 }
 
 ul, ol {
-    padding-left: 0.05px;
+    padding-left: 0;
 }
 article ul, article ol {
     margin-left: 48px;
@@ -309,7 +308,7 @@ table {
 }
 td, th {
     vertical-align: top;
-    padding: 0.05px 6px;
+    padding: 0 6px;
 }
 
 /* font size */
@@ -473,7 +472,7 @@ table {
 p, ul, ol, nav.tags, nav.path,
 h1, h2, h3, h4, h5, h6 {
     /* Disable margin-collapse */
-    padding: 0.05px;
+    display: inline-block;
 }
 p, nav.tags, nav.path,
 h1, h2, h3, h4, h5, h6,
@@ -481,16 +480,14 @@ body > nav ul, body > nav ol {
     width: 100%;
 }
 iframe {
-    /* Disable margin-collapse */
-    padding: 0.05px;
+    display: inline-block;
 }
 pre {
     display: block;
     width: calc(100% - 2 * 18px);
 }
 h1.big > span.sub {
-    /* Disable margin-collapse */
-    padding: 0.05px;
+    display: inline-block;
     width: 100%;
 }
 body > nav ul {
@@ -719,7 +716,7 @@ input#sidemenu:checked ~ label.sidemenucover {
 ul.toplinks {
     list-style-type: none;
     margin-left: 0 !important;
-    padding-left: 0.05px !important;
+    padding-left: 0 !important;
 }
 ul.toplinks li {
     dipslay: inline-block;
