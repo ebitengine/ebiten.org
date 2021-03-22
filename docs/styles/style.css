@@ -168,7 +168,6 @@ tr:nth-child(even) td, tr:nth-child(even) th {
 body > nav a[href^="http://"]:after,
 body > nav a[href^="https://"]:after {
     content: "";
-    display: inline-block;
     width: 16px;
     height: 16px;
 
@@ -428,6 +427,10 @@ main {
     flex-grow: 1;
     align-items: center;
 }
+article {
+    display: flex;
+    flex-direction: column;
+}
 article, footer {
     width: calc(4 * 168px + 3 * 24px);
     max-width: calc(100vw - 2 * 24px);
@@ -469,18 +472,10 @@ table {
 
 /* display */
 
-p, ul, ol, nav.tags, nav.path,
-h1, h2, h3, h4, h5, h6 {
-    /* Disable margin-collapse */
-    display: inline-block;
-}
 p, nav.tags, nav.path,
 h1, h2, h3, h4, h5, h6,
 body > nav ul, body > nav ol {
     width: 100%;
-}
-iframe {
-    display: inline-block;
 }
 pre {
     display: block;
