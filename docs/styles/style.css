@@ -5,12 +5,12 @@
 
 /* font */
 
-body, code, pre {
-    font-family: 'Roboto Mono', 'Noto Sans JP', monospace;
+body {
+    font-family: 'Roboto', 'Noto Sans JP', sans-serif;
     font-display: auto;
 }
-h1.big, body > nav h1 {
-    font-family: 'Roboto', sans-serif;
+code {
+    font-family: 'Roboto Mono', 'Noto Sans JP', monospace;
     font-display: auto;
 }
 .hiddenlang {
@@ -111,14 +111,6 @@ pre {
     color: #333333; /* 8000-N */
     border-color: #cccccc; /* 2000-N */
     border-radius: 8px;
-}
-code {
-    background-color: #f3f3f3; /* 0500-N */
-    border-style: solid;
-    border-color: #f3f3f3; /* 0500-N */
-    border-width: 1px 2px;
-    border-radius: 4px;
-    margin: 0 -2px 0 -2px;
 }
 table code {
     background-color: transparent;
@@ -322,13 +314,17 @@ td, th {
 
 /* font size */
 
-p, pre, ul, ol, code, figcaption, table {
+p, pre, ul, ol, figcaption, table {
     font-size: 14px;
     line-height: 24px;
 }
 p, ul, ol, figcaption, table {
     position: relative;
     top: 7px;
+}
+code {
+    font-size: 13px;
+    line-height: 24px;
 }
 
 h1, h1 > code {
@@ -416,7 +412,7 @@ body {
     display: flex;
 }
 body > nav {
-    width: 216px;
+    width: 168px;
     height: calc(var(--vh, 1vh) * 100 - 24px - 24px);
     position: -webkit-sticky;
     position: sticky;
@@ -434,7 +430,7 @@ main {
     align-items: center;
 }
 article, footer {
-    width: calc(4 * 216px + 3 * 24px);
+    width: calc(4 * 168px + 3 * 24px);
     max-width: calc(100vw - 2 * 24px);
 }
 footer {
@@ -627,7 +623,7 @@ input#sidemenu:checked ~ label.sidemenucover {
     transition-delay: 0s;
 }
 
-@media only screen and (max-width: calc(5 * 216px + 7 * 24px)) {
+@media only screen and (max-width: calc(5 * 168px + 7 * 24px)) {
     input#sidemenu ~ label.sidemenubutton {
         display: inline-block;
     }
@@ -637,7 +633,7 @@ input#sidemenu:checked ~ label.sidemenucover {
 
     body > nav {
         position: fixed;
-        left: calc(-1 * (216px + 2 * 24px));
+        left: calc(-1 * (168px + 2 * 24px));
 
         transition: left 0.2s ease;
     }
@@ -646,7 +642,7 @@ input#sidemenu:checked ~ label.sidemenucover {
     }
 }
 
-@media only screen and (max-width: calc(4 * 216px + 5 * 24px)) {
+@media only screen and (max-width: calc(4 * 168px + 5 * 24px)) {
     div.grid-container {
         grid-template-columns: repeat(3, calc((100% - 2 * 24px) / 3));
     }
@@ -668,7 +664,7 @@ input#sidemenu:checked ~ label.sidemenucover {
         width: calc(100% - 24px);
     }
 }
-@media only screen and (max-width: calc(3 * 216px + 4 * 24px)) {
+@media only screen and (max-width: calc(3 * 168px + 4 * 24px)) {
     div.grid-container {
         grid-template-columns: repeat(2, calc((100% - 24px) / 2));
     }
@@ -682,7 +678,7 @@ input#sidemenu:checked ~ label.sidemenucover {
         grid-column-start: span 2;
     }
 }
-@media only screen and (max-width: calc(2 * 216px + 3 * 24px)) {
+@media only screen and (max-width: calc(2 * 168px + 3 * 24px)) {
     div.grid-container {
         grid-template-columns: repeat(1, 100%);
     }
