@@ -1,0 +1,206 @@
+<div lang="en">
+  <h1>Ebiten 2.1 Release Notes</h1>
+  <h2>2.1.0</h2>
+  <p><em>(Notice: Ebiten 2.1 has not been released yet! This document is a draft.)</em></p>
+  <p><a href="https://github.com/hajimehoshi/ebiten/milestone/19?closed=1">Issues for v2.1.0</a></p>
+  <h3>New features</h3>
+  <h4>Functions</h4>
+  <p>These functions were added (<a href="https://github.com/hajimehoshi/ebiten/issues/770">#770</a>, <a href="https://github.com/hajimehoshi/ebiten/issues/995">#995</a>,<a href="https://github.com/hajimehoshi/ebiten/issues/1385">#1385</a>, <a href="https://github.com/hajimehoshi/ebiten/issues/1561">#1561</a>):</p>
+  <ul>
+    <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#CursorShape"><code>ebiten.CursorShape</code></a>: gets the current cursor shape.</li>
+    <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#SetCursorShape"><code>ebiten.SetCursorShape</code></a>: sets the current cursor shape.</li>
+    <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#SetWindowSizeLimits"><code>ebiten.SetWindowSizeLimits</code></a>: sets the window size limits.</li>
+    <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#WindowSizeLimits"><code>ebiten.WindowSizeLimits</code></a>: gets the window size limits.</li>
+    <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2/inpututil#PressedKeys"><code>inpututil.PressedKeys</code></a>: returns all the pressed keys.</li>
+    <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2/text#CacheGlyphs"><code>text.CacheGlyphs</code></a>: creates glyph cache for the given string. After calling this, you can expect <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2/text#Draw"><code>text.Draw</code></a> runs faster.</li>
+  </ul>
+  <h4>Constants</h4>
+  <p>For system cursors, a new type <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#CursorShapeType"><code>CursorShapeType</code></a> and these constants were added (<a href="https://github.com/hajimehoshi/ebiten/issues/995">#995</a>):</p>
+  <ul>
+    <li><code>CursorShapeDefault</code></li>
+    <li><code>CursorShapeText</code></li>
+    <li><code>CursorShapeCrosshair</code></li>
+    <li><code>CursorShapePointer</code></li>
+  </ul>
+  <p>These key constants were added (<a href="https://github.com/hajimehoshi/ebiten/issues/1382">#1382</a>, <a href="https://github.com/hajimehoshi/ebiten/issues/1561">#1561</a>):</p>
+  <ul>
+    <li><code>KeyAltLeft</code></li>
+    <li><code>KeyAltRight</code></li>
+    <li><code>KeyControlLeft</code></li>
+    <li><code>KeyControlRight</code></li>
+    <li><code>KeyMeta</code></li>
+    <li><code>KeyMetaLeft</code></li>
+    <li><code>KeyMetaRight</code></li>
+    <li><code>KeyShiftLeft</code></li>
+    <li><code>KeyShiftRight</code></li>
+  </ul>
+  <p>As the key name convention has changed, these key constants were added to replace some of the existing keys (<a href="https://github.com/hajimehoshi/ebiten/issues/1394">#1394</a>). The key constants to be replaced are kept for compatibility:</p>
+  <ul>
+    <li><code>KeyArrowDown</code> (replaces: <code>KeyDown</code>)</li>
+    <li><code>KeyArrowLeft</code> (replaces: <code>KeyLeft</code>)</li>
+    <li><code>KeyArrowRight</code> (replaces: <code>KeyRight</code>)</li>
+    <li><code>KeyArrowUp</code> (replaces: <code>KeyUp</code>)</li>
+    <li><code>KeyBackquote</code> (replaces: <code>KeyGraveAccent</code>)</li>
+    <li><code>KeyBracketLeft</code> (replaces: <code>KeyLeftBracket</code>)</li>
+    <li><code>KeyBracketRight</code> (replaces: <code>KeyRightBracket</code>)</li>
+    <li><code>KeyContextMenu</code> (replaces: <code>KeyMenu</code>)</li>
+    <li><code>KeyDigit0</code> (replaces: <code>Key0</code>)</li>
+    <li><code>KeyDigit1</code> (replaces: <code>Key1</code>)</li>
+    <li><code>KeyDigit2</code> (replaces: <code>Key2</code>)</li>
+    <li><code>KeyDigit3</code> (replaces: <code>Key3</code>)</li>
+    <li><code>KeyDigit4</code> (replaces: <code>Key4</code>)</li>
+    <li><code>KeyDigit5</code> (replaces: <code>Key5</code>)</li>
+    <li><code>KeyDigit6</code> (replaces: <code>Key6</code>)</li>
+    <li><code>KeyDigit7</code> (replaces: <code>Key7</code>)</li>
+    <li><code>KeyDigit8</code> (replaces: <code>Key8</code>)</li>
+    <li><code>KeyDigit9</code> (replaces: <code>Key9</code>)</li>
+    <li><code>KeyNumpad*</code> (replaces: <code>KeyKP*</code>)</li>
+    <li><code>KeyQuote</code> (replaces: <code>KeyApostrophe</code>)</li>
+  </ul>
+  <h4>Build tag</h4>
+  <p>A new build tag <code>ebitensinglethread</code> was added (<a href="https://github.com/hajimehoshi/ebiten/issues/1367">#1367</a>). If this is enabled, the number of the internal threads becomes one and you can expect performance improvement. As a side effect, all Ebiten's concurrent-safe functions become concurrent-unsafe.</p>
+  <h4>Others</h4>
+  <ul>
+    <li>A tool to convert Go to C, <a href="https://github.com/hajimehoshi/go2cpp">go2cpp</a>, was supported (<a href="https://github.com/hajimehoshi/ebiten/issues/744">#744</a>). With this tool, Ebiten will work in an environment where Go is supposed not to work. Implmenting a binding for the targetted environment is necessary. We plan to announce the details later.</li>
+    <li>Rendering no longer stops when a user resizes the window (<a href="https://github.com/hajimehoshi/ebiten/issues/1204">#1204</a>).</li>
+    <li>A sub-image created by <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#Image.SubImage"><code>SubImage</code></a> can now call <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#Image.Fill"><code>Fill</code></a>, <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#Image.DrawImage"><code>DrawImage</code></a> and so on as a receiver (<a href="https://github.com/hajimehoshi/ebiten/issues/1255">#1255</a>, <a href="https://github.com/hajimehoshi/ebiten/issues/1461">#1461</a>). With this, you can render an image with clipping.</li>
+    <li><code>CursorModeCaptured</code> became available on some of browsers (<a href="https://github.com/hajimehoshi/ebiten/issues/1572">#1572</a>).</li>
+    <li><code>const</code> became available in <a href="/documents/shader.html">the shading language Kage</a> (<a href="https://github.com/hajimehoshi/ebiten/issues/1192">#1192</a>).</li>
+    <li>A function <code>cap</code> was added to Kage (<a href="https://github.com/hajimehoshi/ebiten/issues/1361">#1361</a>).</li>
+    <li>A function <code>imageDstOnTexture</code> was added to Kage (<a href="https://github.com/hajimehoshi/ebiten/issues/1428">#1428</a>).</li>
+    <li>Audio for browsers was reimplemented (<a href="https://github.com/hajimehoshi/ebiten/issues/1458">#1458</a>). A buffer size became bigger and you can expect less noises.</li>
+  </ul>
+  <h3>Backward compatibility</h3>
+  <ul>
+    <li>"Negative mipmap" was abandoned (<a href="https://github.com/hajimehoshi/ebiten/issues/1400">#1400</a>). By this, rendering results of edges with a big scale might be different from those in v2.0. If you want to make sure edges are rendreed, you have to render a sub-image created by <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#Image.SubImage"><code>SubImage</code></a> as a part of a big image.</li>
+  </ul>
+  <h3>Bug fix</h3>
+  <p>This release includes all the bug fixes in v2.0.x.</p>
+  <ul>
+    <li>On Windows, Ebiten applications might no longer work after suspending to launch an Ebiten application (<a href="https://github.com/hajimehoshi/ebiten/issues/1393">#1393</a>)</li>
+    <li>Too low TPS didn't work (<a href="https://github.com/hajimehoshi/ebiten/issues/1417">#1417</a>)</li>
+    <li>Too high TPS didn't work (<a href="https://github.com/hajimehoshi/ebiten/issues/1443">#1443</a>, <a href="https://github.com/hajimehoshi/ebiten/issues/1444">#1444</a>)</li>
+    <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#CursorPosition"><code>CursorPosition</code></a> could return an extremely small number (<a href="https://github.com/hajimehoshi/ebiten/issues/1587">#1587</a>).</li>
+    <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#GamepadName"><code>GamepadName</code></a> and <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#GamepadSDLID"><code>GamepadSDLID</code></a> could return wrong values on browsers (<a href="https://github.com/hajimehoshi/ebiten/issues/1472">#1472</a>).</li>
+    <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#SetWindowIcon"><code>SetWindowIcon</code></a> crashed when an <code>*ebiten.Image</code> was given (<a href="https://github.com/hajimehoshi/ebiten/issues/1468">#1468</a>).</li>
+    <li>In fullscreen, icons disappeared when calling <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#SetWindowIcon"><code>SetWindowIcon</code></a> (<a href="https://github.com/hajimehoshi/ebiten/issues/1587">#1587</a>).</li>
+    <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2/audio#NewInfiniteLoop"><code>NewInfiniteLoop</code></a> and <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2/audio#NewInfiniteLoopWithIntro"><code>NewInfiniteLoopWithIntro</code></a> didn't work with a buffer whose size was not in multiples of 4 (<a href="https://github.com/hajimehoshi/ebiten/issues/1503">#1503</a>).</li>
+    <li>In the shading language Kage, functions <code>dfdx</code>, <code>dfdy</code>, <code>fwidth</code> didn't work on browsers (<a href="https://github.com/hajimehoshi/ebiten/issues/1404">#1404</a>).</li>
+    <li>In the shading language Kage, duplicated functions were not error (<a href="https://github.com/hajimehoshi/ebiten/issues/1430">#1430</a>).</li>
+  </ul>
+  <h3>Performance improvement</h3>
+  <ul>
+    <li>Reduced thread context switchings (<a href="https://github.com/hajimehoshi/ebiten/issues/1358">#1358</a>).</li>
+    <li>Made cache for the results of <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#ColorM.Scale"><code>(*ColorM).Scale</code></code> (<a href="https://github.com/hajimehoshi/ebiten/issues/1474">#1474</a>).</li>
+    <li>Fixed the problem that <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#Image.ReplacePixels"><code>ReplacePixels</code></a> might be slow in Metal (<a href="https://github.com/hajimehoshi/ebiten/issues/1418">#1418</a>, <a href="https://github.com/hajimehoshi/ebiten/issues/1517">#1517</a>).</li>
+    <li>Used <code>DrawImage</code> instead of <code>ReplacePixels</code> when extending an internal texture (<a href="https://github.com/hajimehoshi/ebiten/issues/1022">#1022</a>, <a href="https://github.com/hajimehoshi/ebiten/issues/1414">#1414</a>).</li>
+    <li>Used <code>DrawImage</code> instead of <code>ReplacePixels</code> when putting an idependent internal texture onto an internal texture atlas (<a href="https://github.com/hajimehoshi/ebiten/issues/1508">#1508</a>).</li>
+    <li>Reduced JavaScript object creations (<a href="https://github.com/hajimehoshi/ebiten/issues/1426">#1426</a>).</li>
+    <li>Reduced JavaScript string creations (<a href="https://github.com/hajimehoshi/ebiten/issues/1437">#1437</a>, <a href="https://github.com/hajimehoshi/ebiten/issues/1438">#1438</a>).</li>
+    <li>Used WebGL2 functions (<a href="https://github.com/hajimehoshi/ebiten/issues/1435">#1435</a>).</li>
+    <li>Reduced object creations when the package <code>inpututil</code> is used (<a href="https://github.com/hajimehoshi/ebiten/issues/1473">#1473</a>).</li>
+  </ul>
+</div>
+<div lang="ja">
+  <h1>Ebiten 2.1 リリースノート</h1>
+  <h2>2.1.0</h2>
+  <p><em>注意: Ebiten 2.1 はまだリリースされていません! この文章はドラフトです。</em></p>
+  <p><a href="https://github.com/hajimehoshi/ebiten/milestone/19?closed=1">Issues for v2.1.0</a></p>
+  <h3>新機能</h3>
+  <h4>関数</h4>
+  <p>次の関数が追加されました (<a href="https://github.com/hajimehoshi/ebiten/issues/770">#770</a>、 <a href="https://github.com/hajimehoshi/ebiten/issues/995">#995</a>、<a href="https://github.com/hajimehoshi/ebiten/issues/1385">#1385</a>、 <a href="https://github.com/hajimehoshi/ebiten/issues/1561">#1561</a>):</p>
+  <ul>
+    <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#CursorShape"><code>ebiten.CursorShape</code></a>: 現在のカーソルの形を取得する。</li>
+    <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#SetCursorShape"><code>ebiten.SetCursorShape</code></a>: 現在のカーソルの形を設定する。</li>
+    <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#SetWindowSizeLimits"><code>ebiten.SetWindowSizeLimits</code></a>: ウィンドウの大きさ制限を設定する。</li>
+    <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#WindowSizeLimits"><code>ebiten.WindowSizeLimits</code></a>: ウィンドウの大きさ制限を取得する。</li>
+    <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2/inpututil#PressedKeys"><code>inpututil.PressedKeys</code></a>: 現在押されているすべてのキーを取得する。</li>
+    <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2/text#CacheGlyphs"><code>text.CacheGlyphs</code></a>: 与えられた文字列のグリフのキャッシュを作る。以後 <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2/text#Draw"><code>text.Draw</code></a> が高速化されることが期待される。</li>
+  </ul>
+  <h4>定数</h4>
+  <p>システムカーソルのために、型 <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#CursorShapeType"><code>CursorShapeType</code></a> 及び次の定数が追加されました (<a href="https://github.com/hajimehoshi/ebiten/issues/995">#995</a>):</p>
+  <ul>
+    <li><code>CursorShapeDefault</code></li>
+    <li><code>CursorShapeText</code></li>
+    <li><code>CursorShapeCrosshair</code></li>
+    <li><code>CursorShapePointer</code></li>
+  </ul>
+  <p>次のキー定数が追加されました (<a href="https://github.com/hajimehoshi/ebiten/issues/1382">#1382</a>、 <a href="https://github.com/hajimehoshi/ebiten/issues/1561">#1561</a>):</p>
+  <ul>
+    <li><code>KeyAltLeft</code></li>
+    <li><code>KeyAltRight</code></li>
+    <li><code>KeyControlLeft</code></li>
+    <li><code>KeyControlRight</code></li>
+    <li><code>KeyMeta</code></li>
+    <li><code>KeyMetaLeft</code></li>
+    <li><code>KeyMetaRight</code></li>
+    <li><code>KeyShiftLeft</code></li>
+    <li><code>KeyShiftRight</code></li>
+  </ul>
+  <p>キー定数の命名規則変更に伴い、次のキー定数が既存キーの置き換えとして追加されました (<a href="https://github.com/hajimehoshi/ebiten/issues/1394">#1394</a>)。置き換わり元のキー定数は互換性のために残しています:</p>
+  <ul>
+    <li><code>KeyArrowDown</code> (元: <code>KeyDown</code>)</li>
+    <li><code>KeyArrowLeft</code> (元: <code>KeyLeft</code>)</li>
+    <li><code>KeyArrowRight</code> (元: <code>KeyRight</code>)</li>
+    <li><code>KeyArrowUp</code> (元: <code>KeyUp</code>)</li>
+    <li><code>KeyBackquote</code> (元: <code>KeyGraveAccent</code>)</li>
+    <li><code>KeyBracketLeft</code> (元: <code>KeyLeftBracket</code>)</li>
+    <li><code>KeyBracketRight</code> (元: <code>KeyRightBracket</code>)</li>
+    <li><code>KeyContextMenu</code> (元: <code>KeyMenu</code>)</li>
+    <li><code>KeyDigit0</code> (元: <code>Key0</code>)</li>
+    <li><code>KeyDigit1</code> (元: <code>Key1</code>)</li>
+    <li><code>KeyDigit2</code> (元: <code>Key2</code>)</li>
+    <li><code>KeyDigit3</code> (元: <code>Key3</code>)</li>
+    <li><code>KeyDigit4</code> (元: <code>Key4</code>)</li>
+    <li><code>KeyDigit5</code> (元: <code>Key5</code>)</li>
+    <li><code>KeyDigit6</code> (元: <code>Key6</code>)</li>
+    <li><code>KeyDigit7</code> (元: <code>Key7</code>)</li>
+    <li><code>KeyDigit8</code> (元: <code>Key8</code>)</li>
+    <li><code>KeyDigit9</code> (元: <code>Key9</code>)</li>
+    <li><code>KeyNumpad*</code> (元: <code>KeyKP*</code>)</li>
+    <li><code>KeyQuote</code> (元: <code>KeyApostrophe</code>)</li>
+  </ul>
+  <h4>ビルドタグ</h4>
+  <p>新しいビルドタグ <code>ebitensinglethread</code> が追加されました (<a href="https://github.com/hajimehoshi/ebiten/issues/1367">#1367</a>)。有効にすると、内部のスレッドが 1 つになり、パフォーマンスの向上が期待されます。副作用として、すべてのコンカレントセーフな Ebiten の関数が、コンカレントセーフでなくなります。</p>
+  <h4>その他</h4>
+  <ul>
+    <li>Go を C++ に変換するツールである、 <a href="https://github.com/hajimehoshi/go2cpp">go2cpp</a> に対応しました (<a href="https://github.com/hajimehoshi/ebiten/issues/744">#744</a>)。これにより、 Go が本来コンパイルできない環境でも Ebiten を動かす事ができるようになります。環境に合わせてバインディングの実装が必要です。詳細については、今後発表していく予定です。</li>
+    <li>ウィンドウを拡大縮小しても、描画が止まらなくなりました (<a href="https://github.com/hajimehoshi/ebiten/issues/1204">#1204</a>)。</li>
+    <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#Image.SubImage"><code>SubImage</code></a> で作られた部分画像に対して <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#Image.Fill"><code>Fill</code></a> や <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#Image.DrawImage"><code>DrawImage</code></a> などが呼べるようになりました (<a href="https://github.com/hajimehoshi/ebiten/issues/1255">#1255</a>、 <a href="https://github.com/hajimehoshi/ebiten/issues/1461">#1461</a>)。これにより、クリッピングを使った描画ができるようになりました。</li>
+    <li><code>CursorModeCaptured</code> が一部ブラウザでも動くようになりました (<a href="https://github.com/hajimehoshi/ebiten/issues/1572">#1572</a>)。</li>
+    <li><a href="/documents/shader.html">シェーディング言語 Kage</a> で <code>const</code> が使えるようになりました (<a href="https://github.com/hajimehoshi/ebiten/issues/1192">#1192</a>)。</li>
+    <li>シェーディング言語 Kage に <code>cap</code> 関数が追加されました (<a href="https://github.com/hajimehoshi/ebiten/issues/1361">#1361</a>)。</li>
+    <li>シェーディング言語 Kage に <code>imageDstOnTexture</code> 関数が追加されました (<a href="https://github.com/hajimehoshi/ebiten/issues/1428">#1428</a>)。</li>
+    <li>ブラウザにおけるオーディオを再実装しました (<a href="https://github.com/hajimehoshi/ebiten/issues/1458">#1458</a>)。オーディオバッファに余裕ができ、ノイズが減ることが期待されます。</li>
+  </ul>
+  <h3>後方互換性</h3>
+  <ul>
+    <li>「負のミップマップ」が廃止されました (<a href="https://github.com/hajimehoshi/ebiten/issues/1400">#1400</a>)。これにより、大きな拡大率ので描画した倍、端の描画の結果が v2.0 と比べて変わることがあります。端を含めて確実に描画したい場合は、描画元画像に <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#Image.SubImage"><code>SubImage</code></a> を用いて、大きな画像の一部として描画してください。</li>
+  </ul>
+  <h3>バグ修正</h3>
+  <p>このリリースには、 v2.0.x にあるすべてのバグ修正が含まれます。</p>
+  <ul>
+    <li>Windows で、アプリケーションの起動を中断したときに、 Ebiten のアプリケーションが以後動かない可能性があった問題の修正 (<a href="https://github.com/hajimehoshi/ebiten/issues/1393">#1393</a>)</li>
+    <li>TPS の値が極端に小さい場合にうまく動かなかった問題の修正 (<a href="https://github.com/hajimehoshi/ebiten/issues/1417">#1417</a>)</li>
+    <li>TPS の値が極端に大きい場合にうまく動かなかった問題の修正 (<a href="https://github.com/hajimehoshi/ebiten/issues/1443">#1443</a>、 <a href="https://github.com/hajimehoshi/ebiten/issues/1444">#1444</a>)</li>
+    <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#CursorPosition"><code>CursorPosition</code></a> が極端に小さい値を返すことがあった問題を修正 (<a href="https://github.com/hajimehoshi/ebiten/issues/1587">#1587</a>)。</li>
+    <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#GamepadName"><code>GamepadName</code></a> および <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#GamepadSDLID"><code>GamepadSDLID</code></a> がブラウザで間違った値を返す可能性があった問題の修正 (<a href="https://github.com/hajimehoshi/ebiten/issues/1472">#1472</a>)。</li>
+    <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#SetWindowIcon"><code>SetWindowIcon</code></a> に <code>*ebiten.Image</code> を与えるとクラッシュした問題の修正 (<a href="https://github.com/hajimehoshi/ebiten/issues/1468">#1468</a>)。</li>
+    <li>フルスクリーン時に <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#SetWindowIcon"><code>SetWindowIcon</code></a> を呼ぶとアイコンが消えてしまう問題の修正 (<a href="https://github.com/hajimehoshi/ebiten/issues/1587">#1587</a>)。</li>
+    <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2/audio#NewInfiniteLoop"><code>NewInfiniteLoop</code></a> および <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2/audio#NewInfiniteLoopWithIntro"><code>NewInfiniteLoopWithIntro</code></a> に 4 の倍数でない長さのバッファを与えたときにうまく動かなかった問題の修正 (<a href="https://github.com/hajimehoshi/ebiten/issues/1503">#1503</a>)。</li>
+    <li>シェーディング言語 Kage で <code>dfdx</code>、 <code>dfdy</code>、 <code>fwidth</code>関数がブラウザで動かなかった問題の修正 (<a href="https://github.com/hajimehoshi/ebiten/issues/1404">#1404</a>)。</li>
+    <li>シェーディング言語 Kage で同名の関数が重複してもエラーにならなかった問題の修正 (<a href="https://github.com/hajimehoshi/ebiten/issues/1430">#1430</a>)。</li>
+  </ul>
+  <h3>パフォーマンス改善</h3>
+  <ul>
+    <li>スレッドのコンテキストスイッチの削減 (<a href="https://github.com/hajimehoshi/ebiten/issues/1358">#1358</a>)。</li>
+    <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#ColorM.Scale"><code>(*ColorM).Scale</code></code> の結果をキャッシュするように修正 (<a href="https://github.com/hajimehoshi/ebiten/issues/1474">#1474</a>)。</li>
+    <li>Metal において <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#Image.ReplacePixels"><code>ReplacePixels</code></a> が遅くなることがあった問題の改善 (<a href="https://github.com/hajimehoshi/ebiten/issues/1418">#1418</a>、 <a href="https://github.com/hajimehoshi/ebiten/issues/1517">#1517</a>)。</li>
+    <li>内部テクスチャアトラス拡大時に <code>ReplacePixels</code> ではなく <code>DrawImage</code> を使用するように変更 (<a href="https://github.com/hajimehoshi/ebiten/issues/1022">#1022</a>、 <a href="https://github.com/hajimehoshi/ebiten/issues/1414">#1414</a>)。</li>
+    <li>独立内部テクスチャを内部テクスチャアトラス上に乗せるときに <code>ReplacePixels</code> ではなく <code>DrawImage</code> を使用するように変更 (<a href="https://github.com/hajimehoshi/ebiten/issues/1508">#1508</a>)。</li>
+    <li>JavaScript オブジェクト生成を削減 (<a href="https://github.com/hajimehoshi/ebiten/issues/1426">#1426</a>)。</li>
+    <li>JavaScript 文字列生成を削減 (<a href="https://github.com/hajimehoshi/ebiten/issues/1437">#1437</a>、 <a href="https://github.com/hajimehoshi/ebiten/issues/1438">#1438</a>)。</li>
+    <li>WebGL2 関数の使用 (<a href="https://github.com/hajimehoshi/ebiten/issues/1435">#1435</a>)</li>
+    <li><code>inpututil</code> パッケージ使用時のオブジェクト生成を削減 (<a href="https://github.com/hajimehoshi/ebiten/issues/1473">#1473</a>)。</li>
+  </ul>
+</div>
