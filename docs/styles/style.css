@@ -11,6 +11,7 @@ body {
 code {
     font-family: 'Roboto Mono', monospace;
     font-display: auto;
+    font-weight: bold;
 }
 .hiddenlang {
     display: none;
