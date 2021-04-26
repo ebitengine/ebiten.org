@@ -5,22 +5,25 @@
   <p><a href="https://github.com/hajimehoshi/ebiten/milestone/19?closed=1">Issues for v2.1.0</a></p>
   <h3>New features</h3>
   <h4>Functions</h4>
-  <p>These functions were added (<a href="https://github.com/hajimehoshi/ebiten/issues/770">#770</a>, <a href="https://github.com/hajimehoshi/ebiten/issues/995">#995</a>,<a href="https://github.com/hajimehoshi/ebiten/issues/1385">#1385</a>, <a href="https://github.com/hajimehoshi/ebiten/issues/1460">#1460</a>, <a href="https://github.com/hajimehoshi/ebiten/issues/1561">#1561</a>):</p>
+  <p>These functions were added (<a href="https://github.com/hajimehoshi/ebiten/issues/770">#770</a>, <a href="https://github.com/hajimehoshi/ebiten/issues/995">#995</a>, <a href="https://github.com/hajimehoshi/ebiten/issues/1385">#1385</a>, <a href="https://github.com/hajimehoshi/ebiten/issues/1460">#1460</a>, <a href="https://github.com/hajimehoshi/ebiten/issues/1561">#1561</a>):</p>
   <ul>
     <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#CursorShape"><code>ebiten.CursorShape</code></a>: gets the current cursor shape.</li>
     <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#SetCursorShape"><code>ebiten.SetCursorShape</code></a>: sets the current cursor shape.</li>
     <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#SetWindowSizeLimits"><code>ebiten.SetWindowSizeLimits</code></a>: sets the window size limits.</li>
     <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#WindowSizeLimits"><code>ebiten.WindowSizeLimits</code></a>: gets the window size limits.</li>
     <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2/inpututil#PressedKeys"><code>inpututil.PressedKeys</code></a>: returns all the pressed keys.</li>
-    <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2/audio/mp3#DecodeWithSampleRate"><code>mp3.DecodeWithSampleRate</code></a>: decodes decodes an MP3 data with the give sample rate.</a></li>
-    <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2/audio/vorbis#DecodeWithSampleRate"><code>vorbis.DecodeWithSampleRate</code></a>: decodes decodes an Ogg/Vorbis data with the give sample rate.</a></li>
-    <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2/audio/wav#DecodeWithSampleRate"><code>wav.DecodeWithSampleRate</code></a>: decodes decodes a WAV data with the give sample rate.</a></li>
-    <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2/text#CacheGlyphs"><code>text.CacheGlyphs</code></a>: precaches the glyphs for the given text and the given font face into the cache. The cache is shared with <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2/text#Draw"><code>text.Draw</code></a>. Glyphs are cached in a LRU way. As the cache's capacity has limit, it is not guaranteed that all the glyphs for runes given at <code>CacheGlyphs</code> are cached. <code>Draw</code> automatically creates and caches necessary glyphs, so usually you don't have to call <code>CacheGlyphs</code> explicitly. However, for example, when you call <code>Draw</code> for each rune of one big text, <code>Draw</code> tries to create the glyph cache and render it for each rune. This is very inefficient because creating a glyph image and rendering it are different operations (<code>(*ebiten.Image).ReplacePixels</code> and <code>(*ebiten.Image).DrawImage</code>) and can never be merged as one draw call. <code>CacheGlyphs</code> creates necessary glyphs without rendering them so that these operations are likely merged into one draw call regardless of the size of the text. The two functions are implemented like this:
-      <ul>
-        <li><code>Draw</code> = Create glyphs by <code>(*ebiten.Image).ReplacePixels</code> and put them into the cache if necessary + Draw them onto the destination by <code>(*ebiten.Image).DrawImage</code></li>
-        <li><code>CacheGlyphs</code> = Create glyphs by <code>(*ebiten.Image).ReplacePixels</code> and put them into the cache if necessary</li>
-      </ul>
-    </li>
+    <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2/audio/mp3#DecodeWithSampleRate"><code>mp3.DecodeWithSampleRate</code></a>: decodes decodes an MP3 data with the give sample rate.</li>
+    <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2/audio/vorbis#DecodeWithSampleRate"><code>vorbis.DecodeWithSampleRate</code></a>: decodes decodes an Ogg/Vorbis data with the give sample rate.</li>
+    <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2/audio/wav#DecodeWithSampleRate"><code>wav.DecodeWithSampleRate</code></a>: decodes decodes a WAV data with the give sample rate.</li>
+  </ul>
+  <h4>Functions (text)</h4>
+  <p><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2/text#CacheGlyphs"><code>text.CacheGlyphs</code></a> was added (<a href="https://github.com/hajimehoshi/ebiten/issues/1413">#1413</a>).</p>
+  <p><code>text.CacheGlyphs</code> precaches the glyphs for the given text and the given font face into the cache.</p>
+  <p>The cache is shared with <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2/text#Draw"><code>text.Draw</code></a>. Glyphs are cached in a LRU way. As the cache's capacity has limit, it is not guaranteed that all the glyphs for runes given at <code>CacheGlyphs</code> are cached.</p>
+  <p><code>Draw</code> automatically creates and caches necessary glyphs, so usually you don't have to call <code>CacheGlyphs</code> explicitly. However, for example, when you call <code>Draw</code> for each rune of one big text, <code>Draw</code> tries to create the glyph cache and render it for each rune. This is very inefficient because creating a glyph image and rendering it are different operations (<code>(*ebiten.Image).ReplacePixels</code> and <code>(*ebiten.Image).DrawImage</code>) and can never be merged as one draw call. <code>CacheGlyphs</code> creates necessary glyphs without rendering them so that these operations are likely merged into one draw call regardless of the size of the text. The two functions are implemented like this:</p>
+  <ul>
+    <li><code>Draw</code> = Create glyphs by <code>(*ebiten.Image).ReplacePixels</code> and put them into the cache if necessary + Draw them onto the destination by <code>(*ebiten.Image).DrawImage</code></li>
+    <li><code>CacheGlyphs</code> = Create glyphs by <code>(*ebiten.Image).ReplacePixels</code> and put them into the cache if necessary</li>
   </ul>
   <h4>Constants</h4>
   <p>For system cursors, a new type <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#CursorShapeType"><code>CursorShapeType</code></a> and these constants were added (<a href="https://github.com/hajimehoshi/ebiten/issues/995">#995</a>):</p>
@@ -122,15 +125,18 @@
     <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#SetWindowSizeLimits"><code>ebiten.SetWindowSizeLimits</code></a>: ウィンドウの大きさ制限を設定する。</li>
     <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#WindowSizeLimits"><code>ebiten.WindowSizeLimits</code></a>: ウィンドウの大きさ制限を取得する。</li>
     <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2/inpututil#PressedKeys"><code>inpututil.PressedKeys</code></a>: 現在押されているすべてのキーを取得する。</li>
-    <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2/audio/mp3#DecodeWithSampleRate"><code>mp3.DecodeWithSampleRate</code></a>: MP3 を与えられたサンプルレートでデコードする。</a></li>
-    <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2/audio/vorbis#DecodeWithSampleRate"><code>vorbis.DecodeWithSampleRate</code></a>: Ogg/Vorbis を与えられたサンプルレートでデコードする。</a></li>
-    <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2/audio/wav#DecodeWithSampleRate"><code>wav.DecodeWithSampleRate</code></a>: WAV を与えられたサンプルレートでデコードする。</a></li>
-    <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2/text#CacheGlyphs"><code>text.CacheGlyphs</code></a>: 与えられた文字列とフォントから、グリフの事前キャッシュを作る。キャッシュは <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2/text#Draw"><code>text.Draw</code></a> と共有される。グリフは LRU 方式でキャッシュされる。キャッシュ容量には上限があるので、 <code>CacheGlyphs</code> で与えられた文字のグリフすべてがキャッシュされる保証はない。 <code>Draw</code> は自動的にグリフを作成しキャッシュするので、通常 <code>CacheGlyphs</code> を明示的に呼ぶ必要はない。しかし、例えば、大きなテキストの 1 文字に対して <code>Draw</code> を呼ぶ場合、 <code>Draw</code> はグリフを作って描画を作るということを 1 文字ずつに対して行う。これはとても非効率的である。なぜならばグリフの画像を作るのとそれを描画するのは異なる操作で (<code>(*ebiten.Image).ReplacePixels</code> と <code>(*ebiten.Image).DrawImage</code>)、 1 つのドローコールとしてマージされないからである。 <code>CacheGlyphs</code> は必要なグリフを描画せずに作るので、文字列の大きさに関わりなく、高確率で操作がマージされて 1 つのドローコールになる。 2 つの関数は次のように実装されている:
-      <ul>
-        <li><code>Draw</code> = 必要ならばグリフを <code>(*ebiten.Image).ReplacePixels</code> で作り、それらをキャッシュする + <code>(*ebiten.Image).DrawImage</code> で描画先上に描画する</li>
-        <li><code>CacheGlyphs</code> = 必要ならばグリフを <code>(*ebiten.Image).ReplacePixels</code> で作り、それらをキャッシュする</li>
-      </ul>
-    </li>
+    <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2/audio/mp3#DecodeWithSampleRate"><code>mp3.DecodeWithSampleRate</code></a>: MP3 を与えられたサンプルレートでデコードする。</li>
+    <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2/audio/vorbis#DecodeWithSampleRate"><code>vorbis.DecodeWithSampleRate</code></a>: Ogg/Vorbis を与えられたサンプルレートでデコードする。</li>
+    <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2/audio/wav#DecodeWithSampleRate"><code>wav.DecodeWithSampleRate</code></a>: WAV を与えられたサンプルレートでデコードする。</li>
+  </ul>
+  <h4>関数 (text)</h4>
+  <p><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2/text#CacheGlyphs"><code>text.CacheGlyphs</code></a> が追加されました (<a href="https://github.com/hajimehoshi/ebiten/issues/1413">#1413</a>)。</p>
+  <p>与えられた文字列とフォントから、グリフの事前キャッシュを作ります。</p>
+  <p>キャッシュは <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2/text#Draw"><code>text.Draw</code></a> と共有されます。グリフは LRU 方式でキャッシュされます。キャッシュ容量には上限があるので、 <code>CacheGlyphs</code> で与えられた文字のグリフすべてがキャッシュされる保証はありません。</p>
+  <p><code>Draw</code> は自動的にグリフを作成しキャッシュするので、通常 <code>CacheGlyphs</code> を明示的に呼ぶ必要はありません。しかし、例えば、大きなテキストの 1 文字ずつに対して <code>Draw</code> を呼ぶ場合、 <code>Draw</code> はグリフを作って描画を作るということを 1 文字ずつに対して行います。これはとても非効率的です。なぜならばグリフの画像を作るのとそれを描画するのは異なる操作で (<code>(*ebiten.Image).ReplacePixels</code> と <code>(*ebiten.Image).DrawImage</code>)、 1 つのドローコールとしてマージされないからです。 <code>CacheGlyphs</code> は必要なグリフを描画せずに作るので、文字列の大きさに関わりなく、高確率で操作がマージされて 1 つのドローコールになります。 2 つの関数は次のように実装されています:</p>
+  <ul>
+    <li><code>Draw</code> = 必要ならばグリフを <code>(*ebiten.Image).ReplacePixels</code> で作り、それらをキャッシュする + <code>(*ebiten.Image).DrawImage</code> で描画先上に描画する</li>
+    <li><code>CacheGlyphs</code> = 必要ならばグリフを <code>(*ebiten.Image).ReplacePixels</code> で作り、それらをキャッシュする</li>
   </ul>
   <h4>定数</h4>
   <p>システムカーソルのために、型 <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#CursorShapeType"><code>CursorShapeType</code></a> 及び次の定数が追加されました (<a href="https://github.com/hajimehoshi/ebiten/issues/995">#995</a>):</p>
