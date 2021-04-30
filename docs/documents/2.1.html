@@ -103,17 +103,21 @@
         <div lang="en">
   <h1>Ebiten 2.1 Release Notes</h1>
   <h2>2.1.0</h2>
-  <p><em>(Notice: Ebiten 2.1 has not been released yet! This document is a draft.)</em></p>
   <p><a href="https://github.com/hajimehoshi/ebiten/milestone/19?closed=1">Issues for v2.1.0</a></p>
   <h3>New features</h3>
   <h4>Functions</h4>
-  <p>These functions were added (<a href="https://github.com/hajimehoshi/ebiten/issues/770">#770</a>, <a href="https://github.com/hajimehoshi/ebiten/issues/995">#995</a>, <a href="https://github.com/hajimehoshi/ebiten/issues/1385">#1385</a>, <a href="https://github.com/hajimehoshi/ebiten/issues/1460">#1460</a>, <a href="https://github.com/hajimehoshi/ebiten/issues/1561">#1561</a>):</p>
+  <p>These functions were added (<a href="https://github.com/hajimehoshi/ebiten/issues/770">#770</a>, <a href="https://github.com/hajimehoshi/ebiten/issues/995">#995</a>, <a href="https://github.com/hajimehoshi/ebiten/issues/1385">#1385</a>, <a href="https://github.com/hajimehoshi/ebiten/issues/1561">#1561</a>):</p>
   <ul>
     <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#CursorShape"><code>ebiten.CursorShape</code></a>: gets the current cursor shape.</li>
     <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#SetCursorShape"><code>ebiten.SetCursorShape</code></a>: sets the current cursor shape.</li>
     <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#SetWindowSizeLimits"><code>ebiten.SetWindowSizeLimits</code></a>: sets the window size limits.</li>
     <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#WindowSizeLimits"><code>ebiten.WindowSizeLimits</code></a>: gets the window size limits.</li>
     <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2/inpututil#PressedKeys"><code>inpututil.PressedKeys</code></a>: returns all the pressed keys.</li>
+  </ul>
+  <p>See the new example <code>examples/cursor</code> for the cursors.</p>
+  <h4>Functions (audio)</h4>
+  <p>These functions were added (<a href="https://github.com/hajimehoshi/ebiten/issues/1460">#1460</a>):</p>
+  <ul>
     <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2/audio/mp3#DecodeWithSampleRate"><code>mp3.DecodeWithSampleRate</code></a>: decodes decodes an MP3 data with the give sample rate.</li>
     <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2/audio/vorbis#DecodeWithSampleRate"><code>vorbis.DecodeWithSampleRate</code></a>: decodes decodes an Ogg/Vorbis data with the give sample rate.</li>
     <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2/audio/wav#DecodeWithSampleRate"><code>wav.DecodeWithSampleRate</code></a>: decodes decodes a WAV data with the give sample rate.</li>
@@ -216,17 +220,21 @@
 <div lang="ja">
   <h1>Ebiten 2.1 リリースノート</h1>
   <h2>2.1.0</h2>
-  <p><em>注意: Ebiten 2.1 はまだリリースされていません! この文章はドラフトです。</em></p>
   <p><a href="https://github.com/hajimehoshi/ebiten/milestone/19?closed=1">Issues for v2.1.0</a></p>
   <h3>新機能</h3>
   <h4>関数</h4>
-  <p>次の関数が追加されました (<a href="https://github.com/hajimehoshi/ebiten/issues/770">#770</a>、 <a href="https://github.com/hajimehoshi/ebiten/issues/995">#995</a>、<a href="https://github.com/hajimehoshi/ebiten/issues/1385">#1385</a>、 <a href="https://github.com/hajimehoshi/ebiten/issues/1460">#1460</a>、 <a href="https://github.com/hajimehoshi/ebiten/issues/1561">#1561</a>):</p>
+  <p>次の関数が追加されました (<a href="https://github.com/hajimehoshi/ebiten/issues/770">#770</a>、 <a href="https://github.com/hajimehoshi/ebiten/issues/995">#995</a>、<a href="https://github.com/hajimehoshi/ebiten/issues/1385">#1385</a>、 <a href="https://github.com/hajimehoshi/ebiten/issues/1561">#1561</a>):</p>
   <ul>
     <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#CursorShape"><code>ebiten.CursorShape</code></a>: 現在のカーソルの形を取得する。</li>
     <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#SetCursorShape"><code>ebiten.SetCursorShape</code></a>: 現在のカーソルの形を設定する。</li>
     <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#SetWindowSizeLimits"><code>ebiten.SetWindowSizeLimits</code></a>: ウィンドウの大きさ制限を設定する。</li>
     <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#WindowSizeLimits"><code>ebiten.WindowSizeLimits</code></a>: ウィンドウの大きさ制限を取得する。</li>
     <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2/inpututil#PressedKeys"><code>inpututil.PressedKeys</code></a>: 現在押されているすべてのキーを取得する。</li>
+  </ul>
+  <p>カーソルについては新しいサンプル <code>examples/cursor</code> を参照してください。</p>
+  <h4>関数 (audio)</h4>
+  <p>次の関数が追加されました (<a href="https://github.com/hajimehoshi/ebiten/issues/1460">#1460</a>):</p>
+  <ul>
     <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2/audio/mp3#DecodeWithSampleRate"><code>mp3.DecodeWithSampleRate</code></a>: MP3 を与えられたサンプルレートでデコードする。</li>
     <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2/audio/vorbis#DecodeWithSampleRate"><code>vorbis.DecodeWithSampleRate</code></a>: Ogg/Vorbis を与えられたサンプルレートでデコードする。</li>
     <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2/audio/wav#DecodeWithSampleRate"><code>wav.DecodeWithSampleRate</code></a>: WAV を与えられたサンプルレートでデコードする。</li>
