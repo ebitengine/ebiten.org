@@ -32,7 +32,7 @@ func toAtomTimeStr(ymd string) atom.TimeStr {
 func writeAtom(url string) error {
 	author := &atom.Person{
 		Name:  "Hajime Hoshi",
-		URI:   "https://star.one",
+		URI:   "https://hajimehoshi.com",
 		Email: "hajimehoshi@gmail.com",
 	}
 
