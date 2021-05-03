@@ -103,7 +103,7 @@
         <h1>Cheat Sheet</h1>
 <p>This cheat sheet describes the essential APIs that are commonly used. For the complete list of the API, see the <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2">API reference</a>.</p>
 <h2>Overview</h2>
-<p class="img"><a href="/images/overview2.0.png"><img src="/images/overview2.0.png" width="1618" height="993" alt="Overview"></a></p>
+<p class="img"><a href="/images/overview2.1.png"><img src="/images/overview2.1.png" width="1618" height="993" alt="Overview"></a></p>
 <h2>General</h2>
 <h3><code>ebiten.Game</code></h3>
 <pre><code>type Game interface {
@@ -291,17 +291,7 @@ func main() {
 <pre><code>type Key int</code></pre>
 <p>Key represents a keyboard key. These keys represent pysical keys of US keyboard. For example, KeyQ represents Q key on US keyboards and ' (quote) key on Dvorak keyboards.</p>
 <pre><code>const (
-    Key0 Key
-    Key1
-    Key2
-    Key3
-    Key4
-    Key5
-    Key6
-    Key7
-    Key8
-    Key9
-    KeyA
+    KeyA Key
     KeyB
     KeyC
     KeyD
@@ -327,15 +317,33 @@ func main() {
     KeyX
     KeyY
     KeyZ
-    KeyAlt
-    KeyApostrophe
+    KeyAltLeft
+    KeyAltRight
+    KeyArrowDown
+    KeyArrowLeft
+    KeyArrowRight
+    KeyArrowUp
+    KeyBackquote
     KeyBackslash
     KeyBackspace
+    KeyBracketLeft
+    KeyBracketRight
     KeyCapsLock
     KeyComma
-    KeyControl
+    KeyContextMenu
+    KeyControlLeft
+    KeyControlRight
     KeyDelete
-    KeyDown
+    KeyDigit0
+    KeyDigit1
+    KeyDigit2
+    KeyDigit3
+    KeyDigit4
+    KeyDigit5
+    KeyDigit6
+    KeyDigit7
+    KeyDigit8
+    KeyDigit9
     KeyEnd
     KeyEnter
     KeyEqual
@@ -352,28 +360,28 @@ func main() {
     KeyF10
     KeyF11
     KeyF12
-    KeyGraveAccent
     KeyHome
     KeyInsert
-    KeyLeft
-    KeyLeftBracket
-    KeyMenu
+    KeyMetaLeft
+    KeyMetaRight
     KeyMinus
-    KeyNumLock
     KeyPageDown
     KeyPageUp
     KeyPause
     KeyPeriod
     KeyPrintScreen
-    KeyRight
-    KeyRightBracket
+    KeyQuote
     KeyScrollLock
     KeySemicolon
-    KeyShift
+    KeyShiftLeft
+    KeyShiftRight
     KeySlash
     KeySpace
     KeyTab
-    KeyUp
+    KeyAlt
+    KeyControl
+    KeyShift
+    KeyMeta
 )</code></pre>
 <p>(Note: Some keys like numpad keys are omitted from the above list.)</p>
 <h3><code>ebiten.CursorPosition</code></h3>
