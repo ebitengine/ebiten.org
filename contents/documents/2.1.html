@@ -105,7 +105,7 @@
   <h3>Performance improvement</h3>
   <ul>
     <li>Reduced thread context switchings (<a href="https://github.com/hajimehoshi/ebiten/issues/1358">#1358</a>).</li>
-    <li>Made cache for the results of <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#ColorM.Scale"><code>(*ColorM).Scale</code></code> (<a href="https://github.com/hajimehoshi/ebiten/issues/1474">#1474</a>).</li>
+    <li>Made cache for the results of <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#ColorM.Scale"><code>(*ColorM).Scale</code> (<a href="https://github.com/hajimehoshi/ebiten/issues/1474">#1474</a>).</li>
     <li>Fixed the problem that <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#Image.ReplacePixels"><code>ReplacePixels</code></a> might be slow in Metal (<a href="https://github.com/hajimehoshi/ebiten/issues/1418">#1418</a>, <a href="https://github.com/hajimehoshi/ebiten/issues/1517">#1517</a>).</li>
     <li>Used <code>DrawImage</code> instead of <code>ReplacePixels</code> when extending an internal texture (<a href="https://github.com/hajimehoshi/ebiten/issues/1022">#1022</a>, <a href="https://github.com/hajimehoshi/ebiten/issues/1414">#1414</a>).</li>
     <li>Used <code>DrawImage</code> instead of <code>ReplacePixels</code> when putting an idependent internal texture onto an internal texture atlas (<a href="https://github.com/hajimehoshi/ebiten/issues/1508">#1508</a>).</li>
@@ -113,6 +113,13 @@
     <li>Reduced JavaScript string creations (<a href="https://github.com/hajimehoshi/ebiten/issues/1437">#1437</a>, <a href="https://github.com/hajimehoshi/ebiten/issues/1438">#1438</a>).</li>
     <li>Used WebGL2 functions (<a href="https://github.com/hajimehoshi/ebiten/issues/1435">#1435</a>).</li>
     <li>Reduced object creations when the package <code>inpututil</code> is used (<a href="https://github.com/hajimehoshi/ebiten/issues/1473">#1473</a>).</li>
+  </ul>
+  <h2>v2.1.1</h2>
+  <p><a href="https://github.com/hajimehoshi/ebiten/milestone/61?closed=1">Issues for v2.1.1</a></p>
+  <h3>Bug fix</h3>
+  <ul>
+    <li>Audio didn't stop when the screen uncofused on browsers (<a href="https://github.com/hajimehoshi/ebiten/issues/1630">Issue 1630</a>).</li>
+    <li>Crashed when the audio length was exactly multiples of the internal buffer size on browsers (<a href="https://github.com/hajimehoshi/ebiten/issues/1635">Issue 1635</a>).</li>
   </ul>
 </div>
 <div lang="ja">
@@ -222,7 +229,7 @@
   <h3>パフォーマンス改善</h3>
   <ul>
     <li>スレッドのコンテキストスイッチの削減 (<a href="https://github.com/hajimehoshi/ebiten/issues/1358">#1358</a>)。</li>
-    <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#ColorM.Scale"><code>(*ColorM).Scale</code></code> の結果をキャッシュするように修正 (<a href="https://github.com/hajimehoshi/ebiten/issues/1474">#1474</a>)。</li>
+    <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#ColorM.Scale"><code>(*ColorM).Scale</code> の結果をキャッシュするように修正 (<a href="https://github.com/hajimehoshi/ebiten/issues/1474">#1474</a>)。</li>
     <li>Metal において <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#Image.ReplacePixels"><code>ReplacePixels</code></a> が遅くなることがあった問題の改善 (<a href="https://github.com/hajimehoshi/ebiten/issues/1418">#1418</a>、 <a href="https://github.com/hajimehoshi/ebiten/issues/1517">#1517</a>)。</li>
     <li>内部テクスチャアトラス拡大時に <code>ReplacePixels</code> ではなく <code>DrawImage</code> を使用するように変更 (<a href="https://github.com/hajimehoshi/ebiten/issues/1022">#1022</a>、 <a href="https://github.com/hajimehoshi/ebiten/issues/1414">#1414</a>)。</li>
     <li>独立内部テクスチャを内部テクスチャアトラス上に乗せるときに <code>ReplacePixels</code> ではなく <code>DrawImage</code> を使用するように変更 (<a href="https://github.com/hajimehoshi/ebiten/issues/1508">#1508</a>)。</li>
@@ -230,5 +237,12 @@
     <li>JavaScript 文字列生成を削減 (<a href="https://github.com/hajimehoshi/ebiten/issues/1437">#1437</a>、 <a href="https://github.com/hajimehoshi/ebiten/issues/1438">#1438</a>)。</li>
     <li>WebGL2 関数の使用 (<a href="https://github.com/hajimehoshi/ebiten/issues/1435">#1435</a>)</li>
     <li><code>inpututil</code> パッケージ使用時のオブジェクト生成を削減 (<a href="https://github.com/hajimehoshi/ebiten/issues/1473">#1473</a>)。</li>
+  </ul>
+  <h2>v2.1.1</h2>
+  <p><a href="https://github.com/hajimehoshi/ebiten/milestone/61?closed=1">Issues for v2.1.1</a></p>
+  <h3>Bug fix</h3>
+  <ul>
+    <li>ブラウザで、画面のフォーカスが外れてもオーディオが止まらなかった問題の修正 (<a href="https://github.com/hajimehoshi/ebiten/issues/1630">Issue 1630</a>)。</li>
+    <li>ブラウザで、オーディオの長さが正確に内部バッファサイズの倍数だったときにクラッシュした問題の修正 (<a href="https://github.com/hajimehoshi/ebiten/issues/1635">Issue 1635</a>)。</li>
   </ul>
 </div>
