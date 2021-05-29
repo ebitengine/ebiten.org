@@ -31,7 +31,7 @@ func init() {
 // gomobile doesn't compile a package that doesn't include any exported function.
 // Dummy forces gomobile to compile this package.
 func Dummy() {}</code></pre>
-<p>The key function is <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2/mobile#SetGame"><code>SetGame</code></a>, and you can ignore the other functions in the <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2/mobile"><code>mobile</code></a> package.</p>
+<p>The key function is <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2/mobile#SetGame"><code>SetGame</code></a>. Do not call <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2/#RunGame"><code>RunGame</code></a>, which you usually use for desktop games.</p>
 
 <h3>Android</h3>
 <p>Run <code>ebitenmobile bind</code> command for your package:</p>
