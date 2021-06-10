@@ -2,12 +2,25 @@
   <title>Ebiten Blog</title>
   <id>https://ebiten.org/blog/</id>
   <link rel="self" href="https://ebiten.org/blog/feed.xml"></link>
-  <updated>2021-05-01T00:00:00+09:00</updated>
+  <updated>2021-06-11T00:00:00+09:00</updated>
   <author>
     <name>Hajime Hoshi</name>
     <uri>https://hajimehoshi.com</uri>
     <email>hajimehoshi@gmail.com</email>
   </author>
+  <entry>
+    <title>Ebiten now supports Nintendo Switch™!</title>
+    <id>https://ebiten.org/blog/nintendo_switch.html</id>
+    <link rel="alternate" href="https://ebiten.org/blog/nintendo_switch.html"></link>
+    <published>2021-06-11T00:00:00+09:00</published>
+    <updated>2021-06-11T00:00:00+09:00</updated>
+    <author>
+      <name>Hajime Hoshi</name>
+      <uri>https://hajimehoshi.com</uri>
+      <email>hajimehoshi@gmail.com</email>
+    </author>
+    <content type="html">&lt;div lang=&#34;en&#34;&gt;&#xA;  &lt;h1&gt;Ebiten now supports Nintendo Switch™!&lt;/h1&gt;&#xA;  &lt;p class=&#34;meta&#34;&gt;Hajime Hoshi&lt;br&gt;&lt;span id=&#34;meta-created&#34;&gt;2021-06-11&lt;/span&gt;&lt;/p&gt;&#xA;    &lt;div class=&#34;grid-container&#34;&gt;&#xA;    &lt;div class=&#34;grid-item-2&#34;&gt;&#xA;      &lt;p&gt;Thanks to the cooperation of &lt;a href=&#34;https://odencat.com/&#34;&gt;Odencat Inc.&lt;/a&gt;, Ebiten now officially supports Nintendo Switch™! Ebiten games written in Go will run on Nintendo Switch almost without modification.&lt;/p&gt;&#xA;      &lt;p&gt;The tool is not open source. In order to develop for Nintendo Switch, you need to sign the developer agreement for Nintendo platform with Nintendo. For more information, please see &lt;a href=&#34;https://developer.nintendo.com/&#34;&gt;Nintendo Developer Portal&lt;/a&gt;, the portal site for Nintendo platform developers.&lt;/p&gt;&#xA;      &lt;p&gt;In addition, &#34;&lt;a href=&#34;https://odencat.com/bearsrestaurant/switch/&#34;&gt;Bear&#39;s Restaurant&lt;/a&gt;&#34; is scheduled to be released as a game for Nintendo Switch using Ebiten. Please look forward to it!&lt;/p&gt;&#xA;    &lt;/div&gt;&#xA;    &lt;div class=&#34;grid-item-2&#34;&gt;&#xA;      &lt;figure&gt;&#xA;        &lt;p class=&#34;img thumbnail&#34;&gt;&lt;a href=&#34;https://odencat.com/bearsrestaurant/switch/&#34;&gt;&lt;img src=&#34;/images/blog/nintendo_switch/bearsrestaurant_en.jpg&#34; width=&#34;360&#34; alt=&#34;Bear&#39;s Restaurant&#34;&gt;&lt;/a&gt;&lt;/p&gt;&#xA;        &lt;figcaption&gt;Copyright 2021 Odencat Inc.&lt;/figcaption&gt;&#xA;      &lt;/figure&gt;&#xA;    &lt;/div&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;&#xA;&lt;div lang=&#34;ja&#34;&gt;&#xA;  &lt;h1&gt;Ebiten が Nintendo Switch™ をサポートしました!&lt;/h1&gt;&#xA;  &lt;p class=&#34;meta&#34;&gt;Hajime Hoshi&lt;br&gt;&lt;span id=&#34;meta-created&#34;&gt;2021-06-11&lt;/span&gt;&lt;/p&gt;&#xA;  &lt;div class=&#34;grid-container&#34;&gt;&#xA;    &lt;div class=&#34;grid-item-2&#34;&gt;&#xA;      &lt;p&gt;&lt;a href=&#34;https://odencat.com/&#34;&gt;Odencat 株式会社&lt;/a&gt;の協力により、Ebiten が Nintendo Switch™ に正式対応しました! Go で書かれた Ebiten のゲームが、ほぼそのまま Nintendo Switch で動きます。&lt;/p&gt;&#xA;      &lt;p&gt;ツールはオープンソースではありません。 Nintendo Switch 向けの開発を行うためには、任天堂株式会社と任天堂プラットフォームのデベロッパー契約を結ぶ必要があります。詳しくは任天堂プラットフォーム開発者向けポータルサイト &lt;a href=&#34;https://developer.nintendo.com/&#34;&gt;Nintendo Developer Portal&lt;/a&gt; をご覧ください。&lt;/p&gt;&#xA;      &lt;p&gt;また、 Ebiten を使った Nintendo Switch 向けゲームとして、「&lt;a href=&#34;https://odencat.com/bearsrestaurant/switch/&#34;&gt;くまのレストラン&lt;/a&gt;」がリリース予定です。お楽しみに!&lt;/p&gt;&#xA;    &lt;/div&gt;&#xA;    &lt;div class=&#34;grid-item-2&#34;&gt;&#xA;      &lt;figure&gt;&#xA;        &lt;p class=&#34;img thumbnail&#34;&gt;&lt;a href=&#34;https://odencat.com/bearsrestaurant/switch/&#34;&gt;&lt;img src=&#34;/images/blog/nintendo_switch/bearsrestaurant_ja.jpg&#34; width=&#34;360&#34; alt=&#34;くまのレストラン&#34;&gt;&lt;/a&gt;&lt;/p&gt;&#xA;        &lt;figcaption&gt;Copyright 2021 Odencat 株式会社&lt;/figcaption&gt;&#xA;      &lt;/figure&gt;&#xA;    &lt;/div&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;&#xA;</content>
+  </entry>
   <entry>
     <title>v2.1.0 is released</title>
     <id>https://ebiten.org/blog/v2.1.0.html</id>
