@@ -307,12 +307,12 @@ td, th {
 /* font size */
 
 p, pre, ul, ol, figcaption, table {
-    font-size: 14px;
+    font-size: 16px;
     line-height: 24px;
 }
 p, ul, ol, figcaption, table {
     position: relative;
-    top: 7px;
+    top: 6px;
 }
 code {
     font-size: 13px;
@@ -358,13 +358,13 @@ h3 {
 }
 
 h4, h4 > code {
-    font-size: 14px;
+    font-size: 16px;
     font-weight: bold;
 }
 h4 {
     line-height: 24px;
     position: relative;
-    top: 7px;
+    top: 6px;
 }
 
 body > nav h1 {
@@ -384,12 +384,12 @@ body > nav h2 {
     top: 5px;
 }
 body > nav h3 {
-    font-size: 14px;
+    font-size: 16px;
     font-weight: bold;
     line-height: 24px;
 
     position: relative;
-    top: 7px;
+    top: 6px;
 }
 div.grid-container > div pre code {
     font-size: 12px;
@@ -693,7 +693,7 @@ input#sidemenu:checked ~ label.sidemenucover {
         margin-top: 8px;
     }
     h1.big > span.sub {
-        font-size: 14px;
+        font-size: 16px;
     }
     h1.big > span.main:before {
         width: 72px;
