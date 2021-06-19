@@ -198,10 +198,16 @@ function updateTOC() {
 
     let headers = document.querySelectorAll(query.join(', '));
     for (const header of headers) {
+        if (!header.offsetWidth) {
+            header.id = '';
+            continue;
+        }
+
         // https://www.w3.org/TR/html51/dom.html#the-id-attribute
         // The value must be unique amongst all the IDs in the element’s home subtree and must contain at least one
         // character. The value must not contain any space characters.
-        header.id = header.textContent.replace(/\s/mg, '_');
+        const id = header.textContent.replace(/\s/mg, '_');
+        header.id = id;
     }
     headers = Array.prototype.filter.call(headers, e => {
         return e.offsetParent !== null;
