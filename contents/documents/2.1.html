@@ -121,6 +121,14 @@
     <li>Audio didn't stop when the screen uncofused on browsers (<a href="https://github.com/hajimehoshi/ebiten/issues/1630">#1630</a>).</li>
     <li>Crashed when the audio length was exactly multiples of the internal buffer size on browsers (<a href="https://github.com/hajimehoshi/ebiten/issues/1635">#1635</a>).</li>
   </ul>
+  <h2>v2.1.2</h2>
+  <p><a href="https://github.com/hajimehoshi/ebiten/milestone/62?closed=1">Issues for v2.1.2</a></p>
+  <h3>Bug fix</h3>
+  <ul>
+    <li><code>ebitenmobile</code> command didn't work with the environment variable <code>EBITENMOBILE_GOMOBILE</code> (<a href="https://github.com/hajimehoshi/ebiten/issues/1667">#1667</a>).</li>
+    <li><code>ebitenmobile</code> didn't clean temporary directories up (<a href="https://github.com/hajimehoshi/ebiten/issues/1668">#1668</a>).</li>
+    <li>Too many calls of <code>SetWindowSize</code> might cause crash on Windows (<a href="https://github.com/hajimehoshi/ebiten/issues/1672">#1672</a>).</li>
+  </ul>
 </div>
 <div lang="ja">
   <h1>Ebiten 2.1 リリースノート</h1>
@@ -240,9 +248,17 @@
   </ul>
   <h2>v2.1.1</h2>
   <p><a href="https://github.com/hajimehoshi/ebiten/milestone/61?closed=1">Issues for v2.1.1</a></p>
-  <h3>Bug fix</h3>
+  <h3>バグ修正</h3>
   <ul>
     <li>ブラウザで、画面のフォーカスが外れてもオーディオが止まらなかった問題の修正 (<a href="https://github.com/hajimehoshi/ebiten/issues/1630">#1630</a>)。</li>
     <li>ブラウザで、オーディオの長さが正確に内部バッファサイズの倍数だったときにクラッシュした問題の修正 (<a href="https://github.com/hajimehoshi/ebiten/issues/1635">#1635</a>)。</li>
+  </ul>
+  <h2>v2.1.2</h2>
+  <p><a href="https://github.com/hajimehoshi/ebiten/milestone/62?closed=1">Issues for v2.1.2</a></p>
+  <h3>バグ修正</h3>
+  <ul>
+    <li><code>ebitenmobile</code> が環境変数 <code>EBITENMOBILE_GOMOBILE</code> を指定したときにうまく動かなかった問題の修正 (<a href="https://github.com/hajimehoshi/ebiten/issues/1667">#1667</a>)。</li>
+    <li><code>ebitenmobile</code> が一時ディレクトリを削除しなかった問題の修正 (<a href="https://github.com/hajimehoshi/ebiten/issues/1668">#1668</a>)。</li>
+    <li>Windows で <code>SetWindowSize</code> を呼びすぎるとクラッシュすることがある問題の修正 (<a href="https://github.com/hajimehoshi/ebiten/issues/1672">#1672</a>)。</li>
   </ul>
 </div>
