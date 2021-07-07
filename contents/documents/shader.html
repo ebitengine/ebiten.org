@@ -246,15 +246,13 @@ v2.xyz = v2.xxx        // Get vec3(1, 1, 1), and set it to all the components to
   <tr><th><code>normalize(x T) T</code></th><td><span lang="en">Returns a vector in the same direction as <span class="math">x</span> but with a length of 1</span><span lang="ja"><span class="math">x</span> と同じ向きを持つが長さが 1 のベクターを返す。</span></td></tr>
   <tr><th><code>faceforward(n, i, nref T) T</code></th><td><span lang="en">Returns <span class="math">n</span> if <span class="math">\mathrm{dot}(\mathit{nref}, i) \lt 0</span>, or <span class="math">-n</span> otherwise</span><span lang="ja"><span class="math">\mathrm{dot}(\mathit{nref}, i) \lt 0</span> ならば <span class="math">n</span> を、それ以外の場合は <span class="math">-n</span> を返す。</span></td></tr>
   <tr><th><code>reflect(i, n T) T</code></th><td><span lang="en">Returns <span class="math">i - 2 \cdot \mathrm{dot}(n, i) \cdot n</span></span><span lang="ja"><span class="math">i - 2 \cdot \mathrm{dot}(n, i) \cdot n</span> を返す。</span></td></tr>
-  <tr><th><code>refract(i, n T, eta float) T</code></th><td>(TBD)</td></tr>
+  <tr><th><code>refract(i, n T, eta float) T</code></th><td></td></tr>
   <tr><th><code>transpose(m T) T</code></th><td><span lang="en"><code>T</code> is a matrix type. Returns a matrix that is the transpose of <span class="math">x</span></span><span lang="ja"><code>T</code> は行列型。<span class="math">x</span> の転置行列を返す。</span></td></tr>
-  <tr><th><code>dfdx(p T) T</code></th><td>(TBD) <a href="#footnote_1">*1</a></td></tr>
-  <tr><th><code>dfdy(p T) T</code></th><td>(TBD) <a href="#footnote_1">*1</a></td></tr>
-  <tr><th><code>fwidth(p T) T</code></th><td>(TBD) <a href="#footnote_1">*1</a></td></tr>
+  <tr><th><code>dfdx(p T) T</code></th><td></td></tr>
+  <tr><th><code>dfdy(p T) T</code></th><td></td></tr>
+  <tr><th><code>fwidth(p T) T</code></th><td></td></tr>
 </table>
 <ul>
-  <li><span id="footnote_1">*1</span> <span lang="en">These functions don't work on Android or browsers. We plan to fix this in v2.1.0 (<a href="https://github.com/hajimehoshi/ebiten/issues/1404">Issue 1404</a>).</span><span lang="ja">これらの関数はAndroid 上とブラウザ上で動きません。 v2.1.0 で修正される予定です (<a href="https://github.com/hajimehoshi/ebiten/issues/1404">Issue 1404</a>)。</span></li>
-</ul>
 <h3 lang="en">Built-in functions (images)</h3>
 <h3 lang="ja">組み込み関数 (画像)</h3>
 <table>
