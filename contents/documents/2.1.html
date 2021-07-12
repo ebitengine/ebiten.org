@@ -219,7 +219,7 @@
   </ul>
   <h3>後方互換性</h3>
   <ul>
-    <li>「負のミップマップ」が廃止されました (<a href="https://github.com/hajimehoshi/ebiten/issues/1400">#1400</a>)。これにより、大きな拡大率ので描画した倍、端の描画の結果が v2.0 と比べて変わることがあります。端を含めて確実に描画したい場合は、描画元画像に <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#Image.SubImage"><code>SubImage</code></a> を用いて、大きな画像の一部として描画してください。</li>
+    <li>「負のミップマップ」が廃止されました (<a href="https://github.com/hajimehoshi/ebiten/issues/1400">#1400</a>)。これにより、大きな拡大率で描画した場合、端の描画の結果が v2.0 と比べて変わることがあります。端を含めて確実に描画したい場合は、描画元画像に <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#Image.SubImage"><code>SubImage</code></a> を用いて、大きな画像の一部として描画してください。</li>
   </ul>
   <h3>バグ修正</h3>
   <p>このリリースには、 v2.0.x にあるすべてのバグ修正が含まれます。</p>
