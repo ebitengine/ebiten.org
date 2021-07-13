@@ -129,6 +129,13 @@
     <li><code>ebitenmobile</code> didn't clean temporary directories up (<a href="https://github.com/hajimehoshi/ebiten/issues/1668">#1668</a>).</li>
     <li>Too many calls of <code>SetWindowSize</code> might cause crash on Windows (<a href="https://github.com/hajimehoshi/ebiten/issues/1672">#1672</a>).</li>
   </ul>
+  <h2>v2.1.3</h2>
+  <p><a href="https://github.com/hajimehoshi/ebiten/milestone/64?closed=1">Issues for v2.1.3</a></p>
+  <h3>Bug fix</h3>
+  <ul>
+    <li><code>(*ebiten.Image).Fill</code> on a sub-image might have an unexpected result (<a href="https://github.com/hajimehoshi/ebiten/issues/1691">#1691</a>).</li>
+    <li>Memory leak on macOS (<a href="https://github.com/hajimehoshi/ebiten/issues/1698">#1698</a>).</li>
+  </ul>
 </div>
 <div lang="ja">
   <h1>Ebiten 2.1 リリースノート</h1>
@@ -260,5 +267,12 @@
     <li><code>ebitenmobile</code> が環境変数 <code>EBITENMOBILE_GOMOBILE</code> を指定したときにうまく動かなかった問題の修正 (<a href="https://github.com/hajimehoshi/ebiten/issues/1667">#1667</a>)。</li>
     <li><code>ebitenmobile</code> が一時ディレクトリを削除しなかった問題の修正 (<a href="https://github.com/hajimehoshi/ebiten/issues/1668">#1668</a>)。</li>
     <li>Windows で <code>SetWindowSize</code> を呼びすぎるとクラッシュすることがある問題の修正 (<a href="https://github.com/hajimehoshi/ebiten/issues/1672">#1672</a>)。</li>
+  </ul>
+  <h2>v2.1.3</h2>
+  <p><a href="https://github.com/hajimehoshi/ebiten/milestone/64?closed=1">Issues for v2.1.3</a></p>
+  <h3>バグ修正</h3>
+  <ul>
+    <li>サブ画像上の <code>(*ebiten.Image).Fill</code> が期待通りの結果にならないことがある問題の修正 (<a href="https://github.com/hajimehoshi/ebiten/issues/1691">#1691</a>)。</li>
+    <li>macOS におけるメモリリークの修正 (<a href="https://github.com/hajimehoshi/ebiten/issues/1698">#1698</a>)。</li>
   </ul>
 </div>
