@@ -236,6 +236,13 @@
     <li><code>(*ebiten.Image).Fill</code> on a sub-image might have an unexpected result (<a href="https://github.com/hajimehoshi/ebiten/issues/1691">#1691</a>).</li>
     <li>Memory leak on macOS (<a href="https://github.com/hajimehoshi/ebiten/issues/1698">#1698</a>).</li>
   </ul>
+  <h2>v2.1.4</h2>
+  <p><a href="https://github.com/hajimehoshi/ebiten/milestone/65?closed=1">Issues for v2.1.4</a></p>
+  <h3>Bug fix</h3>
+  <ul>
+    <li>Screenshots by <code>EBITEN_SCREENSHOT_KEY</code> included unexpected 1px border (<a href="https://github.com/hajimehoshi/ebiten/issues/1736">#1736</a>).</li>
+    <li>Fallback to WebGL1 might not work when WebGL2 didn't work (<a href="https://github.com/hajimehoshi/ebiten/issues/1738">#1738</a>).</li>
+  </ul>
 </div>
 <div lang="ja">
   <h1>Ebiten 2.1 リリースノート</h1>
@@ -374,6 +381,13 @@
   <ul>
     <li>サブ画像上の <code>(*ebiten.Image).Fill</code> が期待通りの結果にならないことがある問題の修正 (<a href="https://github.com/hajimehoshi/ebiten/issues/1691">#1691</a>)。</li>
     <li>macOS におけるメモリリークの修正 (<a href="https://github.com/hajimehoshi/ebiten/issues/1698">#1698</a>)。</li>
+  </ul>
+  <h2>v2.1.4</h2>
+  <p><a href="https://github.com/hajimehoshi/ebiten/milestone/65?closed=1">Issues for v2.1.4</a></p>
+  <h3>バグ修正</h3>
+  <ul>
+    <li><code>EBITEN_SCREENSHOT_KEY</code> によるスクリーンショットが 1px のボーダーを含んでしまっていた問題を修正 (<a href="https://github.com/hajimehoshi/ebiten/issues/1736">#1736</a>)。</li>
+    <li>WebGL2 が動かないときの WebGL1 フォールバックが動かないことがあった問題を修正 (<a href="https://github.com/hajimehoshi/ebiten/issues/1738">#1738</a>)。</li>
   </ul>
 </div>
 
