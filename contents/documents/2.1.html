@@ -143,6 +143,15 @@
     <li>Screenshots by <code>EBITEN_SCREENSHOT_KEY</code> included unexpected 1px border (<a href="https://github.com/hajimehoshi/ebiten/issues/1736">#1736</a>).</li>
     <li>Fallback to WebGL1 might not work when WebGL2 didn't work (<a href="https://github.com/hajimehoshi/ebiten/issues/1738">#1738</a>).</li>
   </ul>
+  <h2>v2.1.5</h2>
+  <p><a href="https://github.com/hajimehoshi/ebiten/milestone/66?closed=1">Issues for v2.1.5</a></p>
+  <h3>Bug fix</h3>
+  <ul>
+    <li>Crash when some gamepads were used (<a href="https://github.com/hajimehoshi/ebiten/issues/1229">#1229</a>).</li>
+    <li>Crash on 32bit Windows (<a href="https://github.com/hajimehoshi/ebiten/issues/1750">#1750</a>).</li>
+    <li>Creating a <code>Shader</code> after disposing a <code>Shader</code> might cause unexpected rendering (<a href="https://github.com/hajimehoshi/ebiten/issues/1753">#1753</a>).</li>
+    <li>Shaders might not work correctly on Windows (<a href="https://github.com/hajimehoshi/ebiten/issues/1754">#1754</a>).</li>
+  </ul>
 </div>
 <div lang="ja">
   <h1>Ebiten 2.1 リリースノート</h1>
@@ -286,7 +295,16 @@
   <p><a href="https://github.com/hajimehoshi/ebiten/milestone/65?closed=1">Issues for v2.1.4</a></p>
   <h3>バグ修正</h3>
   <ul>
-    <li><code>EBITEN_SCREENSHOT_KEY</code> によるスクリーンショットが 1px のボーダーを含んでしまっていた問題を修正 (<a href="https://github.com/hajimehoshi/ebiten/issues/1736">#1736</a>)。</li>
-    <li>WebGL2 が動かないときの WebGL1 フォールバックが動かないことがあった問題を修正 (<a href="https://github.com/hajimehoshi/ebiten/issues/1738">#1738</a>)。</li>
+    <li><code>EBITEN_SCREENSHOT_KEY</code> によるスクリーンショットが 1px のボーダーを含んでしまっていた問題の修正 (<a href="https://github.com/hajimehoshi/ebiten/issues/1736">#1736</a>)。</li>
+    <li>WebGL2 が動かないときの WebGL1 フォールバックが動かないことがあった問題の修正 (<a href="https://github.com/hajimehoshi/ebiten/issues/1738">#1738</a>)。</li>
+  </ul>
+  <h2>v2.1.5</h2>
+  <p><a href="https://github.com/hajimehoshi/ebiten/milestone/66?closed=1">Issues for v2.1.5</a></p>
+  <h3>バグ修正</h3>
+  <ul>
+    <li>一部のゲームパッドが使われていたときにクラッシュする問題の修正 (<a href="https://github.com/hajimehoshi/ebiten/issues/1229">#1229</a>)。</li>
+    <li>32bit Windows においてクラッシュする問題の修正 (<a href="https://github.com/hajimehoshi/ebiten/issues/1750">#1750</a>)。</li>
+    <li><code>Shader</code> を破棄したあとに <code>Shader</code> を作成したときに、予期しない描画結果になることがある問題の修正 (<a href="https://github.com/hajimehoshi/ebiten/issues/1753">#1753</a>)。</li>
+    <li>Windows でシェーダーが期待通りに動かないことがある問題の修正 (<a href="https://github.com/hajimehoshi/ebiten/issues/1754">#1754</a>)。</li>
   </ul>
 </div>
