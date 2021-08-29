@@ -47,7 +47,7 @@ env GOOS=windows GOARCH=amd64 go build -o yourgame_windows_amd64.exe .</code></p
   <h2>macOS</h2>
   <p>In the case of macOS, you have to create an application as <code>.app</code>. Besides, you have to get your application notarized by Apple. Apparently, notarizing an application is not mandatory to release games at Steam, but your application would not work at relatively new (10.15?) macOS, then we can say notarizing is a must. You have to register <a href="https://developer.apple.com/">Apple Developer</a> to get your application notarized.</p>
   <p>I refered a blog article "<a href="https://coldandold.com/posts/releasing-steam-game-on-mac/">Releasing Steam Games on Mac Is a Monster Pain</a>" to write this article.</p>
-  <p>amd64 is assumed as the architecture. You might need extra tasks for M1 (arm64).</p>
+  <p>amd64 is assumed as the architecture. Unfortunately, Steamworks SDK doesn't support M1 (arm64).</p>
   <p>First, prepare an icon file as <code>icns</code> format. This format can be exported by opening e.g., an PNG file with <code>Preview.app</code>. If you cannot find <code>icns</code> in the list of exporting formats, it should be shown by opening the list with pressing Alt key.</p>
   <p>Then, create a minimal <code>.app</code> like this.</p>
   <pre><code>name=yourgame
@@ -252,7 +252,7 @@ env GOOS=windows GOARCH=amd64 go build -o yourgame_windows_amd64.exe .</code></p
   <h2>macOS</h2>
   <p>macOS の場合は <code>.app</code> 形式のアプリケーションを作る必要があります。また Apple から<a href="https://developer.apple.com/documentation/security/notarizing_macos_software_before_distribution">公証 (Notarization)</a> を受ける必要があります。公証は、 Steam 審査のためには厳密には必須ではないらしいのですが、ないと新しめ (10.15 以降?) の macOS では動かなくなるので、ほぼ必須といってよいでしょう。公証を受けるためには <a href="https://developer.apple.com/">Apple Developer</a> の登録が必須です。</p>
   <p>本記事作成にあたって、ブログ記事 <a href="https://coldandold.com/posts/releasing-steam-game-on-mac/">Releasing Steam Games on Mac Is a Monster Pain</a> を参考にしました。</p>
-  <p>アーキテクチャは amd64 を前提にしています。 M1 (arm64) の場合は別途追加作業が必要になるかもしれません。</p>
+  <p>アーキテクチャは amd64 を前提にしています。残念ながら、 Steamworks SDK がまだ M1 (arm64) に対応していないようです。</p>
   <p>まずアイコンファイルを <code>icns</code> 形式で用意します。この形式は PNG などを <code>Preview.app</code> で開いてエクスポートするだけで作れます。エクスポートのフォーマット一覧に出てこない場合は、 Alt キーを押しながらフォーマット一覧を開くと出てきます。</p>
   <p>次に必要最小限の <code>.app</code> を次のように作ります。</p>
   <pre><code>name=yourgame
