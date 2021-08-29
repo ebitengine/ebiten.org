@@ -175,7 +175,7 @@ env GOOS=windows GOARCH=amd64 go build -o yourgame_windows_amd64.exe .</code></p
   <h2>macOS</h2>
   <p>In the case of macOS, you have to create an application as <code>.app</code>. Besides, you have to get your application notarized by Apple. Apparently, notarizing an application is not mandatory to release games at Steam, but your application would not work at relatively new (10.15?) macOS, then we can say notarizing is a must. You have to register <a href="https://developer.apple.com/">Apple Developer</a> to get your application notarized.</p>
   <p>I refered a blog article "<a href="https://coldandold.com/posts/releasing-steam-game-on-mac/">Releasing Steam Games on Mac Is a Monster Pain</a>" to write this article.</p>
-  <p>amd64 is assumed as an architecture. You might need extra tasks for M1 (arm64).</p>
+  <p>amd64 is assumed as the architecture. You might need extra tasks for M1 (arm64).</p>
   <p>First, prepare an icon file as <code>icns</code> format. This format can be exported by opening e.g., an PNG file with <code>Preview.app</code>. If you cannot find <code>icns</code> in the list of exporting formats, it should be shown by opening the list with pressing Alt key.</p>
   <p>Then, create a minimal <code>.app</code> like this.</p>
   <pre><code>name=yourgame
@@ -268,7 +268,7 @@ rm ${app_name}.zip</code></pre>
   <p>After executing these commands, a UUID for the notarization transaction is shown. After 5 minutes or so, you will receive an email from Apple.</p>
   <p>If you succeed notarization, execute this command.</p>
   <pre><code>xcrun stapler staple YourGame.app</code></pre>
-  <p>If you want to see notarization logs, execute this command. Replace the arguments with appropriate values. This command shows a URL, which showns logs. If you fail notarization, the reasons should be written there.</p>
+  <p>If you want to see notarization logs, execute this command. Replace the arguments with appropriate values. This command shows a URL, which showns logs. If you fail the notarization, the reasons should be written there.</p>
   <pre><code>xcrun altool --notarization-info UUID --username YOUR_MAIL_ADDRESS --password APP_SPECIFIC_PASSWORD</code></pre>
   <p>When you want to upload your <code>.app</code> as a build at Steamworks, you should not compress this by <code>zip</code> command or a menu at Finder. A notarized <code>.app</code> includes some special files and they might be missing if you create a <code>zip</code> in a regular way. Instead, use <code>ditto</code> command to create a zip.</p>
   <pre><code>ditto -c -k --keepParent YourGame.app yourgame_darwin_amd64.zip</code></pre>
