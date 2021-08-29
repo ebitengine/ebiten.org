@@ -185,7 +185,7 @@ bundle_id=com.yourname.yourgame
 rm -rf ${app_name}
 mkdir -p ${app_name}/Contents/MacOS
 mkdir -p ${app_name}/Contents/Resources
-env CGO_CFLAGS=-mmacosx-version-min=10.12 CGO_LDFLAGS=-mmacosx-version-min=10.12 go build -o ${app_name}/Contents/MacOS/${name} .
+env CGO_ENABLED=1 CGO_CFLAGS=-mmacosx-version-min=10.12 CGO_LDFLAGS=-mmacosx-version-min=10.12 GOARCH=amd64 go build -o ${app_name}/Contents/MacOS/${name} .
 cp icon.icns ${app_name}/Contents/Resources/icon.icns
 echo '&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"&gt;
@@ -390,7 +390,7 @@ bundle_id=com.yourname.yourgame
 rm -rf ${app_name}
 mkdir -p ${app_name}/Contents/MacOS
 mkdir -p ${app_name}/Contents/Resources
-env CGO_CFLAGS=-mmacosx-version-min=10.12 CGO_LDFLAGS=-mmacosx-version-min=10.12 go build -o ${app_name}/Contents/MacOS/${name} .
+env CGO_ENABLED=1 CGO_CFLAGS=-mmacosx-version-min=10.12 CGO_LDFLAGS=-mmacosx-version-min=10.12 GOARCH=amd64 go build -o ${app_name}/Contents/MacOS/${name} .
 cp icon.icns ${app_name}/Contents/Resources/icon.icns
 echo '&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"&gt;
