@@ -140,8 +140,8 @@ rm ${app_name}.zip</code></pre>
   <p>After executing these commands, a UUID for the notarization transaction is shown. After 5 minutes or so, you will receive an email from Apple.</p>
   <p>If you succeed notarization, execute this command.</p>
   <pre><code>xcrun stapler staple YourGame.app</code></pre>
-  <p>If you want to see notarization logs, execute this command. This command shows a URL, and you can see logs by accessing the URL. If you fail notarization, the reasons should be written there.</p>
-  <pre><code>xcrun altool --notarization-info (UUID) --username yourname@example.com --password (APP_SPECIFIC_PASSWORD)</code></pre>
+  <p>If you want to see notarization logs, execute this command. Replace the arguments with appropriate values. This command shows a URL, which showns logs. If you fail notarization, the reasons should be written there.</p>
+  <pre><code>xcrun altool --notarization-info UUID --username YOUR_MAIL_ADDRESS --password APP_SPECIFIC_PASSWORD</code></pre>
   <p>When you want to upload your <code>.app</code> as a build at Steamworks, you should not compress this by <code>zip</code> command or a menu at Finder. A notarized <code>.app</code> includes some special files and they might be missing if you create a <code>zip</code> in a regular way. Instead, use <code>ditto</code> command to create a zip.</p>
   <pre><code>ditto -c -k --keepParent YourGame.app yourgame_darwin_amd64.zip</code></pre>
   <h2>Linux</h2>
@@ -345,8 +345,8 @@ rm ${app_name}.zip</code></pre>
   <p>実行すると公証のトランザクション UUID が表示されます。 5 分くらい待つと Apple からメールが来るはずです。</p>
   <p>公証に成功した場合は次のコマンドを実行してください。</p>
   <pre><code>xcrun stapler staple YourGame.app</code></pre>
-  <p>公証のログを見たい場合は、次のコマンドを実行してください。次のコマンドを実行すると URL が表示され、それにアクセスすると現在の状況が見れます。失敗した場合は失敗理由も書いてあるはずです。</p>
-  <pre><code>xcrun altool --notarization-info (UUID) --username yourname@example.com --password (APP_SPECIFIC_PASSWORD)</code></pre>
+  <p>公証のログを見たい場合は、次のコマンドを実行してください。引数は適切な値に置き換えてください。コマンドを実行すると URL が表示され、それにアクセスすると現在の状況が見れます。失敗した場合は失敗理由も書いてあるはずです。</p>
+  <pre><code>xcrun altool --notarization-info UUID --username YOUR_MAIL_ADDRESS --password APP_SPECIFIC_PASSWORD</code></pre>
   <p>こうして出来上がった <code>.app</code> を Steamworks にビルドとしてアップロードする際、 <code>zip</code> コマンドや Finder のメニューで zip ファイルを作ってはいけません。公証を受けた <code>.app</code> には特殊なファイルをが含まれていて、普通に zip を作ろうとするとそのファイルが欠落してしまいます。代わりに <code>ditto</code> コマンドを使って zip ファイルを作ります。</p>
   <pre><code>ditto -c -k --keepParent YourGame.app yourgame_darwin_amd64.zip</code></pre>
   <h2>Linux</h2>
