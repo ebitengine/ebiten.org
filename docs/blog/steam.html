@@ -180,7 +180,7 @@ env GOOS=windows GOARCH=amd64 go build -o yourgame_windows_amd64.exe .</code></p
   <p>Then, create a minimal <code>.app</code> like this.</p>
   <pre><code>name=yourgame
 app_name=YourGame.app
-bundle_id=com.yourname.yourgame
+bundle_id=com.example.yourgame
 
 rm -rf ${app_name}
 mkdir -p ${app_name}/Contents/MacOS
@@ -214,7 +214,11 @@ echo '&lt;?xml version="1.0" encoding="UTF-8"?&gt;
     sed -e "s/{{.Name}}/${name}/g" |
     sed -e "s/{{.BundleID}}/${bundle_id}/g" &gt; ${app_name}/Contents/Info.plist</code></pre>
   <p>This specifies <code>-mmacosx-version-min=10.12</code> at <code>CGO_CLAGS</code> and <code>CGO_LDFLAGS</code>. Without this, your application would not work on an older macOS than yours.</p>
-  <p>Next, create a certificate of Developer ID (Developer ID Application) if you don't have one.</p>
+  <p>Next, create an app ID (bundle ID) at <a href="https://developer.apple.com/account/">Apple Developer's account page</a> if you don't have one.</p>
+  <figure>
+    <p class="img"><img src="/images/blog/steam/app_id.png"></p>
+  </figure>
+  <p>Next, create a certificate of Developer ID (Developer ID Application) at <a href="https://developer.apple.com/account/">Apple Developer's account page</a> if you don't have one.</p>
   <figure>
     <p class="img"><img src="/images/blog/steam/developer_id_application.png"></p>
   </figure>
@@ -222,7 +226,7 @@ echo '&lt;?xml version="1.0" encoding="UTF-8"?&gt;
   <p>Next, get your application notarized.</p>
   <pre><code>name=yourgame
 app_name=YourGame.app
-bundle_id=com.yourname.yourgame
+bundle_id=com.example.yourgame
 email=yourname@example.com
 developer_name='Developer ID Application: Your Name (1234567890)'
 asc_provider=1234567890
@@ -385,7 +389,7 @@ env GOOS=windows GOARCH=amd64 go build -o yourgame_windows_amd64.exe .</code></p
   <p>次に必要最小限の <code>.app</code> を次のように作ります。</p>
   <pre><code>name=yourgame
 app_name=YourGame.app
-bundle_id=com.yourname.yourgame
+bundle_id=com.example.yourgame
 
 rm -rf ${app_name}
 mkdir -p ${app_name}/Contents/MacOS
@@ -419,7 +423,11 @@ echo '&lt;?xml version="1.0" encoding="UTF-8"?&gt;
     sed -e "s/{{.Name}}/${name}/g" |
     sed -e "s/{{.BundleID}}/${bundle_id}/g" &gt; ${app_name}/Contents/Info.plist</code></pre>
   <p><code>CGO_CFLAGS</code> と <code>CGO_LDFLAGS</code> に <code>-mmacosx-version-min=10.12</code> を指定しています。この指定がないと、ビルドした環境より古い macOS で動かなくなってしまいます。</p>
-  <p>次に Developer ID (Developer ID Application) の Certificate を、ない場合は作成します。</p>
+  <p>次に App ID (Bundle ID) を、 <a href="https://developer.apple.com/account/">Apple Developer の Account ページ</a>で、ない場合は作成します。</p>
+  <figure>
+    <p class="img"><img src="/images/blog/steam/app_id.png"></p>
+  </figure>
+  <p>次に Developer ID (Developer ID Application) の Certificate を、 <a href="https://developer.apple.com/account/">Apple Developer の Account ページ</a>で、ない場合は作成します。</p>
   <figure>
     <p class="img"><img src="/images/blog/steam/developer_id_application.png"></p>
   </figure>
@@ -427,7 +435,7 @@ echo '&lt;?xml version="1.0" encoding="UTF-8"?&gt;
   <p>次に公証を受けます。</p>
   <pre><code>name=yourgame
 app_name=YourGame.app
-bundle_id=com.yourname.yourgame
+bundle_id=com.example.yourgame
 email=yourname@example.com
 developer_name='Developer ID Application: Your Name (1234567890)'
 asc_provider=1234567890
