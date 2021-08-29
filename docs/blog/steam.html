@@ -169,7 +169,7 @@ Remove-Item Env:GOARCH</code></pre>
   <p>On a POSIX shell, the commands are like this.</p>
   <pre><code>env GOOS=windows GOARCH=386 go build -o yourgame_windows_386.exe .
 env GOOS=windows GOARCH=amd64 go build -o yourgame_windows_amd64.exe .</code></pre>
-  <p>When buliding a GUI application for Windows, you can specify <code>-ldflags=-H=windowsgui</code> to vanish the console. As Ebiten cloess it automatically anyway, it is also fine not to specify this.</p>
+  <p>When buliding a GUI application for Windows, you can specify <code>-ldflags=-H=windowsgui</code> to vanish the console. As Ebiten closes it automatically anyway, it is also fine not to specify this.</p>
   <p>An icon is not necessary. If you care, please use a tool to embed resources as appropriate.</p>
   <p>Then, compress the <code>exe</code> files as zips, and upload as builds at Steamworks.</p>
   <h2>macOS</h2>
@@ -306,7 +306,7 @@ if [[ ! -f .cache/${GO_VERSION}.linux-amd64.tar.gz ]]; then
     (cd .cache; curl --location --remote-name https://golang.org/dl/${GO_VERSION}.linux-amd64.tar.gz)
 fi
 
-# Build for 386
+# Build for 386.
 (cd .cache/${STEAM_RUNTIME_VERSION}; docker build -f com.valvesoftware.SteamRuntime.Sdk-i386-scout-sysroot.Dockerfile -t steamrt_scout_i386:latest .)
 docker run --rm --workdir=/work --volume $(pwd):/work steamrt_scout_i386:latest /bin/sh -c "
 export PATH=\$PATH:/usr/local/go/bin
@@ -317,7 +317,7 @@ rm -rf /usr/local/go && tar -C /usr/local -xzf .cache/${GO_VERSION}.linux-386.ta
 go build -o ${name}_linux_386 .
 "
 
-# Build for amd64
+# Build for amd64.
 (cd .cache/${STEAM_RUNTIME_VERSION}; docker build -f com.valvesoftware.SteamRuntime.Sdk-amd64,i386-scout-sysroot.Dockerfile -t steamrt_scout_amd64:latest .)
 docker run --rm --workdir=/work --volume $(pwd):/work steamrt_scout_amd64:latest /bin/sh -c "
 export PATH=\$PATH:/usr/local/go/bin
