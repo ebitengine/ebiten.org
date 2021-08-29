@@ -145,7 +145,7 @@ rm ${app_name}.zip</code></pre>
   <p>When you want to upload your <code>.app</code> as a build at Steamworks, you should not compress this by <code>zip</code> command or a menu at Finder. A notarized <code>.app</code> includes some special files and they might be missing if you create a <code>zip</code> in a regular way. Instead, use <code>ditto</code> command to create a zip.</p>
   <pre><code>ditto -c -k --keepParent YourGame.app yourgame_darwin_amd64.zip</code></pre>
   <h2>Linux</h2>
-  <p>In the case of Linux, <a href="https://github.com/ValveSoftware/steam-runtime">Steam Runtime</a> is prepared as a Dockerfile. Buliding your application on this environment is the easiest way.</p>
+  <p>In the case of Linux, <a href="https://github.com/ValveSoftware/steam-runtime">Steam Runtime</a> is prepared as a Dockerfile. Buliding your application in this environment is the easiest way.</p>
   <pre><code>name=yourgame
 STEAM_RUNTIME_VERSION=0.20210721.1
 GO_VERSION=$(go env GOVERSION)
