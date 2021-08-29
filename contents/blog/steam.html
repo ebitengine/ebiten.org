@@ -1,0 +1,409 @@
+<div lang="en">
+  <h1 lang="en">How to release an Ebiten game for Steam</h1>
+  <p class="meta">Hajime Hoshi<br><span id="meta-created">2021-08-29</span></p>
+  <p>I have succeeded to release an Ebiten game "<a href="https://store.steampowered.com/app/1710390/__2007/">INNO VATION 2007!</a>" at Steam store some days ago. It's free. It supports all the platforms Windows, macOS and Linux. The source code is available at <a href="https://github.com/hajimehoshi/go-inovation">GitHub</a>.</p>
+  <figure>
+    <p class="img"><img src="/images/blog/steam/innovation2007.png"></p>
+    <figcaption>Copyright 2007 Omega</figcaption>
+  </figure>
+  <p>You have to pass a review to release your game at Steam. To pass a review, simply building an Ebiten game by Go is not enough. You have to do additional tasks. This artcile shows necessary items to pass a review, and doesn't explain general explanations about Steamworks.</p>
+  <p>In the below explanation, we assume the game name is <code>yourgame</code>, the user name is <code>Your Name</code>, and so on. Please replace them as appropriate.</p>
+  <h2>Steamworks SDK</h2>
+  <p>There are Steam features like getting the user's language or unlocking achievements. They are available via <a href="https://partner.steamgames.com/doc/sdk">Steamworks SDK</a>. The formats of the SDK are dynamic libraries like DLL and shared objects, so you have to take ingenuity to use them from Go.</p>
+  <p>Then, I created a biding called <a href="https://github.com/hajimehoshi/go-steamworks"><code>go-steamworks</code></a>. You can use it just by importing. For example, you can write the process to reopen the application if the application was not opened via Steam client like this.<p>
+  <pre><code>package main
+
+import (
+	"os"
+
+	"github.com/hajimehoshi/go-steamworks"
+)
+
+const appID = 480 // Use your application ID.
+
+func init() {
+	if steamworks.RestartAppIfNecessary(appID) {
+		os.Exit(1)
+	}
+	if !steamworks.Init() {
+		panic("steamworks.Init failed")
+	}
+}</code></pre>
+  <p>This binding doesn't implement most of the APIs. I plan to implement them in the future.</p>
+  <h2>Windows</h2>
+  <p>Windows is the easiest, and what you have to do is to build your game by Go in the regular way. On Windows, Ebiten is in pure Go, then you can build it anywhere by specifying <code>GOOS</code> and <code>GOARCH</code>.</p>
+  <p>On PowerShell, the commands are like this.</p>
+  <pre><code>$Env:GOARCH = '386'
+go build -o yourgame_windows_386.exe .
+$Env:GOARCH = 'amd64'
+go build -o yourgame_windows_amd64.exe .
+Remove-Item Env:GOARCH</code></pre>
+  <p>On a POSIX shell, the commands are like this.</p>
+  <pre><code>env GOOS=windows GOARCH=386 go build -o yourgame_windows_386.exe .
+env GOOS=windows GOARCH=amd64 go build -o yourgame_windows_amd64.exe .</code></pre>
+  <p>When buliding a GUI application for Windows, you can specify <code>-ldflags=-H=windowsgui</code> to vanish the console. As Ebiten cloess it automatically anyway, it is also fine not to specify this.</p>
+  <p>An icon is not mandatory. If you are, please use a tool to embed resources as appropriate.</p>
+  <p>Then, compress the <code>exe</code> files as zips, and upload as builds at Steamworks.</p>
+  <h2>macOS</h2>
+  <p>In the case of macOS, you have to create an application as <code>.app</code>. Besides, you have to get your application notarized by Apple. Apparently, notarizing an application is not mandatory to release games at Steam, but your application would not work at relatively new (10.15?) macOS, then we can say notarizing is a must. You have to register <a href="https://developer.apple.com/">Apple Developer</a> to get your application notarized.</p>
+  <p>I refered a blog article "<a href="https://coldandold.com/posts/releasing-steam-game-on-mac/">Releasing Steam Games on Mac Is a Monster Pain</a>" to write this article.</p>
+  <p>amd64 is assumed as an architecture. You might need extra tasks for M1 (arm64).</p>
+  <p>First, prepare an icon file as <code>icns</code> format. This format can be exported by opening e.g., an PNG file with <code>Preview.app</code>. If you cannot find <code>icns</code> in the list of exporting formats, it should be shown by opening the list with pressing Alt key.</p>
+  <p>Then, create a minimal <code>.app</code> like this.</p>
+  <pre><code>name=yourgame
+app_name=YourGame.app
+bundle_id=com.yourname.yourgame
+
+rm -rf ${app_name}
+mkdir -p ${app_name}/Contents/MacOS
+mkdir -p ${app_name}/Contents/Resources
+env CGO_CFLAGS=-mmacosx-version-min=10.12 CGO_LDFLAGS=-mmacosx-version-min=10.12 go build -o ${app_name}/Contents/MacOS/${name} .
+cp icon.icns ${app_name}/Contents/Resources/icon.icns
+echo '&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"&gt;
+&lt;plist version="1.0"&gt;
+  &lt;dict&gt;
+    &lt;key&gt;CFBundlePackageType&lt;/key&gt;
+    &lt;string&gt;APPL&lt;/string&gt;
+    &lt;key&gt;CFBundleInfoDictionaryVersion&lt;/key&gt;
+    &lt;string&gt;6.0&lt;/string&gt;
+    &lt;key&gt;CFBundleExecutable&lt;/key&gt;
+    &lt;string&gt;{{.Name}}&lt;/string&gt;
+    &lt;key&gt;CFBundleIdentifier&lt;/key&gt;
+    &lt;string&gt;{{.BundleID}}&lt;/string&gt;
+    &lt;key&gt;CFBundleIconFile&lt;/key&gt;
+    &lt;string&gt;icon.icns&lt;/string&gt;
+    &lt;key&gt;CFBundleVersion&lt;/key&gt;
+    &lt;string&gt;0.0.0&lt;/string&gt;
+    &lt;key&gt;CFBundleShortVersionString&lt;/key&gt;
+    &lt;string&gt;0.0.0&lt;/string&gt;
+    &lt;key&gt;NSHighResolutionCapable&lt;/key&gt;
+    &lt;true /&gt;
+    &lt;key&gt;LSMinimumSystemVersion&lt;/key&gt;
+    &lt;string&gt;10.12.0&lt;/string&gt;
+  &lt;/dict&gt;
+&lt;/plist&gt;' |
+    sed -e "s/{{.Name}}/${name}/g" |
+    sed -e "s/{{.BundleID}}/${bundle_id}/g" &gt; ${app_name}/Contents/Info.plist</code></pre>
+  <p>This specifies <code>-mmacosx-version-min=10.12</code> at <code>CGO_CLAGS</code> and <code>CGO_LDFLAGS</code>. Without this, your application would not work on an older macOS than yours.</p>
+  <p>Next, create a certificate of Developer ID (Developer ID Application) if you don't have one.</p>
+  <figure>
+    <p class="img"><img src="/images/blog/steam/developer_id_application.png"></p>
+  </figure>
+  <p>Next, create an app-specific password. You can create one easily at <a href="https://appleid.apple.com/">Apple ID website</a>. For more details, see <a href="https://support.apple.com/en-us/HT204397">the help page</a>.</p>
+  <p>Next, get your application notarized.</p>
+  <pre><code>name=yourgame
+app_name=YourGame.app
+bundle_id=com.yourname.yourgame
+email=yourname@example.com
+developer_name='Developer ID Application: Your Name (1234567890)'
+asc_provider=1234567890
+
+mkdir -p .cache
+
+echo '&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"&gt;
+&lt;plist version="1.0"&gt;
+  &lt;dict&gt;
+    &lt;key&gt;com.apple.security.cs.disable-library-validation&lt;/key&gt;
+    &lt;true/&gt;
+    &lt;key&gt;com.apple.security.cs.allow-dyld-environment-variables&lt;/key&gt;
+    &lt;true/&gt;
+  &lt;/dict&gt;
+&lt;/plist&gt;' &gt; .cache/entitlements.plist
+
+codesign --display \
+         --verbose \
+         --verify \
+         --sign "${developer_name}" \
+         --timestamp \
+         --options runtime \
+         --force \
+         --entitlements .cache/entitlements.plist \
+         --deep \
+         ${app_name}
+
+ditto -c -k --keepParent ${app_name} ${app_name}.zip
+
+if [[ -z "${APP_SPECIFIC_PASSWORD}" ]]; then
+    echo 'fail: set APP_SPECIFIC_PASSWORD. See https://support.apple.com/en-us/HT204397'
+    exit 1
+fi
+
+xcrun altool --notarize-app \
+             --primary-bundle-id "${bundle_id}" \
+             --username "${email}" \
+             --password "${APP_SPECIFIC_PASSWORD}" \
+             --asc-provider "${asc_provider}" \
+             --file ${app_name}.zip
+rm ${app_name}.zip</code></pre>
+  <p>After executing these commands, a UUID for the notarization transaction is shown. After 5 minutes or so, you will receive an email from Apple.</p>
+  <p>If you succeed notarization, execute this command.</p>
+  <pre><code>xcrun stapler staple YourGame.app</code></pre>
+  <p>If you want to see notarization logs, execute this command. This command shows a URL, and you can see logs by accessing the URL. If you fail notarization, the reasons should be written there.</p>
+  <pre><code>xcrun altool --notarization-info (UUID) --username yourname@example.com --password (APP_SPECIFIC_PASSWORD)</code></pre>
+  <p>When you want to upload your <code>.app</code> as a build at Steamworks, you should not compress this by <code>zip</code> command or a menu at Finder. A notarized <code>.app</code> includes some special files and they might be missing if you create a <code>zip</code> in a regular way. Instead, use <code>ditto</code> command to create a zip.</p>
+  <pre><code>ditto -c -k --keepParent YourGame.app yourgame_darwin_amd64.zip</code></pre>
+  <h2>Linux</h2>
+  <p>In the case of Linux, <a href="https://github.com/ValveSoftware/steam-runtime">Steam Runtime</a> is prepared as a Dockerfile. Buliding your application on this environment is the easiest way.</p>
+  <pre><code>name=yourgame
+STEAM_RUNTIME_VERSION=0.20210721.1
+GO_VERSION=$(go env GOVERSION)
+
+mkdir -p .cache/${STEAM_RUNTIME_VERSION}
+
+# Download binaries for 386.
+if [ ! -f .cache/${STEAM_RUNTIME_VERSION}/com.valvesoftware.SteamRuntime.Sdk-i386-scout-sysroot.Dockerfile ]; then
+    curl --location --remote-name https://repo.steampowered.com/steamrt-images-scout/snapshots/${STEAM_RUNTIME_VERSION}/com.valvesoftware.SteamRuntime.Sdk-i386-scout-sysroot.Dockerfile
+fi
+if [ ! -f .cache/${STEAM_RUNTIME_VERSION}/com.valvesoftware.SteamRuntime.Sdk-i386-scout-sysroot.tar.gz ]; then
+    curl --location --remote-name https://repo.steampowered.com/steamrt-images-scout/snapshots/${STEAM_RUNTIME_VERSION}/com.valvesoftware.SteamRuntime.Sdk-i386-scout-sysroot.tar.gz
+fi
+if [ ! -f .cache/${GO_VERSION}.linux-386.tar.gz ]; then
+    curl --location --remote-name https://golang.org/dl/${GO_VERSION}.linux-386.tar.gz
+fi
+
+# Download binaries for amd64.
+if [ ! -f .cache/${STEAM_RUNTIME_VERSION}/com.valvesoftware.SteamRuntime.Sdk-amd64,i386-scout-sysroot.Dockerfile ]; then
+    curl --location --remote-name https://repo.steampowered.com/steamrt-images-scout/snapshots/${STEAM_RUNTIME_VERSION}/com.valvesoftware.SteamRuntime.Sdk-amd64,i386-scout-sysroot.Dockerfile
+fi
+if [ ! -f .cache/${STEAM_RUNTIME_VERSION}/com.valvesoftware.SteamRuntime.Sdk-amd64,i386-scout-sysroot.tar.gz ]; then
+    curl --location --remote-name https://repo.steampowered.com/steamrt-images-scout/snapshots/${STEAM_RUNTIME_VERSION}/com.valvesoftware.SteamRuntime.Sdk-amd64,i386-scout-sysroot.tar.gz
+fi
+if [ ! -f .cache/${GO_VERSION}.linux-amd64.tar.gz ]; then
+    curl --location --remote-name https://golang.org/dl/${GO_VERSION}.linux-amd64.tar.gz
+fi
+
+# Build for 386
+(cd .cache/${STEAM_RUNTIME_VERSION}; docker build -f com.valvesoftware.SteamRuntime.Sdk-i386-scout-sysroot.Dockerfile -t steamrt_scout_i386:latest .)
+docker run --rm --workdir=/work --volume $(pwd)/..:/work steamrt_scout_i386:latest /bin/sh -c "
+export PATH=\$PATH:/usr/local/go/bin
+export CGO_CFLAGS=-std=gnu99
+
+rm -rf /usr/local/go && tar -C /usr/local -xzf .cache/${GO_VERSION}.linux-386.tar.gz
+
+go build -o ${name}_linux_386 .
+"
+
+# Build for amd64
+(cd .cache/${STEAM_RUNTIME_VERSION}; docker build -f com.valvesoftware.SteamRuntime.Sdk-amd64,i386-scout-sysroot.Dockerfile -t steamrt_scout_amd64:latest .)
+docker run --rm --workdir=/work --volume $(pwd)/..:/work steamrt_scout_amd64:latest /bin/sh -c "
+export PATH=\$PATH:/usr/local/go/bin
+export CGO_CFLAGS=-std=gnu99
+
+rm -rf /usr/local/go && tar -C /usr/local -xzf .cache/${GO_VERSION}.linux-amd64.tar.gz
+
+go build -o ${name}_linux_amd64 .
+"</code></pre>
+  <p>Then, compress <code>yourgame_linux_386</code> and <code>yourgame_linux_amd64</code> as zips, and upload them as builds at Steamworks.</p>
+  <h2>Misc.</h2>
+  <ul>
+    <li>I strongly recommend to adjust your account settings to enable to download <a href="https://partner.steamgames.com/doc/store/testing">Dev Comp package</a>. You can test your application in a production-like environment by putting it at the original place where your game is downloaded by Steam (<code>steamapps/common/yourgame</code>).</li>
+    <li>You need at least 5 screenshots that are NOT titles, menus or loading. I fell into this trap.</li>
+  </ul>
+</div>
+<div lang="ja">
+  <h1 lang="ja">Steam に Ebiten ゲームをリリースする方法</h1>
+  <p class="meta">Hajime Hoshi<br><span id="meta-created">2021-08-29</span></p>
+  <p>先日、 Ebiten 製ゲーム「<a href="https://store.steampowered.com/app/1710390/__2007/">いの べーしょん 2007!</a>」を Steam ストアでリリースすることに成功しました。無料です。 Windows、 macOS、 Linux の全プラットフォームに対応させました。なおソースコードは <a href="https://github.com/hajimehoshi/go-inovation">GitHub</a> にて公開されています。</p>
+  <figure>
+    <p class="img"><img src="/images/blog/steam/innovation2007.png"></p>
+    <figcaption>Copyright 2007 Omega</figcaption>
+  </figure>
+  <p>Steam でゲームをリリースするためには審査が必要です。審査を通すためには、単に Ebiten ゲームを Go でビルドするだけではありません。様々な作業が必要になります。この記事では審査を通すために必要な事項をまとめます。 Steamworks の一般的な解説は省きます。</p>
+  <p>以下の説明では、ゲーム名を <code>yourgame</code>、ユーザー名を <code>Your Name</code> などにしています。適宜読み替えてください。</p>
+  <h2>Steamworks SDK</h2>
+  <p>Steam の機能にはユーザーの言語取得や実績解除などがあります。それらは <a href="https://partner.steamgames.com/doc/sdk">Steamworks SDK</a> 経由で呼び出されます。 SDK のファイル形式は DLL や so ファイルなどの動的ライブラリなので、 Go から使うためには一工夫必要です。</p>
+  <p>そこで、 <a href="https://github.com/hajimehoshi/go-steamworks"><code>go-steamworks</code></a> というバインディングを作りました。 import するだけで使えます。例えば、「Steam クライアント経由で開いていなかったら開き直す」処理は次のように書けます。</p>
+  <pre><code>package main
+
+import (
+	"os"
+
+	"github.com/hajimehoshi/go-steamworks"
+)
+
+const appID = 480 // Use your application ID.
+
+func init() {
+	if steamworks.RestartAppIfNecessary(appID) {
+		os.Exit(1)
+	}
+	if !steamworks.Init() {
+		panic("steamworks.Init failed")
+	}
+}</code></pre>
+  <p>なおこのバインディングはまだ API をほとんど実装していません。今後対応予定です。</p>
+  <h2>Windows</h2>
+  <p>Windows は最も簡単で、普通に Go でビルドするだけです。 Ebiten は Windows においては Pure Go なので、 <code>GOOS</code> と <code>GOARCH</code> を指定すればどこでもビルドできます。</p>
+  <p>PowerShell でビルドする場合は次のようになります。</p>
+  <pre><code>$Env:GOARCH = '386'
+go build -o yourgame_windows_386.exe .
+$Env:GOARCH = 'amd64'
+go build -o yourgame_windows_amd64.exe .
+Remove-Item Env:GOARCH</code></pre>
+  <p>POSIX シェルでビルドする場合は次のようになります。</p>
+  <pre><code>env GOOS=windows GOARCH=386 go build -o yourgame_windows_386.exe .
+env GOOS=windows GOARCH=amd64 go build -o yourgame_windows_amd64.exe .</code></pre>
+  <p>Windows 向け GUI アプリをビルドする際には <code>-ldflags=-H=windowsgui</code> をつけると、最初のコンソールの表示がなくなります。 Ebiten の場合はコンソールを自動で閉じるので、つけなくても問題はありません。</p>
+  <p>アイコンは必須ではありません。気になる方はリソースを埋め込むツールを適宜使ってください。</p>
+  <p>こうして出来上がった <code>exe</code> ファイルを zip で固めて、 Steamworks にビルドとしてアップロードしてください。</p>
+  <h2>macOS</h2>
+  <p>macOS の場合は <code>.app</code> 形式のアプリケーションを作る必要があります。また Apple から<a href="https://developer.apple.com/documentation/security/notarizing_macos_software_before_distribution">公証 (Notarization)</a> を受ける必要があります。公証は、 Steam 審査のためには厳密には必須ではないらしいのですが、ないと新しめ (10.15 以降?) の macOS では動かなくなるので、ほぼ必須といってよいでしょう。公証を受けるためには <a href="https://developer.apple.com/">Apple Developer</a> の登録が必須です。</p>
+  <p>本記事作成にあたって、ブログ記事 <a href="https://coldandold.com/posts/releasing-steam-game-on-mac/">Releasing Steam Games on Mac Is a Monster Pain</a> を参考にしました。</p>
+  <p>アーキテクチャは amd64 を前提にしています。 M1 (arm64) の場合は別途追加作業が必要になるかもしれません。</p>
+  <p>まずアイコンファイルを <code>icns</code> 形式で用意します。この形式は PNG などを <code>Preview.app</code> で開いてエクスポートするだけで作れます。エクスポートのフォーマット一覧に出てこない場合は、 Alt キーを押しながらフォーマット一覧を開くと出てきます。</p>
+  <p>次に必要最小限の <code>.app</code> を次のように作ります。</p>
+  <pre><code>name=yourgame
+app_name=YourGame.app
+bundle_id=com.yourname.yourgame
+
+rm -rf ${app_name}
+mkdir -p ${app_name}/Contents/MacOS
+mkdir -p ${app_name}/Contents/Resources
+env CGO_CFLAGS=-mmacosx-version-min=10.12 CGO_LDFLAGS=-mmacosx-version-min=10.12 go build -o ${app_name}/Contents/MacOS/${name} .
+cp icon.icns ${app_name}/Contents/Resources/icon.icns
+echo '&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"&gt;
+&lt;plist version="1.0"&gt;
+  &lt;dict&gt;
+    &lt;key&gt;CFBundlePackageType&lt;/key&gt;
+    &lt;string&gt;APPL&lt;/string&gt;
+    &lt;key&gt;CFBundleInfoDictionaryVersion&lt;/key&gt;
+    &lt;string&gt;6.0&lt;/string&gt;
+    &lt;key&gt;CFBundleExecutable&lt;/key&gt;
+    &lt;string&gt;{{.Name}}&lt;/string&gt;
+    &lt;key&gt;CFBundleIdentifier&lt;/key&gt;
+    &lt;string&gt;{{.BundleID}}&lt;/string&gt;
+    &lt;key&gt;CFBundleIconFile&lt;/key&gt;
+    &lt;string&gt;icon.icns&lt;/string&gt;
+    &lt;key&gt;CFBundleVersion&lt;/key&gt;
+    &lt;string&gt;0.0.0&lt;/string&gt;
+    &lt;key&gt;CFBundleShortVersionString&lt;/key&gt;
+    &lt;string&gt;0.0.0&lt;/string&gt;
+    &lt;key&gt;NSHighResolutionCapable&lt;/key&gt;
+    &lt;true /&gt;
+    &lt;key&gt;LSMinimumSystemVersion&lt;/key&gt;
+    &lt;string&gt;10.12.0&lt;/string&gt;
+  &lt;/dict&gt;
+&lt;/plist&gt;' |
+    sed -e "s/{{.Name}}/${name}/g" |
+    sed -e "s/{{.BundleID}}/${bundle_id}/g" &gt; ${app_name}/Contents/Info.plist</code></pre>
+  <p><code>CGO_CFLAGS</code> と <code>CGO_LDFLAGS</code> に <code>-mmacosx-version-min=10.12</code> を指定しています。この指定がないと、ビルドした環境より古い macOS で動かなくなってしまいます。</p>
+  <p>次に Developer ID (Developer ID Application) の Certificate を、ない場合は作成します。</p>
+  <figure>
+    <p class="img"><img src="/images/blog/steam/developer_id_application.png"></p>
+  </figure>
+  <p>次に App-Specific Password を作ります。 <a href="https://appleid.apple.com/">Apple ID のサイト</a>から簡単に作れます。詳しくは <a href="https://support.apple.com/en-us/HT204397">Apple のヘルプページ</a>を参考にしてください。</p>
+  <p>次に公証を受けます。</p>
+  <pre><code>name=yourgame
+app_name=YourGame.app
+bundle_id=com.yourname.yourgame
+email=yourname@example.com
+developer_name='Developer ID Application: Your Name (1234567890)'
+asc_provider=1234567890
+
+mkdir -p .cache
+
+echo '&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"&gt;
+&lt;plist version="1.0"&gt;
+  &lt;dict&gt;
+    &lt;key&gt;com.apple.security.cs.disable-library-validation&lt;/key&gt;
+    &lt;true/&gt;
+    &lt;key&gt;com.apple.security.cs.allow-dyld-environment-variables&lt;/key&gt;
+    &lt;true/&gt;
+  &lt;/dict&gt;
+&lt;/plist&gt;' &gt; .cache/entitlements.plist
+
+codesign --display \
+         --verbose \
+         --verify \
+         --sign "${developer_name}" \
+         --timestamp \
+         --options runtime \
+         --force \
+         --entitlements .cache/entitlements.plist \
+         --deep \
+         ${app_name}
+
+ditto -c -k --keepParent ${app_name} ${app_name}.zip
+
+if [[ -z "${APP_SPECIFIC_PASSWORD}" ]]; then
+    echo 'fail: set APP_SPECIFIC_PASSWORD. See https://support.apple.com/en-us/HT204397'
+    exit 1
+fi
+
+xcrun altool --notarize-app \
+             --primary-bundle-id "${bundle_id}" \
+             --username "${email}" \
+             --password "${APP_SPECIFIC_PASSWORD}" \
+             --asc-provider "${asc_provider}" \
+             --file ${app_name}.zip
+rm ${app_name}.zip</code></pre>
+  <p>実行すると公証のトランザクション UUID が表示されます。 5 分くらい待つと Apple からメールが来るはずです。</p>
+  <p>公証に成功した場合は次のコマンドを実行してください。</p>
+  <pre><code>xcrun stapler staple YourGame.app</code></pre>
+  <p>公証のログを見たい場合は、次のコマンドを実行してください。次のコマンドを実行すると URL が表示され、それにアクセスすると現在の状況が見れます。失敗した場合は失敗理由も書いてあるはずです。</p>
+  <pre><code>xcrun altool --notarization-info (UUID) --username yourname@example.com --password (APP_SPECIFIC_PASSWORD)</code></pre>
+  <p>こうして出来上がった <code>.app</code> を Steamworks にビルドとしてアップロードする際、 <code>zip</code> コマンドや Finder のメニューで zip ファイルを作ってはいけません。公証を受けた <code>.app</code> には特殊なファイルをが含まれていて、普通に zip を作ろうとするとそのファイルが欠落してしまいます。代わりに <code>ditto</code> コマンドを使って zip ファイルを作ります。</p>
+  <pre><code>ditto -c -k --keepParent YourGame.app yourgame_darwin_amd64.zip</code></pre>
+  <h2>Linux</h2>
+  <p>Linux の場合は <a href="https://github.com/ValveSoftware/steam-runtime">Steam Runtime</a> が Dockerfile として用意されています。その環境下でビルドするのが最も簡単です。</p>
+  <pre><code>name=yourgame
+STEAM_RUNTIME_VERSION=0.20210721.1
+GO_VERSION=$(go env GOVERSION)
+
+mkdir -p .cache/${STEAM_RUNTIME_VERSION}
+
+# Download binaries for 386.
+if [ ! -f .cache/${STEAM_RUNTIME_VERSION}/com.valvesoftware.SteamRuntime.Sdk-i386-scout-sysroot.Dockerfile ]; then
+    curl --location --remote-name https://repo.steampowered.com/steamrt-images-scout/snapshots/${STEAM_RUNTIME_VERSION}/com.valvesoftware.SteamRuntime.Sdk-i386-scout-sysroot.Dockerfile
+fi
+if [ ! -f .cache/${STEAM_RUNTIME_VERSION}/com.valvesoftware.SteamRuntime.Sdk-i386-scout-sysroot.tar.gz ]; then
+    curl --location --remote-name https://repo.steampowered.com/steamrt-images-scout/snapshots/${STEAM_RUNTIME_VERSION}/com.valvesoftware.SteamRuntime.Sdk-i386-scout-sysroot.tar.gz
+fi
+if [ ! -f .cache/${GO_VERSION}.linux-386.tar.gz ]; then
+    curl --location --remote-name https://golang.org/dl/${GO_VERSION}.linux-386.tar.gz
+fi
+
+# Download binaries for amd64.
+if [ ! -f .cache/${STEAM_RUNTIME_VERSION}/com.valvesoftware.SteamRuntime.Sdk-amd64,i386-scout-sysroot.Dockerfile ]; then
+    curl --location --remote-name https://repo.steampowered.com/steamrt-images-scout/snapshots/${STEAM_RUNTIME_VERSION}/com.valvesoftware.SteamRuntime.Sdk-amd64,i386-scout-sysroot.Dockerfile
+fi
+if [ ! -f .cache/${STEAM_RUNTIME_VERSION}/com.valvesoftware.SteamRuntime.Sdk-amd64,i386-scout-sysroot.tar.gz ]; then
+    curl --location --remote-name https://repo.steampowered.com/steamrt-images-scout/snapshots/${STEAM_RUNTIME_VERSION}/com.valvesoftware.SteamRuntime.Sdk-amd64,i386-scout-sysroot.tar.gz
+fi
+if [ ! -f .cache/${GO_VERSION}.linux-amd64.tar.gz ]; then
+    curl --location --remote-name https://golang.org/dl/${GO_VERSION}.linux-amd64.tar.gz
+fi
+
+# Build for 386
+(cd .cache/${STEAM_RUNTIME_VERSION}; docker build -f com.valvesoftware.SteamRuntime.Sdk-i386-scout-sysroot.Dockerfile -t steamrt_scout_i386:latest .)
+docker run --rm --workdir=/work --volume $(pwd)/..:/work steamrt_scout_i386:latest /bin/sh -c "
+export PATH=\$PATH:/usr/local/go/bin
+export CGO_CFLAGS=-std=gnu99
+
+rm -rf /usr/local/go && tar -C /usr/local -xzf .cache/${GO_VERSION}.linux-386.tar.gz
+
+go build -o ${name}_linux_386 .
+"
+
+# Build for amd64
+(cd .cache/${STEAM_RUNTIME_VERSION}; docker build -f com.valvesoftware.SteamRuntime.Sdk-amd64,i386-scout-sysroot.Dockerfile -t steamrt_scout_amd64:latest .)
+docker run --rm --workdir=/work --volume $(pwd)/..:/work steamrt_scout_amd64:latest /bin/sh -c "
+export PATH=\$PATH:/usr/local/go/bin
+export CGO_CFLAGS=-std=gnu99
+
+rm -rf /usr/local/go && tar -C /usr/local -xzf .cache/${GO_VERSION}.linux-amd64.tar.gz
+
+go build -o ${name}_linux_amd64 .
+"</code></pre>
+  <p>出来上がった <code>yourgame_linux_386</code> および <code>yourgame_linux_amd64</code> をそれぞれ zip に固めて、 Steamworks にビルドとしてアップロードしてください。</p>
+  <h2>その他</h2>
+  <ul>
+    <li><a href="https://partner.steamgames.com/doc/store/testing">Dev Comp パッケージ</a>をダウンロードできるようにアカウントを設定することを強く推奨します。 Steam でゲームがダウンロードされる本来の箇所 (<code>steamapps/common/yourgame</code>) で実行ファイルを置き換えることで、本番に近いテストが行なえます。</li>
+    <li>スクリーンショットとして、タイトル、メニュー、ローディング<em>以外</em>の画面が 5 枚必要です。筆者はこれにハマりました。</li>
+  </ul>
+  <p>本記事が Ebiten ゲームの Steam リリースの一助になれば幸いです。<p>
+</div>
