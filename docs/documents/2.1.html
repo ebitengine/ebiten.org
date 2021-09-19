@@ -205,7 +205,7 @@
   <h3>Performance improvement</h3>
   <ul>
     <li>Reduced thread context switchings (<a href="https://github.com/hajimehoshi/ebiten/issues/1358">#1358</a>).</li>
-    <li>Made cache for the results of <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#ColorM.Scale"><code>(*ColorM).Scale</code> (<a href="https://github.com/hajimehoshi/ebiten/issues/1474">#1474</a>).</li>
+    <li>Made cache for the results of <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#ColorM.Scale"><code>(*ColorM).Scale</code></a> (<a href="https://github.com/hajimehoshi/ebiten/issues/1474">#1474</a>).</li>
     <li>Fixed the problem that <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#Image.ReplacePixels"><code>ReplacePixels</code></a> might be slow in Metal (<a href="https://github.com/hajimehoshi/ebiten/issues/1418">#1418</a>, <a href="https://github.com/hajimehoshi/ebiten/issues/1517">#1517</a>).</li>
     <li>Used <code>DrawImage</code> instead of <code>ReplacePixels</code> when extending an internal texture (<a href="https://github.com/hajimehoshi/ebiten/issues/1022">#1022</a>, <a href="https://github.com/hajimehoshi/ebiten/issues/1414">#1414</a>).</li>
     <li>Used <code>DrawImage</code> instead of <code>ReplacePixels</code> when putting an idependent internal texture onto an internal texture atlas (<a href="https://github.com/hajimehoshi/ebiten/issues/1508">#1508</a>).</li>
@@ -372,7 +372,7 @@
   <h3>パフォーマンス改善</h3>
   <ul>
     <li>スレッドのコンテキストスイッチの削減 (<a href="https://github.com/hajimehoshi/ebiten/issues/1358">#1358</a>)。</li>
-    <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#ColorM.Scale"><code>(*ColorM).Scale</code> の結果をキャッシュするように修正 (<a href="https://github.com/hajimehoshi/ebiten/issues/1474">#1474</a>)。</li>
+    <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#ColorM.Scale"><code>(*ColorM).Scale</code></a> の結果をキャッシュするように修正 (<a href="https://github.com/hajimehoshi/ebiten/issues/1474">#1474</a>)。</li>
     <li>Metal において <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#Image.ReplacePixels"><code>ReplacePixels</code></a> が遅くなることがあった問題の改善 (<a href="https://github.com/hajimehoshi/ebiten/issues/1418">#1418</a>、 <a href="https://github.com/hajimehoshi/ebiten/issues/1517">#1517</a>)。</li>
     <li>内部テクスチャアトラス拡大時に <code>ReplacePixels</code> ではなく <code>DrawImage</code> を使用するように変更 (<a href="https://github.com/hajimehoshi/ebiten/issues/1022">#1022</a>、 <a href="https://github.com/hajimehoshi/ebiten/issues/1414">#1414</a>)。</li>
     <li>独立内部テクスチャを内部テクスチャアトラス上に乗せるときに <code>ReplacePixels</code> ではなく <code>DrawImage</code> を使用するように変更 (<a href="https://github.com/hajimehoshi/ebiten/issues/1508">#1508</a>)。</li>
