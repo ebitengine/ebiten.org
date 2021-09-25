@@ -23,7 +23,7 @@
     <p class="img"><img src="/images/documents/2.2/gamepad.png" alt="The standard gamepad layout"></p>
     <figcaption>The standard gamepad layout</figcaption>
   </figure>
-  <p>If a standard gamepad layout is available for your gamepad in your environment, you can use APIs for standard gamepads like <code>StandardGameButton</code>. You can use constant values for buttons or axes for almost any gamepads and environments, and don't have to worry about the button/axis assignment differences.</p>
+  <p>If a standard gamepad layout is available for your gamepad in your environment, you can use APIs for standard gamepads like <code>StandardGameButton</code>. You can use constant values for buttons or axes for such gamepad, and don't have to worry about the button/axis assignment differences.</p>
   <p>On desktops, <a href="https://github.com/gabomdq/SDL_GameControllerDB">SDL's gamepad database</a> is used. On browsers, browsers' standard mappings are used. On mobiles, standard mappings are not available yet.</p>
   <ul>
     <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#StandardGamepadAxis"><code>type ebiten.StandardGamepadAxis</code></a></li>
@@ -34,6 +34,7 @@
     <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#StandardGamepadButtonValue"><code>ebiten.StandardGamepadButtonValue</code></a></li>
     <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#UpdateStandardGamepadLayoutMappings"><code>ebiten.UpdateStandardGamepadLayoutMappings</code></a></li>
   </ul>
+  <p>Unfortunately, not all gamepads have mappings for the standard gamepad layout. Use the existing APIs for such gamepads.</p>
   <p>For actual usages, see <code>examples/gamepad</code>.</p>
   <h3>Vector graphics</h3>
   <p>(<a href="https://github.com/hajimehoshi/ebiten/issues/1684">#1684</a>)</p>
