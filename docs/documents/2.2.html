@@ -109,7 +109,7 @@
   <h3>Audio reimplementation</h3>
   <p>(<a href="https://github.com/hajimehoshi/ebiten/issues/1549">#1549</a>)</p>
   <p>The audio implementaiton is much improved to have a bigger buffer for each player. Delays and noises are reduced.</p>
-  <h3>Standard gamepad layouts</h3>
+  <h3>The standard gamepad layout</h3>
   <p>(<a href="https://github.com/hajimehoshi/ebiten/issues/1557">#1557</a>)</p>
   <p>Until v2.1, Ebiten's gamepad button and axis assignments varied among gamepads and environments. For example, a gamepad button number 1 might indicate a different physical button in another environment. It was hard to keep poratbility with gamepads.</p>
   <p>Ebiten v2.2 adopted <a href="https://www.w3.org/TR/gamepad/#dfn-standard-gamepad">the standard gamepad layout in the Web standard</a>. The standard gamepad is a model for modern gamepads like Xbox, PlayStation and Nintendo Switch. The standard gamepad assumes these buttons or axes:</p>
@@ -117,7 +117,7 @@
     <li>Two sticks</li>
     <li>Four buttons on the left hand (especially for arrows or D-pad)</li>
     <li>Four buttons on the right hand</li>
-    <li>Four buttons on the top</li>
+    <li>Four buttons on the front</li>
     <li>Three buttons on the center</li>
   </ul>
   <figure>
@@ -126,7 +126,6 @@
   </figure>
   <p>If a standard gamepad layout is available for your gamepad in your environment, you can use APIs for standard gamepads like <code>StandardGameButton</code>. You can use constant values for buttons or axes for almost any gamepads and environments, and don't have to worry about the button/axis assignment differences.</p>
   <p>On desktops, <a href="https://github.com/gabomdq/SDL_GameControllerDB">SDL's gamepad database</a> is used. On browsers, browsers' standard mappings are used. On mobiles, standard mappings are not available yet.</p>
-  <p>These APIs were added:</p>
   <ul>
     <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#StandardGamepadAxis"><code>type ebiten.StandardGamepadAxis</code></a></li>
     <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#StandardGamepadButton"><code>type ebiten.StandardGamepadButton</code></a></li>
@@ -143,7 +142,7 @@
     <p class="img thumbnail"><img src="/images/documents/2.2/vector.png" width="640" alt="A screenshot of examples/vector"></p>
     <figcaption>A screenshot of <code>examples/vector</code></figcaption>
   </figure>
-  <p>Vector graphics APIs in Ebiten were redesigned and adopted a new redering way with stencil buffers.</p>
+  <p>Vector graphics APIs in Ebiten were redesigned and reimplemented with stencil buffers.</p>
   <p>A boolean member <code>FillMode</code> is added to <code>ebiten.DrawTrianglesOptions</code>. The fill mode <code>ebiten.EvenOdd</code> indicates the rule how an overlapped region is rendered.</p>
   <p><code>vector</code> package now has these functions:</p>
   <ul>
@@ -170,7 +169,6 @@
   <h3>New vsync mode to update only when necessary for static applications</h3>
   <p>(<a href="https://github.com/hajimehoshi/ebiten/issues/1556">#1556</a>)</p>
   <p>In addition to vscyn on and vsync off, Ebiten v2.2 added a new mode: <code>FPSModeVsyncOffMinimum</code>. This indicates that the game doesn't sync with vsync, and the game is updated only when necessary like an input is detected. This is useful for a static application.</p>
-  <p>These APIs were added:</p>
   <ul>
     <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#FPSMode"><code>type ebiten.FPSMode</code></a></li>
     <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#SetFPSMode"><code>ebiten.SetFPSMode</code></a></li>
