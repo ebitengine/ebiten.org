@@ -109,7 +109,7 @@
   <h3>Audio reimplementation</h3>
   <p>(<a href="https://github.com/hajimehoshi/ebiten/issues/1549">#1549</a>)</p>
   <p>The audio implementaiton is much improved to have a bigger buffer for each player. Delays and noises are reduced.</p>
-  <h3>The standard gamepad layout</h3>
+  <h3>Standard gamepad layout mappings</h3>
   <p>(<a href="https://github.com/hajimehoshi/ebiten/issues/1557">#1557</a>)</p>
   <p>Until v2.1, Ebiten's gamepad button and axis assignments varied among gamepads and environments. For example, a gamepad button number 1 might indicate a different physical button in another environment. It was hard to keep poratbility with gamepads.</p>
   <p>Ebiten v2.2 adopted <a href="https://www.w3.org/TR/gamepad/#dfn-standard-gamepad">the standard gamepad layout in the Web standard</a>. The standard gamepad is a model for modern gamepads like Xbox, PlayStation and Nintendo Switch. The standard gamepad assumes these buttons or axes:</p>
@@ -158,7 +158,7 @@
   <h3>macOS's native fullscreen</h3>
   <p>(<a href="https://github.com/hajimehoshi/ebiten/issues/1506">#1506</a>)</p>
   <p>On macOS, now fullscreening a window creates a new independent space and fit the window with the monitor.</p>
-  <h3>Window-closing handling</h3>
+  <h3>Handling window-closing</h3>
   <p>(<a href="https://github.com/hajimehoshi/ebiten/issues/1574">#1574</a>)</p>
   <ul>
     <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#IsWindowBeingClosed"><code>ebiten.IsWindowBeingClosed</code></a>: returns true when the user is trying to close the window on desktops.</li>
@@ -166,7 +166,7 @@
     <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#SetWindowClosingHandled"><code>ebiten.SetWindowClosingHandled</code></a>: sets whether the window closing is handled or not on desktops. The default state is false.</li>
   </ul>
   <p>For actual usages, see <code>examples/windowclosing</code>.</p>
-  <h3>New vsync mode to update only when necessary for static applications</h3>
+  <h3>New vsync mode for static applications</h3>
   <p>(<a href="https://github.com/hajimehoshi/ebiten/issues/1556">#1556</a>)</p>
   <p>In addition to vscyn on and vsync off, Ebiten v2.2 added a new mode: <code>FPSModeVsyncOffMinimum</code>. This indicates that the game doesn't sync with vsync, and the game is updated only when necessary like an input is detected. This is useful for a static application.</p>
   <ul>
