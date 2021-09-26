@@ -173,7 +173,7 @@
   </ul>
   <h3><code>Append*</code> functions</h3>
   <p>(<a href="https://github.com/hajimehoshi/ebiten/issues/1692">#1692</a>, <a href="https://github.com/hajimehoshi/ebiten/issues/1705">#1705</a>)</p>
-  <p>There are some Ebiten functions that return a new slice for each call. Creating a new slice for each call is not efficient. To mitigate this issue, new functions were added to accept a slice and append new elements. These work like the build function <code>append</code>. If the given slice has enough capacity, the functions don't allocate memory. If the given slice is empty or nil, a new slice is created.</p>
+  <p>There are some Ebiten functions that return a new slice for each call. Creating a new slice for each call allocates memory and is not efficient. To mitigate this issue, new functions were added to accept a slice and append new elements. These work like the build function <code>append</code>. If the given slice has enough capacity, the functions don't allocate memory. If the given slice is empty or nil, a new slice is created.</p>
   <ul>
     <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#AppendGamepadIDs"><code>ebiten.AppendGamepadIDs</code></a></li>
     <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#AppendInputChars"><code>ebiten.AppendInputChars</code></a></li>
@@ -277,7 +277,7 @@
   </ul>
   <h3><code>Append*</code> 関数</h3>
   <p>(<a href="https://github.com/hajimehoshi/ebiten/issues/1692">#1692</a>, <a href="https://github.com/hajimehoshi/ebiten/issues/1705">#1705</a>)</p>
-  <p>Ebiten のいくつかの関数は、呼び出しごとに新しいスライスを作っていました。関数呼び出しごとに新しいスライスを作るのは非効率です。この問題を低減するため、スライスを受け取り新しい要素をそこに追加するような新しい関数が追加されました。これらは組み込み関数 <code>append</code> のような動作をします。もしスライスに十分なキャパシティがあれば、その関数は新しいメモリをアロケートすることはありません。もし空スライスや nil が渡ってきたのなら、新しいスライスが作成されます。</p>
+  <p>Ebiten のいくつかの関数は、呼び出しごとに新しいスライスを作っていました。関数呼び出しごとに新しいスライスを作るのは、メモリをアロケートするので非効率です。この問題を低減するため、スライスを受け取り新しい要素をそこに追加するような新しい関数が追加されました。これらは組み込み関数 <code>append</code> のような動作をします。もしスライスに十分なキャパシティがあれば、その関数は新しいメモリをアロケートすることはありません。もし空スライスや nil が渡ってきたのなら、新しいスライスが作成されます。</p>
   <ul>
     <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#AppendGamepadIDs"><code>ebiten.AppendGamepadIDs</code></a></li>
     <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#AppendInputChars"><code>ebiten.AppendInputChars</code></a></li>
