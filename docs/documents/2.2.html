@@ -154,13 +154,14 @@
   <p>For actual usages, see <code>examples/vector</code>.</p>
   <h3>macOS's native fullscreen</h3>
   <p>(<a href="https://github.com/hajimehoshi/ebiten/issues/1506">#1506</a>)</p>
-  <p>On macOS, now fullscreening a window creates a new independent space and fit the window with the monitor.</p>
+  <p>On macOS, now fullscreening a window creates a new independent space and fit the window with the space.</p>
   <h3>Handling window-closing</h3>
   <p>(<a href="https://github.com/hajimehoshi/ebiten/issues/1574">#1574</a>)</p>
+  <p>You can prevent the window from being closed and do something when the window is being closed.</p>
   <ul>
-    <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#IsWindowBeingClosed"><code>ebiten.IsWindowBeingClosed</code></a>: returns true when the user is trying to close the window on desktops.</li>
-    <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#IsWindowClosingHandled"><code>ebiten.IsWindowClosingHandled</code></a>: reports whether the window closing is handled or not on desktops by SetWindowClosingHandled.</li>
-    <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#SetWindowClosingHandled"><code>ebiten.SetWindowClosingHandled</code></a>: sets whether the window closing is handled or not on desktops. The default state is false.</li>
+    <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#IsWindowBeingClosed"><code>ebiten.IsWindowBeingClosed</code></a></li>
+    <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#IsWindowClosingHandled"><code>ebiten.IsWindowClosingHandled</code></a></li>
+    <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#SetWindowClosingHandled"><code>ebiten.SetWindowClosingHandled</code></a></li>
   </ul>
   <p>For actual usages, see <code>examples/windowclosing</code>.</p>
   <h3>New vsync mode for static applications</h3>
@@ -170,9 +171,9 @@
     <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#FPSMode"><code>type ebiten.FPSMode</code></a></li>
     <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#SetFPSMode"><code>ebiten.SetFPSMode</code></a></li>
   </ul>
-  <h3>Append* functions</h3>
+  <h3><code>Append*</code> functions</h3>
   <p>(<a href="https://github.com/hajimehoshi/ebiten/issues/1692">#1692</a>, <a href="https://github.com/hajimehoshi/ebiten/issues/1705">#1705</a>)</p>
-  <p>Returning a new slice for each call is not efficient. To mitigate this issue, new functions were added to accept a slice and append new elements. These work like the build function <code>append</code>. If the given slice has enough capacity, the functions don't allocate memory. If the given slice is empty or nil, a new slice is created.</p>
+  <p>There are some Ebiten functions that return a new slice for each call. Creating a new slice for each call is not efficient. To mitigate this issue, new functions were added to accept a slice and append new elements. These work like the build function <code>append</code>. If the given slice has enough capacity, the functions don't allocate memory. If the given slice is empty or nil, a new slice is created.</p>
   <ul>
     <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#AppendGamepadIDs"><code>ebiten.AppendGamepadIDs</code></a></li>
     <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#AppendInputChars"><code>ebiten.AppendInputChars</code></a></li>
@@ -198,8 +199,8 @@
   <h3>Others</h3>
   <ul>
     <li>A constant <code>ebiten.SyncWithFPS</code> was added to replace <code>ebiten.UncappedTPS</code> (<a href="https://github.com/hajimehoshi/ebiten/issues/1726">#1726</a>).</a>
-    <li><code>audio/mp3</code>, <code>audio/vorbis</code>, <code>audio/wav</code>: <code>Decode</code> and <code>DecodeWithSampleRate</code> now takes <code>io.Reader</code> instead of <code>io.ReadSeeker</code> (<a href="https://github.com/hajimehoshi/ebiten/issues/1621">#1621</a>).</li>
-    <li>Fixed an issue that <code>dfdx</code> and some functions in non-main function failed to compile in Kage (<a href="https://github.com/hajimehoshi/ebiten/issues/1701">#1701</a>)</li>
+    <li>In <code>audio/mp3</code>, <code>audio/vorbis</code>, <code>audio/wav</code> packages, <code>Decode</code> and <code>DecodeWithSampleRate</code> now takes <code>io.Reader</code> instead of <code>io.ReadSeeker</code> (<a href="https://github.com/hajimehoshi/ebiten/issues/1621">#1621</a>).</li>
+    <li>Fixed an issue that <code>dfdx</code> and some functions in non-main function failed to compile in Kage (<a href="https://github.com/hajimehoshi/ebiten/issues/1701">#1701</a>).</li>
   </ul>
 </div>
 <div lang="ja">
@@ -255,6 +256,56 @@
     <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2/vector#Path.ArcTo"><code>(*vector.Path).ArcTo</code></a></li>
   </ul>
   <p>実際の使用例については、 <code>examples/vector</code> を参照してください。</p>
+  <h3>macOS のネイティブフルスクリーン</h3>
+  <p>(<a href="https://github.com/hajimehoshi/ebiten/issues/1506">#1506</a>)</p>
+  <p>macOS では、ウィンドウをフルスクリーンにするときに、新しい独立したスペースを作りそこにウィンドウをフィットさせる挙動になりました。</p>
+  <h3>ウィンドウが閉じられるときのハンドリング</h3>
+  <p>(<a href="https://github.com/hajimehoshi/ebiten/issues/1574">#1574</a>)</p>
+  <p>ウィンドウが閉じられるのを止めたり、ウィンドウが閉じられようとするタイミングで何かを行うことができるようになりました。</p>
+  <ul>
+    <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#IsWindowBeingClosed"><code>ebiten.IsWindowBeingClosed</code></a></li>
+    <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#IsWindowClosingHandled"><code>ebiten.IsWindowClosingHandled</code></a></li>
+    <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#SetWindowClosingHandled"><code>ebiten.SetWindowClosingHandled</code></a></li>
+  </ul>
+  <p>実際の使用例については、 <code>examples/windowclosing</code> を参照してください。</p>
+  <h3>静的なアプリケーションのための新しい vsync モード</h3>
+  <p>(<a href="https://github.com/hajimehoshi/ebiten/issues/1556">#1556</a>)</p>
+  <p>Vsync のオン・オフに加えて、 Ebiten v2.2 では新しい vsync モード <code>FPSModeVsyncOffMinimum</code> が利用できます。これはゲームは vsync には同期せず、入力が検知されたなど必要なタイミングのみで更新を行うモードです。静的なアプリケーションを実装するのに便利です。</p>
+  <ul>
+    <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#FPSMode"><code>type ebiten.FPSMode</code></a></li>
+    <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#SetFPSMode"><code>ebiten.SetFPSMode</code></a></li>
+  </ul>
+  <h3><code>Append*</code> 関数</h3>
+  <p>(<a href="https://github.com/hajimehoshi/ebiten/issues/1692">#1692</a>, <a href="https://github.com/hajimehoshi/ebiten/issues/1705">#1705</a>)</p>
+  <p>Ebiten のいくつかの関数は、呼び出しごとに新しいスライスを作っていました。関数呼び出しごとに新しいスライスを作るのは非効率です。この問題を低減するため、スライスを受け取り新しい要素をそこに追加するような新しい関数が追加されました。これらは組み込み関数 <code>append</code> のような動作をします。もしスライスに十分なキャパシティがあれば、その関数は新しいメモリをアロケートすることはありません。もし空スライスや nil が渡ってきたのなら、新しいスライスが作成されます。</p>
+  <ul>
+    <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#AppendGamepadIDs"><code>ebiten.AppendGamepadIDs</code></a></li>
+    <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#AppendInputChars"><code>ebiten.AppendInputChars</code></a></li>
+    <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#AppendTouchIDs"><code>ebiten.AppendTouchIDs</code></a></li>
+    <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2/inpututil#AppendJustConnectedGamepadIDs"><code>inpututil.AppendJustConnectedGamepadIDs</code></a></li>
+    <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2/inpututil#AppendJustPressedTouchIDs"><code>inpututil.AppendJustPressedTouchIDs</code></a></li>
+    <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2/inpututil#AppendPressedKeys"><code>inpututil.AppendPressedKeys</code></a></li>
+  </ul>
+  <h3>パフォーマンス改善</h3>
+  <ul>
+    <li><code>ReplacePixels</code> のメモリ使用量が改善されました (<a href="https://github.com/hajimehoshi/ebiten/issues/1681">#1681</a>)。</li>
+    <li>スケールのための色行列アロケーションが改善されました (<a href="https://github.com/hajimehoshi/ebiten/issues/1658">#1658</a>)。</li>
+    <li>色行列のアロケーションが減りました (<a href="https://github.com/hajimehoshi/ebiten/issues/1796">#1796</a>)。</li>
+    <li>もう使われないピクセルデータについて、確実にメモリを解放するようにしました (<a href="https://github.com/hajimehoshi/ebiten/issues/1803">#1803</a>)。</li>
+  </ul>
+  <h3>その他の新しい関数</h3>
+  <ul>
+    <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#Image.RGBA64At"><code>(*ebiten.Image).RGBA64At</code></a> (<a href="https://github.com/hajimehoshi/ebiten/issues/1769">#1769</a>)。</li>
+    <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2/audio#Context.NewPlayer"><code>(*audio.Context).NewPlayer</code></a>: <code>audio.NewPlayer</code> を置き換えます (<a href="https://github.com/hajimehoshi/ebiten/issues/1708">#1708</a>)。</li>
+    <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2/audio#Context.NewPlayerFromBytes"><code>(*audio.Context).NewPlayerFromBytes</code></a>: <code>audioe.NewPlayerFromBytes</code> を置き換えます (<a href="https://github.com/hajimehoshi/ebiten/issues/1708">#1708</a>)。</li>
+    <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2/text#DrawWithOptions"><code>text.DrawWithOptions</code></a> (<a href="https://github.com/hajimehoshi/ebiten/issues/1461">#1461</a>)。</li>
+  </ul>
+  <h3>その他</h3>
+  <ul>
+    <li>定数 <code>ebiten.SyncWithFPS</code> が追加されました。 <code>ebiten.UncappedTPS</code> の置き換えです (<a href="https://github.com/hajimehoshi/ebiten/issues/1726">#1726</a>)。</a>
+    <li><code>audio/mp3</code>, <code>audio/vorbis</code>, <code>audio/wav</code> パッケージで、 <code>Decode</code> 関数と <code>DecodeWithSampleRate</code> 関数が <code>io.ReadSeeker</code> の代わりに <code>io.Reader</code> を取るようになりました (<a href="https://github.com/hajimehoshi/ebiten/issues/1621">#1621</a>)。</li>
+    <li>Kage で、 <code>dfdx</code> やいくつかの関数が main ではない関数で使われているときにコンパイルできない問題を修正しました (<a href="https://github.com/hajimehoshi/ebiten/issues/1701">#1701</a>)。</li>
+  </ul>
 </div>
 
       </article>
