@@ -97,9 +97,10 @@
   </ul>
   <h3>Others</h3>
   <ul>
-    <li>A constant <code>ebiten.SyncWithFPS</code> was added to replace <code>ebiten.UncappedTPS</code> (<a href="https://github.com/hajimehoshi/ebiten/issues/1726">#1726</a>).</a>
+    <li>A constant <code>ebiten.SyncWithFPS</code> was added to replace <code>ebiten.UncappedTPS</code> (<a href="https://github.com/hajimehoshi/ebiten/issues/1726">#1726</a>).</li>
     <li>In <code>audio/mp3</code>, <code>audio/vorbis</code>, <code>audio/wav</code> packages, <code>Decode</code> and <code>DecodeWithSampleRate</code> now takes <code>io.Reader</code> instead of <code>io.ReadSeeker</code> (<a href="https://github.com/hajimehoshi/ebiten/issues/1621">#1621</a>).</li>
     <li>Fixed an issue that <code>dfdx</code> and some functions in non-main function failed to compile in Kage (<a href="https://github.com/hajimehoshi/ebiten/issues/1701">#1701</a>).</li>
+    <li>Fixed the device scale factor on Linux and Unix desktops (Thank you, <a href="https://github.com/divVerent">divVerent</a>!) (<a href="https://github.com/hajimehoshi/ebiten/issues/1774">#1774</a>).</li>
   </ul>
 </div>
 <div lang="ja">
@@ -201,8 +202,9 @@
   </ul>
   <h3>その他</h3>
   <ul>
-    <li>定数 <code>ebiten.SyncWithFPS</code> が追加されました。 <code>ebiten.UncappedTPS</code> の置き換えです (<a href="https://github.com/hajimehoshi/ebiten/issues/1726">#1726</a>)。</a>
+    <li>定数 <code>ebiten.SyncWithFPS</code> が追加されました。 <code>ebiten.UncappedTPS</code> の置き換えです (<a href="https://github.com/hajimehoshi/ebiten/issues/1726">#1726</a>)。</li>
     <li><code>audio/mp3</code>, <code>audio/vorbis</code>, <code>audio/wav</code> パッケージで、 <code>Decode</code> 関数と <code>DecodeWithSampleRate</code> 関数が <code>io.ReadSeeker</code> の代わりに <code>io.Reader</code> を取るようになりました (<a href="https://github.com/hajimehoshi/ebiten/issues/1621">#1621</a>)。</li>
     <li>Kage で、 <code>dfdx</code> やいくつかの関数が main ではない関数で使われているときにコンパイルできない問題を修正しました (<a href="https://github.com/hajimehoshi/ebiten/issues/1701">#1701</a>)。</li>
+    <li>Linux および Unix のデバイススケールファクター値を修正しました (ありがとう、 <a href="https://github.com/divVerent">divVerent</a> さん!) (<a href="https://github.com/hajimehoshi/ebiten/issues/1774">#1774</a>).</li>
   </ul>
 </div>
