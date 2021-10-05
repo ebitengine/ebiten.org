@@ -71,7 +71,7 @@
   </ul>
   <h3><code>Append*</code> functions</h3>
   <p>(<a href="https://github.com/hajimehoshi/ebiten/issues/1692">#1692</a>, <a href="https://github.com/hajimehoshi/ebiten/issues/1705">#1705</a>)</p>
-  <p>There are some Ebiten functions that return a new slice for each call. Creating a new slice for each call allocates memory and is not efficient. To mitigate this issue, new functions were added to accept a slice and append new elements. These work like the build function <code>append</code>. If the given slice has enough capacity, the functions don't allocate memory. If the given slice is empty or nil, a new slice is created.</p>
+  <p>There are some Ebiten functions that return a new slice for each call. Creating a new slice for each call allocates memory and is not efficient. To mitigate this issue, new functions were added to accept a slice and append new elements. These work like the built-in function <code>append</code>. If the given slice has enough capacity, the functions don't allocate memory. If the given slice is empty or nil, a new slice is created.</p>
   <ul>
     <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#AppendGamepadIDs"><code>ebiten.AppendGamepadIDs</code></a></li>
     <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#AppendInputChars"><code>ebiten.AppendInputChars</code></a></li>
@@ -91,7 +91,7 @@
   <ul>
     <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#Image.RGBA64At"><code>(*ebiten.Image).RGBA64At</code></a> (<a href="https://github.com/hajimehoshi/ebiten/issues/1769">#1769</a>).</li>
     <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2/audio#Context.NewPlayer"><code>(*audio.Context).NewPlayer</code></a>: replaces <code>audio.NewPlayer</code> (<a href="https://github.com/hajimehoshi/ebiten/issues/1708">#1708</a>).</li>
-    <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2/audio#Context.NewPlayerFromBytes"><code>(*audio.Context).NewPlayerFromBytes</code></a>: replaces <code>audioe.NewPlayerFromBytes</code> (<a href="https://github.com/hajimehoshi/ebiten/issues/1708">#1708</a>).</li>
+    <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2/audio#Context.NewPlayerFromBytes"><code>(*audio.Context).NewPlayerFromBytes</code></a>: replaces <code>audio.NewPlayerFromBytes</code> (<a href="https://github.com/hajimehoshi/ebiten/issues/1708">#1708</a>).</li>
     <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2/text#DrawWithOptions"><code>text.DrawWithOptions</code></a> (<a href="https://github.com/hajimehoshi/ebiten/issues/1461">#1461</a>).</li>
   </ul>
   <h3>Others</h3>
