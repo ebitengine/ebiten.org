@@ -18,6 +18,7 @@ import (
 	"bytes"
 	"errors"
 	"path/filepath"
+	"strings"
 
 	"golang.org/x/net/html"
 )
@@ -25,7 +26,7 @@ import (
 type page struct {
 	node    *html.Node
 	path    string
-	content []byte
+	content string
 }
 
 func newPage(content []byte, path string) (*page, error) {
@@ -37,7 +38,7 @@ func newPage(content []byte, path string) (*page, error) {
 	c := &page{
 		node:    node,
 		path:    path,
-		content: content,
+		content: strings.ReplaceAll(string(content), "\r\n", "\n"),
 	}
 	return c, nil
 }

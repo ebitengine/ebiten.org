@@ -111,7 +111,7 @@ func writeAtom(url string) error {
 			Author:    author,
 			Content: &atom.Text{
 				Type: "html",
-				Body: string(p.content),
+				Body: p.content,
 			},
 		})
 	}
