@@ -147,11 +147,6 @@
     <p lang="en">Use <code>pkg</code>.</p>
     <p lang="ja"><code>pkg</code> を使ってください。</p>
     <pre><code>pkg install clang</code></pre>
-    <p lang="en">You need to set some environment variables.</p>
-    <p lang="ja">いくつか環境変数を設定する必要があります。</p>
-    <pre><code>export C_INCLUDE_PATH=/usr/local/include:${C_INCLUDE_PATH}
-export CPLUS_INCLUDE_PATH=/usr/local/include:${CPLUS_INCLUDE_PATH}
-export LIBRARY_PATH=/usr/local/lib:${LIBRARY_PATH}</code></pre>
   </div>
 </div>
 
@@ -171,9 +166,9 @@ export LIBRARY_PATH=/usr/local/lib:${LIBRARY_PATH}</code></pre>
     <pre><code>sudo apk add alsa-lib-dev libx11-dev libxrandr-dev libxcursor-dev libxinerama-dev libxi-dev mesa-dev pkgconf</code></pre>
   </div>
   <div data-tags="freebsd">
-    <p lang="en">Alsa is required for Ebiten's audio package.</p>
-    <p lang="ja">Alsa が Ebiten の audio パッケージのために必要です。</p>
-    <pre><code>pkg install alsa-lib</code></pre>
+    <p lang="en">These libraries required for Ebiten's audio package.</p>
+    <p lang="ja">次のライブラリが Ebiten の audio パッケージのために必要です。</p>
+    <pre><code>pkg install alsa-lib glfw libxcursor libxi libxinerama libxrandr mesa-libs pkgconf</code></pre>
   </div>
 </div>
 
