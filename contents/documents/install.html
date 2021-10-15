@@ -38,35 +38,19 @@
     <p lang="ja">その場合は <code>xcode-select --install</code> を実行して、コマンドラインツールをインストールしてください。</p>
   </div>
   <div data-tags="linux">
-    <div class="grid-container">
-      <div class="grid-item-2">
-        <p lang="en">Use your distribution's package manager. For example, Ubuntu can use <code>apt</code>.</p>
-        <p lang="ja">お使いのディストリビューションのパッケージマネージャを使ってください。例えば、 Ubuntu では <code>apt</code> が使えます。</p>
-      </div>
-      <div class="grid-item-2">
-        <pre><code>apt install gcc</code></pre>
-      </div>
-    </div>
+    <p lang="en">Use your distribution's package manager. For example, Ubuntu can use <code>apt</code>.</p>
+    <p lang="ja">お使いのディストリビューションのパッケージマネージャを使ってください。例えば、 Ubuntu では <code>apt</code> が使えます。</p>
+    <pre><code>apt install gcc</code></pre>
   </div>
   <div data-tags="freebsd">
-    <div class="grid-container">
-      <div class="grid-item-2">
-        <p lang="en">Use <code>pkg</code>.</p>
-        <p lang="ja"><code>pkg</code> を使ってください。</p>
-      </div>
-      <div class="grid-item-2">
-        <pre><code>pkg install clang</code></pre>
-      </div>
-      <div class="grid-item-2">
-        <p lang="en">You need to set some environment variables.</p>
-        <p lang="ja">いくつか環境変数を設定する必要があります。</p>
-      </div>
-      <div class="grid-item-2">
-        <pre><code>export C_INCLUDE_PATH=/usr/local/include:${C_INCLUDE_PATH}
+    <p lang="en">Use <code>pkg</code>.</p>
+    <p lang="ja"><code>pkg</code> を使ってください。</p>
+    <pre><code>pkg install clang</code></pre>
+    <p lang="en">You need to set some environment variables.</p>
+    <p lang="ja">いくつか環境変数を設定する必要があります。</p>
+    <pre><code>export C_INCLUDE_PATH=/usr/local/include:${C_INCLUDE_PATH}
 export CPLUS_INCLUDE_PATH=/usr/local/include:${CPLUS_INCLUDE_PATH}
 export LIBRARY_PATH=/usr/local/lib:${LIBRARY_PATH}</code></pre>
-      </div>
-    </div>
   </div>
 </div>
 
@@ -86,52 +70,36 @@ export LIBRARY_PATH=/usr/local/lib:${LIBRARY_PATH}</code></pre>
     <pre><code>sudo apk add alsa-lib-dev libx11-dev libxrandr-dev libxcursor-dev libxinerama-dev libxi-dev mesa-dev pkgconf</code></pre>
   </div>
   <div data-tags="freebsd">
-    <div class="grid-container">
-      <div class="grid-item-2">
-        <p lang="en">OpenAL is required for Ebiten's audio package. Note that the pkg's <code>openal</code> package is pretty old and doesn't work. Install <code>openal-soft</code> instead.</p>
-        <p lang="ja">OpenAL が Ebiten の audio パッケージのために必要です。 pkg の <code>openal</code> パッケージは古くて動きません。 <code>openal-soft</code> を代わりにインストールしてください。</p>
-      </div>
-      <div class="grid-item-2">
-        <pre><code>pkg install openal-soft</code></pre>
-      </div>
-    </div>
+    <p lang="en">OpenAL is required for Ebiten's audio package. Note that the pkg's <code>openal</code> package is pretty old and doesn't work. Install <code>openal-soft</code> instead.</p>
+    <p lang="ja">OpenAL が Ebiten の audio パッケージのために必要です。 pkg の <code>openal</code> パッケージは古くて動きません。 <code>openal-soft</code> を代わりにインストールしてください。</p>
+    <pre><code>pkg install openal-soft</code></pre>
   </div>
 </div>
 
 <h2>Ebiten</h2>
 <p lang="en">Ebiten can be used as a usual Go library. Go command automatically installs Ebiten when your program uses Ebiten.</p>
 <p lang="ja">Ebiten は通常の Go ライブラリとして使用できます。プログラムが Ebiten を使用していれば、 Go コマンドが自動的に Ebiten をインストールします。</p>
-<div class="grid-container">
-  <div class="grid-item-2">
-    <p lang="en">First, create your local module. Use URL for your module name like <code>github.com/yourname/yourgame</code>. Actually, any module name like <code>example.com/m</code> is fine as long as you don't plan to share this publicly. You can change the module name anytime later.</p>
-    <p lang="ja">最初に、ローカルモジュールを作ります。 <code>github.com/yourname/yourgame</code> のような URL をモジュール名に使用します。実際のところ、自分のプログラムを公開するつもりがないのであれば、 <code>example.com/m</code> などどんなモジュール名でも問題ありません。モジュール名は後でいつでも変えられます。</p>
-  </div>
-  <div class="grid-item-2">
-    <pre><code># Create a directory for your game.
+<p lang="en">First, create your local module.</p>
+<p lang="ja">最初に、ローカルモジュールを作ります。</p>
+<pre><code># Create a directory for your game.
 mkdir yourgame
 cd yourgame
 
 # Initialize go.mod by `go mod`.
 go mod init github.com/yourname/yourgame</code></pre>
-  </div>
-  <div class="grid-item-2">
-    <p lang="en">Then, run the command to execute an Ebiten example. <code>go get</code> retrieves the code of Ebiten. <code>go run</code> compiles Go files and runs it immediately after the compilation. As the first retrieving the code and compilation might take a little long time, please wait for a while. Note that you can see what is happening on the compilation process with <code>-x</code> option if you want.</p>
-    <p lang="ja">次に、 Ebiten のサンプルを実行します。 <code>go get</code> は Ebiten のコードを取得します。 <code>go run</code> は Go ファイルをコンパイルし、即座に実行します。最初のコード取得とコンパイルは少々時間がかかるかもしれないため、しばらくお待ち下さい。必要ならば <code>-x</code> をつけることで、コンパイル処理中に何が行われているのかを見ることができます。</p>
-    <p lang="en">Note that <code>-tags=example</code> is needed to execute the examples as the Ebiten example packages require the build tag.</p>
-    <p lang="ja"><code>-tags=example</code> は Ebiten のサンプルを実行するために必要です。 Ebiten サンプルのパッケージがビルドタグを必要とするためです。</p>
-  </div>
-  <div class="grid-item-2">
-    <pre><code>go get github.com/hajimehoshi/ebiten/v2
+<p lang="en">Use URL for your module name like <code>github.com/yourname/yourgame</code>. Actually, any module name like <code>example.com/m</code> is fine as long as you don't plan to share this publicly. You can change the module name anytime later.</p>
+<p lang="ja"><code>github.com/yourname/yourgame</code> のような URL をモジュール名に使用します。実際のところ、自分のプログラムを公開するつもりがないのであれば、 <code>example.com/m</code> などどんなモジュール名でも問題ありません。モジュール名は後でいつでも変えられます。</p>
+<p lang="en">Then, run the command to execute an Ebiten example.</p>
+<p lang="ja">次に、 Ebiten のサンプルを実行します。</p>
+<pre><code>go get github.com/hajimehoshi/ebiten/v2
 go run -tags=example github.com/hajimehoshi/ebiten/v2/examples/rotate</code></pre>
-  </div>
-  <div class="grid-item-2">
-    <p lang="en">If you see the window with a rotating Gophers picture, congratulations! You have succeeded to install Ebiten.</p>
-    <p lang="ja">回転する Gopher の絵がウィンドウ上に表示されたならば、おめでとうございます! Ebiten のインストールに成功しました。</p>
-  </div>
-  <div class="grid-item-2">
-    <p class="img thumbnail"><img src="/images/rotate.png" width="320" height="240" alt="Rotate example"></p>
-  </div>
-</div>
+<p lang="en"><code>go get</code> retrieves the code of Ebiten. <code>go run</code> compiles Go files and runs it immediately after the compilation. As the first retrieving the code and compilation might take a little long time, please wait for a while. Note that you can see what is happening on the compilation process with <code>-x</code> option if you want.</p>
+<p lang="ja"><code>go get</code> は Ebiten のコードを取得します。 <code>go run</code> は Go ファイルをコンパイルし、即座に実行します。最初のコード取得とコンパイルは少々時間がかかるかもしれないため、しばらくお待ち下さい。必要ならば <code>-x</code> をつけることで、コンパイル処理中に何が行われているのかを見ることができます。</p>
+<p lang="en">Note that <code>-tags=example</code> is needed to execute the examples as the Ebiten example packages require the build tag.</p>
+<p lang="ja"><code>-tags=example</code> は Ebiten のサンプルを実行するために必要です。 Ebiten サンプルのパッケージがビルドタグを必要とするためです。</p>
+<p lang="en">If you see the window with a rotating Gophers picture, congratulations! You have succeeded to install Ebiten.</p>
+<p lang="ja">回転する Gopher の絵がウィンドウ上に表示されたならば、おめでとうございます! Ebiten のインストールに成功しました。</p>
+<p class="img thumbnail"><img src="/images/rotate.png" width="320" height="240" alt="Rotate example"></p>
 <script>
   function switchOS(os) {
       const newOS = switchOSImpl(os);
