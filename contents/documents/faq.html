@@ -16,7 +16,7 @@
 <p>See <a href="https://github.com/hajimehoshi/ebiten/issues/137">the discussion #137</a> on other primitive drawings.</p>
 <h3>How to take a screenshot?</h3>
 <p>Specify the key to environment variable <code>EBITEN_SCREENSHOT_KEY</code> and you can take a screenshot by pressing the specified key.</p>
-<pre><code>EBITEN_SCREENSHOT_KEY=escape go run examples/flappy.go</code></pre>
+<pre><code>EBITEN_SCREENSHOT_KEY=escape go run .</code></pre>
 <h3>Ebiten's screen is scaled (and blurred) on hi-DPI screen. Can I disable this scaling? In other words, can I have a hi-DPI mode?</h3>
 <p>You can make <code>(ebiten.Game).Layout</code> return a bigger size than the outside size. By multiplying the outside size by <code>ebiten.DeviceScaleFactor()</code>, you can get a hi-DPI game screen. For an actual example, see <a href="https://github.com/hajimehoshi/ebiten/tree/1.12/examples/highdpi/main.go"><code>examples/highdpi</code></a>.</p>
 <h3>Found a lot of unexpected holes in the result when rendering tiles. Why?</h3>
