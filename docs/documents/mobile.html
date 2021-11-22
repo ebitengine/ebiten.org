@@ -108,7 +108,6 @@
 <h3>Installing <code>ebitenmobile</code></h3>
 <p>Install <code>ebitenmobile</code> command first.</p>
 <pre><code>go install github.com/hajimehoshi/ebiten/v2/cmd/ebitenmobile@latest</code></pre>
-<p>As <code>ebitenmobile</code> of Ebiten 1.10 cannot treat Go modules, your project also has to be under <code>GOPATH</code>.</p>
 <h3>Creating a binding</h3>
 <p>Create a package for mobiles to use <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2/mobile"><code>github.com/hajimehoshi/ebiten/v2/mobile</code></a>:</p>
 <pre><code>package yourgamemobile
@@ -138,11 +137,6 @@ func Dummy() {}</code></pre>
 <p>Run <code>ebitenmobile bind</code> command for your package:</p>
 <pre><code>cd /path/to/yourgame
 ebitenmobile bind -target android -javapkg your.package.name -o path/to/yourgame.aar .
-
-# With Ebiten 1.10, you need to disable Go modules.
-#
-# env GO111MODULE=off ebitenmobile bind -target android -javapkg your.package.name -o path/to/yourgame.aar \
-#   github.com/yourname/yourgame/yourgamemobile</code></pre>
 <p>Then your can get a <code>.aar</code> file. This <code>.aar</code> file defines a view class named <code>EbitenView</code> under the specified Java package (<code>-javapkg</code> option + your package name). You can put it on your screen. That's it!</p>
 <p>The view class is defined like this:</p>
 <pre><code>package your.package.name.yourgamemobile;
@@ -189,11 +183,6 @@ public class MainActivity extends AppCompatActivity {
 <p>Run <code>ebitenmobile bind</code> command for your package:</p>
 <pre><code>cd /path/to/yourgame
 ebitenmobile bind -target ios -o path/to/yourgame.framework .
-
-# With Ebiten 1.10, you need to disable Go modules.
-#
-# env GO111MODULE=off ebitenmobile bind -target ios -o path/to/yourgame.framework \
-#   github.com/yourname/yourgame/yourgamemobile</code></pre>
 <p>Then your can get a <code>.framework</code> file. This <code>.framework</code> defines a view controller class named <code>(Package Name)EbitenViewController</code>. You can put it on your screen by connecting with any <code>UIView</code>. That's it!</p>
 <p>The view controller class is defined like this:</p>
 <pre><code>#import &lt;UIKit/UIKit.h&gt;
