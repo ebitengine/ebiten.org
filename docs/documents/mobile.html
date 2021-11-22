@@ -136,7 +136,7 @@ func Dummy() {}</code></pre>
 <h3>Android</h3>
 <p>Run <code>ebitenmobile bind</code> command for your package:</p>
 <pre><code>cd /path/to/yourgame
-ebitenmobile bind -target android -javapkg your.package.name -o path/to/yourgame.aar .
+ebitenmobile bind -target android -javapkg your.package.name -o path/to/yourgame.aar .</code></pre>
 <p>Then your can get a <code>.aar</code> file. This <code>.aar</code> file defines a view class named <code>EbitenView</code> under the specified Java package (<code>-javapkg</code> option + your package name). You can put it on your screen. That's it!</p>
 <p>The view class is defined like this:</p>
 <pre><code>package your.package.name.yourgamemobile;
@@ -182,7 +182,7 @@ public class MainActivity extends AppCompatActivity {
 <h3>iOS</h3>
 <p>Run <code>ebitenmobile bind</code> command for your package:</p>
 <pre><code>cd /path/to/yourgame
-ebitenmobile bind -target ios -o path/to/yourgame.framework .
+ebitenmobile bind -target ios -o path/to/yourgame.framework .</code></pre>
 <p>Then your can get a <code>.framework</code> file. This <code>.framework</code> defines a view controller class named <code>(Package Name)EbitenViewController</code>. You can put it on your screen by connecting with any <code>UIView</code>. That's it!</p>
 <p>The view controller class is defined like this:</p>
 <pre><code>#import &lt;UIKit/UIKit.h&gt;
