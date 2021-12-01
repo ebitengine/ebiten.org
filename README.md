@@ -20,6 +20,9 @@ GOOGLE_APPLICATION_CREDENTIALS=/path/to/credentials.json go run ./cmd/uploadwasm
 
 ## Test on your local machine
 
+Run the following command:
 ```
 go run server.go ./docs
 ```
+
+Navigate to [http://localhost:8000/](http://localhost:8000/) to view the changes
