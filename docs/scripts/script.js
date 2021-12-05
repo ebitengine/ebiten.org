@@ -349,6 +349,9 @@ function updateLanguage(lang) {
     for (const e of document.querySelectorAll('p.math')) {
         adjustHeight(e.firstChild);
     }
+    for (const e of document.querySelectorAll('blockquote.twitter-tweet')) {
+        adjustHeihgt(e);
+    }
 }
 
 window.addEventListener('DOMContentLoaded', () => {
