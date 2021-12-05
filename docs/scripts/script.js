@@ -349,7 +349,7 @@ function updateLanguage(lang) {
     for (const e of document.querySelectorAll('p.math')) {
         adjustHeight(e.firstChild);
     }
-    for (const e of document.querySelectorAll('blockquote.twitter-tweet')) {
+    for (const e of document.querySelectorAll('.twitter-tweet')) {
         adjustHeight(e);
     }
 }
@@ -408,9 +408,9 @@ window.addEventListener('DOMContentLoaded', () => {
             return t;
         })(document, 'script', 'twitter-wjs');
         twttr.ready(() => {
-            twttr.events.bind('loaded', e => {
-                for (const w of e.widgets) {
-                    adjustHeight(w);
+            twttr.events.bind('rendered', e => {
+                for (const e of document.querySelectorAll('.twitter-tweet')) {
+                    adjustHeight(e);
                 }
             });
         });
