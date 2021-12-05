@@ -350,7 +350,7 @@ function updateLanguage(lang) {
         adjustHeight(e.firstChild);
     }
     for (const e of document.querySelectorAll('blockquote.twitter-tweet')) {
-        adjustHeihgt(e);
+        adjustHeight(e);
     }
 }
 
