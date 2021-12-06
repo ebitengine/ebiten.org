@@ -159,6 +159,9 @@ function updateImages() {
 function adjustHeight(e) {
     // For small diplays, shrink the iframe with keeping its aspect ratio.
     if (e.tagName === 'IFRAME') {
+        if (e.classList.contains('.twitter-tweet')) {
+            return;
+        }
         if (e.clientWidth < e.width) {
             const width = e.clientWidth;
             const ratio = e.height / e.width;
@@ -349,9 +352,6 @@ function updateLanguage(lang) {
     for (const e of document.querySelectorAll('p.math')) {
         adjustHeight(e.firstChild);
     }
-    for (const e of document.querySelectorAll('.twitter-tweet')) {
-        adjustHeight(e);
-    }
 }
 
 window.addEventListener('DOMContentLoaded', () => {
@@ -407,13 +407,6 @@ window.addEventListener('DOMContentLoaded', () => {
             };
             return t;
         })(document, 'script', 'twitter-wjs');
-        twttr.ready(() => {
-            twttr.events.bind('rendered', e => {
-                for (const e of document.querySelectorAll('.twitter-tweet')) {
-                    adjustHeight(e);
-                }
-            });
-        });
     }
 });
 
