@@ -526,8 +526,8 @@ p.img img, p.img video {
     max-width: 100%;
     height: auto;
 }
-p.img.thumbnail img, p.img iframe {
-    max-width: calc(100% - 2px);
+p.img.thumbnail img, p.img iframe, iframe[src^="https://www.youtube.com/embed/"] {
+    max-width: 100%;
 }
 
 /* logo */
