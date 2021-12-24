@@ -183,7 +183,7 @@ public class MainActivity extends AppCompatActivity {
 <p>Run <code>ebitenmobile bind</code> command for your package:</p>
 <pre><code>cd /path/to/yourgame
 ebitenmobile bind -target ios -o path/to/yourgame.framework .</code></pre>
-<p>Then your can get a <code>.framework</code> file. This <code>.framework</code> defines a view controller class named <code>(Package Name)EbitenViewController</code>. You can put it on your screen by connecting with any <code>UIView</code>. That's it!</p>
+<p>This command generates a <code>.framework</code> file. This <code>.framework</code> defines a view controller class named <code>(Package Name)EbitenViewController</code>. You can put it on your screen by connecting with any <code>UIView</code>. That's it!</p>
 <p>The view controller class is defined like this:</p>
 <pre><code>#import &lt;UIKit/UIKit.h&gt;
 
@@ -205,6 +205,31 @@ ebitenmobile bind -target ios -o path/to/yourgame.framework .</code></pre>
 
 @end</code></pre>
 
+<h4>Integrating Into Xcode</h4>
+
+<p>Part of the appeal of using Ebiten is that you don't have to have a lot of experience in Xcode in order to build games for iOS.  Once you import the <code>ebitenmobile</code>-generated framework and setup the View Controller within Xcode, the rest of your coding can take place in Go.  When you need to test a new change, run the <code>ebitenmobile</code> command again and then build your project in Xcode.</p>
+
+<p>In its simplest form, the Xcode project will have these files:</p>
+
+<ul>
+  <li><code>AppDelegate.h</code></li>
+  <li><code>AppDelegate.m</code></li>
+  <li><code>Assets.xcassets</code></li>
+  <li><code>Base.lproj</code></li>
+  <li><code>Info.plist</code></li>
+  <li><code>EbitenViewController.h</code></li>
+  <li><code>EbitenViewController.m</code></li>
+  <li><code>main.m</code></li>
+  <li><code>Yourgame.framework</code></li>
+</ul>
+
+<p>When you start a new project, you are given the choice of many different types of apps to create.  If you're just beginning to work with Xcode, you may want to start with a simple one like the Single View Application or Document Viewer App.  And then modifying it to use the above files.</p>
+
+<h4>Setting Up The View Controller</h4>
+
+<p>While viewing <code>main.m</code> in Xcode, click the <b>Attributes Inspector</b> tab and select <b>Is Initial View Controller</b>.  This will configure your Go code to be the first thing that is run.  Many iOS apps have a separate LaunchScreen View Controller, which you can implement if desired, but the above will allow everything else to happen within your Go code.</p>
+
+<p>The example below is a great reference when you start building out your own app.</p>
 <h3>Example</h3>
 <p><a href="https://github.com/hajimehoshi/go-inovation">go-inovation</a> is a complete example to use <code>ebitenmobile bind</code>.</p>
 
