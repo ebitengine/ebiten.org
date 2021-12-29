@@ -33,6 +33,14 @@ func Dummy() {}</code></pre>
 <p>The key function is <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2/mobile#SetGame"><code>SetGame</code></a>. Do not call <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2/#RunGame"><code>RunGame</code></a>, which you usually use for desktop games.</p>
 
 <h3>Android</h3>
+<p>Set up these environment variables:</p>
+<ul>
+  <li><code>ANDROID_HOME</code></li>
+  <li><code>ANDROID_NDK_HOME</code> (Optional)</li>
+</ul>
+<p><code>ANDROID_NDK_HOME</code> is optional. If <code>$ANDROID_HOME/ndk-bundle</code> exists, you don't have to set this. Even if this directory doesn't exist, you can create <code>ndk-bundle</code> as a symbolic link like:</li>
+<pre><code>cd $ANDROID_HOME
+ln -s ndk/&lt;NDK version&gt; ndk-bundle</code></pre>
 <p>Run <code>ebitenmobile bind</code> command for your package:</p>
 <pre><code>cd /path/to/yourgame
 ebitenmobile bind -target android -javapkg your.package.name -o path/to/yourgame.aar .</code></pre>
