@@ -27,7 +27,7 @@
     <li>Adjust the ELF format that the Go compiler generates</li>
   </ol>
   <p>For replacing system calls, of course, system calls do not correspond one-to-one with C functions. And, there are too many system calls to implement. So, I replaced system calls one by one by finding which ones refused to work on an actual Nintendo Switch device.</p>
-  <p>The Go compiler can generate only formats that the Go compiler officially supports. For example, when a target is Linux, the format is ELF. Can Nintendo Switch support ELF? make a long story short, yes, I managed it. I won't describe the details about 2. here<a href="#footnote_1">*1</a>.</p>
+  <p>The Go compiler can generate only formats that the Go compiler officially supports. For example, when a target is Linux, the format is ELF. Can Nintendo Switch support ELF? To make a long story short, yes, I managed it. I won't describe the details about 2. here<a href="#footnote_1">*1</a>.</p>
   <p>What I have to do is create a <code>.a</code> file via the Go compiler with <code>GOOS=linux GOARCH=arm64</code> and <code>-buildmode=c-archive</code>, and then link it with other object files and libraries via Nintendo Switch compiler. The reason why I don't use <code>-buildmode=default</code> is that there are some items I have to do around an entry point. IMO, in general, it is more portable to depend on the platform for an entry point.</p>
   <p>System calls are defined basically in the standard library, especially <code>runtime</code> and <code>syscall</code> packages. So, how did I rewrite them? In this project, I adopted the <code>-overlay</code> option.</p>
   <h2>Hitsumabushi - rewriting the runtime with the <code>-overlay</code> option</h2>
