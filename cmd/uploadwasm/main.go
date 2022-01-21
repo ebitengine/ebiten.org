@@ -24,6 +24,7 @@ import (
 	"os"
 	"os/exec"
 	"path/filepath"
+	"runtime"
 	"strings"
 	"sync"
 	"time"
@@ -125,6 +126,12 @@ func uploadFile(ctx context.Context, name string, r io.Reader) error {
 }
 
 func run() error {
+	if *flagUpload {
+		if os.Getenv("GOOGLE_APPLICATION_CREDENTIALS") == "" {
+			return fmt.Errorf("GOOGLE_APPLICATION_CREDENTIALS must be set")
+		}
+	}
+
 	es, err := examples()
 	if err != nil {
 		return err
@@ -147,7 +154,12 @@ func run() error {
 		}
 	}
 
-	ch := make(chan string, 4)
+	n := runtime.NumCPU()
+	if n < 1 {
+		n = 1
+	}
+
+	ch := make(chan string, n)
 
 	var g errgroup.Group
 	g.Go(func() error {
@@ -206,7 +218,7 @@ func run() error {
 	})
 	g.Go(func() error {
 		var once sync.Once
-		semaphore := make(chan struct{}, 4)
+		semaphore := make(chan struct{}, n)
 
 		var g errgroup.Group
 		for name := range ch {
