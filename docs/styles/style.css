@@ -735,3 +735,38 @@ ul.toplinks li img {
 div.grid-container > div, pre, footer {
     opacity: .5;
 }*/
+
+/* dark theme */
+
+@media (prefers-color-scheme: dark) {
+    body {
+        color: white;
+        background-color: black;
+    }
+
+    body > nav {
+        background-color: #100500;
+    }
+
+    input {
+        background-color: black;
+        color: white;
+        border-color: gray;
+        border-width: 0.3em;
+        border-style: solid;
+        padding: 0.5em;
+    }
+
+    td, th {
+        color: black;
+    }
+
+    a:link, a:visited {
+        color: #db5620;
+        text-decoration: none;
+    }
+    a:hover, a:active {
+        color: #d54125;
+        text-decoration: underline;
+    }
+}
