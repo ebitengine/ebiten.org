@@ -157,13 +157,20 @@ function updateImages() {
 }
 
 function adjustHeight(e) {
+    let width = e.clientWidth;
+    let height = e.clientHeight;
+    const style = window.getComputedStyle(e);
+    if (style.boxSizing == 'border-box') {
+        width = e.offsetWidth;
+        height = e.offsetHeight;
+    }
+
     // For small diplays, shrink the iframe with keeping its aspect ratio.
     if (e.tagName === 'IFRAME') {
         if (e.classList.contains('.twitter-tweet')) {
             return;
         }
-        if (e.clientWidth < e.width) {
-            const width = e.clientWidth;
+        if (width < e.width) {
             const ratio = e.height / e.width;
             const height = Math.ceil(width * ratio);
             e.style.height = `${height}px`;
@@ -171,7 +178,7 @@ function adjustHeight(e) {
     }
 
     const unit = 24;
-    const height = ~~(((e.clientHeight-1) / unit) + 1) * unit;
+    height = ~~(((height-1) / unit) + 1) * unit;
     e.parentNode.style.height = `${height}px`;
 }
 
