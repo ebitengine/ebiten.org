@@ -117,6 +117,8 @@ func uploadFile(ctx context.Context, name string, r io.Reader) error {
 			Role:   storage.RoleReader,
 		},
 	}
+	w.ContentType = "application/wasm"
+	w.ContentEncoding = "gzip"
 
 	if _, err := io.Copy(w, r); err != nil {
 		return err
@@ -172,7 +174,7 @@ func run() error {
 				name := e + ".wasm"
 				args := []string{
 					"build",
-					"-o", filepath.Join(tmpout, name),
+					"-o", filepath.Join(tmpout, name) + ".tmp",
 					"-tags", "example",
 					"./examples/" + e,
 				}
@@ -186,13 +188,13 @@ func run() error {
 					return err
 				}
 
-				in, err := os.Open(filepath.Join(tmpout, name))
+				in, err := os.Open(filepath.Join(tmpout, name+".tmp"))
 				if err != nil {
 					return err
 				}
 				defer in.Close()
 
-				out, err := os.Create(filepath.Join(tmpout, name+".gz"))
+				out, err := os.Create(filepath.Join(tmpout, name))
 				if err != nil {
 					return err
 				}
@@ -205,11 +207,11 @@ func run() error {
 					return err
 				}
 
-				if err := os.Remove(filepath.Join(tmpout, name)); err != nil {
+				if err := os.Remove(filepath.Join(tmpout, name+".tmp")); err != nil {
 					return err
 				}
 
-				ch <- e + ".wasm.gz"
+				ch <- name
 
 				return nil
 			})
