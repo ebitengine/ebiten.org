@@ -1,9 +1,11 @@
 <h1>{{.Title}}</h1>
 <p class="img"><iframe src="_wasm.html?{{.Base}}" width="{{.Width}}" height="{{.Height}}" allow="autoplay"></iframe></p>
 <p style="display: none;"><img id="meta-share" src="/images/examples/{{.Base}}.png"></p>
-<h2>Run locally</h2>
+<h2 lang="en">Run on your local machine</h2>
+<h2 lang="ja">ローカルマシンでの実行</h2>
 <pre><code>go run -tags=example github.com/hajimehoshi/ebiten/v2/examples/{{.Base}}@latest</code></pre>
 {{if .Code}}
-<h2>Code</h2>
+<h2 lang="en">Code</h2>
+<h2 lang="ja">ソースコード</h2>
 <pre data-codesrc="https://raw.githubusercontent.com/hajimehoshi/ebiten/main/examples/{{.Base}}/main.go"></pre>
 {{end -}}
