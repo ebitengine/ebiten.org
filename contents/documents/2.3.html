@@ -50,6 +50,13 @@
     <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#SetWindowResizingMode"><code>ebiten.SetWindowResizingMode</code></a> sets the mode in which a user resizes the window.</li>
   </ul>
   <p><code>ebiten.IsWindowResizable</code> and <code>ebiten.SetWindowResizable</code> was now deprecated.</p>
+  <h3>Real-time PCM</h3>
+  <p>(<a href="https://github.com/hajimehoshi/ebiten/issues/2026">#2026</a>)</p>
+  <p>Ebiten introduced a new API for real-time PCM by adjusting an audio player's buffer size:</p>
+  <ul>
+    <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2/audio#Player.SetBufferSize"><code>(*audio.Player).SetBufferSize</code></a> adjusts the buffer size of the player. A small buffer size is useful if you want to play a real-time PCM for example.</li>
+  </ul>
+  <p>For an actual usage, see the new example <code>realtiimepcm</code>.</p>
   <h3>Other new features</h3>
   <ul>
     <li>Gamepad support for iOS (<a href="https://github.com/hajimehoshi/ebiten/issues/1105">#1105</a>)</li>
@@ -57,7 +64,6 @@
     <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#SetScreenFilterEnabled"><code>ebiten.SetScreenFilterEnabled</code></a> (<a href="https://github.com/hajimehoshi/ebiten/issues/1772">#1772</a>)</li>
     <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2/text#AppendGlyphs"><code>text.AppendGlyphs</code></a> (<a href="https://github.com/hajimehoshi/ebiten/issues/1871">#1871</a>)</li>
     <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#ColorM.ScaleWithColor"><code>(*ebiten.ColorM).ScaleWithColor</code></a> (<a href="https://github.com/hajimehoshi/ebiten/issues/1944">#1944</a>)</li>
-    <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2/audio#Player.SetBufferSize"><code>(*audio.Player).SetBufferSize</code></a> (<a href="https://github.com/hajimehoshi/ebiten/issues/2026">#2026</a>)</li>
   </ul>
   <h3>Bug fixes</h3>
   <p>This release includes all the bug fixes in v2.2.x.</p>
@@ -124,6 +130,13 @@
     <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#SetWindowResizingMode"><code>ebiten.SetWindowResizingMode</code></a>: どのようにユーザーがウィンドウをリサイズできるかのモードを設定します。</li>
   </ul>
   <p><code>ebiten.IsWindowResizable</code> と <code>ebiten.SetWindowResizable</code> は非推奨になりました。</p>
+  <h3>リアルタイム PCM</h3>
+  <p>(<a href="https://github.com/hajimehoshi/ebiten/issues/2026">#2026</a>)</p>
+  <p>オーディオプレイヤーのバッファサイズを調整して、リアルタイム PCM を実現する新しい API が導入されました:</p>
+  <ul>
+    <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2/audio#Player.SetBufferSize"><code>(*audio.Player).SetBufferSize</code></a> はプレイヤーのバッファサイズを調整します。小さいバッファサイズは、例えばリアルタイム PCM を再生したいときに便利です。</li>
+  </ul>
+  <p>実例は新しいサンプル <code>realtiimepcm</code> を参照してください。</p>
   <h3>その他の新しい機能</h3>
   <ul>
     <li>iOS のゲームパッドサポート (<a href="https://github.com/hajimehoshi/ebiten/issues/1105">#1105</a>)</li>
@@ -131,7 +144,6 @@
     <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#SetScreenFilterEnabled"><code>ebiten.SetScreenFilterEnabled</code></a> (<a href="https://github.com/hajimehoshi/ebiten/issues/1772">#1772</a>)</li>
     <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2/text#AppendGlyphs"><code>text.AppendGlyphs</code></a> (<a href="https://github.com/hajimehoshi/ebiten/issues/1871">#1871</a>)</li>
     <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#ColorM.ScaleWithColor"><code>(*ebiten.ColorM).ScaleWithColor</code></a> (<a href="https://github.com/hajimehoshi/ebiten/issues/1944">#1944</a>)</li>
-    <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2/audio#Player.SetBufferSize"><code>(*audio.Player).SetBufferSize</code></a> (<a href="https://github.com/hajimehoshi/ebiten/issues/2026">#2026</a>)</li>
   </ul>
   <h3>バグ修正</h3>
   <p>このリリースには、 v2.2.x にあるすべてのバグ修正が含まれます。</p>
