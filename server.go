@@ -43,14 +43,11 @@ func init() {
 type handler struct{}
 
 func (handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Access-Control-Allow-Origin", "*")
-
 	path := filepath.Join(rootPath, r.URL.Path[1:])
 	f, err := os.Stat(path)
 	if err != nil {
 		if os.IsNotExist(err) {
-			w.WriteHeader(http.StatusNotFound)
-			http.ServeFile(w, r, filepath.Join(rootPath, "404.html"))
+			http.NotFound(w, r)
 			return
 		}
 		http.Error(w, err.Error(), http.StatusInternalServerError)
@@ -61,8 +58,7 @@ func (handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		path = filepath.Join(path, "index.html")
 		if _, err := os.Stat(path); err != nil {
 			if os.IsNotExist(err) {
-				w.WriteHeader(http.StatusNotFound)
-				http.ServeFile(w, r, filepath.Join(rootPath, "404.html"))
+				http.NotFound(w, r)
 				return
 			}
 			http.Error(w, err.Error(), http.StatusInternalServerError)
@@ -70,6 +66,7 @@ func (handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		}
 	}
 
+	w.Header().Set("Access-Control-Allow-Origin", "*")
 	http.ServeFile(w, r, path)
 }
 
