@@ -149,7 +149,6 @@ iframe {
     border-style: solid;
     border-width: 1px;
     border-color: #333333;
-    box-sizing: border-box;
 }
 .twitter-tweet iframe {
     border-style: none;

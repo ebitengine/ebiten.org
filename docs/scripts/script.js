@@ -157,13 +157,8 @@ function updateImages() {
 }
 
 function adjustHeight(e) {
-    let width = e.clientWidth;
-    let height = e.clientHeight;
-    const style = window.getComputedStyle(e);
-    if (style.boxSizing == 'border-box') {
-        width = e.offsetWidth;
-        height = e.offsetHeight;
-    }
+    let width = e.offsetWidth;
+    let height = e.offsetHeight;
 
     // For small diplays, shrink the iframe with keeping its aspect ratio.
     if (e.tagName === 'IFRAME') {
