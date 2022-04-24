@@ -11,7 +11,7 @@
 <p>NOTE: <code>file://</code> URL may not work with Ebiten. Execute your game on a HTTP server.</p>
 <p>If you want to embed your game into your web page, using iframe is strongly recommended.</p>
 <p>You might find this message with Chrome:</p>
-<pre>The AudioContext was not allowed to start. It must be resume (or created) after a user gesture on the page. https://goo.gl/7K7WLu</pre>
+<pre><code>The AudioContext was not allowed to start. It must be resume (or created) after a user gesture on the page. https://goo.gl/7K7WLu</code></pre>
 <p>In this case, you can solve this by putting <code>allow="autoplay"</code> on the iframe.</p>
 <h2>Emulating context-lost</h2>
 <pre><code>document.getElementsByTagName("canvas")[0].getContext("webgl").getExtension('WEBGL_lose_context').loseContext();</code></pre>
