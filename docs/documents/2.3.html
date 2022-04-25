@@ -126,7 +126,7 @@
   <p>A build tag <code>ebitengl</code> was removed.</p>
   <h3>A build tag <code>ebitenexternaldll</code></h3>
   <p>(<a href="https://github.com/hajimehoshi/ebiten/issues/1832">#1832</a>)</p>
-  <p>Ebiten embeds DLL files for an Windows executable, and the executable extracts them on the fly. However, this can be problematic as the application might be unexpectdly recognized as a virus by some virus checkers.</p>
+  <p>Ebiten embeds DLL files for a Windows executable, and the executable extracts them on the fly. However, this can be problematic as the application might be unexpectdly recognized as a virus by some virus checkers.</p>
   <p>A new build tag <code>ebitenexternaldll</code> stops embedding DLL file in a Windows executable. The executable will require a DLL file at the working directory. Copy them from Ebiten repository's <code>internal/glfw</code> directory:</p>
   <ul>
     <li><code>glfw_windows_386.dll</code> for Windows GOARCH=386</li>
