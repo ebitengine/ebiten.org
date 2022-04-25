@@ -2,12 +2,25 @@
   <title>Ebiten Blog</title>
   <id>https://ebiten.org/blog/</id>
   <link rel="self" href="https://ebiten.org/blog/feed.xml"></link>
-  <updated>2022-01-03T00:00:00+09:00</updated>
+  <updated>2022-04-26T00:00:00+09:00</updated>
   <author>
     <name>Hajime Hoshi</name>
     <uri>https://hajimehoshi.com</uri>
     <email>hajimehoshi@gmail.com</email>
   </author>
+  <entry>
+    <title>v2.3.0 is released</title>
+    <id>https://ebiten.org/blog/v2.3.0.html</id>
+    <link rel="alternate" href="https://ebiten.org/blog/v2.3.0.html"></link>
+    <published>2022-04-26T00:00:00+09:00</published>
+    <updated>2022-04-26T00:00:00+09:00</updated>
+    <author>
+      <name>Hajime Hoshi</name>
+      <uri>https://hajimehoshi.com</uri>
+      <email>hajimehoshi@gmail.com</email>
+    </author>
+    <content type="html">&lt;div lang=&#34;en&#34;&gt;&#xA;  &lt;h1&gt;v2.3.0 is released&lt;/h1&gt;&#xA;  &lt;p class=&#34;meta&#34;&gt;Hajime Hoshi&lt;br&gt;&lt;span id=&#34;meta-created&#34;&gt;2022-04-26&lt;/span&gt;&lt;/p&gt;&#xA;  &lt;p&gt;I am very happy to announce the release of v2.3.0 (&lt;a href=&#34;/documents/2.3.html&#34;&gt;Release Note&lt;/a&gt;).&lt;/p&gt;&#xA;  &lt;p&gt;I appreciate all the contributors and &lt;a href=&#34;https://github.com/sponsors/hajimehoshi&#34;&gt;all the sponsors&lt;/a&gt;. Thank you very much!&lt;/p&gt;&#xA;  &lt;p&gt;v2.3.0 includes these new features:&lt;/p&gt;&#xA;  &lt;ul&gt;&#xA;    &lt;li&gt;&lt;a href=&#34;/documents/2.3.html#DirectX_on_Windows&#34;&gt;Supporting DirectX on Windows&lt;/a&gt;&lt;/li&gt;&#xA;    &lt;li&gt;&lt;a href=&#34;/documents/2.3.html#Native_compile_for_Nintendo_Switch™&#34;&gt;Native compile for Nintendo Switch™&lt;/a&gt;&lt;/li&gt;&#xA;    &lt;li&gt;&lt;a href=&#34;/documents/2.3.html#A_build_tag_ebitenexternaldll&#34;&gt;A build tag &lt;code&gt;ebitenexternaldll&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;&#xA;    &lt;li&gt;&lt;a href=&#34;/documents/2.3.html#Vibration&#34;&gt;Device vibration&lt;/a&gt;&lt;/li&gt;&#xA;    &lt;li&gt;&lt;a href=&#34;/documents/2.3.html#Real-time_PCM&#34;&gt;Real-time PCM&lt;/a&gt;&lt;/li&gt;&#xA;    &lt;li&gt;etc.&lt;/li&gt;&#xA;  &lt;/ul&gt;&#xA;  &lt;p&gt;v2.3.0 also improves performance in terms of speed and memory usage.&lt;/p&gt;&#xA;  &lt;p&gt;I appreciate your feedbacks!&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div lang=&#34;ja&#34;&gt;&#xA;  &lt;h1&gt;v2.3.0 がリリースされました&lt;/h1&gt;&#xA;  &lt;p class=&#34;meta&#34;&gt;Hajime Hoshi&lt;br&gt;&lt;span id=&#34;meta-created&#34;&gt;2022-04-26&lt;/span&gt;&lt;/p&gt;&#xA;  &lt;p&gt;v2.3.0 がリリースされました! 詳しくは&lt;a href=&#34;/documents/2.3.html&#34;&gt;リリースノート&lt;/a&gt;を参照してください。&lt;/p&gt;&#xA;  &lt;p&gt;すべてのコントリビューターと&lt;a href=&#34;https://github.com/sponsors/hajimehoshi&#34;&gt;スポンサーの皆様&lt;/a&gt;に感謝いたします。どうもありがとうございます!&lt;/p&gt;&#xA;  &lt;p&gt;v2.3.0 に入った新しい機能は次のとおりです:&lt;/p&gt;&#xA;  &lt;ul&gt;&#xA;    &lt;li&gt;&lt;a href=&#34;/documents/2.3.html#Windows_での_DirectX_サポート&#34;&gt;Windows の DirectX サポート&lt;/a&gt;&lt;/li&gt;&#xA;    &lt;li&gt;&lt;a href=&#34;/documents/2.3.html#Nintendo_Switch™_向けのネイティブコンパイル&#34;&gt;Nintendo Switch™ 向けネイティブコンパイル&lt;/a&gt;&lt;/li&gt;&#xA;    &lt;li&gt;&lt;a href=&#34;/documents/2.3.html#ビルドタグ_ebitenexternaldll&#34;&gt;ビルドタグ &lt;code&gt;ebitenexternaldll&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;&#xA;    &lt;li&gt;&lt;a href=&#34;/documents/2.3.html#バイブレーション&#34;&gt;デバイスのバイブレーション&lt;/a&gt;&lt;/li&gt;&#xA;    &lt;li&gt;&lt;a href=&#34;/documents/2.3.html#リアルタイム_PCM&#34;&gt;リアルタイム PCM&lt;/a&gt;&lt;/li&gt;&#xA;    &lt;li&gt;その他&lt;/li&gt;&#xA;  &lt;/ul&gt;&#xA;  &lt;p&gt;v2.3.0 で、スピードやメモリ使用量などのパフォーマンス改善も行いました。&lt;/p&gt;&#xA;  &lt;p&gt;フィードバックお待ちしております!&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;</content>
+  </entry>
   <entry>
     <title>Compiling a Go program into a native binary for Nintendo Switch™</title>
     <id>https://ebiten.org/blog/native_compiling_for_nintendo_switch.html</id>
