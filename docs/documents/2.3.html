@@ -114,7 +114,7 @@
   <p>(<a href="https://github.com/hajimehoshi/ebiten/issues/1900">#1900</a>)</p>
   <p>In the previous version, Ebiten supported Nintendo Switch by <a href="https://github.com/hajimehoshi/go2cpp"><code>go2cpp</code></a> by converting Go program to C++ via the WebAssembly format. This was a portable and simple solution. However, an application was single-threaded and not performant due to the WebAssembly restriction. Compiling time for bunch of C++ files was also problematic.</p>
   <p>In order to resolve these problems, Ebiten now supports a native compiling for Nintendo Switch by <a href="https://github.com/hajimehoshi/hitsumabushi">Hitsumabushi</a>, which replaces system calls in the Go runtime with C function calls. For more technical details, see <a href="/blog/native_compiling_for_nintendo_switch.html">a blog article about Hitsumabushi</a>.</p>
-  <p>In order to support this, Ebiten intorduced a new build tag <code>ebitencbackend</code>.</p>
+  <p>In order to support this, Ebiten introduced a new build tag <code>ebitencbackend</code>.</p>
   <h3>An environment variable <code>EBITEN_GRAPHICS_LIBRARY</code></h3>
   <p>You can specify an underlying graphics library for Ebiten by an environment variable <code>EBITEN_GRAPHICS_LIBRARY</code>.</p>
   <ul>
