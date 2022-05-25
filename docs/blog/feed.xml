@@ -2,12 +2,25 @@
   <title>Ebiten Blog</title>
   <id>https://ebiten.org/blog/</id>
   <link rel="self" href="https://ebiten.org/blog/feed.xml"></link>
-  <updated>2022-04-26T00:00:00+09:00</updated>
+  <updated>2022-05-26T00:00:00+09:00</updated>
   <author>
     <name>Hajime Hoshi</name>
     <uri>https://hajimehoshi.com</uri>
     <email>hajimehoshi@gmail.com</email>
   </author>
+  <entry>
+    <title>We renamed Ebiten to Ebitengine</title>
+    <id>https://ebiten.org/blog/ebitengine.html</id>
+    <link rel="alternate" href="https://ebiten.org/blog/ebitengine.html"></link>
+    <published>2022-05-26T00:00:00+09:00</published>
+    <updated>2022-05-26T00:00:00+09:00</updated>
+    <author>
+      <name>Hajime Hoshi</name>
+      <uri>https://hajimehoshi.com</uri>
+      <email>hajimehoshi@gmail.com</email>
+    </author>
+    <content type="html">&lt;div lang=&#34;en&#34;&gt;&#xA;  &lt;h1&gt;We renamed Ebiten to Ebitengine&lt;/h1&gt;&#xA;  &lt;p class=&#34;meta&#34;&gt;Hajime Hoshi&lt;br&gt;&lt;span id=&#34;meta-created&#34;&gt;2022-05-26&lt;/span&gt;&lt;/p&gt;&#xA;  &lt;p&gt;In order to make our engine more unique, we have decided to rename Ebiten to Ebitengine! Ebitengine is &lt;a href=&#34;https://en.wikipedia.org/wiki/Portmanteau&#34;&gt;a portmanteau&lt;/a&gt; of an Ebiten and an Engine, and is pronounced like Ebi-Ten-Gin.&lt;/p&gt;&#xA;  &lt;p&gt;We don&#39;t change the website URL anbbd the GitHub repository names. You never have to change your source code.&lt;/p&gt;&#xA;  &lt;p&gt;Thank you for your continuous support!&lt;/p&gt;&#xA;  &lt;p class=&#34;img&#34;&gt;&lt;img src=&#34;/images/blog/ebitengine/ebitengine.png&#34;&gt;&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div lang=&#34;ja&#34;&gt;&#xA;  &lt;h1&gt;Ebiten を Ebitengine に名称変更しました&lt;/h1&gt;&#xA;  &lt;p class=&#34;meta&#34;&gt;Hajime Hoshi&lt;br&gt;&lt;span id=&#34;meta-created&#34;&gt;2022-05-26&lt;/span&gt;&lt;/p&gt;&#xA;  &lt;p&gt;我々のエンジンをよりユニークにするため、エンジンの名前を Ebiten から Ebitengine (エビテンジン) に変更いたしました! Ebitengine は Ebiten と Engine の&lt;a href=&#34;https://ja.wikipedia.org/wiki/%E3%81%8B%E3%81%B0%E3%82%93%E8%AA%9E&#34;&gt;かばん語&lt;/a&gt;です。&lt;/p&gt;&#xA;  &lt;p&gt;Web サイトの URL や GitHub リポジトリ名には変更ありません。ソースコードを変更する必要は一切ありません。&lt;/p&gt;&#xA;  &lt;p&gt;今後ともどうぞよろしくお願い致します。&lt;/p&gt;&#xA;  &lt;p class=&#34;img&#34;&gt;&lt;img src=&#34;/images/blog/ebitengine/ebitengine.png&#34;&gt;&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;</content>
+  </entry>
   <entry>
     <title>v2.3.0 is released</title>
     <id>https://ebiten.org/blog/v2.3.0.html</id>
