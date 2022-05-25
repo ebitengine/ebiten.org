@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#db5620">
     <meta property="og:title" content="Shader - Ebiten">
-    <meta property="og:site_name" content="Ebiten - A dead simple 2D game library for Go">
+    <meta property="og:site_name" content="Ebitengine - A dead simple 2D game library for Go">
     <meta property="og:image" content="https://ebiten.org/images/share.png">
     <meta property="og:description" content="Ebiten is an open source game library for the Go programming language. Ebiten&#39;s simple API allows you to quickly and easily develop 2D games that can be deployed across multiple platforms.">
     <meta name="twitter:card" content="summary_large_image">
@@ -35,7 +35,7 @@
   <body>
     <input type="checkbox" id="sidemenu"><label for="sidemenu" class="sidemenubutton"></label><label for="sidemenu" class="sidemenucover"></label>
     <nav>
-      <h1><a href="/">Ebiten</a></h1>
+      <h1><a href="/">Ebitengine</a></h1>
       <ul id="language">
       </ul>
       <ul>
@@ -92,14 +92,14 @@
 <h3 lang="ja">その他</h3>
 <ul>
   <li><a href="./cheatsheet.html">Cheat Sheet</a></li>
-  <li lang="en"><a href="./matrix.html">Matrix in Ebiten</a></li>
-  <li lang="ja"><a href="./matrix.html">Ebiten における行列</a></li>
+  <li lang="en"><a href="./matrix.html">Matrix in Ebitengine</a></li>
+  <li lang="ja"><a href="./matrix.html">Ebitengine における行列</a></li>
   <li><a href="./faq.html">FAQ</a></li>
   <li><a href="./performancetips.html">Performance Tips</a></li>
   <li><a href="./packages.html">Packages</a></li>
   <li><a href="./implementation.html">Implementation</a></li>
-  <li lang="en"><a href="./to_v2.html">Ebiten v2 Migration Guide</a></li>
-  <li lang="ja"><a href="./to_v2.html">Ebiten v2 移行ガイド</a></li>
+  <li lang="en"><a href="./to_v2.html">Ebitengine v2 Migration Guide</a></li>
+  <li lang="ja"><a href="./to_v2.html">Ebitengine v2 移行ガイド</a></li>
 </ul>
 
     </nav>
@@ -107,19 +107,19 @@
       <article>
         <h1 lang="en">Shader</h1>
 <h1 lang="ja">シェーダー</h1>
-<p lang="en">As of 1.12.0, Ebiten has APIs to render custom shaders. This document explains how to use custom shaders.</p>
-<p lang="ja">バージョン 1.12.0 から、カスタムシェーダを描画する API が Ebiten に入りました。このドキュメントでは、カスタムシェーダの使い方について説明します。</p>
+<p lang="en">As of 1.12.0, Ebitengine has APIs to render custom shaders. This document explains how to use custom shaders.</p>
+<p lang="ja">バージョン 1.12.0 から、カスタムシェーダを描画する API が Ebitengine に入りました。このドキュメントでは、カスタムシェーダの使い方について説明します。</p>
 <h2 lang="en">What's a shader?</h2>
 <h2 lang="ja">シェーダとは</h2>
-<p lang="en">A shader is a program executed on GPU. A custom shader is a shader an Ebiten user can write. With shaders, you can execute a complex rendering on GPU efficiently.</p>
-<p lang="ja">シェーダは GPU 上で実行されるプログラムです。カスタムシェーダは Ebiten ユーザーが記述できるシェーダです。シェーダを使うことで、複雑な描画が GPU 上で効率的にできるようになります。</p>
-<p lang="en">In Ebiten, you can write a 'fragment shader'. A fragment shader is a shader executed on each pixel. Roughly speaking, this is a function to calculate a color for each pixel. This color calculation is executed on GPU in parallel.</p>
-<p lang="ja">Ebiten はシェーダのうちフラグメントシェーダと呼ばれるものが記述できます。フラグメントシェーダはピクセルごとに実行されるシェーダです。大雑把に言うと、ピクセルごとに色を計算する関数です。この色の計算が、 GPU 上で並列に走ります。</p>
+<p lang="en">A shader is a program executed on GPU. A custom shader is a shader an Ebitengine user can write. With shaders, you can execute a complex rendering on GPU efficiently.</p>
+<p lang="ja">シェーダは GPU 上で実行されるプログラムです。カスタムシェーダは Ebitengine ユーザーが記述できるシェーダです。シェーダを使うことで、複雑な描画が GPU 上で効率的にできるようになります。</p>
+<p lang="en">In Ebitengine, you can write a 'fragment shader'. A fragment shader is a shader executed on each pixel. Roughly speaking, this is a function to calculate a color for each pixel. This color calculation is executed on GPU in parallel.</p>
+<p lang="ja">Ebitengine はシェーダのうちフラグメントシェーダと呼ばれるものが記述できます。フラグメントシェーダはピクセルごとに実行されるシェーダです。大雑把に言うと、ピクセルごとに色を計算する関数です。この色の計算が、 GPU 上で並列に走ります。</p>
 <p lang="en">With shaders, you can execute various effects like lighting or blur. For an example, see <code>examples/shader</code>.</p>
 <p lang="ja">シェーダを使うことでライティング、ブラーなどの様々な効果が実現できます。サンプルについては <code>examples/shader</code> を参照してください。</p>
 <pre><code>go run -tags=example github.com/hajimehoshi/ebiten/v2/examples/shader@latest</code></pre>
-<p lang="en">Ebiten adopts an original shading language 'Kage'. This has a compatible syntax with Go, but the details are different. Kage has high portability. Ebiten uses graphics libraries like OpenGL or Metal and this depends on environments, but Kage is compiled on the fly so that this works equally everywhere.</p>
-<p lang="ja">Ebiten はシェーディング言語として Kage という独自言語を採用しています。これは Go 互換の文法を持ちますが、細部が Go とは異なります。 Kage は高いポータビリティを持ちます。 Ebiten は環境によって OpenGL や Metal などをグラフィックスライブラリとして使いますが、 Kage はどの環境でも同様に動くように、動的にコンパイルされます。</p>
+<p lang="en">Ebitengine adopts an original shading language 'Kage'. This has a compatible syntax with Go, but the details are different. Kage has high portability. Ebitengine uses graphics libraries like OpenGL or Metal and this depends on environments, but Kage is compiled on the fly so that this works equally everywhere.</p>
+<p lang="ja">Ebitengine はシェーディング言語として Kage という独自言語を採用しています。これは Go 互換の文法を持ちますが、細部が Go とは異なります。 Kage は高いポータビリティを持ちます。 Ebitengine は環境によって OpenGL や Metal などをグラフィックスライブラリとして使いますが、 Kage はどの環境でも同様に動くように、動的にコンパイルされます。</p>
 <h2 lang="en">Example</h2>
 <h2 lang="ja">例</h2>
 <pre><code>package main
@@ -144,8 +144,8 @@ func Fragment(position vec4, texCoord vec2, color vec4) vec4 {
 	return imageSrc0UnsafeAt(texCoord) * (ambient + diffuse)
 }</code></pre>
 <p class="img"><video controls autoplay src="/images/documents/shader/lighting.mp4" width="456"></p>
-<h2 lang="en">Ebiten API</h2>
-<h2 lang="ja">Ebiten API</h2>
+<h2 lang="en">Ebitengine API</h2>
+<h2 lang="ja">Ebitengine API</h2>
 <h3><code>NewShader</code></h3>
 <pre><code>func NewShader(src []byte) (*Shader, error)</code></pre>
 <p lang="en"><code>NewShader</code> compiles a shader program in the shading language Kage, and returns the result.</p>
@@ -368,8 +368,8 @@ v2.xyz = v2.xxx        // Get vec3(1, 1, 1), and set it to all the components to
 <h3 lang="ja">テクスチャと画像</h3>
 <div class="grid-container">
   <div class="grid-item-2">
-    <p lang="en">Ebiten's image (<code>ebiten.Image</code>) is actually a part of an internal texture. Then, position calculations in shaders are a little complex.</p>
-    <p lang="ja">Ebiten の画像 (<code>ebiten.Image</code>) は実際には内部のテクスチャ上の一部です。そのためシェーダ上での座標計算が少々複雑になります。</p>
+    <p lang="en">Ebitengine's image (<code>ebiten.Image</code>) is actually a part of an internal texture. Then, position calculations in shaders are a little complex.</p>
+    <p lang="ja">Ebitengine の画像 (<code>ebiten.Image</code>) は実際には内部のテクスチャ上の一部です。そのためシェーダ上での座標計算が少々複雑になります。</p>
     <p lang="en">A pixel is a unit for one color dot. On the other hand, texel is a unit covering the whole area with values in between 0 and 1. The meaning of texels depends on a texture, then you cannot mix texels with different textures.</p>
     <p lang="ja">ピクセルは 1 画素を 1 とする単位です。一方テクセルは 0 から 1 の範囲が全体を表す単位です。テクセルの意味はテクスチャに依存するため、異なるテクスチャのテクセルを混ぜることは出来ません。</p>
     <p lang="en">To convert pixels and texels each other, you can use these formulas.</p>

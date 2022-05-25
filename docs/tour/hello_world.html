@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#db5620">
     <meta property="og:title" content="Hello, World! - Ebiten">
-    <meta property="og:site_name" content="Ebiten - A dead simple 2D game library for Go">
+    <meta property="og:site_name" content="Ebitengine - A dead simple 2D game library for Go">
     <meta property="og:image" content="https://ebiten.org/images/share.png">
     <meta property="og:description" content="Ebiten is an open source game library for the Go programming language. Ebiten&#39;s simple API allows you to quickly and easily develop 2D games that can be deployed across multiple platforms.">
     <meta name="twitter:card" content="summary_large_image">
@@ -35,7 +35,7 @@
   <body>
     <input type="checkbox" id="sidemenu"><label for="sidemenu" class="sidemenubutton"></label><label for="sidemenu" class="sidemenucover"></label>
     <nav>
-      <h1><a href="/">Ebiten</a></h1>
+      <h1><a href="/">Ebitengine</a></h1>
       <ul id="language">
       </ul>
       <ul>
@@ -89,8 +89,8 @@
     <main>
       <article>
         <h1>Hello, World!</h1>
-<p>As the first Ebiten game, let's show the message 'Hello, World!'.</p>
-<p>Before executing the program, you need to install Ebiten. See <a href="/documents/install.html">the instruction to install Ebiten</a>.</p>
+<p>As the first Ebitengine game, let's show the message 'Hello, World!'.</p>
+<p>Before executing the program, you need to install Ebitengine. See <a href="/documents/install.html">the instruction to install Ebitengine</a>.</p>
 <h2>Code</h2>
 <p>Create a file <code>main.go</code> like this:</p>
 <pre data-codesrc="/go/helloworld/main.go"></pre>
@@ -110,31 +110,31 @@
     <pre data-codesrc="/go/helloworld/main.go" data-codelinerange="1-8"></pre>
   </div>
   <div class="grid-item-2">
-    <p>Imports Ebiten packages. This program imports two packages: <code><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2">github.com/hajimehoshi/ebiten/v2</a></code> and <code><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2/ebitenutil">github.com/hajimehoshi/ebiten/v2/ebitenutil</a></code>.</p>
-    <p><code>github.com/hajimehoshi/ebiten/v2</code> is the core package of Ebiten, which provides functions for drawing and inputs.</p>
-    <p><code>github.com/hajimehoshi/ebiten/v2/ebitenutil</code> is the utility package of Ebiten. In this program, this package is used to print a debug message on the screen.</p>
-    <p>There are other several packages in Ebiten. See <a href="/documents/packages.html">the packages page</a> for more details.</p>
+    <p>Imports Ebitengine packages. This program imports two packages: <code><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2">github.com/hajimehoshi/ebiten/v2</a></code> and <code><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2/ebitenutil">github.com/hajimehoshi/ebiten/v2/ebitenutil</a></code>.</p>
+    <p><code>github.com/hajimehoshi/ebiten/v2</code> is the core package of Ebitengine, which provides functions for drawing and inputs.</p>
+    <p><code>github.com/hajimehoshi/ebiten/v2/ebitenutil</code> is the utility package of Ebitengine. In this program, this package is used to print a debug message on the screen.</p>
+    <p>There are other several packages in Ebitengine. See <a href="/documents/packages.html">the packages page</a> for more details.</p>
   </div>
   <div class="grid-item-2">
     <pre data-codesrc="/go/helloworld/main.go" data-codelinerange="10-10"></pre>
   </div>
   <div class="grid-item-2">
-    <p>Defines <code>Game</code> struct. <code>Game</code> implements <code><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#Game">ebiten.Game</a></code> interface. <code>ebiten.Game</code> has necessary functions for an Ebiten game: <code>Update</code>, <code>Draw</code> and <code>Layout</code>. Let's see them one by one.</p>
+    <p>Defines <code>Game</code> struct. <code>Game</code> implements <code><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#Game">ebiten.Game</a></code> interface. <code>ebiten.Game</code> has necessary functions for an Ebitengine game: <code>Update</code>, <code>Draw</code> and <code>Layout</code>. Let's see them one by one.</p>
   </div>
   <div class="grid-item-2">
     <pre data-codesrc="/go/helloworld/main.go" data-codelinerange="12-14"></pre>
   </div>
   <div class="grid-item-2">
-    <p>Defines <code>(*Game).Update</code> function, that is called every tick. Tick is a time unit for logical updating. The default value is 1/60 [s], then <code>Update</code> is called 60 times per second by default (i.e. an Ebiten game works in 60 ticks-per-second).</p>
+    <p>Defines <code>(*Game).Update</code> function, that is called every tick. Tick is a time unit for logical updating. The default value is 1/60 [s], then <code>Update</code> is called 60 times per second by default (i.e. an Ebitengine game works in 60 ticks-per-second).</p>
     <p><code>Update</code> updates the game's logical state. This hello-world example doesn't have any state and then this function does nothing.</p>
-    <p><code>Update</code> returns an error value. In this code, <code>Update</code> always returns <code>nil</code>. In general, when updating function returns a non-nil error, the Ebiten game suspends. As this program never returns a non-nil error, the Ebiten game never stops unless the user closes the window.</p>
+    <p><code>Update</code> returns an error value. In this code, <code>Update</code> always returns <code>nil</code>. In general, when updating function returns a non-nil error, the Ebitengine game suspends. As this program never returns a non-nil error, the Ebitengine game never stops unless the user closes the window.</p>
   </div>
   <div class="grid-item-2">
     <pre data-codesrc="/go/helloworld/main.go" data-codelinerange="16-16"></pre>
   </div>
   <div class="grid-item-2">
     <p>Defines <code>(*Game).Draw</code> function, that is called every frame. Frame is a time unit for rendering and this depends on the display's refresh rate. If the monitor's refresh rate is 60 [Hz], <code>Draw</code> is called 60 times per second.</p>
-    <p><code>Draw</code> takes an argument <code>screen</code>, which is a pointer to an <code>ebiten.Image</code>. In Ebiten, all images like images created from image files, offscreen images (temporary render target), and the screen are represented as <code>ebiten.Image</code> objects. <code>screen</code> argument is the final destination of rendering. The window shows the final state of <code>screen</code> every frame.</p>
+    <p><code>Draw</code> takes an argument <code>screen</code>, which is a pointer to an <code>ebiten.Image</code>. In Ebitengine, all images like images created from image files, offscreen images (temporary render target), and the screen are represented as <code>ebiten.Image</code> objects. <code>screen</code> argument is the final destination of rendering. The window shows the final state of <code>screen</code> every frame.</p>
   </div>
   <div class="grid-item-2">
     <pre data-codesrc="/go/helloworld/main.go" data-codelinerange="17-18"></pre>
@@ -170,7 +170,7 @@
     <pre data-codesrc="/go/helloworld/main.go" data-codelinerange="27-30"></pre>
   </div>
   <div class="grid-item-2">
-    <p><code><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#RunGame">ebiten.RunGame</a></code> is the function to run the main loop of an Ebiten game. The argument is a <code>Game</code> object, that implements <code>ebiten.Game</code>. <code>ebiten.RunGame</code> returns a non-nil error value when an error happen. In this program, when a non-nil error is returned, this error is logged as a fatal error.</p>
+    <p><code><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#RunGame">ebiten.RunGame</a></code> is the function to run the main loop of an Ebitengine game. The argument is a <code>Game</code> object, that implements <code>ebiten.Game</code>. <code>ebiten.RunGame</code> returns a non-nil error value when an error happen. In this program, when a non-nil error is returned, this error is logged as a fatal error.</p>
   </div>
 </div>
 

@@ -1,19 +1,20 @@
 <div lang="en">
-  <h1>Ebiten 2.3 Release Notes</h1>
+  <h1>Ebitengine 2.3 Release Notes</h1>
+  <p><em>Ebiten was renamed to Ebitengine in May 25, 2022.</em></p>
   <h2>v2.3.0</h2>
   <p><a href="https://github.com/hajimehoshi/ebiten/milestone/63?closed=1">Issues for v2.3.0</a></p>
   <h3>DirectX on Windows</h3>
   <p>(<a href="https://github.com/hajimehoshi/ebiten/issues/1007">#1007</a>)</p>
-  <p>Ebiten now supports DirectX on Windows. This is a preparation to support more environments like Arm Windows by Ebiten.</p>
+  <p>Ebitengine now supports DirectX on Windows. This is a preparation to support more environments like Arm Windows by Ebitengine.</p>
   <h3>Native compile for Nintendo Switch™</h3>
   <p>(<a href="https://github.com/hajimehoshi/ebiten/issues/1900">#1900</a>)</p>
-  <p>In the previous version, Ebiten supported Nintendo Switch by <a href="https://github.com/hajimehoshi/go2cpp"><code>go2cpp</code></a> by converting Go program to C++ via the WebAssembly format. This was a portable and simple solution. However, an application was single-threaded and not performant due to the WebAssembly restriction. Compiling time for bunch of C++ files was also problematic.</p>
-  <p>In order to resolve these problems, Ebiten now supports a native compiling for Nintendo Switch by <a href="https://github.com/hajimehoshi/hitsumabushi">Hitsumabushi</a>, which replaces system calls in the Go runtime with C function calls. For more technical details, see <a href="/blog/native_compiling_for_nintendo_switch.html">a blog article about Hitsumabushi</a>.</p>
-  <p>In order to support this, Ebiten introduced a new build tag <code>ebitencbackend</code>.</p>
+  <p>In the previous version, Ebitengine supported Nintendo Switch by <a href="https://github.com/hajimehoshi/go2cpp"><code>go2cpp</code></a> by converting Go program to C++ via the WebAssembly format. This was a portable and simple solution. However, an application was single-threaded and not performant due to the WebAssembly restriction. Compiling time for bunch of C++ files was also problematic.</p>
+  <p>In order to resolve these problems, Ebitengine now supports a native compiling for Nintendo Switch by <a href="https://github.com/hajimehoshi/hitsumabushi">Hitsumabushi</a>, which replaces system calls in the Go runtime with C function calls. For more technical details, see <a href="/blog/native_compiling_for_nintendo_switch.html">a blog article about Hitsumabushi</a>.</p>
+  <p>In order to support this, Ebitengine introduced a new build tag <code>ebitencbackend</code>.</p>
   <h3>An environment variable <code>EBITEN_GRAPHICS_LIBRARY</code></h3>
-  <p>You can specify an underlying graphics library for Ebiten by an environment variable <code>EBITEN_GRAPHICS_LIBRARY</code>.</p>
+  <p>You can specify an underlying graphics library for Ebitengine by an environment variable <code>EBITEN_GRAPHICS_LIBRARY</code>.</p>
   <ul>
-    <li><code>auto</code> (default): Ebiten chooses a graphics library automatically.</li>
+    <li><code>auto</code> (default): Ebitengine chooses a graphics library automatically.</li>
     <li><code>opengl</code>: OpenGL, OpenGL ES, or WebGL is used.</li>
     <li><code>metal</code>: Metal is used.</li>
     <li><code>directx</code>: DirectX is used.</li>
@@ -21,8 +22,8 @@
   <p>A build tag <code>ebitengl</code> was removed.</p>
   <h3>A build tag <code>ebitenexternaldll</code></h3>
   <p>(<a href="https://github.com/hajimehoshi/ebiten/issues/1832">#1832</a>)</p>
-  <p>Ebiten embeds DLL files for a Windows executable, and the executable extracts them on the fly. However, this can be problematic as the application might be unexpectdly recognized as a virus by some virus checkers.</p>
-  <p>A new build tag <code>ebitenexternaldll</code> stops embedding DLL file in a Windows executable. The executable will require a DLL file at the working directory. Copy them from Ebiten repository's <code>internal/glfw</code> directory:</p>
+  <p>Ebitengine embeds DLL files for a Windows executable, and the executable extracts them on the fly. However, this can be problematic as the application might be unexpectdly recognized as a virus by some virus checkers.</p>
+  <p>A new build tag <code>ebitenexternaldll</code> stops embedding DLL file in a Windows executable. The executable will require a DLL file at the working directory. Copy them from Ebitengine repository's <code>internal/glfw</code> directory:</p>
   <ul>
     <li><code>glfw_windows_386.dll</code> for Windows GOARCH=386</li>
     <li><code>glfw_windows_amd64.dll</code> for Windows GOARCH=amd64</li>
@@ -30,14 +31,14 @@
   <p>This is not a perfect solution yet, but should mitigate the false positives.</p>
   <h3>Vibration</h3>
   <p>(<a href="https://github.com/hajimehoshi/ebiten/issues/1452">#1452</a>)</p>
-  <p>Ebiten introduced new APIs to vibrate mobile devices, browsers, and game controllers:</p>
+  <p>Ebitengine introduced new APIs to vibrate mobile devices, browsers, and game controllers:</p>
   <ul>
     <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#Vibrate"><code>ebiten.Vibrate</code></a> vibrates the device with the specified options. Vibrate works on mobiles and browsers.</li>
     <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#VibrateGamepad"><code>ebiten.VibrateGamepad</code></a> vibrates the specified gamepad with the specified options. This works only on browsers and Nintendo Switch so far.</li>
   </ul>
   <h3>Window-resizing mode</h3>
   <p>(<a href="https://github.com/hajimehoshi/ebiten/issues/1819">#1819</a>)</p>
-  <p>Ebiten introduced new APIs for various modes of resizing a window:</p>
+  <p>Ebitengine introduced new APIs for various modes of resizing a window:</p>
   <ul>
     <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#WindowResizingModeType"><code>ebiten.WindowResizingModeType</code></a> represents a mode in which a user resizes the window.
       <ul>
@@ -51,7 +52,7 @@
   <p><code>ebiten.IsWindowResizable</code> and <code>ebiten.SetWindowResizable</code> was now deprecated.</p>
   <h3>Real-time PCM</h3>
   <p>(<a href="https://github.com/hajimehoshi/ebiten/issues/2026">#2026</a>)</p>
-  <p>Ebiten introduced a new API for real-time PCM by adjusting an audio player's buffer size:</p>
+  <p>Ebitengine introduced a new API for real-time PCM by adjusting an audio player's buffer size:</p>
   <ul>
     <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2/audio#Player.SetBufferSize"><code>(*audio.Player).SetBufferSize</code></a> adjusts the buffer size of the player. A small buffer size is useful if you want to play a real-time PCM for example.</li>
   </ul>
@@ -92,21 +93,22 @@
   </ul>
 </div>
 <div lang="ja">
-  <h1>Ebiten 2.3 リリースノート</h1>
+  <h1>Ebitengine 2.3 リリースノート</h1>
+  <p><em>2022 年 5 月 25 日、 Ebiten は Ebitengine に改称されました。</em></p>
   <h2>v2.3.0</h2>
   <p><a href="https://github.com/hajimehoshi/ebiten/milestone/63?closed=1">Issues for v2.3.0</a></p>
   <h3>Windows での DirectX サポート</h3>
   <p>(<a href="https://github.com/hajimehoshi/ebiten/issues/1007">#1007</a>)</p>
-  <p>Windows で DirectX がサポートされました。 Arm Windows など、 Ebiten がサポートする環境を増やすための準備です。</p>
+  <p>Windows で DirectX がサポートされました。 Arm Windows など、 Ebitengine がサポートする環境を増やすための準備です。</p>
   <h3>Nintendo Switch™ 向けのネイティブコンパイル</h3>
   <p>(<a href="https://github.com/hajimehoshi/ebiten/issues/1900">#1900</a>)</p>
-  <p>前のバージョンでは、 <a href="https://github.com/hajimehoshi/go2cpp"><code>go2cpp</code></a> を使って、 Go プログラムを WebAssembly フォーマット経由で C++ に変換することで、 Ebiten は Nintendo Switch をサポートしていました。これはポータブルで単純なソリューションでした。しかし、シングルスレッド故にパフォーマンスが悪く、また大量の C++ ファイルをコンパイルするため時間がかかるなどの問題がありました。</p>
+  <p>前のバージョンでは、 <a href="https://github.com/hajimehoshi/go2cpp"><code>go2cpp</code></a> を使って、 Go プログラムを WebAssembly フォーマット経由で C++ に変換することで、 Ebitengine は Nintendo Switch をサポートしていました。これはポータブルで単純なソリューションでした。しかし、シングルスレッド故にパフォーマンスが悪く、また大量の C++ ファイルをコンパイルするため時間がかかるなどの問題がありました。</p>
   <p>この問題を解決するため、 Go ランタイムのシステムコール呼び出しを C 関数呼び出しに置き換える <a href="https://github.com/hajimehoshi/hitsumabushi">Hitsumabushi</a> を使って Nintendo Switch へのネイティブコンパイルをサポートします。技術的詳細については、 <a href="/blog/native_compiling_for_nintendo_switch.html">Hitsumabushi に関するブログ記事</a>を参照してください。</p>
-  <p>これをサポートするために、 Ebiten は新しいビルドタグ <code>ebitencbackend</code> を導入しました。</p>
+  <p>これをサポートするために、 Ebitengine は新しいビルドタグ <code>ebitencbackend</code> を導入しました。</p>
   <h3>環境変数 <code>EBITEN_GRAPHICS_LIBRARY</code></h3>
-  <p>環境変数 <code>EBITEN_GRAPHICS_LIBRARY</code> で Ebiten が内部で使うグラフィックライブラリを指定することができます。</p>
+  <p>環境変数 <code>EBITEN_GRAPHICS_LIBRARY</code> で Ebitengine が内部で使うグラフィックライブラリを指定することができます。</p>
   <ul>
-    <li><code>auto</code> (デフォルト): Ebiten が自動的にグラフィックライブラリを選びます。</li>
+    <li><code>auto</code> (デフォルト): Ebitengine が自動的にグラフィックライブラリを選びます。</li>
     <li><code>opengl</code>: OpenGL、 OpenGL ES または WebGL が使われます。</li>
     <li><code>metal</code>: Metal が使われます。</li>
     <li><code>directx</code>: DirectX が使われます。</li>
@@ -114,8 +116,8 @@
   <p>ビルドタグ <code>ebitengl</code> は削除されました。</p>
   <h3>ビルドタグ <code>ebitenexternaldll</code></h3>
   <p>(<a href="https://github.com/hajimehoshi/ebiten/issues/1832">#1832</a>)</p>
-  <p>Ebiten は Windows 実行ファイルに DLL ファイルを埋め込み、実行ファイルがそれを必要時に展開します。しかし、この手法には問題があり、一部のウィルス検知ソフトがアプリケーションをウィルスと誤検知してしまうことがありました。</p>
-  <p>新しいビルドタグ <code>ebitenexternaldll</code> によって、 DLL 埋め込みをしないようにできます。実行ファイルは DLL ファイルがワーキングディレクトリに必要になります。 Ebiten リポジトリの <code>internal/glfw</code> から次の DLL ファイルをコピーしてください:</p>
+  <p>Ebitengine は Windows 実行ファイルに DLL ファイルを埋め込み、実行ファイルがそれを必要時に展開します。しかし、この手法には問題があり、一部のウィルス検知ソフトがアプリケーションをウィルスと誤検知してしまうことがありました。</p>
+  <p>新しいビルドタグ <code>ebitenexternaldll</code> によって、 DLL 埋め込みをしないようにできます。実行ファイルは DLL ファイルがワーキングディレクトリに必要になります。 Ebitengine リポジトリの <code>internal/glfw</code> から次の DLL ファイルをコピーしてください:</p>
   <ul>
     <li><code>glfw_windows_386.dll</code> (Windows GOARCH=386 向け)</li>
     <li><code>glfw_windows_amd64.dll</code> (Windows GOARCH=amd64 向け)</li>

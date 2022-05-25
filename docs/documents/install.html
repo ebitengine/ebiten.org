@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#db5620">
     <meta property="og:title" content="Install - Ebiten">
-    <meta property="og:site_name" content="Ebiten - A dead simple 2D game library for Go">
+    <meta property="og:site_name" content="Ebitengine - A dead simple 2D game library for Go">
     <meta property="og:image" content="https://ebiten.org/images/share.png">
     <meta property="og:description" content="Ebiten is an open source game library for the Go programming language. Ebiten&#39;s simple API allows you to quickly and easily develop 2D games that can be deployed across multiple platforms.">
     <meta name="twitter:card" content="summary_large_image">
@@ -35,7 +35,7 @@
   <body>
     <input type="checkbox" id="sidemenu"><label for="sidemenu" class="sidemenubutton"></label><label for="sidemenu" class="sidemenucover"></label>
     <nav>
-      <h1><a href="/">Ebiten</a></h1>
+      <h1><a href="/">Ebitengine</a></h1>
       <ul id="language">
       </ul>
       <ul>
@@ -92,14 +92,14 @@
 <h3 lang="ja">その他</h3>
 <ul>
   <li><a href="./cheatsheet.html">Cheat Sheet</a></li>
-  <li lang="en"><a href="./matrix.html">Matrix in Ebiten</a></li>
-  <li lang="ja"><a href="./matrix.html">Ebiten における行列</a></li>
+  <li lang="en"><a href="./matrix.html">Matrix in Ebitengine</a></li>
+  <li lang="ja"><a href="./matrix.html">Ebitengine における行列</a></li>
   <li><a href="./faq.html">FAQ</a></li>
   <li><a href="./performancetips.html">Performance Tips</a></li>
   <li><a href="./packages.html">Packages</a></li>
   <li><a href="./implementation.html">Implementation</a></li>
-  <li lang="en"><a href="./to_v2.html">Ebiten v2 Migration Guide</a></li>
-  <li lang="ja"><a href="./to_v2.html">Ebiten v2 移行ガイド</a></li>
+  <li lang="en"><a href="./to_v2.html">Ebitengine v2 Migration Guide</a></li>
+  <li lang="ja"><a href="./to_v2.html">Ebitengine v2 移行ガイド</a></li>
 </ul>
 
     </nav>
@@ -115,28 +115,28 @@
 </nav>
 
 <div data-tags="freebsd">
-  <p lang="en"><em>Caution: Ebiten on FreeBSD is not tested well by the author.</em></p>
-  <p lang="ja"><em>注意: FreeBSD 上の Ebiten は、作者によってあまりテストされていません。</em></p>
+  <p lang="en"><em>Caution: Ebitengine on FreeBSD is not tested well by the author.</em></p>
+  <p lang="ja"><em>注意: FreeBSD 上の Ebitengine は、作者によってあまりテストされていません。</em></p>
   <h2 lang="en">Desktop Environment</h2>
   <h2 lang="ja">デスクトップ環境</h2>
-  <p lang="en">Ebiten requires X Window system and you need to install a window manager like GNOME3. See <a href="https://www.freebsd.org/doc/handbook/x11-wm.html">the official manual</a>. Note that you also need to do <code>pkg install xorg</code>.</p>
-  <p lang="ja">Ebiten を動かすためには X Window system が必要です。 GNOME3 のようなウィンドウマネージャをインストールする必要があります。<a href="https://www.freebsd.org/doc/handbook/x11-wm.html">公式マニュアル</a>を参照してください。 <code>pkg install xorg</code> を実行する必要があることに注意してください。</p>
+  <p lang="en">Ebitengine requires X Window system and you need to install a window manager like GNOME3. See <a href="https://www.freebsd.org/doc/handbook/x11-wm.html">the official manual</a>. Note that you also need to do <code>pkg install xorg</code>.</p>
+  <p lang="ja">Ebitengine を動かすためには X Window system が必要です。 GNOME3 のようなウィンドウマネージャをインストールする必要があります。<a href="https://www.freebsd.org/doc/handbook/x11-wm.html">公式マニュアル</a>を参照してください。 <code>pkg install xorg</code> を実行する必要があることに注意してください。</p>
 </div>
 
 <h2>Go</h2>
-<p lang="en">Install <a href="https://golang.org/">Go</a> on your machine. Ebiten requires Go 1.15 or later.</p>
-<p lang="ja"><a href="https://golang.org/">Go</a> をインストールしてください。 Ebiten を動かすためには Go 1.15 以降が必要です。</p>
+<p lang="en">Install <a href="https://golang.org/">Go</a> on your machine. Ebitengine requires Go 1.15 or later.</p>
+<p lang="ja"><a href="https://golang.org/">Go</a> をインストールしてください。 Ebitengine を動かすためには Go 1.15 以降が必要です。</p>
 
 <div data-tags="windows">
-  <p lang="en">Note that you do NOT need a C compiler for Ebiten on Windows.</p>
+  <p lang="en">Note that you do NOT need a C compiler for Ebitengine on Windows.</p>
   <p lang="ja">Windows では、 C コンパイラは必要ありません。</p>
 </div>
 
 <div data-tags="!windows">
   <h2 lang="en">C compiler</h2>
   <h2 lang="ja">C コンパイラ</h2>
-  <p lang="en">A C compiler is required as Ebiten uses not only Go but also C.</p>
-  <p lang="ja">Ebiten は Go だけではなく C も使っているため、 C コンパイラが必要になります。</p>
+  <p lang="en">A C compiler is required as Ebitengine uses not only Go but also C.</p>
+  <p lang="ja">Ebitengine は Go だけではなく C も使っているため、 C コンパイラが必要になります。</p>
   <div data-tags="darwin">
     <p lang="en">On the latest macOS, just type <code>clang</code> on your terminal and a dialog would appear if you don't have clang compiler. Follow the instruction to install it.</p>
     <p lang="ja">最新の macOS ならば、ターミナル上で <code>clang</code> と入力すれば、 clang がまだインストールされていないのであれば、ダイアログが表示されます。指示に従ってインストールしてください。</p>
@@ -178,9 +178,9 @@
   </div>
 </div>
 
-<h2>Ebiten</h2>
-<p lang="en">Ebiten can be used as a usual Go library. Go command automatically installs Ebiten when your program uses Ebiten.</p>
-<p lang="ja">Ebiten は通常の Go ライブラリとして使用できます。プログラムが Ebiten を使用していれば、 Go コマンドが自動的に Ebiten をインストールします。</p>
+<h2>Ebitengine</h2>
+<p lang="en">Ebitengine can be used as a usual Go library. Go command automatically installs Ebitengine when your program uses Ebitengine.</p>
+<p lang="ja">Ebitengine は通常の Go ライブラリとして使用できます。プログラムが Ebitengine を使用していれば、 Go コマンドが自動的に Ebitengine をインストールします。</p>
 <p lang="en">First, create your local module.</p>
 <p lang="ja">最初に、ローカルモジュールを作ります。</p>
 <pre><code># Create a directory for your game.
@@ -191,17 +191,17 @@ cd yourgame
 go mod init github.com/yourname/yourgame</code></pre>
 <p lang="en">Use URL for your module name like <code>github.com/yourname/yourgame</code>. Actually, any module name like <code>example.com/m</code> is fine as long as you don't plan to share this publicly. You can change the module name anytime later.</p>
 <p lang="ja"><code>github.com/yourname/yourgame</code> のような URL をモジュール名に使用します。実際のところ、自分のプログラムを公開するつもりがないのであれば、 <code>example.com/m</code> などどんなモジュール名でも問題ありません。モジュール名は後でいつでも変えられます。</p>
-<p lang="en">Then, run the command to execute an Ebiten example.</p>
-<p lang="ja">次に、 Ebiten のサンプルを実行します。</p>
+<p lang="en">Then, run the command to execute an Ebitengine example.</p>
+<p lang="ja">次に、 Ebitengine のサンプルを実行します。</p>
 <pre><code>go get github.com/hajimehoshi/ebiten/v2
 go run -tags=example github.com/hajimehoshi/ebiten/v2/examples/rotate</code></pre>
-<p lang="en"><code>go get</code> retrieves the code of Ebiten. <code>go run</code> compiles Go files and runs it immediately after the compilation. As the first retrieving the code and compilation might take a little long time, please wait for a while. Note that you can see what is happening on the compilation process with <code>-x</code> option if you want.</p>
-<p lang="ja"><code>go get</code> は Ebiten のコードを取得します。 <code>go run</code> は Go ファイルをコンパイルし、即座に実行します。最初のコード取得とコンパイルは少々時間がかかるかもしれないため、しばらくお待ち下さい。必要ならば <code>-x</code> をつけることで、コンパイル処理中に何が行われているのかを見ることができます。</p>
-<p lang="en">Note that <code>-tags=example</code> is needed to execute the examples as the Ebiten example packages require the build tag.</p>
-<p lang="ja"><code>-tags=example</code> は Ebiten のサンプルを実行するために必要です。 Ebiten サンプルのパッケージがビルドタグを必要とするためです。</p>
+<p lang="en"><code>go get</code> retrieves the code of Ebitengine. <code>go run</code> compiles Go files and runs it immediately after the compilation. As the first retrieving the code and compilation might take a little long time, please wait for a while. Note that you can see what is happening on the compilation process with <code>-x</code> option if you want.</p>
+<p lang="ja"><code>go get</code> は Ebitengine のコードを取得します。 <code>go run</code> は Go ファイルをコンパイルし、即座に実行します。最初のコード取得とコンパイルは少々時間がかかるかもしれないため、しばらくお待ち下さい。必要ならば <code>-x</code> をつけることで、コンパイル処理中に何が行われているのかを見ることができます。</p>
+<p lang="en">Note that <code>-tags=example</code> is needed to execute the examples as the Ebitengine example packages require the build tag.</p>
+<p lang="ja"><code>-tags=example</code> は Ebitengine のサンプルを実行するために必要です。 Ebitengine サンプルのパッケージがビルドタグを必要とするためです。</p>
 <p lang="en">If you see this window with a rotating Gophers image, congratulations!</p>
-<p lang="en">You have sucessfully installed Ebiten!  </p>
-<p lang="ja">回転する Gopher の絵がウィンドウ上に表示されたならば、おめでとうございます! Ebiten のインストールに成功しました。</p>
+<p lang="en">You have sucessfully installed Ebitengine!  </p>
+<p lang="ja">回転する Gopher の絵がウィンドウ上に表示されたならば、おめでとうございます! Ebitengine のインストールに成功しました。</p>
 <p class="img thumbnail"><img src="/images/rotate.png" width="320" height="240" alt="Rotate example"></p>
 <script>
   function switchOS(os) {

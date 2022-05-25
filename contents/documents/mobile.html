@@ -114,7 +114,7 @@ ebitenmobile bind -target ios -o path/to/yourgame.framework .</code></pre>
 
 <h4>Integrating Into Xcode</h4>
 
-<p>Part of the appeal of using Ebiten is that you don't have to have a lot of experience in Xcode in order to build games for iOS.  Once you import the <code>ebitenmobile</code>-generated framework and setup the View Controller within Xcode, the rest of your coding can take place in Go.  When you need to test a new change, run the <code>ebitenmobile</code> command again and then build your project in Xcode.</p>
+<p>Part of the appeal of using Ebitengine is that you don't have to have a lot of experience in Xcode in order to build games for iOS.  Once you import the <code>ebitenmobile</code>-generated framework and setup the View Controller within Xcode, the rest of your coding can take place in Go.  When you need to test a new change, run the <code>ebitenmobile</code> command again and then build your project in Xcode.</p>
 
 <p>In its simplest form, the Xcode project will have these files:</p>
 
@@ -156,12 +156,12 @@ ebitenmobile bind -target ios -o path/to/yourgame.framework .</code></pre>
 
 <h2>Creating an application with <code>gomobile build</code> (For testing only)</h2>
 <p>NOTICE: Now <code>gomobile build</code> does not work for iOS. See <a href="https://github.com/golang/go/issues/32963">the Go issue</a>.</p>
-<p>Ebiten application also works with <code>gomobile build</code>. This is useful for testing, but not suitable for actual applications in the stores.</p>
+<p>Ebitengine application also works with <code>gomobile build</code>. This is useful for testing, but not suitable for actual applications in the stores.</p>
 <p>Install <code>gomobile</code> command first.</p>
 <pre><code>go install golang.org/x/mobile/cmd/...@latest</code></pre>
 <p>Then, run <code>gomobile build</code></p>
 <pre><code>gomobile build github.com/yourname/yourpackage</code></pre>
 <p>That's it!</p>
-<p>You can install an Ebiten's example directly with <code>gomobile install</code> on your Android device:</p>
+<p>You can install an Ebitengine's example directly with <code>gomobile install</code> on your Android device:</p>
 <pre><code>gomobile install -tags=example github.com/hajimehoshi/ebiten/v2/examples/paint</code></pre>
 <p>For more details, see <a href="https://github.com/golang/go/wiki/Mobile">the official Wiki page about gomobile</a>.</p>

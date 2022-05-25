@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#db5620">
     <meta property="og:title" content="Mobile - Ebiten">
-    <meta property="og:site_name" content="Ebiten - A dead simple 2D game library for Go">
+    <meta property="og:site_name" content="Ebitengine - A dead simple 2D game library for Go">
     <meta property="og:image" content="https://ebiten.org/images/share.png">
     <meta property="og:description" content="Ebiten is an open source game library for the Go programming language. Ebiten&#39;s simple API allows you to quickly and easily develop 2D games that can be deployed across multiple platforms.">
     <meta name="twitter:card" content="summary_large_image">
@@ -35,7 +35,7 @@
   <body>
     <input type="checkbox" id="sidemenu"><label for="sidemenu" class="sidemenubutton"></label><label for="sidemenu" class="sidemenucover"></label>
     <nav>
-      <h1><a href="/">Ebiten</a></h1>
+      <h1><a href="/">Ebitengine</a></h1>
       <ul id="language">
       </ul>
       <ul>
@@ -92,14 +92,14 @@
 <h3 lang="ja">その他</h3>
 <ul>
   <li><a href="./cheatsheet.html">Cheat Sheet</a></li>
-  <li lang="en"><a href="./matrix.html">Matrix in Ebiten</a></li>
-  <li lang="ja"><a href="./matrix.html">Ebiten における行列</a></li>
+  <li lang="en"><a href="./matrix.html">Matrix in Ebitengine</a></li>
+  <li lang="ja"><a href="./matrix.html">Ebitengine における行列</a></li>
   <li><a href="./faq.html">FAQ</a></li>
   <li><a href="./performancetips.html">Performance Tips</a></li>
   <li><a href="./packages.html">Packages</a></li>
   <li><a href="./implementation.html">Implementation</a></li>
-  <li lang="en"><a href="./to_v2.html">Ebiten v2 Migration Guide</a></li>
-  <li lang="ja"><a href="./to_v2.html">Ebiten v2 移行ガイド</a></li>
+  <li lang="en"><a href="./to_v2.html">Ebitengine v2 Migration Guide</a></li>
+  <li lang="ja"><a href="./to_v2.html">Ebitengine v2 移行ガイド</a></li>
 </ul>
 
     </nav>
@@ -221,7 +221,7 @@ ebitenmobile bind -target ios -o path/to/yourgame.framework .</code></pre>
 
 <h4>Integrating Into Xcode</h4>
 
-<p>Part of the appeal of using Ebiten is that you don't have to have a lot of experience in Xcode in order to build games for iOS.  Once you import the <code>ebitenmobile</code>-generated framework and setup the View Controller within Xcode, the rest of your coding can take place in Go.  When you need to test a new change, run the <code>ebitenmobile</code> command again and then build your project in Xcode.</p>
+<p>Part of the appeal of using Ebitengine is that you don't have to have a lot of experience in Xcode in order to build games for iOS.  Once you import the <code>ebitenmobile</code>-generated framework and setup the View Controller within Xcode, the rest of your coding can take place in Go.  When you need to test a new change, run the <code>ebitenmobile</code> command again and then build your project in Xcode.</p>
 
 <p>In its simplest form, the Xcode project will have these files:</p>
 
@@ -263,13 +263,13 @@ ebitenmobile bind -target ios -o path/to/yourgame.framework .</code></pre>
 
 <h2>Creating an application with <code>gomobile build</code> (For testing only)</h2>
 <p>NOTICE: Now <code>gomobile build</code> does not work for iOS. See <a href="https://github.com/golang/go/issues/32963">the Go issue</a>.</p>
-<p>Ebiten application also works with <code>gomobile build</code>. This is useful for testing, but not suitable for actual applications in the stores.</p>
+<p>Ebitengine application also works with <code>gomobile build</code>. This is useful for testing, but not suitable for actual applications in the stores.</p>
 <p>Install <code>gomobile</code> command first.</p>
 <pre><code>go install golang.org/x/mobile/cmd/...@latest</code></pre>
 <p>Then, run <code>gomobile build</code></p>
 <pre><code>gomobile build github.com/yourname/yourpackage</code></pre>
 <p>That's it!</p>
-<p>You can install an Ebiten's example directly with <code>gomobile install</code> on your Android device:</p>
+<p>You can install an Ebitengine's example directly with <code>gomobile install</code> on your Android device:</p>
 <pre><code>gomobile install -tags=example github.com/hajimehoshi/ebiten/v2/examples/paint</code></pre>
 <p>For more details, see <a href="https://github.com/golang/go/wiki/Mobile">the official Wiki page about gomobile</a>.</p>
 

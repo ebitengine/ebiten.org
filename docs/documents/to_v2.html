@@ -6,16 +6,16 @@
     <meta name="description" content="Ebiten is an open source game library for the Go programming language. Ebiten&#39;s simple API allows you to quickly and easily develop 2D games that can be deployed across multiple platforms.">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#db5620">
-    <meta property="og:title" content="Ebiten v2 Migration Guide - Ebiten">
-    <meta property="og:site_name" content="Ebiten - A dead simple 2D game library for Go">
+    <meta property="og:title" content="Ebitengine v2 Migration Guide - Ebiten">
+    <meta property="og:site_name" content="Ebitengine - A dead simple 2D game library for Go">
     <meta property="og:image" content="https://ebiten.org/images/share.png">
     <meta property="og:description" content="Ebiten is an open source game library for the Go programming language. Ebiten&#39;s simple API allows you to quickly and easily develop 2D games that can be deployed across multiple platforms.">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@hajimehoshi">
-    <meta name="twitter:title" content="Ebiten v2 Migration Guide - Ebiten">
+    <meta name="twitter:title" content="Ebitengine v2 Migration Guide - Ebiten">
     <meta name="twitter:description" content="Ebiten is an open source game library for the Go programming language. Ebiten&#39;s simple API allows you to quickly and easily develop 2D games that can be deployed across multiple platforms.">
     <meta name="twitter:image" content="https://ebiten.org/images/share.png">
-    <title>Ebiten v2 Migration Guide - Ebiten</title>
+    <title>Ebitengine v2 Migration Guide - Ebiten</title>
     <link rel="canonical" href="https://ebiten.org/documents/to_v2.html">
     <link rel="stylesheet" type="text/css" href="/styles/style.css">
     <link rel="icon" href="/images/favicon.png" type="image/png">
@@ -35,7 +35,7 @@
   <body>
     <input type="checkbox" id="sidemenu"><label for="sidemenu" class="sidemenubutton"></label><label for="sidemenu" class="sidemenucover"></label>
     <nav>
-      <h1><a href="/">Ebiten</a></h1>
+      <h1><a href="/">Ebitengine</a></h1>
       <ul id="language">
       </ul>
       <ul>
@@ -92,14 +92,14 @@
 <h3 lang="ja">その他</h3>
 <ul>
   <li><a href="./cheatsheet.html">Cheat Sheet</a></li>
-  <li lang="en"><a href="./matrix.html">Matrix in Ebiten</a></li>
-  <li lang="ja"><a href="./matrix.html">Ebiten における行列</a></li>
+  <li lang="en"><a href="./matrix.html">Matrix in Ebitengine</a></li>
+  <li lang="ja"><a href="./matrix.html">Ebitengine における行列</a></li>
   <li><a href="./faq.html">FAQ</a></li>
   <li><a href="./performancetips.html">Performance Tips</a></li>
   <li><a href="./packages.html">Packages</a></li>
   <li><a href="./implementation.html">Implementation</a></li>
-  <li lang="en"><a href="./to_v2.html">Ebiten v2 Migration Guide</a></li>
-  <li lang="ja"><a href="./to_v2.html">Ebiten v2 移行ガイド</a></li>
+  <li lang="en"><a href="./to_v2.html">Ebitengine v2 Migration Guide</a></li>
+  <li lang="ja"><a href="./to_v2.html">Ebitengine v2 移行ガイド</a></li>
 </ul>
 
     </nav>
@@ -115,13 +115,13 @@
       font-weight: bold;
   }
 </style>
-<h1 lang="en">Ebiten v2 Migration Guide</h1>
-<h1 lang="ja">Ebiten v2 移行ガイド</h1>
+<h1 lang="en">Ebitengine v2 Migration Guide</h1>
+<h1 lang="ja">Ebitengine v2 移行ガイド</h1>
 <h2 lang="en">Overview</h2>
 <h2 lang="ja">概要</h2>
-<p lang="en">Ebiten v2 is a major version update from v1. There are some breaking changes in the API. Thus, you have to update the program in order to migrate to Ebiten v2.</p>
-<p lang="ja">Ebiten v2 は v1 からのメジャーバージョンアップデートです。 API に関して破壊的変更を伴います。そのため v2 への移行はプログラムの修正が必要です。</p>
-<p lang="en">This document lists the action items for the migration to Ebiten v2.</p>
+<p lang="en">Ebitengine v2 is a major version update from v1. There are some breaking changes in the API. Thus, you have to update the program in order to migrate to Ebitengine v2.</p>
+<p lang="ja">Ebitengine v2 は v1 からのメジャーバージョンアップデートです。 API に関して破壊的変更を伴います。そのため v2 への移行はプログラムの修正が必要です。</p>
+<p lang="en">This document lists the action items for the migration to Ebitengine v2.</p>
 <p lang="ja">このドキュメントでは、 v2 移行の際に実際にやらなければならないことを列挙します。</p>
 <p lang="en">We don't add drastic changes to v2. Instead, we plan to add quiet changes.</p>
 <p lang="ja">v2 には過激な変更を入れるのではなく、代わりにおとなしめの変更が入ります。</p>
@@ -147,8 +147,8 @@
 <p lang="ja"><code>import</code> 内の <code>github.com/hajimehoshi/ebiten</code> をすべて <code>github.com/hajimehoshi/ebiten/v2</code> に更新します。 <code>github.com/hajimehoshi/ebiten/text</code> は <code>github.com/hajimehoshi/ebiten/v2/text</code> になります。</p>
 <p lang="en">Lastly, execute <code>go mod tidy</code> command so that your <code>go.mod</code> will include <code>github.com/hajimehoshi/ebiten/v2</code> and exclude <code>github.com/hajimehoshi/ebiten</code>.</p>
 <p lang="ja">最後に <code>go mod tidy</code> コマンドを実行します。 <code>go.mod</code> に <code>github.com/hajimehoshi/ebiten/v2</code> が含まれるようになり、 <code>github.com/hajimehoshi/ebiten</code> が消えるはずです。</p>
-<p lang="en">You cannot mix Ebiten v1 and v2 for one application. If you run <code>go mod tidy</code> but there are both version in your <code>go.mod</code>, confirm the dependency relationships and remove the dependency on v1. However, you don't have to do it if you intentionally manage multiple applications in one module.</p>
-<p lang="ja">Ebiten v1 と v2 は 1 つのアプリケーションに混ぜて使用することが出来ません。 <code>go mod tidy</code> を実行したあとにも関わらず <code>go.mod</code> で両方記述されてしまっている場合は、依存関係を確認して v1 の依存を消してください。ただし複数のアプリケーションを 1 つのモジュールで意図的に管理するような場合は、その限りではありません。</p>
+<p lang="en">You cannot mix Ebitengine v1 and v2 for one application. If you run <code>go mod tidy</code> but there are both version in your <code>go.mod</code>, confirm the dependency relationships and remove the dependency on v1. However, you don't have to do it if you intentionally manage multiple applications in one module.</p>
+<p lang="ja">Ebitengine v1 と v2 は 1 つのアプリケーションに混ぜて使用することが出来ません。 <code>go mod tidy</code> を実行したあとにも関わらず <code>go.mod</code> で両方記述されてしまっている場合は、依存関係を確認して v1 の依存を消してください。ただし複数のアプリケーションを 1 つのモジュールで意図的に管理するような場合は、その限りではありません。</p>
 <h3 lang="en">Updating the API usages</h2>
 <h3 lang="ja">API の更新</h2>
 <h4><code>github.com/hajimehoshi/ebiten</code></h4>
