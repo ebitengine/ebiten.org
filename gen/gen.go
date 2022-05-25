@@ -130,14 +130,14 @@ func Run(url, description string) error {
 		}
 		defer w.Close()
 
-		title := "Ebiten - A dead simple 2D game library for Go"
+		title := "Ebitengine - A dead simple 2D game library for Go"
 		if path != filepath.Join("contents", "index.html") {
 			t, err := p.title()
 			if err != nil {
 				return err
 			}
 			if t != "" {
-				title = fmt.Sprintf("%s - Ebiten", t)
+				title = fmt.Sprintf("%s - Ebitengine", t)
 			}
 		}
 
