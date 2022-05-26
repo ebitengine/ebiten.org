@@ -207,7 +207,16 @@ h1.big {
     margin-top: 0;
     margin-bottom: 48px;
 }
+h1.big .main {
+    margin-top: 0;
+    margin-bottom: 4px;
+}
+h1.big .tm {
+    margin-top: 0;
+    margin-bottom: 0px;
+}
 h1.big .sub {
+    margin-top: 0px;
     margin-bottom: -1px;
 }
 h2 {
@@ -344,6 +353,11 @@ h1.big {
     font-weight: 500;
     letter-spacing: -0.02em;
     top: 16px;
+}
+h1.big span.tm {
+    font-size: 32px;
+    position: relative;
+    top: -12px;
 }
 h1.big > span.sub {
     font-size: 20px;
@@ -535,6 +549,12 @@ p.img img, p.img video {
 p.img.thumbnail img, p.img iframe, iframe[src^="https://www.youtube.com/embed/"] {
     max-width: 100%;
 }
+h1.big > span.main {
+    display: block;
+}
+h1.big > span.sub {
+    display: block;
+}
 
 /* logo */
 
@@ -695,24 +715,11 @@ input#sidemenu:checked ~ label.sidemenucover {
         grid-column-start: span 1;
     }
     h1.big {
-        margin-bottom: 38px;
-    }
-    h1.big > span.sub {
-        font-size: 18px;
-    }
-}
-@media only screen and (max-width: 350px) {
-    h1.big {
-        font-size: 63px;
-        margin-bottom: 20px;
-        margin-top: 8px;
-    }
-    h1.big > span.sub {
-        font-size: 16px;
+        font-size: 48px;
     }
     h1.big > span.main:before {
-        width: 72px;
-        height: 72px;
+        width: 66px;
+        height: 66px;
     }
 }
 
