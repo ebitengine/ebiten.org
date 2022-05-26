@@ -207,6 +207,9 @@ h1.big {
     margin-top: 0;
     margin-bottom: 48px;
 }
+h1.big .sub {
+    margin-bottom: -1px;
+}
 h2 {
     margin-top: 48px;
     margin-bottom: 24px;
@@ -265,7 +268,7 @@ ul ul, ul ol, ol ul, ol ol {
 }
 body > nav h1 {
     margin-top: 24px;
-    margin-bottom: 13px;
+    margin-bottom: 9px;
 }
 body > nav h2 {
     margin-top: 0;
@@ -385,7 +388,7 @@ body > nav h1 {
     line-height: 24px;
 
     position: relative;
-    top: -8px;
+    top: -12px;
 }
 body > nav h2 {
     font-size: 18px;
