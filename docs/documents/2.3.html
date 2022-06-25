@@ -213,6 +213,15 @@
     <li>An application crashes with a gamepad on 32bit Linux (<a href="https://github.com/hajimehoshi/ebiten/issues/2122">#2122</a>).</li>
     <li>An application crashes with pressing Alt + Enter on Windows (<a href="https://github.com/hajimehoshi/ebiten/issues/2123">#2123</a>).</li>
   </ul>
+  <h2>v2.3.5</h2>
+  <p><a href="https://github.com/hajimehoshi/ebiten/milestone/83?closed=1">Issues for v2.3.5</a></p>
+  <h3>Bug fix</h3>
+  <ul>
+    <li>An application crashed when <code>MaximizeWindow</code> was called before the main loop started (<a href="https://github.com/hajimehoshi/ebiten/issues/2137">#2137</a>).</li>
+    <li>The screen unexpectedly blinked with the <code>EvenOdd</code> mode on Windows (<a href="https://github.com/hajimehoshi/ebiten/issues/2138">#2138</a>).</li>
+    <li>Debug warnings were shown after resizing the window on Windows (<a href="https://github.com/hajimehoshi/ebiten/issues/2151">#2151</a>).</li>
+    <li><code>ReplacePixels</code> sometimes failed on macOS (<a href="https://github.com/hajimehoshi/ebiten/issues/2154">#2154</a>).</li>
+  </ul>
 </div>
 <div lang="ja">
   <h1>Ebitengine 2.3 リリースノート</h1>
@@ -321,6 +330,15 @@
     <li>DirectX ドライバで、存在しない戻り値をハンドルしていた問題の修正 (<a href="https://github.com/hajimehoshi/ebiten/issues/2115">#2115</a>)。</li>
     <li>32bit Linux でゲームパッド使用時にアプリケーションがクラッシュする問題の修正 (<a href="https://github.com/hajimehoshi/ebiten/issues/2122">#2122</a>)。</li>
     <li>Windows で Alt+Enter を押すとアプリケーションがクラッシュする問題の修正 (<a href="https://github.com/hajimehoshi/ebiten/issues/2123">#2123</a>)。</li>
+  </ul>
+  <h2>v2.3.5</h2>
+  <p><a href="https://github.com/hajimehoshi/ebiten/milestone/83?closed=1">Issues for v2.3.5</a></p>
+  <h3>Bug fix</h3>
+  <ul>
+    <li><code>MaximizeWindow</code> をメインループ前に呼ぶとクラッシュした問題の修正 (<a href="https://github.com/hajimehoshi/ebiten/issues/2137">#2137</a>)。</li>
+    <li>Windows で、 <code>EvenOdd</code> モードで画面が点滅することがあった問題の修正 (<a href="https://github.com/hajimehoshi/ebiten/issues/2138">#2138</a>)。</li>
+    <li>Windows で、画面リサイズ後にデバッグ警告が表示されていた問題の修正 (<a href="https://github.com/hajimehoshi/ebiten/issues/2151">#2151</a>)。</li>
+    <li>macOS で、 <code>ReplacePixels</code> が失敗することがあった問題の修正 (<a href="https://github.com/hajimehoshi/ebiten/issues/2154">#2154</a>)。</li>
   </ul>
 </div>
 
