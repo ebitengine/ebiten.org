@@ -115,6 +115,15 @@
     <li>Debug warnings were shown after resizing the window on Windows (<a href="https://github.com/hajimehoshi/ebiten/issues/2151">#2151</a>).</li>
     <li><code>ReplacePixels</code> sometimes failed on macOS (<a href="https://github.com/hajimehoshi/ebiten/issues/2154">#2154</a>).</li>
   </ul>
+  <h2>v2.3.6</h2>
+  <p><a href="https://github.com/hajimehoshi/ebiten/milestone/84?closed=1">Issues for v2.3.6</a></p>
+  <h3>Bug fix</h3>
+  <ul>
+    <li>A memory allocation error sometimes happend on browsers (<a href="https://github.com/hajimehoshi/ebiten/issues/2156">#2156</a>).</li>
+    <li>An application might crash with some inputting devices on Linux (<a href="https://github.com/hajimehoshi/ebiten/issues/2169">#2169</a>).</li>
+    <li>A big screen might flickered on macOS (<a href="https://github.com/hajimehoshi/ebiten/issues/2174">#2174</a>).</li>
+    <li>An applicaiton crashed when going to a lock screen on Windows (<a href="https://github.com/hajimehoshi/ebiten/issues/2179">#2179</a>).</li>
+  </ul>
 </div>
 <div lang="ja">
   <h1>Ebitengine 2.3 リリースノート</h1>
@@ -226,11 +235,20 @@
   </ul>
   <h2>v2.3.5</h2>
   <p><a href="https://github.com/hajimehoshi/ebiten/milestone/83?closed=1">Issues for v2.3.5</a></p>
-  <h3>Bug fix</h3>
+  <h3>バグ修正</h3>
   <ul>
     <li><code>MaximizeWindow</code> をメインループ前に呼ぶとクラッシュした問題の修正 (<a href="https://github.com/hajimehoshi/ebiten/issues/2137">#2137</a>)。</li>
     <li>Windows で、 <code>EvenOdd</code> モードで画面が点滅することがあった問題の修正 (<a href="https://github.com/hajimehoshi/ebiten/issues/2138">#2138</a>)。</li>
     <li>Windows で、画面リサイズ後にデバッグ警告が表示されていた問題の修正 (<a href="https://github.com/hajimehoshi/ebiten/issues/2151">#2151</a>)。</li>
     <li>macOS で、 <code>ReplacePixels</code> が失敗することがあった問題の修正 (<a href="https://github.com/hajimehoshi/ebiten/issues/2154">#2154</a>)。</li>
+  </ul>
+  <h2>v2.3.6</h2>
+  <p><a href="https://github.com/hajimehoshi/ebiten/milestone/84?closed=1">Issues for v2.3.6</a></p>
+  <h3>バグ修正</h3>
+  <ul>
+    <li>ブラウザで時々メモリアロケーションエラーが発生していた問題の修正 (<a href="https://github.com/hajimehoshi/ebiten/issues/2156">#2156</a>)。</li>
+    <li>Linux で、特定の入力デバイスをつないでいるときにアプリケーションがクラッシュすることがあった問題の修正 (<a href="https://github.com/hajimehoshi/ebiten/issues/2169">#2169</a>)。</li>
+    <li>macOS で、大きい画面が点滅する事があった問題の修正 (<a href="https://github.com/hajimehoshi/ebiten/issues/2174">#2174</a>)。</li>
+    <li>Windows で、ロック画面にいくときにアプリケーションがクラッシュした問題の修正 (<a href="https://github.com/hajimehoshi/ebiten/issues/2179">#2179</a>)。</li>
   </ul>
 </div>
