@@ -89,8 +89,8 @@ public class MainActivity extends AppCompatActivity {
 <h3>iOS</h3>
 <p>Run <code>ebitenmobile bind</code> command for your package:</p>
 <pre><code>cd /path/to/yourgame
-ebitenmobile bind -target ios -o path/to/yourgame.framework .</code></pre>
-<p>This command generates a <code>.framework</code> file. This <code>.framework</code> defines a view controller class named <code>(Package Name)EbitenViewController</code>. You can put it on your screen by connecting with any <code>UIView</code>. That's it!</p>
+ebitenmobile bind -target ios -o path/to/yourgame.xcframework .</code></pre>
+<p>This command generates a <code>.xcframework</code> file. This <code>.xcframework</code> defines a view controller class named <code>(Package Name)EbitenViewController</code>. You can put it on your screen by connecting with any <code>UIView</code>. That's it!</p>
 <p>The view controller class is defined like this:</p>
 <pre><code>#import &lt;UIKit/UIKit.h&gt;
 
@@ -127,7 +127,7 @@ ebitenmobile bind -target ios -o path/to/yourgame.framework .</code></pre>
   <li><code>EbitenViewController.h</code></li>
   <li><code>EbitenViewController.m</code></li>
   <li><code>main.m</code></li>
-  <li><code>Yourgame.framework</code></li>
+  <li><code>Yourgame.xcframework</code></li>
 </ul>
 
 <p>When you start a new project, you are given the choice of many different types of apps to create.  If you're just beginning to work with Xcode, you may want to start with a simple one like the Single View Application or Document Viewer App.  And then modifying it to use the above files.</p>
