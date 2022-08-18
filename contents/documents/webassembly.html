@@ -8,9 +8,20 @@ wasmserve ./path/to/yourgame</code></pre>
   <h2>Option 2. Compiling by yourself</h2>
   <p>If you want to publish your game, you'd need to compile your game by yourself.</p>
   <h3>Compiling your game</h3>
-  <pre><code>GOOS=js GOARCH=wasm go build -o yourgame.wasm github.com/yourname/yourgame</code></pre>
+  <p>On a Unix/Linux shell:</p>
+  <pre><code>env GOOS=js GOARCH=wasm go build -o yourgame.wasm github.com/yourname/yourgame</code></pre>
+  <p>On Windows PowerShell:</p>
+  <pre><code>$Env:GOOS = 'js'
+$Env:GOARCH = 'wasm'
+go build -o yourgame.wasm github.com/yourname/yourgame
+Remove-Item Env:GOOS
+Remove-Item Env:GOARCH</code></pre>
   <h3>Copying <code>wasm_exec.js</code> to execute the WebAssembly binary</h3>
+  <p>On a Unix/Linux shell:</p>
   <pre><code>cp $(go env GOROOT)/misc/wasm/wasm_exec.js .</code></pre>
+  <p>On Windows PowerShell:</p>
+  <pre><code>$goroot = go env GOROOT
+cp $goroot\misc\wasm\wasm_exec.js .</code></pre>
   <h3>Creating an HTML</h3>
   <p>Create this HTML:</p>
   <pre><code>&lt;!DOCTYPE html&gt;
@@ -47,9 +58,20 @@ wasmserve ./path/to/yourgame</code></pre>
   <h2>オプション 2. Compiling by yourself</h2>
   <p>ゲームをパブリッシュするのであれば、ゲームを自分でコンパイルする必要があります。.</p>
   <h3>ゲームのコンパイル</h3>
-  <pre><code>GOOS=js GOARCH=wasm go build -o yourgame.wasm github.com/yourname/yourgame</code></pre>
+  <p>Unix/Linux シェルの場合:</p>
+  <pre><code>env GOOS=js GOARCH=wasm go build -o yourgame.wasm github.com/yourname/yourgame</code></pre>
+  <p>Windows Powershell の場合:</p>
+  <pre><code>$Env:GOOS = 'js'
+$Env:GOARCH = 'wasm'
+go build -o yourgame.wasm github.com/yourname/yourgame
+Remove-Item Env:GOOS
+Remove-Item Env:GOARCH</code></pre>
   <h3>WebAssembly バイナリを実行するための <code>wasm_exec.js</code> のコピー</h3>
+  <p>Unix/Linux シェルの場合:</p>
   <pre><code>cp $(go env GOROOT)/misc/wasm/wasm_exec.js .</code></pre>
+  <p>Windows Powershell の場合:</p>
+  <pre><code>$goroot = go env GOROOT
+cp $goroot\misc\wasm\wasm_exec.js .</code></pre>
   <h3>HTML の作成</h3>
   <p>次のような HTML を作成してください:</p>
   <pre><code>&lt;!DOCTYPE html&gt;
