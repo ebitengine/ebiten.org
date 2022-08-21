@@ -106,11 +106,11 @@
     <main>
       <article>
         <style>
-  span.new {
+  .new {
       color: #007f55; /* 2080-G */
       font-weight: bold;
   }
-  span.old {
+  .old {
       color: #9c0128; /* 2080-R */
       font-weight: bold;
   }
@@ -125,7 +125,7 @@
   <p>Ebitengine originally included GLFW DLL files and extracted them dynamically. This was problematic in terms of portability. For v2.4, we rewrote the GLFW part into pure Go, which means Ebitengine becomes truly pure Go for Windows. Now an Ebitengine application can be built for an Arm Windows native binary, but this is not tested yet. This is also a preparation for other Windows-like system like Xbox.</p>
   <h3><code>NewImageWithOptions</code> and <code>NewImageFromImageWithOptions</code></h3>
   <p>(<a href="https://github.com/hajimehoshi/ebiten/issues/2013">#2013</a>, <a href="https://github.com/hajimehoshi/ebiten/issues/2017">#2017</a>, <a href="https://github.com/hajimehoshi/ebiten/issues/2124">#2124</a>)</p>
-  <p>New APIs <code>NewImageWithOptions</code> and <code>NewImageFromImageWithOptions</code> were added. You can specify these options:</p>
+  <p>New APIs <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#NewImageWithOptions"><code>NewImageWithOptions</code></a> and <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#NewImageFromImageWithOptions"><code>NewImageFromImageWithOptions</code></a> were added. You can specify these <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#NewImageFromImageOptions">options</a>:</p>
   <ul>
     <li><code>Unmanaged</code> represents whether the image is unmanaged or not. The default (zero) value is false, that means the image is managed. An unmanaged image is never on an internal automatic texture atlas. A regular image is a part of an internal texture atlas, and locating them is done automatically in Ebitengine. <code>Unmanaged</code> is useful when you want finer controls over the image for performance and memory reasons.</li>
     <li><code>PreserveBounds</code> represents whether the new image's bounds are the same as the given image. The default (zero) value is false, that means the new image's upper-left position is adjusted to (0, 0).</li>
@@ -134,31 +134,33 @@
   <p>(<a href="https://github.com/hajimehoshi/ebiten/issues/2055">#2055</a>)</p>
   <p>New audio APIs to decode without resampling were added. Implicit resampling by <code>Decode</code> was useful but problematic since it might unexpectedly be slow. <code>DecodeWithoutResampling</code> is more explicit in terms of execution cost.</p>
   <ul>
-    <li><code>mp3.DecodeWithoutResampling</code></li>
-    <li><code>vorbis.DecodeWithoutResampling</code></li>
-    <li><code>wav.DecodeWithoutResampling</code></li>
+    <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2/audio/mp3#DecodeWithoutResampling"><code>mp3.DecodeWithoutResampling</code></a></li>
+    <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2/audio/vorbis#DecodeWithoutResampling"><code>vorbis.DecodeWithoutResampling</code></a></li>
+    <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2/audio/wav#DecodeWithoutResampling"><code>wav.DecodeWithoutResampling</code></a></li>
   </ul>
+  <h3>Debug info</h3>
+  <p>(<a href="https://github.com/hajimehoshi/ebiten/issues/2177">#2177</a>)</p>
+  <p>A new function <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#ReadDebugInfo"><code>ebiten.ReadDebugInfo</code></a> and a new struct <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#DebugInfo"><code>ebiten.DebugInfo</code></a> were added. Now what you can get from these APIs is only the type of the current graphics library so far.</p>
   <h3>Other new APIs</h3>
   <ul>
-    <li><code>(*ebiten.Image).ReadPixels</code> (<a href="https://github.com/hajimehoshi/ebiten/issues/1995">#1995</a>).</li>
-    <li><code>ebiten.ReadDebugInfo</code> (<a href="https://github.com/hajimehoshi/ebiten/issues/2177">#2177</a>).</li>
-    <li><code>ebitenutil.DrawCircle</code> (<a href="https://github.com/hajimehoshi/ebiten/issues/2163">#2163</a>).</li>
-    <li><code>ebitenutil.NewImageFromFileSystem</code> (this is available only with Go 1.16 or newer) (<a href="https://github.com/hajimehoshi/ebiten/issues/1948">#1948</a>).</li>
-    <li><code>inpututil.AppendJustReleasedTouchIDs</code> (<a href="https://github.com/hajimehoshi/ebiten/issues/2057">#2057</a>).</li>
-    <li><code>inpututil.TouchPositionInPreviousTick</code> (<a href="https://github.com/hajimehoshi/ebiten/issues/2057">#2057</a>).</li>
+    <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#Image.ReadPixels"><code>(*ebiten.Image).ReadPixels</code></a> (<a href="https://github.com/hajimehoshi/ebiten/issues/1995">#1995</a>).</li>
+    <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2/ebitenutil#DrawCircle"><code>ebitenutil.DrawCircle</code></a> (<a href="https://github.com/hajimehoshi/ebiten/issues/2163">#2163</a>).</li>
+    <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2/ebitenutil#NewImageFromFileSystem"><code>ebitenutil.NewImageFromFileSystem</code></a> (this is available only with Go 1.16 or newer) (<a href="https://github.com/hajimehoshi/ebiten/issues/1948">#1948</a>).</li>
+    <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2/inpututil#AppendJustReleasedTouchIDs"><code>inpututil.AppendJustReleasedTouchIDs</code></a> (<a href="https://github.com/hajimehoshi/ebiten/issues/2057">#2057</a>).</li>
+    <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2/inpututil#TouchPositionInPreviousTick"><code>inpututil.TouchPositionInPreviousTick</code></a> (<a href="https://github.com/hajimehoshi/ebiten/issues/2057">#2057</a>).</li>
   </ul>
   <h3>Renaming</h3>
   <p>(<a href="https://github.com/hajimehoshi/ebiten/issues/2071">#2071</a>, <a href="https://github.com/hajimehoshi/ebiten/issues/2236">#2236</a>)</p>
   <p>These new API were added as aliases to existing APIs. The existing APIs are still available but deprecated.</p>
   <ul>
-    <li><span class="old"><code>ebiten.SetMaxTPS</code></span> → <span class="new"><code>ebiten.SetTPS</code></span></li>
-    <li><span class="old"><code>ebiten.MaxTPS</code></span> → <span class="new"><code>ebiten.TPS</code></span></li>
-    <li><span class="old"><code>ebiten.CurrentFPS</code></span> → <span class="new"><code>ebiten.ActualFPS</code></span></li>
-    <li><span class="old"><code>ebiten.CurrentTPS</code></span> → <span class="new"><code>ebiten.ActualTPS</code></span></li>
-    <li><span class="old"><code>(*ebiten.Image).ReplacePixels</code></span> → <span class="new"><code>(*ebiten.Image).WritePixels</code></span></li>
+    <li><code class="old">ebiten.SetMaxTPS</code> → <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#SetTPS"><code class="new">ebiten.SetTPS</code></a></li>
+    <li><code class="old">ebiten.MaxTPS</code> → <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#TPS"><code class="new">ebiten.TPS</code></a></li>
+    <li><code class="old">ebiten.CurrentFPS</code> → <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#ActualFPS"><code class="new">ebiten.ActualFPS</code></a></li>
+    <li><code class="old">ebiten.CurrentTPS</code> → <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#ActualTPS"><code class="new">ebiten.ActualTPS</code></a></li>
+    <li><code class="old">(*ebiten.Image).ReplacePixels</code> → <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#Image.WritePixels"><code class="new">(*ebiten.Image).WritePixels</code></a></li>
   </ul>
   <h3>Improving Kage (the shading language for Ebitengine)</h3>
-  <p>Now <code>NewShader</code> checks types for builtin function arguments and operators more strictly (<a href="https://github.com/hajimehoshi/ebiten/issues/2184">#2184</a>, <a href="https://github.com/hajimehoshi/ebiten/issues/2187">#2187</a>).</p>
+  <p>Now <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#NewShader"><code>NewShader</code></a> checks types for builtin function arguments and operators more strictly (<a href="https://github.com/hajimehoshi/ebiten/issues/2184">#2184</a>, <a href="https://github.com/hajimehoshi/ebiten/issues/2187">#2187</a>).</p>
   <p>Also, these new built-in functions were added:</p>
   <ul>
     <li><code>discard</code> (this is available only in <code>Fragment</code> function) (<a href="https://github.com/hajimehoshi/ebiten/issues/1969">#1969</a>)</li>
@@ -166,12 +168,12 @@
   </ul>
   <h3>DirectX performance improvement</h3>
   <p>(<a href="https://github.com/hajimehoshi/ebiten/issues/2034">#2034</a>, <a href="https://github.com/hajimehoshi/ebiten/issues/2149">#2149</a>, <a href="https://github.com/hajimehoshi/ebiten/issues/2188">#2188</a>)</p>
-  <p>The DirectX driver now runs 2x-3x faster than version 2.3.</p>
+  <p>The DirectX driver now runs 2x-3x faster than the version 2.3.</p>
   </ul>
   <h3>Bug fix</h3>
-  <p>This release includes all the bug fixes in v2.3.x.</p>
+  <p>This release includes all the bug fixes in the version 2.3.</p>
   <ul>
-    <li><code>(*ebiten.Image).Set</code> sometimes didn't work correctly (<a href="https://github.com/hajimehoshi/ebiten/issues/2154">#2154</a>, <a href="https://github.com/hajimehoshi/ebiten/issues/2176">#2176</a>, <a href="https://github.com/hajimehoshi/ebiten/issues/2180">#2180</a>).</li>
+    <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#Image.Set"><code>(*ebiten.Image).Set</code></a> sometimes didn't work correctly (<a href="https://github.com/hajimehoshi/ebiten/issues/2154">#2154</a>, <a href="https://github.com/hajimehoshi/ebiten/issues/2176">#2176</a>, <a href="https://github.com/hajimehoshi/ebiten/issues/2180">#2180</a>).</li>
     <li>An application might crash when trying to use gamepads on Firefox in a non-HTTPS context (<a href="https://github.com/hajimehoshi/ebiten/issues/2100">#2100</a>).</li>
     <li>Other small fixes</li>
   </ul>
