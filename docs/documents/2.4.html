@@ -127,7 +127,7 @@
   <p>(<a href="https://github.com/hajimehoshi/ebiten/issues/2013">#2013</a>, <a href="https://github.com/hajimehoshi/ebiten/issues/2017">#2017</a>, <a href="https://github.com/hajimehoshi/ebiten/issues/2124">#2124</a>)</p>
   <p>New APIs <code>NewImageWithOptions</code> and <code>NewImageFromImageWithOptions</code> were added. You can specify these options:</p>
   <ul>
-    <li><code>Unmanaged</code> represents whether the image is unmanaged or not. The default (zero) value is false, that means the image is managed. An unmanged image is never on an internal automatic texture atlas. A regular image is a part of an internal texture atlas, and locating them is done automatically in Ebitengine. <code>Unmanaged</code> is useful when you want finer controls over the image for performance and memory reasons.</li>
+    <li><code>Unmanaged</code> represents whether the image is unmanaged or not. The default (zero) value is false, that means the image is managed. An unmanaged image is never on an internal automatic texture atlas. A regular image is a part of an internal texture atlas, and locating them is done automatically in Ebitengine. <code>Unmanaged</code> is useful when you want finer controls over the image for performance and memory reasons.</li>
     <li><code>PreserveBounds</code> represents whether the new image's bounds are the same as the given image. The default (zero) value is false, that means the new image's upper-left position is adjusted to (0, 0).</li>
   </ul>
   <h3>Other new APIs</h3>
@@ -166,7 +166,7 @@
   <h3>Bug fix</h3>
   <p>This release includes all the bug fixes in v2.3.x.</p>
   <ul>
-    <li><code>(*ebiten.Image).Set</code> somtimes didn't work correctly (<a href="https://github.com/hajimehoshi/ebiten/issues/2154">#2154</a>, <a href="https://github.com/hajimehoshi/ebiten/issues/2176">#2176</a>, <a href="https://github.com/hajimehoshi/ebiten/issues/2180">#2180</a>).</li>
+    <li><code>(*ebiten.Image).Set</code> sometimes didn't work correctly (<a href="https://github.com/hajimehoshi/ebiten/issues/2154">#2154</a>, <a href="https://github.com/hajimehoshi/ebiten/issues/2176">#2176</a>, <a href="https://github.com/hajimehoshi/ebiten/issues/2180">#2180</a>).</li>
     <li>An application might crash when trying to use gamepads on Firefox in a non-HTTPS context (<a href="https://github.com/hajimehoshi/ebiten/issues/2100">#2100</a>).</li>
     <li>Other small fixes</li>
   </ul>
