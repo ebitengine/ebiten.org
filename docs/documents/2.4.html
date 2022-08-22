@@ -115,15 +115,15 @@
       font-weight: bold;
   }
 </style>
-<div><!-- TODO: lang="en" -->
+<div lang="en">
   <h1>Ebitengine 2.4 Release Notes</h1>
   <h2>v2.4.0</h2>
   <p><a href="https://github.com/hajimehoshi/ebiten/milestone/67?closed=1">Issues for v2.4.0</a></p>
   <p><em>Note that Ebitengine v2.4.0 is not released yet and this document is draft.</em></p>
   <h3>"Truly pure Go" for Windows</h3>
-  <p>(<a href="https://github.com/hajimehoshi/ebiten/issues/1488">#1488</a>, <a href="https://github.com/hajimehoshi/ebiten/issues/1764">#1764</a>)<p>
-  <p>Ebitengine originally included GLFW DLL files and extracted them dynamically. This was problematic in terms of portability. For v2.4, we rewrote the GLFW part into pure Go, which means Ebitengine becomes truly pure Go for Windows. Now an Ebitengine application can be built for an Arm Windows native binary, but this is not tested yet. This is also a preparation for other Windows-like system like Xbox.</p>
-  <h3><code>NewImageWithOptions</code> and <code>NewImageFromImageWithOptions</code></h3>
+  <p>(<a href="https://github.com/hajimehoshi/ebiten/issues/1488">#1488</a>, <a href="https://github.com/hajimehoshi/ebiten/issues/1764">#1764</a>)</p>
+  <p>Ebitengine originally included GLFW DLL files and extracted them dynamically. This was problematic in terms of portability. For v2.4, we rewrote the GLFW part for Windows into pure Go, which means Ebitengine becomes truly pure Go for Windows. Now an Ebitengine application can be built for an Arm Windows native binary, but this is not tested yet. This is also a preparation for other Windows-like system like Xbox.</p>
+  <h3>Unmanaed images</h3>
   <p>(<a href="https://github.com/hajimehoshi/ebiten/issues/2013">#2013</a>, <a href="https://github.com/hajimehoshi/ebiten/issues/2017">#2017</a>, <a href="https://github.com/hajimehoshi/ebiten/issues/2124">#2124</a>)</p>
   <p>New APIs <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#NewImageWithOptions"><code>NewImageWithOptions</code></a> and <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#NewImageFromImageWithOptions"><code>NewImageFromImageWithOptions</code></a> were added. You can specify these <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#NewImageFromImageOptions">options</a>:</p>
   <ul>
@@ -149,7 +149,7 @@
     <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2/inpututil#AppendJustReleasedTouchIDs"><code>inpututil.AppendJustReleasedTouchIDs</code></a> (<a href="https://github.com/hajimehoshi/ebiten/issues/2057">#2057</a>).</li>
     <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2/inpututil#TouchPositionInPreviousTick"><code>inpututil.TouchPositionInPreviousTick</code></a> (<a href="https://github.com/hajimehoshi/ebiten/issues/2057">#2057</a>).</li>
   </ul>
-  <h3>Renaming</h3>
+  <h3>Renaming APIs</h3>
   <p>(<a href="https://github.com/hajimehoshi/ebiten/issues/2071">#2071</a>, <a href="https://github.com/hajimehoshi/ebiten/issues/2236">#2236</a>)</p>
   <p>These new API were added as aliases to existing APIs. The existing APIs are still available but deprecated.</p>
   <ul>
@@ -180,6 +180,73 @@
   <h3>Breaking change</h3>
   <ul>
     <li><a href="https://github.com/hajimehoshi/go2cpp">go2cpp</a> is no longer supported (<a href="https://github.com/hajimehoshi/ebiten/issues/2126">#2126</a>).</li>
+  </ul>
+</div>
+<div lang="ja">
+  <h1>Ebitengine 2.4 リリースノート</h1>
+  <h2>v2.4.0</h2>
+  <p><a href="https://github.com/hajimehoshi/ebiten/milestone/67?closed=1">Issues for v2.4.0</a></p>
+  <p><em>注意: Ebitengine v2.4.0 はまだリリースされておらず、このドキュメントはドラフトです。</em></p>
+  <h3>Windows での「真の Pure Go」</h3>
+  <p>(<a href="https://github.com/hajimehoshi/ebiten/issues/1488">#1488</a>、 <a href="https://github.com/hajimehoshi/ebiten/issues/1764">#1764</a>)</p>
+  <p>Ebitengine は元々 GLFW の DLL を含んでおり、動的に展開していました。これは移植性という面では問題がありました。 v2.4 では、 GLFW の部分は Windows の Pure Go に書き直されました。このため、 Ebitengine は Windows では真の Pure Go となりました。 Ebitengine のアプリケーションは Arm Windows のネイティブバイナリとしてビルドすることが出来ますが、これはあまりテストされていません。また、これは Xbox のような他の Windows に似たシステムのための準備でもあります。</p>
+  <h3>アンマネージドな画像</h3>
+  <p>(<a href="https://github.com/hajimehoshi/ebiten/issues/2013">#2013</a>、 <a href="https://github.com/hajimehoshi/ebiten/issues/2017">#2017</a>、 <a href="https://github.com/hajimehoshi/ebiten/issues/2124">#2124</a>)</p>
+  <p>新しい API <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#NewImageWithOptions"><code>NewImageWithOptions</code></a> と <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#NewImageFromImageWithOptions"><code>NewImageFromImageWithOptions</code></a> が追加されました。次の<a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#NewImageFromImageOptions">オプション</a>が指定できます:</p>
+  <ul>
+    <li><code>Unmanaged</code> は画像がアンマネージドかどうかを表します。デフォルト (ゼロ値) は false で、画像がマネージドであることを意味します。アンマネージドな画像は内部自動テクスチャアトラスには決して載りません。普通の画像は内部テクスチャアトラスの一部分で、 Ebitengine 内で配置は自動的に行われます。 <code>Unmanaged</code> はパフォーマンスやメモリなどの理由で、画像に対してより細かいコントロールが欲しい時に便利です。</li>
+    <li><code>PreserveBounds</code> は新しい画像が与えられた画像と同じ Bounds を持つかどうかを表します。デフォルト (ゼロ値) は false で、新しい画像の左上が (0, 0) に調整されることを意味します。</li>
+  </ul>
+  <h3>リサンプリングなしのオーディオデコード</h3>
+  <p>(<a href="https://github.com/hajimehoshi/ebiten/issues/2055">#2055</a>)</p>
+  <p>リサンプリングを行わないでデコードする新しいオーディオ API が追加されました。 <code>Decode</code> の暗黙的なリサンプリングは便利であるものの、予想外に遅いことがありました。 <code>DecodeWithoutResampling</code> は実行コストに関してより明示的です。</p>
+  <ul>
+    <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2/audio/mp3#DecodeWithoutResampling"><code>mp3.DecodeWithoutResampling</code></a></li>
+    <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2/audio/vorbis#DecodeWithoutResampling"><code>vorbis.DecodeWithoutResampling</code></a></li>
+    <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2/audio/wav#DecodeWithoutResampling"><code>wav.DecodeWithoutResampling</code></a></li>
+  </ul>
+  <h3>デバッグ情報</h3>
+  <p>(<a href="https://github.com/hajimehoshi/ebiten/issues/2177">#2177</a>)</p>
+  <p>新しい関数 <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#ReadDebugInfo"><code>ebiten.ReadDebugInfo</code></a> と新しい構造体 <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#DebugInfo"><code>ebiten.DebugInfo</code></a> が追加されました。これらの API から取得できるのは、今の所現在のグラフィックライブラリの種類だけです。</p>
+  <h3>その他の新しい API</h3>
+  <ul>
+    <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#Image.ReadPixels"><code>(*ebiten.Image).ReadPixels</code></a> (<a href="https://github.com/hajimehoshi/ebiten/issues/1995">#1995</a>).</li>
+    <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2/ebitenutil#DrawCircle"><code>ebitenutil.DrawCircle</code></a> (<a href="https://github.com/hajimehoshi/ebiten/issues/2163">#2163</a>).</li>
+    <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2/ebitenutil#NewImageFromFileSystem"><code>ebitenutil.NewImageFromFileSystem</code></a> (Go 1.16 以降で利用可能) (<a href="https://github.com/hajimehoshi/ebiten/issues/1948">#1948</a>).</li>
+    <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2/inpututil#AppendJustReleasedTouchIDs"><code>inpututil.AppendJustReleasedTouchIDs</code></a> (<a href="https://github.com/hajimehoshi/ebiten/issues/2057">#2057</a>).</li>
+    <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2/inpututil#TouchPositionInPreviousTick"><code>inpututil.TouchPositionInPreviousTick</code></a> (<a href="https://github.com/hajimehoshi/ebiten/issues/2057">#2057</a>).</li>
+  </ul>
+  <h3>API 名の変更</h3>
+  <p>(<a href="https://github.com/hajimehoshi/ebiten/issues/2071">#2071</a>、 <a href="https://github.com/hajimehoshi/ebiten/issues/2236">#2236</a>)</p>
+  <p>これらの API が既存の API のエイリアスとして追加されました。既存の API はまだ利用可能ですが、非推奨になりました。</p>
+  <ul>
+    <li><code class="old">ebiten.SetMaxTPS</code> → <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#SetTPS"><code class="new">ebiten.SetTPS</code></a></li>
+    <li><code class="old">ebiten.MaxTPS</code> → <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#TPS"><code class="new">ebiten.TPS</code></a></li>
+    <li><code class="old">ebiten.CurrentFPS</code> → <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#ActualFPS"><code class="new">ebiten.ActualFPS</code></a></li>
+    <li><code class="old">ebiten.CurrentTPS</code> → <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#ActualTPS"><code class="new">ebiten.ActualTPS</code></a></li>
+    <li><code class="old">(*ebiten.Image).ReplacePixels</code> → <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#Image.WritePixels"><code class="new">(*ebiten.Image).WritePixels</code></a></li>
+  </ul>
+  <h3>Kage (Ebitengine のシェーディング言語) の改善</h3>
+  <p><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#NewShader"><code>NewShader</code></a> は組み込み関数の引数や演算子に関して、型をより厳密にチェックするようになりました (<a href="https://github.com/hajimehoshi/ebiten/issues/2184">#2184</a>、 <a href="https://github.com/hajimehoshi/ebiten/issues/2187">#2187</a>)。</p>
+  <p>また、これらの組み込み関数が追加されました:</p>
+  <ul>
+    <li><code>discard</code> (<code>Fragment</code> 関数内でのみ利用可能) (<a href="https://github.com/hajimehoshi/ebiten/issues/1969">#1969</a>)</li>
+    <li><code>refract</code> (ドキュメントにはあったが実装されていなかった) (<a href="https://github.com/hajimehoshi/ebiten/issues/2255">#2255</a>)</li>
+  </ul>
+  <h3>DirectX パフォーマンスの改善</h3>
+  <p>(<a href="https://github.com/hajimehoshi/ebiten/issues/2034">#2034</a>、 <a href="https://github.com/hajimehoshi/ebiten/issues/2149">#2149</a>、 <a href="https://github.com/hajimehoshi/ebiten/issues/2188">#2188</a>)</p>
+  <p>DirectX ドライバが、バージョン 2.3 に比べて 2-3 倍早く動くようになりました。</p>
+  </ul>
+  <h3>バグ修正</h3>
+  <p>このリリースはバージョン 2.3 にあったバグ修正全てを含みます。</p>
+  <ul>
+    <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#Image.Set"><code>(*ebiten.Image).Set</code></a> が時々正しく動いていなかった問題の修正 (<a href="https://github.com/hajimehoshi/ebiten/issues/2154">#2154</a>、 <a href="https://github.com/hajimehoshi/ebiten/issues/2176">#2176</a>、 <a href="https://github.com/hajimehoshi/ebiten/issues/2180">#2180</a>)。</li>
+    <li>Firefox で、 HTTPS ではないコンテキストでゲームパッドを使用しようとしたときにクラッシュした問題の修正 (<a href="https://github.com/hajimehoshi/ebiten/issues/2100">#2100</a>)。</li>
+    <li>その他、細かい修正</li>
+  </ul>
+  <h3>破壊的変更</h3>
+  <ul>
+    <li><a href="https://github.com/hajimehoshi/go2cpp">go2cpp</a> のサポートは廃止されました (<a href="https://github.com/hajimehoshi/ebiten/issues/2126">#2126</a>)。</li>
   </ul>
 </div>
 
