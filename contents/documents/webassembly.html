@@ -2,8 +2,7 @@
   <h1>WebAssembly</h1>
   <h2>Option 1. WasmServe</h2>
   <p>If you want to see your game working on browsers, <a href="https://github.com/hajimehoshi/wasmserve">wasmserve</a> is the easiest way.</p>
-  <pre><code>go install github.com/hajimehoshi/wasmserve@latest
-wasmserve ./path/to/yourgame</code></pre>
+  <pre><code>go run github.com/hajimehoshi/wasmserve@latest ./path/to/yourgame</code></pre>
   <p>Then access <code>http://localhost:8080/</code>.</p>
   <h2>Option 2. Compiling by yourself</h2>
   <p>If you want to publish your game, you'd need to compile your game by yourself.</p>
@@ -52,15 +51,14 @@ WebAssembly.instantiateStreaming(fetch("yourgame.wasm"), go.importObject).then(r
   <h1>WebAssembly</h1>
   <h2>オプション 1. WasmServe</h2>
   <p>ゲームがブラウザ上で動くのを確認するのであれば、 <a href="https://github.com/hajimehoshi/wasmserve">wasmserve</a> が最も簡単な方法です。</p>
-  <pre><code>go install github.com/hajimehoshi/wasmserve@latest
-wasmserve ./path/to/yourgame</code></pre>
+  <pre><code>go run github.com/hajimehoshi/wasmserve@latest ./path/to/yourgame</code></pre>
   <p>次に <code>http://localhost:8080/</code> にアクセスしてください。</p>
   <h2>オプション 2. Compiling by yourself</h2>
   <p>ゲームをパブリッシュするのであれば、ゲームを自分でコンパイルする必要があります。.</p>
   <h3>ゲームのコンパイル</h3>
   <p>Unix/Linux シェルの場合:</p>
   <pre><code>env GOOS=js GOARCH=wasm go build -o yourgame.wasm github.com/yourname/yourgame</code></pre>
-  <p>Windows Powershell の場合:</p>
+  <p>Windows PowerShell の場合:</p>
   <pre><code>$Env:GOOS = 'js'
 $Env:GOARCH = 'wasm'
 go build -o yourgame.wasm github.com/yourname/yourgame
@@ -69,7 +67,7 @@ Remove-Item Env:GOARCH</code></pre>
   <h3>WebAssembly バイナリを実行するための <code>wasm_exec.js</code> のコピー</h3>
   <p>Unix/Linux シェルの場合:</p>
   <pre><code>cp $(go env GOROOT)/misc/wasm/wasm_exec.js .</code></pre>
-  <p>Windows Powershell の場合:</p>
+  <p>Windows PowerShell の場合:</p>
   <pre><code>$goroot = go env GOROOT
 cp $goroot\misc\wasm\wasm_exec.js .</code></pre>
   <h3>HTML の作成</h3>
