@@ -132,6 +132,14 @@
     <li>There were wrong memory usages in the DirectX driver (<a href="https://github.com/hajimehoshi/ebiten/issues/2201">#2201</a>, <a href="https://github.com/hajimehoshi/ebiten/issues/2202">#2202</a>, <a href="https://github.com/hajimehoshi/ebiten/issues/2204">#2204</a>).</li>
     <li>There was a memory leak when disconnecting a gamepad on Windows (<a href="https://github.com/hajimehoshi/ebiten/issues/2205">#2205</a>).</li>
   </ul>
+  <h2>v2.3.8</h2>
+  <p><a href="https://github.com/hajimehoshi/ebiten/milestone/86?closed=1">Issues for v2.3.8</a></p>
+  <h3>Bug fix</h3>
+  <ul>
+    <li>Multi-touch didn't work correctly on Android (<a href="https://github.com/hajimehoshi/ebiten/issues/2220">#2220</a>).</li>
+    <li><code>vorbis.Decode</code> with a non-seekable source caused an error (<a href="https://github.com/hajimehoshi/ebiten/issues/2252">#2252</a>).</li>
+    <li>Changing the window's decorating state unexpectedly changed the window size on macOS (<a href="https://github.com/hajimehoshi/ebiten/issues/2257">#2257</a>).</li>
+  </ul>
 </div>
 <div lang="ja">
   <h1>Ebitengine 2.3 リリースノート</h1>
@@ -266,5 +274,13 @@
     <li>iOS 向けの <code>ebitenmobile</code> が、大文字小文字を区別するファイルシステムで動かなかった問題の修正 (<a href="https://github.com/hajimehoshi/ebiten/issues/2192">#2192</a>)。</li>
     <li>DirectX ドライバ内でのメモリの使い方が間違っていた問題を修正 (<a href="https://github.com/hajimehoshi/ebiten/issues/2201">#2201</a>、 <a href="https://github.com/hajimehoshi/ebiten/issues/2202">#2202</a>、 <a href="https://github.com/hajimehoshi/ebiten/issues/2204">#2204</a>)。</li>
     <li>Windows でゲームパッドを抜くときにメモリリークした問題の修正 (<a href="https://github.com/hajimehoshi/ebiten/issues/2205">#2205</a>)。</li>
+  </ul>
+  <h2>v2.3.8</h2>
+  <p><a href="https://github.com/hajimehoshi/ebiten/milestone/86?closed=1">Issues for v2.3.8</a></p>
+  <h3>バグ修正</h3>
+  <ul>
+    <li>Android でマルチタッチが動かないことがあった問題の修正 (<a href="https://github.com/hajimehoshi/ebiten/issues/2220">#2220</a>).</li>
+    <li><code>vorbis.Decode</code> にシークできないソースを与えるとエラーになった問題の修正 (<a href="https://github.com/hajimehoshi/ebiten/issues/2252">#2252</a>).</li>
+    <li>macOS でウィンドウのデコレーション状態を変更すると予期せずウィンドウサイズが変わってしまうことがあった問題の修正 (<a href="https://github.com/hajimehoshi/ebiten/issues/2257">#2257</a>).</li>
   </ul>
 </div>
