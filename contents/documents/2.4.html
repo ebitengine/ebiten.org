@@ -12,7 +12,6 @@
   <h1>Ebitengine 2.4 Release Notes</h1>
   <h2>v2.4.0</h2>
   <p><a href="https://github.com/hajimehoshi/ebiten/milestone/67?closed=1">Issues for v2.4.0</a></p>
-  <p><em>Note that Ebitengine v2.4.0 is not released yet and this document is draft.</em></p>
   <h3>"Truly pure Go" for Windows</h3>
   <p>(<a href="https://github.com/hajimehoshi/ebiten/issues/1488">#1488</a>, <a href="https://github.com/hajimehoshi/ebiten/issues/1764">#1764</a>)</p>
   <p>Ebitengine originally included GLFW DLL files and extracted them dynamically. This was problematic in terms of portability. For v2.4, we rewrote the GLFW part for Windows into pure Go, which means Ebitengine becomes truly pure Go for Windows. Now an Ebitengine application can be built for an Arm Windows native binary, but this is not tested yet. This fix is also a preparation for other Windows-like system like Xbox.</p>
@@ -85,7 +84,6 @@
   <h1>Ebitengine 2.4 リリースノート</h1>
   <h2>v2.4.0</h2>
   <p><a href="https://github.com/hajimehoshi/ebiten/milestone/67?closed=1">Issues for v2.4.0</a></p>
-  <p><em>注意: Ebitengine v2.4.0 はまだリリースされておらず、このドキュメントはドラフトです。</em></p>
   <h3>Windows での「真の Pure Go」</h3>
   <p>(<a href="https://github.com/hajimehoshi/ebiten/issues/1488">#1488</a>、 <a href="https://github.com/hajimehoshi/ebiten/issues/1764">#1764</a>)</p>
   <p>Ebitengine は元々 GLFW の DLL を含んでおり、動的に展開していました。これは移植性という面では問題がありました。 v2.4 では、 GLFW の部分は Windows の Pure Go に書き直されました。このため、 Ebitengine は Windows では真の Pure Go となりました。 v2.4 から、 Ebitengine のアプリケーションは Arm Windows のネイティブバイナリとしてビルドすることが出来ますが、これはあまりテストされていません。また、この修正は Xbox のような他の Windows に似たシステムのための準備でもあります。</p>
