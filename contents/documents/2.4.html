@@ -15,6 +15,7 @@
   <h3>"Truly pure Go" for Windows</h3>
   <p>(<a href="https://github.com/hajimehoshi/ebiten/issues/1488">#1488</a>, <a href="https://github.com/hajimehoshi/ebiten/issues/1764">#1764</a>)</p>
   <p>Ebitengine originally included GLFW DLL files and extracted them dynamically. This was problematic in terms of portability. For v2.4, we rewrote the GLFW part for Windows into pure Go, which means Ebitengine becomes truly pure Go for Windows. Now an Ebitengine application can be built for an Arm Windows native binary, but this is not tested yet. This fix is also a preparation for other Windows-like system like Xbox.</p>
+  <p>With this change, the build tag <code>ebitenexternaldll</code> was removed.</p>
   <h3>Unmanaged images</h3>
   <p>(<a href="https://github.com/hajimehoshi/ebiten/issues/2013">#2013</a>, <a href="https://github.com/hajimehoshi/ebiten/issues/2017">#2017</a>, <a href="https://github.com/hajimehoshi/ebiten/issues/2124">#2124</a>)</p>
   <p>New APIs <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#NewImageWithOptions"><code>NewImageWithOptions</code></a> and <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#NewImageFromImageWithOptions"><code>NewImageFromImageWithOptions</code></a> were added. You can specify these <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#NewImageFromImageOptions">options</a>:</p>
@@ -46,6 +47,7 @@
     <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2/ebitenutil#NewImageFromFileSystem"><code>ebitenutil.NewImageFromFileSystem</code></a> (this is available only with Go 1.16 or newer) (<a href="https://github.com/hajimehoshi/ebiten/issues/1948">#1948</a>)</li>
     <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2/inpututil#AppendJustReleasedTouchIDs"><code>inpututil.AppendJustReleasedTouchIDs</code></a> (<a href="https://github.com/hajimehoshi/ebiten/issues/2057">#2057</a>)</li>
     <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2/inpututil#TouchPositionInPreviousTick"><code>inpututil.TouchPositionInPreviousTick</code></a> (<a href="https://github.com/hajimehoshi/ebiten/issues/2057">#2057</a>)</li>
+    <li>An environment variable <code>EBITENGINE_OPENGL</code></li>
   </ul>
   <h3>Renaming APIs</h3>
   <p>(<a href="https://github.com/hajimehoshi/ebiten/issues/2071">#2071</a>, <a href="https://github.com/hajimehoshi/ebiten/issues/2236">#2236</a>)</p>
@@ -56,6 +58,15 @@
     <li><code class="old">ebiten.CurrentFPS</code> → <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#ActualFPS"><code class="new">ebiten.ActualFPS</code></a></li>
     <li><code class="old">ebiten.CurrentTPS</code> → <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#ActualTPS"><code class="new">ebiten.ActualTPS</code></a></li>
     <li><code class="old">(*ebiten.Image).ReplacePixels</code> → <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#Image.WritePixels"><code class="new">(*ebiten.Image).WritePixels</code></a></li>
+  </ul>
+  <p>Also, environment variables and build tags were renamed. Old ones are still available but deprecated:</p>
+  <ul>
+    <li>An environment variable <code class="old">EBITEN_SCREENSHOT_KEY</code> → <code class="new">EBITENGINE_SCREENSHOT_KEY</code></li>
+    <li>An environment variable <code class="old">EBITEN_INTERNALIMAGES_KEY</code> → <code class="new">EBITENGINE_INTERNAL_IMAGES_KEY</code></li>
+    <li>An environment variable <code class="old">EBITEN_GRAPHICS_LIBRARY</code> → <code class="new">EBITENGINE_GRAPHICS_LIBRARY</code></li>
+    <li>An environment variable <code class="old">EBITEN_DIRECTX</code> → <code class="new">EBITENGINE_DIRECTX</code></li>
+    <li>A build tag <code class="old">ebitendebug</code> → <code class="new">ebitenginedebug</code></li>
+    <li>A build tag <code class="old">ebitensinglethreaad</code> → <code class="new">ebitenginesinglethread</code></li>
   </ul>
   <h3>Improving Kage (the shading language for Ebitengine)</h3>
   <p>Now <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#NewShader"><code>NewShader</code></a> checks types for builtin function arguments and operators more strictly (<a href="https://github.com/hajimehoshi/ebiten/issues/2184">#2184</a>, <a href="https://github.com/hajimehoshi/ebiten/issues/2187">#2187</a>).</p>
@@ -78,6 +89,7 @@
   <h3>Breaking change</h3>
   <ul>
     <li><a href="https://github.com/hajimehoshi/go2cpp">go2cpp</a> is no longer supported (<a href="https://github.com/hajimehoshi/ebiten/issues/2126">#2126</a>).</li>
+    <li>A build tag <code>ebitenwebgl1</code> was removed. Instead, use an environment variable <code>EBITENGINE_OPENGL</code> with the value <code>webgl1</code>.</li>
   </ul>
 </div>
 <div lang="ja">
@@ -90,6 +102,7 @@
   <h3>アンマネージドな画像</h3>
   <p>(<a href="https://github.com/hajimehoshi/ebiten/issues/2013">#2013</a>、 <a href="https://github.com/hajimehoshi/ebiten/issues/2017">#2017</a>、 <a href="https://github.com/hajimehoshi/ebiten/issues/2124">#2124</a>)</p>
   <p>新しい API <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#NewImageWithOptions"><code>NewImageWithOptions</code></a> と <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#NewImageFromImageWithOptions"><code>NewImageFromImageWithOptions</code></a> が追加されました。次の<a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#NewImageFromImageOptions">オプション</a>が指定できます:</p>
+  <p>この変更に伴い、ビルドタグ <code>ebitenexternaldll</code> は削除されました。</p>
   <ul>
     <li><code>Unmanaged</code> は画像がアンマネージドかどうかを表します。デフォルト (ゼロ値) は false で、画像がマネージドであることを意味します。アンマネージドな画像は内部自動テクスチャアトラスには決して載りません。普通の画像は内部テクスチャアトラスの一部分で、 Ebitengine 内で配置は自動的に行われます。 <code>Unmanaged</code> はパフォーマンスやメモリなどの理由で、画像に対してより細かいコントロールが欲しい時に便利です。</li>
     <li><code>PreserveBounds</code> は新しい画像が与えられた画像と同じ Bounds を持つかどうかを表します。デフォルト (ゼロ値) は false で、新しい画像の左上が (0, 0) に調整されることを意味します。</li>
@@ -128,6 +141,16 @@
     <li><code class="old">ebiten.CurrentFPS</code> → <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#ActualFPS"><code class="new">ebiten.ActualFPS</code></a></li>
     <li><code class="old">ebiten.CurrentTPS</code> → <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#ActualTPS"><code class="new">ebiten.ActualTPS</code></a></li>
     <li><code class="old">(*ebiten.Image).ReplacePixels</code> → <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#Image.WritePixels"><code class="new">(*ebiten.Image).WritePixels</code></a></li>
+    <li>環境変数 <code>EBITENGINE_OPENGL</code></li>
+  </ul>
+  <p>また、環境変数やビルドタグの名前が変更になりました。古いものはまだ利用可能ですが、非推奨です:</p>
+  <ul>
+    <li>環境変数 <code class="old">EBITEN_SCREENSHOT_KEY</code> → <code class="new">EBITENGINE_SCREENSHOT_KEY</code></li>
+    <li>環境変数 <code class="old">EBITEN_INTERNALIMAGES_KEY</code> → <code class="new">EBITENGINE_INTERNAL_IMAGES_KEY</code></li>
+    <li>環境変数 <code class="old">EBITEN_GRAPHICS_LIBRARY</code> → <code class="new">EBITENGINE_GRAPHICS_LIBRARY</code></li>
+    <li>環境変数 <code class="old">EBITEN_DIRECTX</code> → <code class="new">EBITENGINE_DIRECTX</code></li>
+    <li>ビルドタグ <code class="old">ebitendebug</code> → <code class="new">ebitenginedebug</code></li>
+    <li>ビルドタグ <code class="old">ebitensinglethreaad</code> → <code class="new">ebitenginesinglethread</code></li>
   </ul>
   <h3>Kage (Ebitengine のシェーディング言語) の改善</h3>
   <p><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#NewShader"><code>NewShader</code></a> は組み込み関数の引数や演算子に関して、型をより厳密にチェックするようになりました (<a href="https://github.com/hajimehoshi/ebiten/issues/2184">#2184</a>、 <a href="https://github.com/hajimehoshi/ebiten/issues/2187">#2187</a>)。</p>
@@ -150,5 +173,6 @@
   <h3>破壊的変更</h3>
   <ul>
     <li><a href="https://github.com/hajimehoshi/go2cpp">go2cpp</a> のサポートは廃止されました (<a href="https://github.com/hajimehoshi/ebiten/issues/2126">#2126</a>)。</li>
+    <li>ビルドタグ <code>ebitenwebgl1</code> は廃止されました。代わりに環境変数 <code>EBITENGINE_OPENGL</code> を <code>webgl1</code> という値で使用してください。</li>
   </ul>
 </div>
