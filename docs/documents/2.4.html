@@ -131,7 +131,7 @@
     <li><code>Unmanaged</code> represents whether the image is unmanaged or not. The default (zero) value is false, that means the image is managed. An unmanaged image is never on an internal automatic texture atlas. A regular image is a part of an internal texture atlas, and locating them is done automatically in Ebitengine. <code>Unmanaged</code> is useful when you want finer controls over the image for performance and memory reasons.</li>
     <li><code>PreserveBounds</code> represents whether the new image's bounds are the same as the given image. The default (zero) value is false, that means the new image's upper-left position is adjusted to (0, 0).</li>
   </ul>
-  <h3>Audio deocding without resampling</h3>
+  <h3>Audio decoding without resampling</h3>
   <p>(<a href="https://github.com/hajimehoshi/ebiten/issues/2055">#2055</a>)</p>
   <p>New audio APIs to decode without resampling were added. Implicit resampling by <code>Decode</code> was useful but problematic since it might unexpectedly be slow. <code>DecodeWithoutResampling</code> is more explicit in terms of execution cost.</p>
   <ul>
