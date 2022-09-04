@@ -2,4 +2,5 @@
 .DS_Store
 Thumbs.db
 docs/**/*.html
+!docs/**/_*.html
 docs/**/feed.xml
