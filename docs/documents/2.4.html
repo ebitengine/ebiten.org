@@ -186,18 +186,25 @@
   <h3>DirectX performance improvement</h3>
   <p>(<a href="https://github.com/hajimehoshi/ebiten/issues/2034">#2034</a>, <a href="https://github.com/hajimehoshi/ebiten/issues/2149">#2149</a>, <a href="https://github.com/hajimehoshi/ebiten/issues/2188">#2188</a>)</p>
   <p>The DirectX driver now runs 2x-3x faster than the version 2.3.</p>
-  </ul>
-  <h3>Bug fix</h3>
+  <h3>Bug fixes</h3>
   <p>This release includes all the bug fixes in the version 2.3.</p>
   <ul>
     <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#Image.Set"><code>(*ebiten.Image).Set</code></a> sometimes didn't work correctly (<a href="https://github.com/hajimehoshi/ebiten/issues/2154">#2154</a>, <a href="https://github.com/hajimehoshi/ebiten/issues/2176">#2176</a>, <a href="https://github.com/hajimehoshi/ebiten/issues/2180">#2180</a>).</li>
     <li>An application might crash when trying to use gamepads on Firefox in a non-HTTPS context (<a href="https://github.com/hajimehoshi/ebiten/issues/2100">#2100</a>).</li>
     <li>Other small fixes</li>
   </ul>
-  <h3>Breaking change</h3>
+  <h3>Breaking changes</h3>
   <ul>
     <li><a href="https://github.com/hajimehoshi/go2cpp">go2cpp</a> is no longer supported (<a href="https://github.com/hajimehoshi/ebiten/issues/2126">#2126</a>).</li>
     <li>A build tag <code>ebitenwebgl1</code> was removed. Instead, use an environment variable <code>EBITENGINE_OPENGL</code> with the value <code>webgl1</code>.</li>
+  </ul>
+  <h2>v2.4.1</h2>
+  <p><a href="https://github.com/hajimehoshi/ebiten/milestone/90?closed=1">Issues for v2.4.1</a></p>
+  <h3>Bug fixes</h3>
+  <ul>
+    <li>An application might crash due to memory leak on Windows (<a href="https://github.com/hajimehoshi/ebiten/issues/2292">#2292</a>, <a href="https://github.com/hajimehoshi/ebiten/issues/2249">#2249</a>).</li>
+    <li>A window size was not restored correctly after exiting from fullscreen (<a href="https://github.com/hajimehoshi/ebiten/issues/2295">#2295</a>).</li>
+    <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2/ebitenutil#NewImageFromReader"><code>ebitenutil.NewImageFromReader</code></a> was not available on mobiles (<a href="https://github.com/hajimehoshi/ebiten/issues/2301">#2301</a>).</li>
   </ul>
 </div>
 <div lang="ja">
@@ -282,6 +289,14 @@
   <ul>
     <li><a href="https://github.com/hajimehoshi/go2cpp">go2cpp</a> のサポートは廃止されました (<a href="https://github.com/hajimehoshi/ebiten/issues/2126">#2126</a>)。</li>
     <li>ビルドタグ <code>ebitenwebgl1</code> は廃止されました。代わりに環境変数 <code>EBITENGINE_OPENGL</code> を <code>webgl1</code> という値で使用してください。</li>
+  </ul>
+  <h2>v2.4.1</h2>
+  <p><a href="https://github.com/hajimehoshi/ebiten/milestone/90?closed=1">Issues for v2.4.1</a></p>
+  <h3>バグ修正</h3>
+  <ul>
+    <li>Windows でメモリリークによってアプリケーションがクラッシュすることがあった問題の修正 (<a href="https://github.com/hajimehoshi/ebiten/issues/2292">#2292</a>、 <a href="https://github.com/hajimehoshi/ebiten/issues/2249">#2249</a>)。</li>
+    <li>フルスクリーンから戻る時にウィンドウのサイズが正しく戻らなかった問題の修正 (<a href="https://github.com/hajimehoshi/ebiten/issues/2295">#2295</a>)。</li>
+    <li><a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2/ebitenutil#NewImageFromReader"><code>ebitenutil.NewImageFromReader</code></a> がモバイル上で利用できなかった問題の修正 (<a href="https://github.com/hajimehoshi/ebiten/issues/2301">#2301</a>)。</li>
   </ul>
 </div>
 
