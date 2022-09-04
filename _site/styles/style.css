@@ -94,14 +94,14 @@ a:hover, a:active {
 body > nav h1 a {
     color: #d54125 !important; /* 0099-Y70R */
 }
-a[href="#"], a.active {
+a[href="#"] {
     cursor: default;
     text-decoration: none;
 }
 a[href="#"] {
     color: #999999 !important;
 }
-a.active {
+li.active {
     color: #666666 !important;
     font-weight: bold;
 }

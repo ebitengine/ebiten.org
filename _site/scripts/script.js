@@ -27,6 +27,8 @@ function goos() {
     return '';
 }
 
+const languages = new Set(['en', 'ja']);
+
 function defaultLanguage() {
     const threeToTwo = {
         'eng': 'en',
@@ -36,16 +38,19 @@ function defaultLanguage() {
     if (lang.length === 3) {
         lang = threeToTwo[lang];
     }
-    if (new Set(['en', 'ja']).has(lang)) {
+    if (languages.has(lang)) {
         return lang;
     }
     return 'en';
 }
 
 function currentLanguage() {
-    const lang = localStorage.getItem('language');
+    lang = localStorage.getItem('language');
     if (lang) {
-        return lang;
+        if (languages.has(lang)) {
+            return lang;
+        }
+        return 'en';
     }
     return defaultLanguage();
 }
@@ -313,26 +318,33 @@ function initLanguageSelector() {
             }
             return 0;
         });
+        const currentLang = currentLanguage();
         for (const lang of sortedLangs) {
-            const a = document.createElement('a');
-            a.href = '#!';
-            a.dataset.lang = lang;
-            a.addEventListener('click', e => {
-                updateLanguage(lang);
-                localStorage.setItem('language', lang);
-                e.preventDefault();
-            });
-            a.textContent = languageName(lang);
-            const li = document.createElement('li');
-            li.appendChild(a);
-            selector.appendChild(li);
+            if (lang != currentLang) {
+                const a = document.createElement('a');
+                a.href = '?lang=' + lang;
+                a.dataset.lang = lang;
+                a.textContent = languageName(lang);
+
+                const li = document.createElement('li');
+                li.appendChild(a);
+                selector.appendChild(li);
+            } else {
+                const li = document.createElement('li');
+                li.classList.add('active');
+                li.textContent = languageName(lang);
+                selector.appendChild(li);
+            }
         }
     } else {
         selector.style.display = 'none';
     }
 }
 
-function updateLanguage(lang) {
+function updateForLanguage() {
+    const lang = currentLanguage();
+
+    // Update the visibility of elements based on the current language.
     for (const e of document.querySelectorAll('*[lang]')) {
         if (e.lang === lang) {
             e.classList.remove('hiddenlang');
@@ -340,31 +352,44 @@ function updateLanguage(lang) {
             e.classList.add('hiddenlang');
         }
     }
-    for (const e of document.querySelectorAll('#language a')) {
-        if (e.dataset.lang === lang) {
-            e.classList.add('active');
-        } else {
-            e.classList.remove('active');
+
+    // Update the canonical URL based on the current language.
+    // This is the same way as the Google website (e.g. https://developers.google.com/search/docs/advanced/crawling/managing-multi-regional-sites)
+    if (lang != 'en') {
+        const canonical = document.querySelector('link[rel=canonical]');
+        if (canonical) {
+            const url = new URL(canonical.href);
+            url.searchParams.set('lang', lang);
+            canonical.href = url;
         }
     }
+}
 
+window.addEventListener('DOMContentLoaded', () => {
+    // Update the language based on the current URL parameter 'lang'.
+    const url = new URL(document.location);
+    if (url.searchParams.has('lang')) {
+        let lang = url.searchParams.get('lang');
+        if (!languages.has(lang)) {
+            lang = 'en'
+        }
+        localStorage.setItem('language', lang);
+        url.searchParams.delete('lang');
+        history.replaceState(null, '', url);
+    }
+
+    initLanguageSelector();
+
+    updateForLanguage();
+    updateCode();
     updateImages();
+    updateBody();
+    updateCSS();
     updateTOC();
 
     for (const e of document.querySelectorAll('p.math')) {
         adjustHeight(e.firstChild);
     }
-}
-
-window.addEventListener('DOMContentLoaded', () => {
-    initLanguageSelector();
-
-    updateCode();
-    updateImages();
-    updateBody();
-    updateCSS();
-    updateLanguage(currentLanguage());
-    updateTOC();
 
     const sidemenu = document.querySelector('input#sidemenu');
     if (sidemenu !== null) {
