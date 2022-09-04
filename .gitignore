@@ -1,6 +1,6 @@
 *~
 .DS_Store
 Thumbs.db
-docs/**/*.html
-!docs/**/_*.html
-docs/**/feed.xml
+_site/**/*.html
+!_site/**/_*.html
+_site/**/feed.xml

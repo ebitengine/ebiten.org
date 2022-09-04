@@ -25,8 +25,10 @@ import (
 	"strings"
 )
 
+const outDir = "_site"
+
 func cleanup() error {
-	return filepath.Walk("docs", func(path string, info os.FileInfo, err error) error {
+	return filepath.Walk(outDir, func(path string, info os.FileInfo, err error) error {
 		if err != nil {
 			return err
 		}
@@ -120,11 +122,11 @@ func Run(url, description string) error {
 		if err != nil {
 			return err
 		}
-		if err := os.MkdirAll(filepath.Join("docs", filepath.Dir(rel)), 0755); err != nil {
+		if err := os.MkdirAll(filepath.Join(outDir, filepath.Dir(rel)), 0755); err != nil {
 			return err
 		}
 		// TODO: What if the file already exists?
-		w, err := os.Create(filepath.Join("docs", rel))
+		w, err := os.Create(filepath.Join(outDir, rel))
 		if err != nil {
 			return err
 		}

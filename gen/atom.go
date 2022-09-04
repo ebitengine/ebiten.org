@@ -116,7 +116,7 @@ func writeAtom(url string) error {
 		})
 	}
 
-	f, err := os.OpenFile(filepath.Join("docs", "blog", "feed.xml"), os.O_WRONLY|os.O_CREATE|os.O_TRUNC, 0755)
+	f, err := os.OpenFile(filepath.Join(outDir, "blog", "feed.xml"), os.O_WRONLY|os.O_CREATE|os.O_TRUNC, 0755)
 	if err != nil {
 		return err
 	}
