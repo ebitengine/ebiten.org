@@ -5,7 +5,7 @@
 Edit HTML files under `contents` and run:
 
 ```sh
-go generate .
+go run gen.go
 ```
 
 ## Contributions

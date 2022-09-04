@@ -32,7 +32,7 @@ jobs:
 
       - name: Build
         run: |
-          go generate .
+          go run gen.go
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
