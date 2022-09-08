@@ -35,19 +35,19 @@
     <p lang="ja">最新の macOS ならば、ターミナル上で <code>clang</code> と入力すれば、 clang がまだインストールされていないのであれば、ダイアログが表示されます。指示に従ってインストールしてください。</p>
     <p lang="en">You might find the following error when executing clang.</p>
     <p lang="ja">clang 実行中に次のようなエラーメッセージが表示されるかもしれません。</p>
-    <pre><code>xcrun: error: invalid active developer path (/Library/Developer/CommandLineTools), missing xcrun at: /Library/Developer/CommandLineTools/usr/bin/xcrun</code></pre>
+    <pre><code class="language-bash">xcrun: error: invalid active developer path (/Library/Developer/CommandLineTools), missing xcrun at: /Library/Developer/CommandLineTools/usr/bin/xcrun</code></pre>
     <p lang="en">In this case, run <code>xcode-select --install</code> and install commandline tools.</p>
     <p lang="ja">その場合は <code>xcode-select --install</code> を実行して、コマンドラインツールをインストールしてください。</p>
   </div>
   <div data-tags="linux">
     <p lang="en">Use your distribution's package manager. For example, Ubuntu can use <code>apt</code>.</p>
     <p lang="ja">お使いのディストリビューションのパッケージマネージャを使ってください。例えば、 Ubuntu では <code>apt</code> が使えます。</p>
-    <pre><code>apt install gcc</code></pre>
+    <pre><code class="language-bash">apt install gcc</code></pre>
   </div>
   <div data-tags="freebsd">
     <p lang="en">Use <code>pkg</code>.</p>
     <p lang="ja"><code>pkg</code> を使ってください。</p>
-    <pre><code>pkg install clang</code></pre>
+    <pre><code class="language-bash">pkg install clang</code></pre>
   </div>
 </div>
 
@@ -56,18 +56,18 @@
   <h2 lang="ja">依存ライブラリ</h2>
   <div data-tags="linux">
     <h3>Debian / Ubuntu</h3>
-    <pre><code>sudo apt install libc6-dev libglu1-mesa-dev libgl1-mesa-dev libxcursor-dev libxi-dev libxinerama-dev libxrandr-dev libxxf86vm-dev libasound2-dev pkg-config</code></pre>
+    <pre><code class="language-bash">sudo apt install libc6-dev libglu1-mesa-dev libgl1-mesa-dev libxcursor-dev libxi-dev libxinerama-dev libxrandr-dev libxxf86vm-dev libasound2-dev pkg-config</code></pre>
     <h3>Fedora</h3>
-    <pre><code>sudo dnf install mesa-libGLU-devel mesa-libGLES-devel libXrandr-devel libXcursor-devel libXinerama-devel libXi-devel libXxf86vm-devel alsa-lib-devel pkg-config</code></pre>
+    <pre><code class="language-bash">sudo dnf install mesa-libGLU-devel mesa-libGLES-devel libXrandr-devel libXcursor-devel libXinerama-devel libXi-devel libXxf86vm-devel alsa-lib-devel pkg-config</code></pre>
     <h3>Solus</h3>
-    <pre><code>sudo eopkg install libglu-devel libx11-devel libxrandr-devel libxinerama-devel libxcursor-devel libxi-devel libxxf86vm-devel alsa-lib-devel pkg-config</code></pre>
+    <pre><code class="language-bash">sudo eopkg install libglu-devel libx11-devel libxrandr-devel libxinerama-devel libxcursor-devel libxi-devel libxxf86vm-devel alsa-lib-devel pkg-config</code></pre>
     <h3>Arch</h3>
-    <pre><code>sudo pacman -S mesa libxrandr libxcursor libxinerama libxi pkg-config</code></pre>
+    <pre><code class="language-bash">sudo pacman -S mesa libxrandr libxcursor libxinerama libxi pkg-config</code></pre>
     <h3>Alpine</h3>
-    <pre><code>sudo apk add alsa-lib-dev libx11-dev libxrandr-dev libxcursor-dev libxinerama-dev libxi-dev mesa-dev pkgconf</code></pre>
+    <pre><code class="language-bash">sudo apk add alsa-lib-dev libx11-dev libxrandr-dev libxcursor-dev libxinerama-dev libxi-dev mesa-dev pkgconf</code></pre>
   </div>
   <div data-tags="freebsd">
-    <pre><code>pkg install alsa-lib libxcursor libxi libxinerama libxrandr mesa-libs pkgconf</code></pre>
+    <pre><code class="language-bash">pkg install alsa-lib libxcursor libxi libxinerama libxrandr mesa-libs pkgconf</code></pre>
   </div>
 </div>
 
@@ -76,7 +76,7 @@
 <p lang="ja">Ebitengine は通常の Go ライブラリとして使用できます。プログラムが Ebitengine を使用していれば、 Go コマンドが自動的に Ebitengine をインストールします。</p>
 <p lang="en">First, create your local module.</p>
 <p lang="ja">最初に、ローカルモジュールを作ります。</p>
-<pre><code># Create a directory for your game.
+<pre><code class="language-bash"># Create a directory for your game.
 mkdir yourgame
 cd yourgame
 
@@ -86,7 +86,7 @@ go mod init github.com/yourname/yourgame</code></pre>
 <p lang="ja"><code>github.com/yourname/yourgame</code> のような URL をモジュール名に使用します。実際のところ、自分のプログラムを公開するつもりがないのであれば、 <code>example.com/m</code> などどんなモジュール名でも問題ありません。モジュール名は後でいつでも変えられます。</p>
 <p lang="en">Then, run the command to execute an Ebitengine example.</p>
 <p lang="ja">次に、 Ebitengine のサンプルを実行します。</p>
-<pre><code>go get github.com/hajimehoshi/ebiten/v2
+<pre><code class="language-bash">go get github.com/hajimehoshi/ebiten/v2
 go run -tags=example github.com/hajimehoshi/ebiten/v2/examples/rotate</code></pre>
 <p lang="en"><code>go get</code> retrieves the code of Ebitengine. <code>go run</code> compiles Go files and runs it immediately after the compilation. As the first retrieving the code and compilation might take a little long time, please wait for a while. Note that you can see what is happening on the compilation process with <code>-x</code> option if you want.</p>
 <p lang="ja"><code>go get</code> は Ebitengine のコードを取得します。 <code>go run</code> は Go ファイルをコンパイルし、即座に実行します。最初のコード取得とコンパイルは少々時間がかかるかもしれないため、しばらくお待ち下さい。必要ならば <code>-x</code> をつけることで、コンパイル処理中に何が行われているのかを見ることができます。</p>

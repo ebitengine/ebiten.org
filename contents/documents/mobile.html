@@ -6,10 +6,10 @@
 <h2>Creating a shared library with <code>ebitenmobile bind</code></h2>
 <h3>Installing <code>ebitenmobile</code></h3>
 <p>Install <code>ebitenmobile</code> command first.</p>
-<pre><code>go install github.com/hajimehoshi/ebiten/v2/cmd/ebitenmobile@latest</code></pre>
+<pre><code class="language-bash">go install github.com/hajimehoshi/ebiten/v2/cmd/ebitenmobile@latest</code></pre>
 <h3>Creating a binding</h3>
 <p>Create a package for mobiles to use <a href="https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2/mobile"><code>github.com/hajimehoshi/ebiten/v2/mobile</code></a>:</p>
-<pre><code>package yourgamemobile
+<pre><code class="language-go">package yourgamemobile
 
 import (
     "github.com/hajimehoshi/ebiten/v2"
@@ -39,14 +39,14 @@ func Dummy() {}</code></pre>
   <li><code>ANDROID_NDK_HOME</code> (Optional)</li>
 </ul>
 <p><code>ANDROID_NDK_HOME</code> is optional. If <code>$ANDROID_HOME/ndk-bundle</code> exists, you don't have to set this. Even if this directory doesn't exist, you can create <code>ndk-bundle</code> as a symbolic link like:</li>
-<pre><code>cd $ANDROID_HOME
+<pre><code class="language-bash">cd $ANDROID_HOME
 ln -s ndk/&lt;NDK version&gt; ndk-bundle</code></pre>
 <p>Run <code>ebitenmobile bind</code> command for your package:</p>
-<pre><code>cd /path/to/yourgame
+<pre><code class="language-bash">cd /path/to/yourgame
 ebitenmobile bind -target android -javapkg your.package.name -o path/to/yourgame.aar .</code></pre>
 <p>Then your can get a <code>.aar</code> file. This <code>.aar</code> file defines a view class named <code>EbitenView</code> under the specified Java package (<code>-javapkg</code> option + your package name). You can put it on your screen. That's it!</p>
 <p>The view class is defined like this:</p>
-<pre><code>package your.package.name.yourgamemobile;
+<pre><code class="language-go">package your.package.name.yourgamemobile;
 
 import android.view.ViewGroup;
 
@@ -72,7 +72,7 @@ public class EbitenView extends ViewGroup {
     }
 }</code></pre>
 <p>Note that you have to call <code>Seq.setContext</code> at the Activity creation like this:</p>
-<pre><code>package your.package.name.yourgamemobile;
+<pre><code class="language-java">package your.package.name.yourgamemobile;
 
 import androidx.appcompat.app.AppCompatActivity;
 import go.Seq;
@@ -88,11 +88,11 @@ public class MainActivity extends AppCompatActivity {
 
 <h3>iOS</h3>
 <p>Run <code>ebitenmobile bind</code> command for your package:</p>
-<pre><code>cd /path/to/yourgame
+<pre><code class="language-bash">cd /path/to/yourgame
 ebitenmobile bind -target ios -o path/to/yourgame.xcframework .</code></pre>
 <p>This command generates a <code>.xcframework</code> file. This <code>.xcframework</code> defines a view controller class named <code>(Package Name)EbitenViewController</code>. You can put it on your screen by connecting with any <code>UIView</code>. That's it!</p>
 <p>The view controller class is defined like this:</p>
-<pre><code>#import &lt;UIKit/UIKit.h&gt;
+<pre><code class="language-objc">#import &lt;UIKit/UIKit.h&gt;
 
 @interface YourgamemobileEbitenViewController : UIViewController
 
@@ -158,10 +158,10 @@ ebitenmobile bind -target ios -o path/to/yourgame.xcframework .</code></pre>
 <p>NOTICE: Now <code>gomobile build</code> does not work for iOS. See <a href="https://github.com/golang/go/issues/32963">the Go issue</a>.</p>
 <p>Ebitengine application also works with <code>gomobile build</code>. This is useful for testing, but not suitable for actual applications in the stores.</p>
 <p>Install <code>gomobile</code> command first.</p>
-<pre><code>go install golang.org/x/mobile/cmd/...@latest</code></pre>
+<pre><code class="language-bash">go install golang.org/x/mobile/cmd/...@latest</code></pre>
 <p>Then, run <code>gomobile build</code></p>
-<pre><code>gomobile build github.com/yourname/yourpackage</code></pre>
+<pre><code class="language-bash">gomobile build github.com/yourname/yourpackage</code></pre>
 <p>That's it!</p>
 <p>You can install an Ebitengine's example directly with <code>gomobile install</code> on your Android device:</p>
-<pre><code>gomobile install -tags=example github.com/hajimehoshi/ebiten/v2/examples/paint</code></pre>
+<pre><code class="language-bash">gomobile install -tags=example github.com/hajimehoshi/ebiten/v2/examples/paint</code></pre>
 <p>For more details, see <a href="https://github.com/golang/go/wiki/Mobile">the official Wiki page about gomobile</a>.</p>

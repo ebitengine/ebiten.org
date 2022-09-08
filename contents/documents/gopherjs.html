@@ -2,22 +2,22 @@
 <p><a href="https://github.com/gopherjs/gopherjs">GopherJS</a> is a software to convert Go to JavaScript. You can run your Ebitengine game on browsers. As Ebitengine v2 does not support GopherJS and vice versa, it is recomended to use <a href="webassembly.html">WebAssembly</a> if possible. If you want to use GopherJS, you have to use Ebitengine v1.</p>
 <h2>Installing GopherJS</h2>
 <p>Install gopherjs command. You might need to set <code>GO111MODULE</code> <code>off</code>.</p>
-<pre><code>go1.12.17 get github.com/gopherjs/gopherjs</code></pre>
+<pre><code class="language-bash">go1.12.17 get github.com/gopherjs/gopherjs</code></pre>
 <p>Compile your game with GopherJS:</p>
-<pre><code>gopherjs build -o yourgame.js path/to/yourgame</code></pre>
+<pre><code class="language-bash">gopherjs build -o yourgame.js path/to/yourgame</code></pre>
 <p>Then, open the below HTML on your HTTP server:</p>
-<pre><code>&lt;!DOCTYPE html&gt;
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
 &lt;script src="yourgame.js"&gt;&lt;/script&gt;&lt;/code&gt;</code></pre>
 <p>NOTE: <code>file://</code> URL may not work with Ebitengine. Execute your game on a HTTP server.</p>
 <p>If you want to embed your game into your web page, using iframe is strongly recommended.</p>
 <p>You might find this message with Chrome:</p>
-<pre><code>The AudioContext was not allowed to start. It must be resume (or created) after a user gesture on the page. https://goo.gl/7K7WLu</code></pre>
+<pre><code class="language-html">The AudioContext was not allowed to start. It must be resume (or created) after a user gesture on the page. https://goo.gl/7K7WLu</code></pre>
 <p>In this case, you can solve this by putting <code>allow="autoplay"</code> on the iframe.</p>
 <h2>Emulating context-lost</h2>
-<pre><code>document.getElementsByTagName("canvas")[0].getContext("webgl").getExtension('WEBGL_lose_context').loseContext();</code></pre>
+<pre><code class="language-js">document.getElementsByTagName("canvas")[0].getContext("webgl").getExtension('WEBGL_lose_context').loseContext();</code></pre>
 <p>Note that Ebitengine automatically restores images on desktop browsers when the context is lost. This restoring doesn't work on mobile browsers for a performance reason.</p>
 <h2>Running examples on browsers</h2>
-<pre><code>gopherjs serve --tags=example</code></pre>
+<pre><code class="language-bash">gopherjs serve --tags=example</code></pre>
 <p>And access to <code>http://127.0.0.1:8080/github.com/hajimehoshi/ebiten/examples/blocks</code>.</p>
 <p>On Windows, you might need to set GOOS environment variable:</p>
-<pre><code>set GOOS=linux</code></pre>
+<pre><code class="language-powershell">set GOOS=linux</code></pre>
