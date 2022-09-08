@@ -113,6 +113,12 @@ function updateCode() {
                     text = text.trim();
                 }
                 code.textContent = text;
+
+                // add language syntax highlight from Prism.js
+                var langtype = e.dataset['codesrc'].split('.').pop();
+                code.className = 'language-' + langtype;
+                Prism.highlightElement(code);
+
                 addCommentStyle(code);
                 e.appendChild(code);
             });
