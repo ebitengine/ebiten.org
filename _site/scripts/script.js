@@ -29,12 +29,22 @@ function goos() {
 
 const languages = new Set(['en', 'ja']);
 
-function defaultLanguage() {
+function currentLanguage() {
+    // Detect the language from localStorage.
+    let lang = localStorage.getItem('language');
+    if (lang) {
+        if (languages.has(lang)) {
+            return lang;
+        }
+        return 'en';
+    }
+
+    // Detect the language from navigator.
     const threeToTwo = {
         'eng': 'en',
         'jpn': 'ja',
     };
-    const lang = navigator.language.match(/^[a-zA-Z]{2,3}/)[0];
+    lang = navigator.language.match(/^[a-zA-Z]{2,3}/)[0];
     if (lang.length === 3) {
         lang = threeToTwo[lang];
     }
@@ -42,17 +52,6 @@ function defaultLanguage() {
         return lang;
     }
     return 'en';
-}
-
-function currentLanguage() {
-    lang = localStorage.getItem('language');
-    if (lang) {
-        if (languages.has(lang)) {
-            return lang;
-        }
-        return 'en';
-    }
-    return defaultLanguage();
 }
 
 function languageName(code) {
@@ -293,7 +292,7 @@ function updateCSS() {
     document.documentElement.style.setProperty('--vh', `${vh}px`);
 }
 
-function initLanguageSelector() {
+function initLanguageSelector(currentLang) {
     const selector = document.querySelector('#language');
     if (!selector) {
         return;
@@ -318,7 +317,6 @@ function initLanguageSelector() {
             }
             return 0;
         });
-        const currentLang = currentLanguage();
         for (const lang of sortedLangs) {
             if (lang != currentLang) {
                 const a = document.createElement('a');
@@ -341,9 +339,7 @@ function initLanguageSelector() {
     }
 }
 
-function updateForLanguage() {
-    const lang = currentLanguage();
-
+function updateForLanguage(lang) {
     // Update the visibility of elements based on the current language.
     for (const e of document.querySelectorAll('*[lang]')) {
         if (e.lang === lang) {
@@ -378,9 +374,10 @@ window.addEventListener('DOMContentLoaded', () => {
         history.replaceState(null, '', url);
     }
 
-    initLanguageSelector();
+    const lang = currentLanguage();
+    initLanguageSelector(lang);
 
-    updateForLanguage();
+    updateForLanguage(lang);
     updateCode();
     updateImages();
     updateBody();
