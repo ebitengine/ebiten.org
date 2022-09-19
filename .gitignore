@@ -3,4 +3,3 @@
 Thumbs.db
 _site/**/*.html
 !_site/**/_*.html
-_site/**/feed.xml

@@ -174,11 +174,6 @@ func Run(url, description string) error {
 			share = url + s
 		}
 
-		feed := ""
-		if strings.HasPrefix(rel, "blog"+string(filepath.Separator)) {
-			feed = url + "/blog/feed.xml"
-		}
-
 		if err := tmpl.Execute(w, map[string]interface{}{
 			"Title":     title,
 			"Desc":      description,
@@ -188,7 +183,6 @@ func Run(url, description string) error {
 			"NavExists": p.hasNav(),
 			"SubNav":    subnav,
 			"Feedback":  p.hasFeedback(),
-			"Feed":      feed,
 			"Redirect":  p.redirect(),
 		}); err != nil {
 			return err
@@ -196,10 +190,6 @@ func Run(url, description string) error {
 
 		return nil
 	}); err != nil {
-		return err
-	}
-
-	if err := writeAtom(url); err != nil {
 		return err
 	}
 
