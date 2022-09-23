@@ -43,10 +43,6 @@ func newPage(content []byte, path string) (*page, error) {
 	return c, nil
 }
 
-func (p *page) name() string {
-	return filepath.Base(p.path)
-}
-
 func (p *page) title() (string, error) {
 	h1, err := findFirstElementByName(p.node, "h1")
 	if err != nil {
@@ -55,58 +51,23 @@ func (p *page) title() (string, error) {
 	return h1.FirstChild.Data, nil
 }
 
-func (p *page) share() (string, error) {
-	img, err := findElementByID(p.node, "meta-share")
+func (p *page) redirect() (string, error) {
+	r, err := findElementByID(p.node, "meta-redirect")
 	if err != nil {
 		return "", err
 	}
-	if img == nil {
-		return "", nil
+	if r != nil {
+		return r.FirstChild.Data, nil
 	}
-	for _, a := range img.Attr {
-		if a.Key == "src" {
-			return a.Val, nil
-		}
-	}
-	return "", nil
-}
-
-func (p *page) created() (string, error) {
-	span, err := findElementByID(p.node, "meta-created")
+	rel, err := filepath.Rel("contents", p.path)
 	if err != nil {
 		return "", err
 	}
-	if span == nil {
-		return "", nil
+	path := filepath.ToSlash(rel)
+	if strings.HasSuffix(path, "/index.html") {
+		path = path[:len(path)-len("index.html")]
 	}
-	return span.FirstChild.Data, nil
-}
-
-func (p *page) hasNav() bool {
-	return p.path != filepath.Join("contents", "404.html")
-}
-
-func (p *page) hasFeedback() bool {
-	if p.redirect() != "" {
-		return false
-	}
-	return p.path != filepath.Join("contents", "404.html")
-}
-
-func (p *page) redirect() string {
-	a, err := findElementByID(p.node, "meta-redirect")
-	if err != nil {
-		return ""
-	}
-	if a == nil {
-		return ""
-	}
-	for _, attr := range a.Attr {
-		if attr.Key == "href" {
-			return attr.Val
-		}
-	}
-	return ""
+	return "https://ebitengine.org/en/" + path, nil
 }
 
 func walkHTML(node *html.Node, f func(node *html.Node) error) error {

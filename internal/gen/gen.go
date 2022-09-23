@@ -143,47 +143,16 @@ func Run(url, description string) error {
 			}
 		}
 
-		canonical := ""
-		switch rel {
-		case "404.html":
-			// No canonical URL
-		case "index.html":
-			canonical = url
-		default:
-			// When generated on a Windows machine, rel will have \ characters.
-			// Use ToSlash to ensure that all path separators are /.
-			canonical = url + "/" + filepath.ToSlash(rel)
-			if strings.HasSuffix(canonical, "/index.html") {
-				canonical = strings.TrimSuffix(canonical, "index.html")
-			}
-		}
-
-		f := filepath.Join(filepath.Dir(path), "nav.html")
-		c, err := ioutil.ReadFile(f)
-		if err != nil && !os.IsNotExist(err) {
-			return err
-		}
-		subnav := string(c)
-
-		share := url + "/images/share.png"
-		s, err := p.share()
+		redirect, err := p.redirect()
 		if err != nil {
 			return err
 		}
-		if s != "" {
-			share = url + s
-		}
 
 		if err := tmpl.Execute(w, map[string]interface{}{
-			"Title":     title,
-			"Desc":      description,
-			"Content":   content,
-			"Share":     share,
-			"Canonical": canonical,
-			"NavExists": p.hasNav(),
-			"SubNav":    subnav,
-			"Feedback":  p.hasFeedback(),
-			"Redirect":  p.redirect(),
+			"Title":    title,
+			"Desc":     description,
+			"Share":    url + "/images/share.png",
+			"Redirect": redirect,
 		}); err != nil {
 			return err
 		}

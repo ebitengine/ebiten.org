@@ -1,21 +1,15 @@
 # ebiten.org
 
+This website has been moved to [ebitengine.org](https://ebitengine.org).
+
+This repository is manged for redirections from the old site ebiten.org to the new sites ebitengine.org.
+
 ## Generating
 
 Edit HTML files under `contents` and run:
 
 ```sh
 go run gen.go
-```
-
-## Contributions
-
-Contributions are welcome. However, if you try to contribute one or more sections or articles, please ask Hajime Hoshi <hajimehoshi@gmail.com> before writing.
-
-## Uploading WASM files
-
-```
-GOOGLE_APPLICATION_CREDENTIALS=/path/to/credentials.json go run ./cmd/uploadwasm/ -ebitenpath=../path/to/ebiten -upload
 ```
 
 ## Test on your local machine
