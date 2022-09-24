@@ -1,8 +1,6 @@
 # ebiten.org
 
-This website has been moved to [ebitengine.org](https://ebitengine.org).
-
-This repository is manged for redirections from the old site ebiten.org to the new sites ebitengine.org.
+This repository manages the old website ebiten.org. All the pages redirect to the new sites ebitengine.org.
 
 ## Generating
 
