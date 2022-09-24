@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="refresh" content="0;url={{.Redirect}}">
     <meta name="description" content="{{.Desc}}">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex">
     <meta name="theme-color" content="#db5620">
     <meta property="og:title" content="{{.Title}}">
     <meta property="og:site_name" content="Ebitengine - A dead simple 2D game engine for Go">
@@ -15,8 +15,9 @@
     <meta name="twitter:title" content="{{.Title}}">
     <meta name="twitter:description" content="{{.Desc}}">
     <meta name="twitter:image" content="{{.Share}}">
-    <title>{{.Title}}</title>
+    <link rel="canonical" href="{{.Redirect}}">
     <link rel="icon" href="/images/favicon.png" type="image/png">
+    <title>{{.Title}}</title>
   </head>
   <body>
     <p>This page has been moved to <code><a href="{{.Redirect}}">{{.Redirect}}</a></code>.</p>
