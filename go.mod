@@ -1,4 +1,4 @@
-module github.com/ebiten/ebiten.org
+module github.com/ebitengine/ebiten.org
 
 go 1.18
 
