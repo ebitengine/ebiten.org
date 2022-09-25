@@ -18,7 +18,7 @@
 package main
 
 import (
-	"github.com/ebiten/ebiten.org/internal/gen"
+	"github.com/ebitengine/ebiten.org/internal/gen"
 )
 
 const (
