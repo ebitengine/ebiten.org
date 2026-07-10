@@ -1,2 +1,1 @@
-docs/blog/feed.xml linguist-generated
-docs/**/*.html linguist-generated
+dist/**/*.html linguist-generated
