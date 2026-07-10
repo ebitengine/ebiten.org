@@ -1,0 +1,41 @@
+# ebiten.org has moved to ebitengine.org.
+#
+# This file is honored by Cloudflare Pages, which serves server-side 301
+# redirects from these rules. GitHub Pages ignores it (served as an inert
+# static file), so the meta-refresh stub pages continue to work there. That
+# lets both hosts redirect correctly during the DNS cutover window.
+#
+# Rules are evaluated top to bottom; the first match wins, so the specific
+# entries must precede the wildcards, and the catch-all must come last. The
+# mapping mirrors the meta-refresh targets in the stub HTML pages.
+
+# documents/ pages that were reorganized into tour/ on the new site.
+/documents/fill.html           https://ebitengine.org/en/tour/fill.html         301
+/documents/geometrymatrix.html https://ebitengine.org/en/tour/geom.html         301
+/documents/helloworld.html     https://ebitengine.org/en/tour/hello_world.html  301
+/documents/renderimage.html    https://ebitengine.org/en/tour/image.html        301
+
+# documents/ pages removed from the new site -> new site root.
+/documents/gopherjs.html       https://ebitengine.org/                          301
+/documents/packages.html       https://ebitengine.org/                          301
+
+# Directory indexes -> trailing-slash form on the new site.
+/blog/index.html               https://ebitengine.org/en/blog/                  301
+/documents/index.html          https://ebitengine.org/en/documents/             301
+/examples/index.html           https://ebitengine.org/en/examples/              301
+/tour/index.html               https://ebitengine.org/en/tour/                  301
+
+# Section wildcards -> same path under /en/ on the new site.
+/blog/*                        https://ebitengine.org/en/blog/:splat            301
+/documents/*                   https://ebitengine.org/en/documents/:splat       301
+/examples/*                    https://ebitengine.org/en/examples/:splat        301
+/tour/*                        https://ebitengine.org/en/tour/:splat            301
+
+/contact.html                  https://ebitengine.org/en/contact.html           301
+
+# Non-HTML resources -> same paths on the new site.
+/images/*                      https://ebitengine.org/images/:splat             301
+/styles/*                      https://ebitengine.org/styles/:splat             301
+
+# Home, 404s, and any stray path -> new site root.
+/*                             https://ebitengine.org/                          301
