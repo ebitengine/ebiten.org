@@ -13,7 +13,7 @@ go run gen.go
 ## Test on your local machine
 
 ```
-go run server.go ./_site
+go run server.go ./dist
 ```
 
 Validate your changes by opening http://127.0.0.1:8000.

@@ -1,5 +1,5 @@
 *~
 .DS_Store
 Thumbs.db
-_site/**/*.html
-!_site/**/_*.html
+dist/**/*.html
+!dist/**/_*.html

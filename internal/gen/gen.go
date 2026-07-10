@@ -25,7 +25,7 @@ import (
 	"strings"
 )
 
-const outDir = "_site"
+const outDir = "dist"
 
 func cleanup() error {
 	return filepath.Walk(outDir, func(path string, info os.FileInfo, err error) error {
