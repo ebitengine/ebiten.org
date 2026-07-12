@@ -1,13 +1,9 @@
 # ebiten.org has moved to ebitengine.org.
 #
-# This file is honored by Cloudflare Pages, which serves server-side 301
-# redirects from these rules. GitHub Pages ignores it (served as an inert
-# static file), so the meta-refresh stub pages continue to work there. That
-# lets both hosts redirect correctly during the DNS cutover window.
+# Cloudflare Pages serves server-side 301 redirects from these rules.
 #
 # Rules are evaluated top to bottom; the first match wins, so the specific
-# entries must precede the wildcards, and the catch-all must come last. The
-# mapping mirrors the meta-refresh targets in the stub HTML pages.
+# entries must precede the wildcards, and the catch-all must come last.
 
 # documents/ pages that were reorganized into tour/ on the new site.
 /documents/fill.html           https://ebitengine.org/en/tour/fill.html         301
